@@ -270,11 +270,11 @@ html,body{width:100%;min-height:100%;background:var(--bg);color:var(--txt);font-
     <div class="mword" id="mword"></div>
     <div class="melems">
       <div class="me"><span class="me-e">☀️</span><div class="me-q">Inti</div><div class="me-s">Sol</div></div>
-      <div class="me"><span class="me-e">\uD83C\uDF0A</span><div class="me-q">Yaku</div><div class="me-s">Agua</div></div>
-      <div class="me"><span class="me-e">\uD83C\uDF3F</span><div class="me-q">Sach'a</div><div class="me-s">Árbol</div></div>
-      <div class="me"><span class="me-e">\uD83C\uDFD4️</span><div class="me-q">Apu</div><div class="me-s">Espíritu</div></div>
+      <div class="me"><span class="me-e">&#x1F30A;</span><div class="me-q">Yaku</div><div class="me-s">Agua</div></div>
+      <div class="me"><span class="me-e">&#x1F33F;</span><div class="me-q">Sach'a</div><div class="me-s">Árbol</div></div>
+      <div class="me"><span class="me-e">&#x1F3D4;️</span><div class="me-q">Apu</div><div class="me-s">Espíritu</div></div>
     </div>
-    <button class="mbtn" onclick="goHome()">Empezar a aprender \uD83E\uDD85</button>
+    <button class="mbtn" onclick="goHome()">Empezar a aprender &#x1F985;</button>
   </div>
 </div>
 
@@ -286,15 +286,15 @@ html,body{width:100%;min-height:100%;background:var(--bg);color:var(--txt);font-
   </div>
   <!-- LANG TABS ON HOME -->
   <div class="ltabs">
-    <button class="ltab on" id="htab-q" onclick="setLang('q')">\uD83E\uDD85 Quechua</button>
-    <button class="ltab ay" id="htab-a" onclick="setLang('a')">\uD83C\uDF0A Aymara</button>
+    <button class="ltab on" id="htab-q" onclick="setLang('q')">&#x1F985; Quechua</button>
+    <button class="ltab ay" id="htab-a" onclick="setLang('a')">&#x1F30A; Aymara</button>
   </div>
   <div class="hbody" id="home-body"></div>
 </div>
 
 <!-- MORNING 2 -->
 <div id="m2" class="scr">
-  <div class="tb"><button class="bk" onclick="goHome()">←</button><span class="tbt">\uD83C\uDF05 Bienvenida del día</span><span></span></div>
+  <div class="tb"><button class="bk" onclick="goHome()">←</button><span class="tbt">&#x1F305; Bienvenida del día</span><span></span></div>
   <div class="cb" id="m2body"></div>
 </div>
 
@@ -333,14 +333,14 @@ html,body{width:100%;min-height:100%;background:var(--bg);color:var(--txt);font-
       <div class="swl" id="swl">× Repasar</div>
     </div>
     <div class="cemp" id="cemp">
-      <div class="ceme">\uD83C\uDFC6</div><div class="cemt">¡Lo aprendiste todo!</div>
+      <div class="ceme">&#x1F3C6;</div><div class="cemt">¡Lo aprendiste todo!</div>
       <div class="cems">Has dominado todos los verbos.</div>
-      <button class="rbtn" onclick="resetDeck()">Reiniciar \uD83D\uDD04</button>
+      <button class="rbtn" onclick="resetDeck()">Reiniciar &#x1F504;</button>
     </div>
   </div>
   <div class="cacts" id="cacts">
-    <button class="ab ask" onclick="skipC()"><div class="aci">\uD83D\uDD01</div><span>Repasar</span></button>
-    <button class="afli" onclick="flipC()"><span>\uD83D\uDC41 Ver conjugación</span></button>
+    <button class="ab ask" onclick="skipC()"><div class="aci">&#x1F501;</div><span>Repasar</span></button>
+    <button class="afli" onclick="flipC()"><span>&#x1F441; Ver conjugación</span></button>
     <button class="ab alr" onclick="learnC()"><div class="aci">✓</div><span>Aprendido</span></button>
   </div>
 </div>
@@ -373,7 +373,7 @@ html,body{width:100%;min-height:100%;background:var(--bg);color:var(--txt);font-
 
 <!-- CHAT -->
 <div id="chat" class="fscr">
-  <div class="tb"><button class="bk" onclick="goHome()">←</button><span class="tbt" id="chattit">\uD83E\uDD16 Tutor IA</span><span style="font-size:11px;color:var(--green)">● activo</span></div>
+  <div class="tb"><button class="bk" onclick="goHome()">←</button><span class="tbt" id="chattit">&#x1F916; Tutor IA</span><span style="font-size:11px;color:var(--green)">● activo</span></div>
   <div class="cmsgs" id="cmsgs"></div>
   <div class="csug" id="csugs"></div>
   <div class="cia">
@@ -487,7 +487,7 @@ function renderHomeBody(){
     {i:'\uD83D\uDCAC',t:'Oraciones reales',d:'Familia, naturaleza, emociones, vida diaria',fn:"openReader('oraciones')"},
     {i:'\uD83C\uDF3F',t:'Poesía Quechua',d:'Poemas tradicionales línea a línea',fn:"openReader('poesia')"},
     {i:'\uD83D\uDCDC',t:'Textos cortos',d:'Filosofía andina y cosmovisión',fn:"openReader('ensayos')"},
-    {i:'⚡',t:'Verbos — Referencia',d:'70 verbos con conjugaciones completas',fn:"openRef('verbos')"},
+    {i:'⚡',t:'Verbos — Referencia',d:'75 verbos con conjugaciones completas',fn:"openRef('verbos')"},
     {i:'\uD83E\uDDE9',t:'Sufijos — Referencia',d:'35+ sufijos con reglas y ejemplos',fn:"openRef('sufijos')"},
     {i:'\uD83C\uDCCF',t:'Fichas — Desliza y aprende',d:'Stories de verbos · Voltea · Aprendido',fn:"openCards('q')"},
     {i:'\uD83C\uDFAF',t:'Quiz Quechua',d:'Traduce oraciones completas',fn:"startQuiz('q')"},
@@ -634,7 +634,7 @@ const CONT_A={
 };
 
 // ============================================================
-// QUECHUA VERBOS — 70 verbos con forma completa (infinitivo en -y)
+// QUECHUA VERBOS — 75 verbos con forma completa (infinitivo en -y)
 // ============================================================
 const VERBOS_Q=[
   // MOVIMIENTO
@@ -708,9 +708,9 @@ const VERBOS_Q=[
   {cat:"Naturaleza",q:"Rupay",s:"Quemar / arder",col:"#2dd4bf",c:{yo:"Rupani",tu:"Rupanki",el:"Rupan",nos:"Rupanchik",nex:"Rupayku",uds:"Rupankichik",ell:"Rupanku"},ex:[{q:"Inti rupan.",s:"El sol quema."}],note:"Rupay=calor del sol (sustantivo)."},
 ,
   {cat:"Cuerpo",q:"Onqoy",s:"Enfermar / doler",col:"#fb7185",c:{yo:"Onqorani",tu:"Onqoranki",el:"Onqoran",nos:"Onqoranchik",nex:"Onqorayku",uds:"Onqorankichik",ell:"Onqoranku"},ex:[{q:"Umay nanawanmi.",s:"Me duele la cabeza."}],note:"Onqoy = enfermedad."},
-  {cat:"Cuerpo",q:"Samay",s:"Respirar / descansar",col:"#fb7185",c:{yo:"Samani",tu:"Samanki",el:"Saman",nos:"Samanchi",nex:"Samayku",uds:"Samankichik",ell:"Samanku"},ex:[{q:"Samarikuway.",s:"Dame un descanso."}],note:"Sama = aliento. -riku = reflexivo."},
+  {cat:"Cuerpo",q:"Samay",s:"Respirar / descansar",col:"#fb7185",c:{yo:"Samani",tu:"Samanki",el:"Saman",nos:"Samanchi",nex:"Samayku",uds:"Samankichik",ell:"Samanku"},ex:[{q:"Samarikuway.",s:"Dame un descanso."}],note:"Sama = aliento."},
   {cat:"Cuerpo",q:"Puñuy",s:"Dormir",col:"#fb7185",c:{yo:"Puñuni",tu:"Puñunki",el:"Puñun",nos:"Puñunchik",nex:"Puñuyku",uds:"Puñunkichik",ell:"Puñunku"},ex:[{q:"Allintan puñuni.",s:"Duermo bien."}],note:"Puñuna = cama."},
-  {cat:"Emocion",q:"Llakiy",s:"Entristecerse",col:"#818cf8",c:{yo:"Llakikuni",tu:"Llakinki",el:"Llakin",nos:"Llakinchik",nex:"Llakiyku",uds:"Llakinkichik",ell:"Llakinku"},ex:[{q:"Ama llakichu.",s:"No te tristezas."}],note:"Llaki = tristeza, pena."},
+  {cat:"Emocion",q:"Llakiy",s:"Entristecerse",col:"#818cf8",c:{yo:"Llakikuni",tu:"Llakinki",el:"Llakin",nos:"Llakinchik",nex:"Llakiyku",uds:"Llakinkichik",ell:"Llakinku"},ex:[{q:"Ama llakichu.",s:"No te tristezas."}],note:"Llaki = tristeza."},
   {cat:"Emocion",q:"Manchay",s:"Tener miedo",col:"#818cf8",c:{yo:"Manchakuni",tu:"Manchanki",el:"Manchan",nos:"Manchanchik",nex:"Manchayku",uds:"Manchankichik",ell:"Manchanku"},ex:[{q:"Ama manchakuchu.",s:"No tengas miedo."}],note:"Mancha = susto."},
   {cat:"Emocion",q:"Asiy",s:"Reírse",col:"#818cf8",c:{yo:"Asikuni",tu:"Asinki",el:"Asin",nos:"Asinchik",nex:"Asiyku",uds:"Asinkichik",ell:"Asinku"},ex:[{q:"Kusispa asiniku.",s:"Nos reímos con alegría."}],note:"Asis = risa."},
   {cat:"Agricultura",q:"Tarpuy",s:"Sembrar",col:"#34d399",c:{yo:"Tarpuni",tu:"Tarpunki",el:"Tarpun",nos:"Tarpunchik",nex:"Tarpuyku",uds:"Tarpunkichik",ell:"Tarpunku"},ex:[{q:"Papata tarpuni.",s:"Siembro papas."}],note:"Tarpuy = tiempo de siembra."},
@@ -777,14 +777,20 @@ const VERBOS_A=[
   {cat:"Naturaleza",q:"Jalluchiña",s:"Hacer llover",col:"#60a5fa",c:{yo:"Jalluchtha",tu:"Jalluchta",el:"Jalluchitu",nos:"Jalluchapxtha",nex:"Jalluchapxtha",uds:"Jalluchapxta",ell:"Jalluchapxitu"},ex:[{q:"Jalluchitu.",s:"Hace llover."}],note:"-chi causativo. Ritual de lluvia."},
   {cat:"Naturaleza",q:"Uraqpacha yatiqaña",s:"Conocer la tierra",col:"#60a5fa",c:{yo:"Uraqpacha yatiqtha",tu:"Uraqpacha yatiqta",el:"Uraqpacha yatiqitu",nos:"Uraqpacha yatiqapxtha",nex:"Uraqpacha yatiqapxtha",uds:"Uraqpacha yatiqapxta",ell:"Uraqpacha yatiqapxitu"},ex:[{q:"Uraqpacha yatiqtha.",s:"Aprendo / conozco la tierra."}],note:"Uraqpacha=tierra y tiempo."},
 ,
-  {cat:"Cuerpo",q:"Ikiña",s:"Dormir",col:"#2dd4bf",c:{yo:"Ikitha",tu:"Ikita",el:"Ikiitu",nos:"Ikipxtha",nex:"Ikipxtha",uds:"Ikipxta",ell:"Ikipxitu"},ex:[{q:"Wali ikitha.",s:"Duermo bien."}],note:"Aruma = noche. Wali = bien/mucho."},
-  {cat:"Cuerpo",q:"Manq'aña",s:"Comer",col:"#2dd4bf",c:{yo:"Manq'tha",tu:"Manq'ta",el:"Manq'itu",nos:"Manq'apxtha",nex:"Manq'apxtha",uds:"Manq'apxta",ell:"Manq'apxitu"},ex:[{q:"Aka manq'ata manq'tha.",s:"Como esta comida."}],note:"Manq'a = comida/alimento."},
-  {cat:"Emocion",q:"Kusisiña",s:"Alegrarse",col:"#fbbf24",c:{yo:"Kusistha",tu:"Kusista",el:"Kusiitu",nos:"Kusipxtha",nex:"Kusipxtha",uds:"Kusipxta",ell:"Kusipxitu"},ex:[{q:"Wali kusistha.",s:"Estoy muy feliz."}],note:"Kusi = alegría."},
-  {cat:"Accion",q:"Luraña",s:"Hacer / trabajar",col:"#fbbf24",c:{yo:"Lurtha",tu:"Lurta",el:"Luritu",nos:"Lurpxtha",nex:"Lurpxtha",uds:"Lurpxta",ell:"Lurpxitu"},ex:[{q:"Kuna lurtha?",s:"¿Qué hago?"}],note:"Lura = obra, trabajo."},
-  {cat:"Comunicacion",q:"Arsuña",s:"Hablar / conversar",col:"#60a5fa",c:{yo:"Arstha",tu:"Arsta",el:"Arsitu",nos:"Arspxtha",nex:"Arspxtha",uds:"Arspxta",ell:"Arspxitu"},ex:[{q:"Aymarata arstha.",s:"Hablo aymara."}],note:"Arsu = palabra, discurso."},
-  {cat:"Percepcion",q:"Uñjaña",s:"Ver / mirar",col:"#60a5fa",c:{yo:"Uñjtha",tu:"Uñjta",el:"Uñjitu",nos:"Uñjapxtha",nex:"Uñjapxtha",uds:"Uñjapxta",ell:"Uñjapxitu"},ex:[{q:"Uñjaniñani.",s:"Nos veremos."}],note:"Uñaña = ojos."},
-  {cat:"Percepcion",q:"Ist'aña",s:"Escuchar / oír",col:"#60a5fa",c:{yo:"Ist'tha",tu:"Ist'ta",el:"Ist'itu",nos:"Ist'apxtha",nex:"Ist'apxtha",uds:"Ist'apxta",ell:"Ist'apxitu"},ex:[{q:"Aymarata ist'tha.",s:"Escucho el aymara."}],note:"Ist'ana = oído."},
-  {cat:"Agricultura",q:"Apsuña",s:"Cosechar / sacar",col:"#34d399",c:{yo:"Apstha",tu:"Apsta",el:"Apsitu",nos:"Apspxtha",nex:"Apspxtha",uds:"Apspxta",ell:"Apspxitu"},ex:[{q:"Papa apsutha.",s:"Cosecho papas."}],note:"Ap- = sacar, extraer."}];
+  // CUERPO
+  {cat:"Cuerpo",q:"Manq'aña",s:"Comer",col:"#f97316",c:{yo:"Manq'ta",tu:"Manq'ta",el:"Manq'i",nos:"Manq'tana",vos:"Manq'tapxam",ell:"Manq'apxi"},ex:["Arumsti walja manq'ta.","Come bien por la noche."]},
+  {cat:"Cuerpo",q:"Umañ",s:"Dormir",col:"#f97316",c:{yo:"Umta",tu:"Umta",el:"Umi",nos:"Umtana",vos:"Umtapxam",ell:"Umapxi"},ex:["Jutiru umta.","Dormiré temprano."]},
+  {cat:"Cuerpo",q:"Phayaña",s:"Correr",col:"#f97316",c:{yo:"Phayata",tu:"Phayata",el:"Phayani",nos:"Phayanatana",vos:"Phayatapxam",ell:"Phayapxi"},ex:["Sarnaqañpataki phayata.","Corro para estar sano."]},
+  // EMOCION
+  {cat:"Emocion",q:"Munañ",s:"Querer / amar",col:"#ec4899",c:{yo:"Muntha",tu:"Muntha",el:"Muni",nos:"Muntana",vos:"Muntapxam",ell:"Munipxi"},ex:["Jaqi muntha.","Quiero a la gente."]},
+  {cat:"Emocion",q:"Llakiña",s:"Entristecerse",col:"#ec4899",c:{yo:"Llakita",tu:"Llakita",el:"Llakini",nos:"Llakitana",vos:"Llakitapxam",ell:"Llakipxi"},ex:["Aka aruru llakita.","Me entristezco hoy."]},
+  // COMUNICACION
+  {cat:"Comunicacion",q:"Arsuña",s:"Hablar / decir",col:"#8b5cf6",c:{yo:"Arsta",tu:"Arsta",el:"Arsuni",nos:"Arstana",vos:"Arstapxam",ell:"Arsupxi"},ex:["Aymar arsuña muntha.","Quiero hablar aymara."]},
+  {cat:"Comunicacion",q:"Uñjañ",s:"Mirar / ver",col:"#8b5cf6",c:{yo:"Uñjta",tu:"Uñjta",el:"Uñji",nos:"Uñjtana",vos:"Uñjtapxam",ell:"Uñjapxi"},ex:["Taykata uñjta.","Miro hacia arriba."]},
+  // PERCEPCION
+  {cat:"Percepcion",q:"Ist'añ",s:"Escuchar",col:"#06b6d4",c:{yo:"Ist'ta",tu:"Ist'ta",el:"Ist'i",nos:"Ist'tana",vos:"Ist'tapxam",ell:"Ist'apxi"},ex:["Musik ist'ta.","Escucho música."]},
+  {cat:"Percepcion",q:"Amtaña",s:"Recordar",col:"#06b6d4",c:{yo:"Amtta",tu:"Amtta",el:"Amtani",nos:"Amttana",vos:"Amttapxam",ell:"Amtapxi"},ex:["Jilata amtta.","Recuerdo a mi hermano mayor."]}
+];
 
 const SUFIJOS_Q=[
   {cat:"Caso nominal",q:"-pi",s:"En (locativo)",uso:"Lugar donde ocurre algo.",ex:[{q:"Wasípi puñuni.",s:"Duermo en la casa."}],note:"Para movimiento: -man."},
@@ -815,12 +821,19 @@ const SUFIJOS_Q=[
   {cat:"Modal",q:"Mana...chu",s:"Negación",uso:"Niega la oración.",ex:[{q:"Mana yachanichu.",s:"No sé."}],note:"Mana antes + -chu al final."},
   {cat:"Diminutivo",q:"-cha",s:"Diminutivo / cariño",uso:"Pequeñez o afecto.",ex:[{q:"Wawcha.",s:"Bebecito."}],note:"Diferente del -cha conjetural."}
 ,
-  {cat:"Caso nominal",q:"-rayku",s:"Por (causa/motivo)",uso:"Expresa causa o motivo.",ex:[{q:"Qanrayku kutirimuni.",s:"Regreso por ti."}],note:"Yaku+rayku = por el agua."},
-  {cat:"Verbal",q:"-ri-",s:"Repetición / habitual",uso:"Acción que se repite.",ex:[{q:"Mikhurini.",s:"Suelo comer regularmente."}],note:"Indica costumbre."},
-  {cat:"Evidencial",q:"-taq",s:"Y / énfasis",uso:"Contraste o énfasis.",ex:[{q:"Qantaq?",s:"¿Y tú?"}],note:"Muy común en el diálogo."},
-  {cat:"Evidencial",q:"-chus",s:"¿Acaso? / duda",uso:"Duda o pregunta retórica.",ex:[{q:"Rikunki-chus?",s:"¿Acaso lo verás?"}],note:"Expresa incertidumbre."},
-  {cat:"Evidencial",q:"-qa",s:"Tópico (el tema del discurso)",uso:"Marca el tema del que se habla.",ex:[{q:"Ñuqaqa Qusqumantam kani.",s:"Yo, por mi parte, soy del Cusco."}],note:"Equivale a 'wa' en japonés."},
-  {cat:"Numero",q:"-lla",s:"Solo / apenas",uso:"Limitativo o afectivo.",ex:[{q:"Huk llamallam tiyan.",s:"Solo hay una llama."}],note:"También afectivo: Wawayllam."}];
+  // VERBALES
+  {cat:"Verbal",q:"-ri-",s:"Incoativo (empezar a)",uso:"Indica inicio de una acción.",ex:[{q:"Puriyta rimanirini.",s:"Empecé a hablar de caminar."}],note:"Se inserta antes de terminación personal."},
+  {cat:"Verbal",q:"-rqa-",s:"Pasado inmediato",uso:"Acción muy reciente.",ex:[{q:"Mikhurqani.",s:"Acabo de comer."}],note:"Expresa pasado inmediato o reciente."},
+  {cat:"Verbal",q:"-pu-",s:"Benefactivo / terminativo",uso:"Para alguien más o acción completada.",ex:[{q:"Apapuniway.",s:"Tráelo para mí."}],note:"Muy común en expresiones de cortesía."},
+  // MODAL
+  {cat:"Modal",q:"-taq",s:"Contraste / énfasis",uso:"Marca contraste o énfasis en la oración.",ex:[{q:"Paytaq purin.",s:"Él (en cambio) camina."}],note:"Similar al 'en cambio' o 'pero sí'."},
+  {cat:"Modal",q:"-chus",s:"Interrogativo indirecto",uso:"Duda o pregunta encubierta.",ex:[{q:"Hamunqachus?",s:"¿Acaso vendrá?"}],note:"Expresa incertidumbre o duda."},
+  // DISCURSIVO
+  {cat:"Discursivo",q:"-qa",s:"Tópico (tema del discurso)",uso:"Marca el tema principal de la oración.",ex:[{q:"Payqa purin.",s:"Él (de quien hablamos) camina."}],note:"Uno de los sufijos más frecuentes en quechua."},
+  {cat:"Discursivo",q:"-lla",s:"Limitativo / suavizante",uso:"Solo, apenas; suaviza peticiones.",ex:[{q:"Kutimuyllaña.",s:"Vuelve nomás."}],note:"Da tono amable o de restricción."},
+  // DERIVACIONAL
+  {cat:"Derivacional",q:"-rayku",s:"Causa / motivo",uso:"Por causa de, a causa de.",ex:[{q:"Maqtarayku purirani.",s:"Caminé por el joven."}],note:"Equivale a 'a causa de' o 'por'."}
+];
 const SUFIJOS_A=[
   {cat:"Caso",q:"-na",s:"En / sobre (locativo)",uso:"Lugar donde ocurre algo.",ex:[{q:"Utana.",s:"En la casa."}],note:"Equivale al -pi quechua."},
   {cat:"Caso",q:"-ru",s:"A / hacia",uso:"Dirección o destino.",ex:[{q:"Utaru.",s:"Hacia la casa."}],note:"Equivale al -man quechua."},
@@ -859,10 +872,12 @@ const QUIZ_Q=[
   {q:"Pachamama kawsaqmi, mana wañunchu.",opts:["La Madre Tierra está viva, no muere.","La Madre Tierra duerme, no habla.","La Madre Tierra trabaja, no descansa.","La Madre Tierra florece, no cae."],a:0,ex:"Kawsaq = vivo/viviente. Mana...chu = no muere."},
   {q:"Sumayta yachani.",opts:["Sé cosas hermosas.","Aprendo idiomas.","Quiero saber más.","Enseño bien."],a:0,ex:"Yachay = saber/aprender. Sumay = cosas hermosas."},
 ,
-  {q:"Taytay urqup patanpi llamkaqmi.",opts:["Mi padre trabaja en la cima de la montaña.","Mi padre duerme en la montaña.","El padre habla en la cima.","Mi hermano trabaja."],a:0,ex:"-mi evidencial. Urqu = montaña. Pata = cima."},
-  {q:"Reqsikimankichu?",opts:["¿Me conoces?","¿Puedes verme?","¿Me recuerdas?","¿Puedes oírme?"],a:0,ex:"Reqsiy = conocer. -man = condicional. -chu = pregunta."},
-  {q:"Hamut'arispa rimay.",opts:["Habla reflexionando con sabiduría.","Habla más rápido.","Piensa antes de ir.","Escucha con cuidado."],a:0,ex:"Hamut'ay = reflexionar profundo. -rispa = gerundio."},
-  {q:"Sunqoykipi kusiyta hunt'achiy.",opts:["Llena tu corazón de alegría.","Escucha a tu corazón.","Tu corazón está lleno de amor.","Dale alegría a tu corazón."],a:0,ex:"Sunqo = corazón. Hunt'ay = llenar. Kusi = alegría."}];
+  {q:"Ñoqaqa llank'ani.",a:"Yo trabajo.",h:"llank'ani = trabajo (yo)"},
+  {q:"Payqa mikhun.",a:"Él/ella come.",h:"mikhun = come (él/ella)"},
+  {q:"Qanqa puriyta munankichu?",a:"¿Tú quieres caminar?",h:"-chus = interrogativo; munay = querer"},
+  {q:"Maypim tiyan?",a:"¿Dónde vive?",h:"maypi = ¿dónde?; tiyan = vive"},
+  {q:"Ñoqanchisqa rimananchis tiyan.",a:"Necesitamos hablar.",h:"-nchis = nosotros inclusivo"}
+];
 const QUIZ_A=[
   {q:"Kamisaraki?",opts:["¿Cómo estás?","¿A dónde vas?","¿Qué comes?","¿Quién eres?"],a:0,ex:"Saludo universal Aymara. Respuesta: Waliki."},
   {q:"Nayax jilata muntha.",opts:["Yo quiero a mi hermano mayor.","Yo veo a mi hermana.","Yo ayudo a mi primo.","Yo escucho a mi padre."],a:0,ex:"Naya=yo. Jilata=hermano mayor. Muntha=quiero."},
@@ -1156,11 +1171,12 @@ function renderQ(){
 function ansQ(i){
   if(qAnswered)return; qAnswered=true;
   const q=qData[qIdx,
-  {q:"Janiw yatktiti.",opts:["No sabe / no conoce.","No quiere saber.","No puede aprender.","No lo dice."],a:0,ex:"Janiw = no (negación Aymara). Yatiña = saber."},
-  {q:"Wali kusistha.",opts:["Estoy muy feliz.","Trabajo mucho.","Como bien.","Camino mucho."],a:0,ex:"Wali = muy/bien/mucho. Kusisiña = alegrarse."},
-  {q:"Aka manq'ata manq'tha.",opts:["Como esta comida.","Quiero más comida.","Esta comida es deliciosa.","Cocino esta comida."],a:0,ex:"Aka = este/esta. Manq'a = comida. Manq'aña = comer."},
-  {q:"Aymarata ist'tha.",opts:["Escucho el aymara.","Hablo aymara.","Aprendo aymara.","Entiendo aymara."],a:0,ex:"Ist'aña = escuchar. Aymarata = aymara. -tha = yo."},
-  {q:"Walikiwa, yusparajaki.",opts:["Estoy bien, gracias.","Muy bien, hasta luego.","Bien, con permiso.","Estoy sano, gracias."],a:0,ex:"Walikiwa = estoy bien. Yusparajaki = gracias en Aymara."}];
+  {q:"Nayaxa sarnaqta.",a:"Yo camino.",h:"Naya = yo; sarnaqta = camino (yo)"},
+  {q:"Jupasti manq'i.",a:"Él/ella come.",h:"Jupa = él/ella; manq'i = come"},
+  {q:"Kawkitsa jutata?",a:"¿De dónde vienes?",h:"kawkiti = ¿de dónde?; jutata = vienes"},
+  {q:"Aymara arsuña muntha.",a:"Quiero hablar aymara.",h:"muntha = quiero; arsuña = hablar"},
+  {q:"Jallu utt'ayatayna.",a:"Estaba lloviendo.",h:"jallu = lluvia; utt'ayatayna = estaba cayendo"}
+];
   document.querySelectorAll('.qopt').forEach((o,j)=>{
     o.classList.add(j===q.a?'ok':(j===i&&i!==q.a?'bad':'dim'));
   });
