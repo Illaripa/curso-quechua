@@ -1281,10 +1281,10 @@ function renderCard(){
     '<div class="ccatpos"><div class="ccpill" style="background:'+v.col+'22;color:'+v.col+'">'+v.cat+'</div></div>'+
     '<div class="cvb">'+v.q+'</div>'+
     '<div class="cme">'+v.s+'</div>'+
-    '<div class="ctap">Toca para ver conjugaci\u00f3n</div>';
+    '<div class="ctap">Toca para ver conjugación</div>';
   const pronLabels=isAy
     ?['Naya','Juma','Jupa','Nanaka','Jiwasa','Jumana','Jupanaka']
-    :['\u00d1uqam','Qam','Pay','\u00d1uqanchik','\u00d1uqayku','Qamkuna','Paykuna'];
+    :['Ñuqam','Qam','Pay','Ñuqanchik','Ñuqayku','Qamkuna','Paykuna'];
   const pronKeys=['yo','tu','el','nos','nex','uds','ellos'];
   const tenses=[
     {id:'pres',lbl:'Presente',data:v.c||{}},
@@ -1295,7 +1295,7 @@ function renderCard(){
     let g='<div class="cgrid">';
     pronLabels.forEach(function(lbl,i){
       const key=pronKeys[i];
-      g+='<div class="ccell"><div class="cclbl">'+lbl+'</div><div class="ccword" style="color:'+v.col+'">'+(tdata[key]||'\u2014')+'</div></div>';
+      g+='<div class="ccell"><div class="cclbl">'+lbl+'</div><div class="ccword" style="color:'+v.col+'">'+(tdata[key]||'—')+'</div></div>';
     });
     g+='</div>';
     return g;
@@ -1305,7 +1305,8 @@ function renderCard(){
     let back='<div class="cbv">'+v.q+'</div><div class="cbm">'+v.s+'</div>';
     back+='<div class="ctabs">';
     tenses.forEach(function(x){
-      back+='<button class="ctbtn'+(x.id===tId?' on':'')+'" onclick="switchTense(''+x.id+'')">'+x.lbl+'</button>';
+      const onCls=(x.id===tId?' on':'');
+      back+='<button class="ctbtn'+onCls+'" data-tid="'+x.id+'">'+x.lbl+'</button>';
     });
     back+='</div>';
     back+=buildGrid(t.data);
@@ -1316,13 +1317,21 @@ function renderCard(){
         back+='<div class="cexi"><div class="cexiq">'+(e.q||'')+'</div><div class="cexis">'+(e.s||'')+'</div></div>';
       });
     }
-    if(v.note) back+='<div class="cnote">\ud83d\udca1 '+v.note+'</div>';
+    if(v.note) back+='<div class="cnote">💡 '+v.note+'</div>';
     return back;
   };
   window.switchTense=function(tId){
-    document.getElementById('cbf').innerHTML=window._buildBack(tId);
+    const cbf=document.getElementById('cbf');
+    cbf.innerHTML=window._buildBack(tId);
+    cbf.querySelectorAll('.ctbtn').forEach(function(b){
+      b.addEventListener('click',function(){ switchTense(b.dataset.tid); });
+    });
   };
-  document.getElementById('cbf').innerHTML=window._buildBack('pres');
+  const cbf=document.getElementById('cbf');
+  cbf.innerHTML=window._buildBack('pres');
+  cbf.querySelectorAll('.ctbtn').forEach(function(b){
+    b.addEventListener('click',function(){ switchTense(b.dataset.tid); });
+  });
   setupSwipe();
 }
 function showEmpty(){
