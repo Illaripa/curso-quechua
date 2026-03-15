@@ -226,26 +226,24 @@ html,body{width:100%;min-height:100%;background:var(--bg);color:var(--txt);font-
   .mc{padding:40px 16px 22px}
   .ahdr{padding:28px 16px 18px}
   .atit{font-size:24px}
-  .asub{font-size:13px}
   .melems{flex-wrap:wrap}
-  .me{min-width:calc(50% - 4px);flex:none;padding:12px 10px}
+  .me{min-width:calc(50% - 4px);flex:none}
   .hbody{padding:14px 12px 80px}
   .mc2{padding:14px 12px;border-radius:12px;margin-bottom:9px}
   .mi{font-size:26px}
   .mn-t{font-size:16px}
-  .mn-d{font-size:13px;line-height:1.4}
-  .mbtn{font-size:16px;padding:17px;border-radius:16px}
-  .ptit{font-size:20px;line-height:1.25}
+  .mn-d{font-size:13px}
+  .mbtn{font-size:16px;padding:17px}
+  .ptit{font-size:20px}
   .togbtn{font-size:13px;padding:10px 4px}
   .cb{padding:14px 12px 80px}
   .tb{padding:10px 12px}
-  .tbt{font-size:15px}
   .rtab{font-size:13px;padding:13px 6px}
-  .rsearch input{font-size:16px;padding:10px 12px}
+  .rsearch input{font-size:16px}
   .ri{padding:14px 12px}
   .ri-q{font-size:16px}
   .cface{border-radius:18px}
-  .cft{font-size:26px;line-height:1.3}
+  .cft{font-size:26px}
   .rbtn{width:52px;height:52px;font-size:22px}
   .cinp{font-size:16px}
   .sbtn{width:44px;height:44px;font-size:18px}
@@ -272,11 +270,11 @@ html,body{width:100%;min-height:100%;background:var(--bg);color:var(--txt);font-
     <div class="mword" id="mword"></div>
     <div class="melems">
       <div class="me"><span class="me-e">☀️</span><div class="me-q">Inti</div><div class="me-s">Sol</div></div>
-      <div class="me"><span class="me-e">&#x1F30A;</span><div class="me-q">Yaku</div><div class="me-s">Agua</div></div>
-      <div class="me"><span class="me-e">&#x1F33F;</span><div class="me-q">Sach'a</div><div class="me-s">Árbol</div></div>
-      <div class="me"><span class="me-e">&#x1F3D4;️</span><div class="me-q">Apu</div><div class="me-s">Espíritu</div></div>
+      <div class="me"><span class="me-e">\uD83C\uDF0A</span><div class="me-q">Yaku</div><div class="me-s">Agua</div></div>
+      <div class="me"><span class="me-e">\uD83C\uDF3F</span><div class="me-q">Sach'a</div><div class="me-s">Árbol</div></div>
+      <div class="me"><span class="me-e">\uD83C\uDFD4️</span><div class="me-q">Apu</div><div class="me-s">Espíritu</div></div>
     </div>
-    <button class="mbtn" onclick="goHome()">Empezar a aprender &#x1F985;</button>
+    <button class="mbtn" onclick="goHome()">Empezar a aprender \uD83E\uDD85</button>
   </div>
 </div>
 
@@ -288,15 +286,15 @@ html,body{width:100%;min-height:100%;background:var(--bg);color:var(--txt);font-
   </div>
   <!-- LANG TABS ON HOME -->
   <div class="ltabs">
-    <button class="ltab on" id="htab-q" onclick="setLang('q')">&#x1F985; Quechua</button>
-    <button class="ltab ay" id="htab-a" onclick="setLang('a')">&#x1F30A; Aymara</button>
+    <button class="ltab on" id="htab-q" onclick="setLang('q')">\uD83E\uDD85 Quechua</button>
+    <button class="ltab ay" id="htab-a" onclick="setLang('a')">\uD83C\uDF0A Aymara</button>
   </div>
   <div class="hbody" id="home-body"></div>
 </div>
 
 <!-- MORNING 2 -->
 <div id="m2" class="scr">
-  <div class="tb"><button class="bk" onclick="goHome()">←</button><span class="tbt">&#x1F305; Bienvenida del día</span><span></span></div>
+  <div class="tb"><button class="bk" onclick="goHome()">←</button><span class="tbt">\uD83C\uDF05 Bienvenida del día</span><span></span></div>
   <div class="cb" id="m2body"></div>
 </div>
 
@@ -335,14 +333,14 @@ html,body{width:100%;min-height:100%;background:var(--bg);color:var(--txt);font-
       <div class="swl" id="swl">× Repasar</div>
     </div>
     <div class="cemp" id="cemp">
-      <div class="ceme">&#x1F3C6;</div><div class="cemt">¡Lo aprendiste todo!</div>
+      <div class="ceme">\uD83C\uDFC6</div><div class="cemt">¡Lo aprendiste todo!</div>
       <div class="cems">Has dominado todos los verbos.</div>
-      <button class="rbtn" onclick="resetDeck()">Reiniciar &#x1F504;</button>
+      <button class="rbtn" onclick="resetDeck()">Reiniciar \uD83D\uDD04</button>
     </div>
   </div>
   <div class="cacts" id="cacts">
-    <button class="ab ask" onclick="skipC()"><div class="aci">&#x1F501;</div><span>Repasar</span></button>
-    <button class="afli" onclick="flipC()"><span>&#x1F441; Ver conjugación</span></button>
+    <button class="ab ask" onclick="skipC()"><div class="aci">\uD83D\uDD01</div><span>Repasar</span></button>
+    <button class="afli" onclick="flipC()"><span>\uD83D\uDC41 Ver conjugación</span></button>
     <button class="ab alr" onclick="learnC()"><div class="aci">✓</div><span>Aprendido</span></button>
   </div>
 </div>
@@ -375,7 +373,7 @@ html,body{width:100%;min-height:100%;background:var(--bg);color:var(--txt);font-
 
 <!-- CHAT -->
 <div id="chat" class="fscr">
-  <div class="tb"><button class="bk" onclick="goHome()">←</button><span class="tbt" id="chattit">&#x1F916; Tutor IA</span><span style="font-size:11px;color:var(--green)">● activo</span></div>
+  <div class="tb"><button class="bk" onclick="goHome()">←</button><span class="tbt" id="chattit">\uD83E\uDD16 Tutor IA</span><span style="font-size:11px;color:var(--green)">● activo</span></div>
   <div class="cmsgs" id="cmsgs"></div>
   <div class="csug" id="csugs"></div>
   <div class="cia">
@@ -401,36 +399,36 @@ function setLang(l) {
 // MORNING DATA — 30 frases
 // ============================================================
 const MSGS=[
-{sun:"&#x1F304;",g:"Allin p'unchay",q:"Kay p'unchayqa sumaqmi. Intip k'anchayninwan, Pachamaman munakuyninwan kallpancharikunki.",s:"Este día es hermoso. Con la luz del sol y el amor de la Madre Tierra te fortaleces.",w:{q:"Kallpancháriy",s:"Fortalecerse / llenarse de energía"}},
+{sun:"\uD83C\uDF04",g:"Allin p'unchay",q:"Kay p'unchayqa sumaqmi. Intip k'anchayninwan, Pachamaman munakuyninwan kallpancharikunki.",s:"Este día es hermoso. Con la luz del sol y el amor de la Madre Tierra te fortaleces.",w:{q:"Kallpancháriy",s:"Fortalecerse / llenarse de energía"}},
 {sun:"☀️",g:"Tutamanta sumaq",q:"Inti llaqsimun, kawsayta qowan. Yakuqa purín, allpata wiqchun.",s:"El sol sale y da vida. El agua fluye y nutre la tierra.",w:{q:"Llaqsimuy",s:"Salir / amanecer (el sol)"}},
-{sun:"&#x1F305;",g:"Paqarin allinmi",q:"Pachamama, sulpayki kay p'unchayrayku. Apukuna, sulpayki kallpayniykichikrayku.",s:"Madre Tierra, gracias por este día. Apus, gracias por vuestra fuerza.",w:{q:"Sulpayki",s:"Gracias de corazón"}},
-{sun:"&#x1F31E;",g:"Inti t'ikarin",q:"Kay sach'akuna hina wiñay. Kay yaku hina puririmuy. Sunqoykipi kusiyta hunt'achiy.",s:"Crece como estos árboles. Fluye como esta agua. Llena tu corazón de alegría.",w:{q:"Hunt'achiy",s:"Llenar / completar"}},
-{sun:"&#x1F324;️",g:"K'anchay pacha",q:"Wayra rimawan: Sinchim kaytayki. Yaku rimawan: Kawsaytam qoyki. Allpa rimawan: Sunqoykim kachkanki.",s:"El viento: eres fuerte. El agua: te doy vida. La tierra: eres mi corazón.",w:{q:"Sinchim kaytayki",s:"Eres fuerte / tienes fuerza"}},
+{sun:"\uD83C\uDF05",g:"Paqarin allinmi",q:"Pachamama, sulpayki kay p'unchayrayku. Apukuna, sulpayki kallpayniykichikrayku.",s:"Madre Tierra, gracias por este día. Apus, gracias por vuestra fuerza.",w:{q:"Sulpayki",s:"Gracias de corazón"}},
+{sun:"\uD83C\uDF1E",g:"Inti t'ikarin",q:"Kay sach'akuna hina wiñay. Kay yaku hina puririmuy. Sunqoykipi kusiyta hunt'achiy.",s:"Crece como estos árboles. Fluye como esta agua. Llena tu corazón de alegría.",w:{q:"Hunt'achiy",s:"Llenar / completar"}},
+{sun:"\uD83C\uDF24️",g:"K'anchay pacha",q:"Wayra rimawan: Sinchim kaytayki. Yaku rimawan: Kawsaytam qoyki. Allpa rimawan: Sunqoykim kachkanki.",s:"El viento: eres fuerte. El agua: te doy vida. La tierra: eres mi corazón.",w:{q:"Sinchim kaytayki",s:"Eres fuerte / tienes fuerza"}},
 {sun:"✨",g:"Mana llakichu",q:"Mana llakichu kay p'unchaypi. Inti k'anchayninwan p'ampasqa kachun ima llakiypis.",s:"No hay tristeza en este día. Que cualquier pena quede cubierta con la luz del sol.",w:{q:"K'anchay",s:"Luz / brillo / resplandor"}},
-{sun:"&#x1F33F;",g:"Sach'ap kallpanwan",q:"Sach'a hina sayaykuy: siqiynin urayman, muqunpi urqumantataq. Kallpaniyuqmi kanki.",s:"Párate como el árbol: raíces abajo, frutos hacia la montaña. Tienes fuerza.",w:{q:"Siqiy",s:"Raíz de árbol o planta"}},
-{sun:"&#x1F4A7;",g:"Yakup yachayninwan",q:"Yaku mana saykusqachu, tukuy rumikunata pasaspa. Qampis hina kaway: sinchi, allin, munakuyniyuq.",s:"El agua nunca se cansa pasando por las rocas. Tú también: fuerte, bueno, lleno de amor.",w:{q:"Mana saykusqa",s:"Incansable / que no se cansa"}},
-{sun:"&#x1F3D4;️",g:"Apup samiyninwan",q:"Kay urqu patanmanta Apu qawamun, samiykit quwan. Intip k'anchaynin sunqoykipi tiyakun.",s:"Desde la cima el Apu te observa y da bendición. La luz del sol habita en tu corazón.",w:{q:"Sami",s:"Bendición / buena energía"}},
-{sun:"&#x1F33A;",g:"T'ika hina sisariy",q:"T'ika sapa p'unchay inti qawaqtin rikch'arimun. Qampis kay p'unchaypi sumaqta sisariy.",s:"La flor despierta cuando el sol la mira. Tú también florece hermosamente hoy.",w:{q:"Sisariy",s:"Florecer / abrirse como flor"}},
-{sun:"&#x1F304;",g:"Kawsay hunt'a",q:"Kay p'unchayqa qampaqmi. Kallpayniykiwan, munakuyniykiwan, yachayniykiwan puriy.",s:"Este día es para ti. Camina con tu fuerza, tu amor y tu sabiduría.",w:{q:"Sumaq Kawsay",s:"Buen Vivir / vida plena en armonía"}},
+{sun:"\uD83C\uDF3F",g:"Sach'ap kallpanwan",q:"Sach'a hina sayaykuy: siqiynin urayman, muqunpi urqumantataq. Kallpaniyuqmi kanki.",s:"Párate como el árbol: raíces abajo, frutos hacia la montaña. Tienes fuerza.",w:{q:"Siqiy",s:"Raíz de árbol o planta"}},
+{sun:"\uD83D\uDCA7",g:"Yakup yachayninwan",q:"Yaku mana saykusqachu, tukuy rumikunata pasaspa. Qampis hina kaway: sinchi, allin, munakuyniyuq.",s:"El agua nunca se cansa pasando por las rocas. Tú también: fuerte, bueno, lleno de amor.",w:{q:"Mana saykusqa",s:"Incansable / que no se cansa"}},
+{sun:"\uD83C\uDFD4️",g:"Apup samiyninwan",q:"Kay urqu patanmanta Apu qawamun, samiykit quwan. Intip k'anchaynin sunqoykipi tiyakun.",s:"Desde la cima el Apu te observa y da bendición. La luz del sol habita en tu corazón.",w:{q:"Sami",s:"Bendición / buena energía"}},
+{sun:"\uD83C\uDF3A",g:"T'ika hina sisariy",q:"T'ika sapa p'unchay inti qawaqtin rikch'arimun. Qampis kay p'unchaypi sumaqta sisariy.",s:"La flor despierta cuando el sol la mira. Tú también florece hermosamente hoy.",w:{q:"Sisariy",s:"Florecer / abrirse como flor"}},
+{sun:"\uD83C\uDF04",g:"Kawsay hunt'a",q:"Kay p'unchayqa qampaqmi. Kallpayniykiwan, munakuyniykiwan, yachayniykiwan puriy.",s:"Este día es para ti. Camina con tu fuerza, tu amor y tu sabiduría.",w:{q:"Sumaq Kawsay",s:"Buen Vivir / vida plena en armonía"}},
 {sun:"☀️",g:"Inti tayta",q:"Inti taytay, kay p'unchaypi k'anchaywaykim. Allpamama, munakuywaykim.",s:"Padre Sol, ilumíname hoy. Madre Tierra, quiéreme.",w:{q:"K'anchaway",s:"Ilumíname / dame tu luz"}},
-{sun:"&#x1F305;",g:"Qonqaychu",q:"Qonqaychu: kawsayniyki sumaqmi. Qonqaychu: kallpaniyuqmi kanki. Qonqaychu: munakusqa kanki.",s:"No olvides: tu vida es hermosa. No olvides: tienes fuerza. No olvides: eres amado/a.",w:{q:"Munakusqa",s:"Amado/a / querido/a"}},
+{sun:"\uD83C\uDF05",g:"Qonqaychu",q:"Qonqaychu: kawsayniyki sumaqmi. Qonqaychu: kallpaniyuqmi kanki. Qonqaychu: munakusqa kanki.",s:"No olvides: tu vida es hermosa. No olvides: tienes fuerza. No olvides: eres amado/a.",w:{q:"Munakusqa",s:"Amado/a / querido/a"}},
 {sun:"✨",g:"Wiñay kawsay",q:"Sach'akunaqa wiñanku mana qonqaspa allpata. Qampis Pachamamata yupaychaspa wiñariy.",s:"Los árboles crecen sin olvidar la tierra. Tú también, honrando a la Pachamama, crece.",w:{q:"Wiñariy",s:"Crece / sigue creciendo"}},
-{sun:"&#x1F4AB;",g:"Ch'aska k'anchayninwan",q:"Ch'aska tutamantapi ñawpaqmi rikch'arimun. Qampis ñawpaqman qaway: sumaq p'unchay chayamun.",s:"La estrella de la mañana despierta primero. Mira hacia adelante: llega un buen día.",w:{q:"Ñawpaqman",s:"Hacia adelante / al frente"}},
-{sun:"&#x1F30A;",g:"Mayu hina",q:"Mayu rumita tarispapis mana sayarikunchu, muyurispa purín. Qampis kay p'unchaypi hinallataq.",s:"El río aunque encuentra la roca no se detiene. Tú también así en este día.",w:{q:"Muyuriy",s:"Rodear / dar vuelta"}},
-{sun:"&#x1F3D4;️",g:"Urqup sampaynin",q:"Urquqa mana kuyurinchu wayrap phukumuptin. Qampis hinallataq: llakiy chayamuqtinpis sinchim kanki.",s:"La montaña no se mueve cuando el viento sopla. Tú también eres fuerte ante la tristeza.",w:{q:"Mana kuyurin",s:"No se mueve / permanece firme"}},
+{sun:"\uD83D\uDCAB",g:"Ch'aska k'anchayninwan",q:"Ch'aska tutamantapi ñawpaqmi rikch'arimun. Qampis ñawpaqman qaway: sumaq p'unchay chayamun.",s:"La estrella de la mañana despierta primero. Mira hacia adelante: llega un buen día.",w:{q:"Ñawpaqman",s:"Hacia adelante / al frente"}},
+{sun:"\uD83C\uDF0A",g:"Mayu hina",q:"Mayu rumita tarispapis mana sayarikunchu, muyurispa purín. Qampis kay p'unchaypi hinallataq.",s:"El río aunque encuentra la roca no se detiene. Tú también así en este día.",w:{q:"Muyuriy",s:"Rodear / dar vuelta"}},
+{sun:"\uD83C\uDFD4️",g:"Urqup sampaynin",q:"Urquqa mana kuyurinchu wayrap phukumuptin. Qampis hinallataq: llakiy chayamuqtinpis sinchim kanki.",s:"La montaña no se mueve cuando el viento sopla. Tú también eres fuerte ante la tristeza.",w:{q:"Mana kuyurin",s:"No se mueve / permanece firme"}},
 {sun:"☀️",g:"Munayniyuq p'unchay",q:"Munakuyqa inti hina: tukuyman k'anchan, tukuyman q'onin. Kay p'unchaypi munakuywan hunt'a kay.",s:"El amor es como el sol: ilumina y calienta a todos. Hoy llénate de amor.",w:{q:"Q'oniy",s:"Calentar / dar calor"}},
-{sun:"&#x1F33A;",g:"Kawsayta munay",q:"Kay p'unchaypi inti tiyasqanmanta, yakup puririsqanmanta, wayrap phukusqanmanta kusikuy.",s:"Alégrate por el sol, por el fluir del agua, por el soplar del viento.",w:{q:"Kusikuy",s:"Alegrarse / sentir gozo"}},
-{sun:"&#x1F304;",g:"Sami p'unchay",q:"Apukuna taytaykuna kanku, Pachamama mamayki. Paykuna samiykit quwan, qam munakuyniyuqta.",s:"Los Apus son tus padres, la Pachamama tu madre. Te dan bendición.",w:{q:"Taytaykuna",s:"Tus padres / tus mayores"}},
+{sun:"\uD83C\uDF3A",g:"Kawsayta munay",q:"Kay p'unchaypi inti tiyasqanmanta, yakup puririsqanmanta, wayrap phukusqanmanta kusikuy.",s:"Alégrate por el sol, por el fluir del agua, por el soplar del viento.",w:{q:"Kusikuy",s:"Alegrarse / sentir gozo"}},
+{sun:"\uD83C\uDF04",g:"Sami p'unchay",q:"Apukuna taytaykuna kanku, Pachamama mamayki. Paykuna samiykit quwan, qam munakuyniyuqta.",s:"Los Apus son tus padres, la Pachamama tu madre. Te dan bendición.",w:{q:"Taytaykuna",s:"Tus padres / tus mayores"}},
 {sun:"✨",g:"Allin sunqo",q:"Sunqo allinmi kaqtiy, tukuy ima allinmanmi purin. Allin sunqowan kay p'unchaypi puririmuy.",s:"Cuando el corazón está bien, todo va bien. Camina este día con buen corazón.",w:{q:"Allin sunqo",s:"Buen corazón / corazón en paz"}},
-{sun:"&#x1F31E;",g:"Sapa p'unchay Inti Raymi",q:"Sapa p'unchay Inti Raymim, sapa p'unchay t'ikay, sapa p'unchay kawsaypa musuqyaynin.",s:"Cada día es una fiesta del Sol, una floración, una renovación de la vida.",w:{q:"Musuqyay",s:"Renovarse / hacerse nuevo"}},
-{sun:"&#x1F4A7;",g:"Yaku hina",q:"Yaku tukuyman kawsayta quwan, mana sapanpaq. Qampis kay p'unchaypi tukuyman allinta ruy.",s:"El agua da vida a todos. Tú también hoy haz el bien a todos.",w:{q:"Tukuyman",s:"A todos / para todos"}},
-{sun:"&#x1F33F;",g:"Allpa kallpan",q:"Allpamanta llaqsimun tukuy kawsay. Qampim allpap wawan, kallpaniyuqmi kanki.",s:"De la tierra brota toda vida. Tú eres hijo/a de la tierra, tienes fuerza.",w:{q:"Allpap wawan",s:"Hijo/a de la tierra"}},
-{sun:"&#x1F305;",g:"Inti k'anchaypi",q:"Inti k'anchaynin llaqsimuqtiy, llakin p'ampakun. Kusiy hamuqtin, sunqo wiñan.",s:"Cuando sale el sol, la tristeza se cubre. Cuando llega la alegría, el corazón crece.",w:{q:"P'ampakun",s:"Se cubre / se esconde solo"}},
-{sun:"&#x1F4AB;",g:"Sumaq pacha",q:"Kay pachaqa sumaqmi kachkan qamrayku. Qamñataqmi sumaq kachkanki kay pacharayku.",s:"Este mundo es hermoso por ti. Y tú también eres hermoso/a por este mundo.",w:{q:"Qamñataq",s:"Y tú también / tú a su vez"}},
+{sun:"\uD83C\uDF1E",g:"Sapa p'unchay Inti Raymi",q:"Sapa p'unchay Inti Raymim, sapa p'unchay t'ikay, sapa p'unchay kawsaypa musuqyaynin.",s:"Cada día es una fiesta del Sol, una floración, una renovación de la vida.",w:{q:"Musuqyay",s:"Renovarse / hacerse nuevo"}},
+{sun:"\uD83D\uDCA7",g:"Yaku hina",q:"Yaku tukuyman kawsayta quwan, mana sapanpaq. Qampis kay p'unchaypi tukuyman allinta ruy.",s:"El agua da vida a todos. Tú también hoy haz el bien a todos.",w:{q:"Tukuyman",s:"A todos / para todos"}},
+{sun:"\uD83C\uDF3F",g:"Allpa kallpan",q:"Allpamanta llaqsimun tukuy kawsay. Qampim allpap wawan, kallpaniyuqmi kanki.",s:"De la tierra brota toda vida. Tú eres hijo/a de la tierra, tienes fuerza.",w:{q:"Allpap wawan",s:"Hijo/a de la tierra"}},
+{sun:"\uD83C\uDF05",g:"Inti k'anchaypi",q:"Inti k'anchaynin llaqsimuqtiy, llakin p'ampakun. Kusiy hamuqtin, sunqo wiñan.",s:"Cuando sale el sol, la tristeza se cubre. Cuando llega la alegría, el corazón crece.",w:{q:"P'ampakun",s:"Se cubre / se esconde solo"}},
+{sun:"\uD83D\uDCAB",g:"Sumaq pacha",q:"Kay pachaqa sumaqmi kachkan qamrayku. Qamñataqmi sumaq kachkanki kay pacharayku.",s:"Este mundo es hermoso por ti. Y tú también eres hermoso/a por este mundo.",w:{q:"Qamñataq",s:"Y tú también / tú a su vez"}},
 {sun:"☀️",g:"Kawsarichiy",q:"Inti sapa p'unchay kawsarichin tukuy ima kawsaq kaqta. Qampis kay p'unchaypi kawsarichiy imatapas.",s:"El sol da vida a todo ser vivo. Tú también hoy dale vida a algo.",w:{q:"Kawsarichiy",s:"Dar vida / animar"}},
-{sun:"&#x1F33A;",g:"Yupaychay",q:"Sulpayki Pachamama, sulpayki Inti, sulpayki yaku, sulpayki wayra. Tukuytan munakuyki.",s:"Gracias Pachamama, Sol, agua, viento. A todos los amo.",w:{q:"Tukuytan munakuyki",s:"A todos los amo"}},
-{sun:"&#x1F304;",g:"Munakuyma tukuy",q:"Munakuywan rikcharispa, munakuywan llamkaspa, munakuywan puñukuy.",s:"Despierta con amor, trabaja con amor, duerme con amor.",w:{q:"Munakuyma tukuy",s:"Volverse amor / transformarse en amor"}},
-{sun:"&#x1F3D4;️",g:"Apu yachayninwan",q:"Apum yachayninwan qawamun urqup patanmanta. Sami qowan, kallpa qowan, munakuy qowan.",s:"El Apu te mira con sabiduría desde la cima. Da bendición, fuerza y amor.",w:{q:"Urqup patanmanta",s:"Desde la cima de la montaña"}},
+{sun:"\uD83C\uDF3A",g:"Yupaychay",q:"Sulpayki Pachamama, sulpayki Inti, sulpayki yaku, sulpayki wayra. Tukuytan munakuyki.",s:"Gracias Pachamama, Sol, agua, viento. A todos los amo.",w:{q:"Tukuytan munakuyki",s:"A todos los amo"}},
+{sun:"\uD83C\uDF04",g:"Munakuyma tukuy",q:"Munakuywan rikcharispa, munakuywan llamkaspa, munakuywan puñukuy.",s:"Despierta con amor, trabaja con amor, duerme con amor.",w:{q:"Munakuyma tukuy",s:"Volverse amor / transformarse en amor"}},
+{sun:"\uD83C\uDFD4️",g:"Apu yachayninwan",q:"Apum yachayninwan qawamun urqup patanmanta. Sami qowan, kallpa qowan, munakuy qowan.",s:"El Apu te mira con sabiduría desde la cima. Da bendición, fuerza y amor.",w:{q:"Urqup patanmanta",s:"Desde la cima de la montaña"}},
 ];
 
 function setupMorning(id){
@@ -442,7 +440,7 @@ function setupMorning(id){
   const ds=days[now.getDay()]+', '+now.getDate()+' de '+months[now.getMonth()];
   const h=now.getHours();
   const al=h<12?"Allin p'unchay":h<18?"Allin ch'isi":"Allin tuta";
-  const elems=`<div style="display:flex;gap:8px"><div style="flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:11px;padding:10px 5px;text-align:center"><span style="font-size:18px;display:block;margin-bottom:3px">☀️</span><div style="font-size:11px;font-weight:700">Inti</div><div style="font-size:10px;color:var(--muted)">Sol</div></div><div style="flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:11px;padding:10px 5px;text-align:center"><span style="font-size:18px;display:block;margin-bottom:3px">&#x1F30A;</span><div style="font-size:11px;font-weight:700">Yaku</div><div style="font-size:10px;color:var(--muted)">Agua</div></div><div style="flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:11px;padding:10px 5px;text-align:center"><span style="font-size:18px;display:block;margin-bottom:3px">&#x1F33F;</span><div style="font-size:11px;font-weight:700">Sach'a</div><div style="font-size:10px;color:var(--muted)">Árbol</div></div><div style="flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:11px;padding:10px 5px;text-align:center"><span style="font-size:18px;display:block;margin-bottom:3px">&#x1F3D4;️</span><div style="font-size:11px;font-weight:700">Apu</div><div style="font-size:10px;color:var(--muted)">Espíritu</div></div></div>`;
+  const elems=`<div style="display:flex;gap:8px"><div style="flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:11px;padding:10px 5px;text-align:center"><span style="font-size:18px;display:block;margin-bottom:3px">☀️</span><div style="font-size:11px;font-weight:700">Inti</div><div style="font-size:10px;color:var(--muted)">Sol</div></div><div style="flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:11px;padding:10px 5px;text-align:center"><span style="font-size:18px;display:block;margin-bottom:3px">\uD83C\uDF0A</span><div style="font-size:11px;font-weight:700">Yaku</div><div style="font-size:10px;color:var(--muted)">Agua</div></div><div style="flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:11px;padding:10px 5px;text-align:center"><span style="font-size:18px;display:block;margin-bottom:3px">\uD83C\uDF3F</span><div style="font-size:11px;font-weight:700">Sach'a</div><div style="font-size:10px;color:var(--muted)">Árbol</div></div><div style="flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:11px;padding:10px 5px;text-align:center"><span style="font-size:18px;display:block;margin-bottom:3px">\uD83C\uDFD4️</span><div style="font-size:11px;font-weight:700">Apu</div><div style="font-size:10px;color:var(--muted)">Espíritu</div></div></div>`;
   if(id==='morning'){
     document.getElementById('mdate').textContent=ds;
     document.getElementById('mgreet').textContent=al+' · '+m.g;
@@ -485,23 +483,23 @@ function renderHomeBody(){
   const isQ = LANG==='q';
   const c = isQ ? 'var(--gold)' : 'var(--teal)';
   const items = isQ ? [
-    {i:'&#x1F305;',t:'Bienvenida del día',d:'Frase positiva de hoy en Quechua',fn:"showScr('m2')"},
-    {i:'&#x1F4AC;',t:'Oraciones reales',d:'Familia, naturaleza, emociones, vida diaria',fn:"openReader('oraciones')"},
-    {i:'&#x1F33F;',t:'Poesía Quechua',d:'Poemas tradicionales línea a línea',fn:"openReader('poesia')"},
-    {i:'&#x1F4DC;',t:'Textos cortos',d:'Filosofía andina y cosmovisión',fn:"openReader('ensayos')"},
+    {i:'\uD83C\uDF05',t:'Bienvenida del día',d:'Frase positiva de hoy en Quechua',fn:"showScr('m2')"},
+    {i:'\uD83D\uDCAC',t:'Oraciones reales',d:'Familia, naturaleza, emociones, vida diaria',fn:"openReader('oraciones')"},
+    {i:'\uD83C\uDF3F',t:'Poesía Quechua',d:'Poemas tradicionales línea a línea',fn:"openReader('poesia')"},
+    {i:'\uD83D\uDCDC',t:'Textos cortos',d:'Filosofía andina y cosmovisión',fn:"openReader('ensayos')"},
     {i:'⚡',t:'Verbos — Referencia',d:'70 verbos con conjugaciones completas',fn:"openRef('verbos')"},
-    {i:'&#x1F9E9;',t:'Sufijos — Referencia',d:'35+ sufijos con reglas y ejemplos',fn:"openRef('sufijos')"},
-    {i:'&#x1F0CF;',t:'Fichas — Desliza y aprende',d:'Stories de verbos · Voltea · Aprendido',fn:"openCards('q')"},
-    {i:'&#x1F3AF;',t:'Quiz Quechua',d:'Traduce oraciones completas',fn:"startQuiz('q')"},
-    {i:'&#x1F916;',t:'Tutor IA',d:'Pregunta, corrige oraciones, conversa',fn:"openChat('q')"},
+    {i:'\uD83E\uDDE9',t:'Sufijos — Referencia',d:'35+ sufijos con reglas y ejemplos',fn:"openRef('sufijos')"},
+    {i:'\uD83C\uDCCF',t:'Fichas — Desliza y aprende',d:'Stories de verbos · Voltea · Aprendido',fn:"openCards('q')"},
+    {i:'\uD83C\uDFAF',t:'Quiz Quechua',d:'Traduce oraciones completas',fn:"startQuiz('q')"},
+    {i:'\uD83E\uDD16',t:'Tutor IA',d:'Pregunta, corrige oraciones, conversa',fn:"openChat('q')"},
   ] : [
-    {i:'&#x1F30A;',t:'Oraciones en Aymara',d:'Familia, naturaleza, saludos, vida diaria',fn:"openReader('aymara_or')"},
-    {i:'&#x1F33F;',t:'Poesía Aymara',d:'Poemas de la cultura Aymara',fn:"openReader('aymara_po')"},
+    {i:'\uD83C\uDF0A',t:'Oraciones en Aymara',d:'Familia, naturaleza, saludos, vida diaria',fn:"openReader('aymara_or')"},
+    {i:'\uD83C\uDF3F',t:'Poesía Aymara',d:'Poemas de la cultura Aymara',fn:"openReader('aymara_po')"},
     {i:'⚡',t:'Verbos Aymara — Referencia',d:'50+ verbos con conjugaciones completas',fn:"openRef('aymara_verbos')"},
-    {i:'&#x1F9E9;',t:'Sufijos Aymara',d:'Sufijos y partículas esenciales',fn:"openRef('aymara_sufijos')"},
-    {i:'&#x1F0CF;',t:'Fichas Aymara',d:'Aprende verbos deslizando',fn:"openCards('a')"},
-    {i:'&#x1F3AF;',t:'Quiz Aymara',d:'Practica traduciendo oraciones',fn:"startQuiz('a')"},
-    {i:'&#x1F916;',t:'Tutor IA — Aymara',d:'Practica con inteligencia artificial',fn:"openChat('a')"},
+    {i:'\uD83E\uDDE9',t:'Sufijos Aymara',d:'Sufijos y partículas esenciales',fn:"openRef('aymara_sufijos')"},
+    {i:'\uD83C\uDCCF',t:'Fichas Aymara',d:'Aprende verbos deslizando',fn:"openCards('a')"},
+    {i:'\uD83C\uDFAF',t:'Quiz Aymara',d:'Practica traduciendo oraciones',fn:"startQuiz('a')"},
+    {i:'\uD83E\uDD16',t:'Tutor IA — Aymara',d:'Practica con inteligencia artificial',fn:"openChat('a')"},
   ];
   document.getElementById('home-body').innerHTML =
     '<p class="slbl" style="margin-top:4px">'+
@@ -709,19 +707,19 @@ const VERBOS_Q=[
   {cat:"Naturaleza",q:"Timpuy",s:"Hervir / fermentar",col:"#2dd4bf",c:{yo:"Timpuni",tu:"Timpunki",el:"Timpun",nos:"Timpunchik",nex:"Timpuyku",uds:"Timpunkichik",ell:"Timpunku"},ex:[{q:"Yakuqa timpunmi.",s:"El agua hierve."}],note:"Para chicha también."},
   {cat:"Naturaleza",q:"Rupay",s:"Quemar / arder",col:"#2dd4bf",c:{yo:"Rupani",tu:"Rupanki",el:"Rupan",nos:"Rupanchik",nex:"Rupayku",uds:"Rupankichik",ell:"Rupanku"},ex:[{q:"Inti rupan.",s:"El sol quema."}],note:"Rupay=calor del sol (sustantivo)."},
 ,
-  {cat:"Cuerpo",q:"Onqoy",s:"Enfermar / doler",col:"#fb7185",c:{yo:"Onqorani",tu:"Onqoranki",el:"Onqoran",nos:"Onqoranchik",nex:"Onqorayku",uds:"Onqorankichik",ell:"Onqoranku"},ex:[{q:"Umay nanawanmi.",s:"Me duele la cabeza."}],note:"Onqoy = enfermedad. Nana = dolor."},
+  {cat:"Cuerpo",q:"Onqoy",s:"Enfermar / doler",col:"#fb7185",c:{yo:"Onqorani",tu:"Onqoranki",el:"Onqoran",nos:"Onqoranchik",nex:"Onqorayku",uds:"Onqorankichik",ell:"Onqoranku"},ex:[{q:"Umay nanawanmi.",s:"Me duele la cabeza."}],note:"Onqoy = enfermedad."},
   {cat:"Cuerpo",q:"Samay",s:"Respirar / descansar",col:"#fb7185",c:{yo:"Samani",tu:"Samanki",el:"Saman",nos:"Samanchi",nex:"Samayku",uds:"Samankichik",ell:"Samanku"},ex:[{q:"Samarikuway.",s:"Dame un descanso."}],note:"Sama = aliento. -riku = reflexivo."},
-  {cat:"Cuerpo",q:"Pu&#xF1;uy",s:"Dormir",col:"#fb7185",c:{yo:"Pu&#xF1;uni",tu:"Pu&#xF1;unki",el:"Pu&#xF1;un",nos:"Pu&#xF1;unchik",nex:"Pu&#xF1;uyku",uds:"Pu&#xF1;unkichik",ell:"Pu&#xF1;unku"},ex:[{q:"Allintan pu&#xF1;uni.",s:"Duermo bien."}],note:"Pu&#xF1;una = cama."},
-  {cat:"Emocion",q:"Llakiy",s:"Entristecerse / sufrir",col:"#818cf8",c:{yo:"Llakikuni",tu:"Llakinki",el:"Llakin",nos:"Llakinchik",nex:"Llakiyku",uds:"Llakinkichik",ell:"Llakinku"},ex:[{q:"Ama llakichu.",s:"No te tristezas."}],note:"Llaki = tristeza, pena."},
-  {cat:"Emocion",q:"Manchay",s:"Tener miedo",col:"#818cf8",c:{yo:"Manchakuni",tu:"Manchanki",el:"Manchan",nos:"Manchanchik",nex:"Manchayku",uds:"Manchankichik",ell:"Manchanku"},ex:[{q:"Ama manchakuchu.",s:"No tengas miedo."}],note:"Mancha = susto, miedo."},
-  {cat:"Emocion",q:"Asiy",s:"Re&#xED;rse",col:"#818cf8",c:{yo:"Asikuni",tu:"Asinki",el:"Asin",nos:"Asinchik",nex:"Asiyku",uds:"Asinkichik",ell:"Asinku"},ex:[{q:"Kusispa asiniku.",s:"Nos re&#xED;mos con alegr&#xED;a."}],note:"Asis = risa."},
+  {cat:"Cuerpo",q:"Puñuy",s:"Dormir",col:"#fb7185",c:{yo:"Puñuni",tu:"Puñunki",el:"Puñun",nos:"Puñunchik",nex:"Puñuyku",uds:"Puñunkichik",ell:"Puñunku"},ex:[{q:"Allintan puñuni.",s:"Duermo bien."}],note:"Puñuna = cama."},
+  {cat:"Emocion",q:"Llakiy",s:"Entristecerse",col:"#818cf8",c:{yo:"Llakikuni",tu:"Llakinki",el:"Llakin",nos:"Llakinchik",nex:"Llakiyku",uds:"Llakinkichik",ell:"Llakinku"},ex:[{q:"Ama llakichu.",s:"No te tristezas."}],note:"Llaki = tristeza, pena."},
+  {cat:"Emocion",q:"Manchay",s:"Tener miedo",col:"#818cf8",c:{yo:"Manchakuni",tu:"Manchanki",el:"Manchan",nos:"Manchanchik",nex:"Manchayku",uds:"Manchankichik",ell:"Manchanku"},ex:[{q:"Ama manchakuchu.",s:"No tengas miedo."}],note:"Mancha = susto."},
+  {cat:"Emocion",q:"Asiy",s:"Reírse",col:"#818cf8",c:{yo:"Asikuni",tu:"Asinki",el:"Asin",nos:"Asinchik",nex:"Asiyku",uds:"Asinkichik",ell:"Asinku"},ex:[{q:"Kusispa asiniku.",s:"Nos reímos con alegría."}],note:"Asis = risa."},
   {cat:"Agricultura",q:"Tarpuy",s:"Sembrar",col:"#34d399",c:{yo:"Tarpuni",tu:"Tarpunki",el:"Tarpun",nos:"Tarpunchik",nex:"Tarpuyku",uds:"Tarpunkichik",ell:"Tarpunku"},ex:[{q:"Papata tarpuni.",s:"Siembro papas."}],note:"Tarpuy = tiempo de siembra."},
   {cat:"Agricultura",q:"Hallmay",s:"Arar / cultivar la tierra",col:"#34d399",c:{yo:"Hallmani",tu:"Hallmanki",el:"Hallman",nos:"Hallmanchik",nex:"Hallmayku",uds:"Hallmankichik",ell:"Hallmanku"},ex:[{q:"Chakrata hallmani.",s:"Aro el campo."}],note:"Trabajo colectivo andino."},
-  {cat:"Agricultura",q:"Karpay",s:"Regar / irrigar",col:"#34d399",c:{yo:"Karpani",tu:"Karpanki",el:"Karpan",nos:"Karpanchik",nex:"Karpayku",uds:"Karpankichik",ell:"Karpanku"},ex:[{q:"Sarata karpani.",s:"Riego el ma&#xED;z."}],note:"Karpay tambi&#xE9;n: iniciaci&#xF3;n ritual."},
-  {cat:"Comunicacion",q:"Willakuy",s:"Contar / narrar / avisar",col:"#fbbf24",c:{yo:"Willakuni",tu:"Willanki",el:"Willan",nos:"Willanchik",nex:"Willayku",uds:"Willankichik",ell:"Willanku"},ex:[{q:"Willakuway.",s:"Cu&#xE9;ntame."}],note:"Willa = noticia."},
+  {cat:"Agricultura",q:"Karpay",s:"Regar / irrigar",col:"#34d399",c:{yo:"Karpani",tu:"Karpanki",el:"Karpan",nos:"Karpanchik",nex:"Karpayku",uds:"Karpankichik",ell:"Karpanku"},ex:[{q:"Sarata karpani.",s:"Riego el maíz."}],note:"Karpay también: iniciación ritual."},
+  {cat:"Comunicacion",q:"Willakuy",s:"Contar / narrar / avisar",col:"#fbbf24",c:{yo:"Willakuni",tu:"Willanki",el:"Willan",nos:"Willanchik",nex:"Willayku",uds:"Willankichik",ell:"Willanku"},ex:[{q:"Willakuway.",s:"Cuéntame."}],note:"Willa = noticia."},
   {cat:"Comunicacion",q:"Tapuy",s:"Preguntar",col:"#fbbf24",c:{yo:"Tapuni",tu:"Tapunki",el:"Tapun",nos:"Tapunchik",nex:"Tapuyku",uds:"Tapunkichik",ell:"Tapunku"},ex:[{q:"Tapuyki tiyan.",s:"Te tengo que preguntar."}],note:"Tapukuy = preguntarse."},
-  {cat:"Percepcion",q:"Hamut'ay",s:"Reflexionar / pensar profundo",col:"#2dd4bf",c:{yo:"Hamut'ani",tu:"Hamut'anki",el:"Hamut'an",nos:"Hamut'anchik",nex:"Hamut'ayku",uds:"Hamut'ankichik",ell:"Hamut'anku"},ex:[{q:"Hamut'arispa rimay.",s:"Habla reflexionando."}],note:"Pensamiento profundo andino."},
-  {cat:"Percepcion",q:"Reqsiy",s:"Conocer / reconocer a alguien",col:"#2dd4bf",c:{yo:"Reqsini",tu:"Reqsinki",el:"Reqsin",nos:"Reqsinchik",nex:"Reqsiyku",uds:"Reqsinkichik",ell:"Reqsinku"},ex:[{q:"Reqsikimankichu?",s:"&#xBF;Me conoces?"}],note:"Reqsiy = conocer personas."}];
+  {cat:"Percepcion",q:"Hamut'ay",s:"Reflexionar profundo",col:"#2dd4bf",c:{yo:"Hamut'ani",tu:"Hamut'anki",el:"Hamut'an",nos:"Hamut'anchik",nex:"Hamut'ayku",uds:"Hamut'ankichik",ell:"Hamut'anku"},ex:[{q:"Hamut'arispa rimay.",s:"Habla reflexionando."}],note:"Pensamiento profundo andino."},
+  {cat:"Percepcion",q:"Reqsiy",s:"Conocer / reconocer a alguien",col:"#2dd4bf",c:{yo:"Reqsini",tu:"Reqsinki",el:"Reqsin",nos:"Reqsinchik",nex:"Reqsiyku",uds:"Reqsinkichik",ell:"Reqsinku"},ex:[{q:"Reqsikimankichu?",s:"¿Me conoces?"}],note:"Reqsiy = conocer personas."}];
 
 // ============================================================
 // AYMARA VERBOS — 50 verbos con conjugación completa
@@ -779,14 +777,14 @@ const VERBOS_A=[
   {cat:"Naturaleza",q:"Jalluchiña",s:"Hacer llover",col:"#60a5fa",c:{yo:"Jalluchtha",tu:"Jalluchta",el:"Jalluchitu",nos:"Jalluchapxtha",nex:"Jalluchapxtha",uds:"Jalluchapxta",ell:"Jalluchapxitu"},ex:[{q:"Jalluchitu.",s:"Hace llover."}],note:"-chi causativo. Ritual de lluvia."},
   {cat:"Naturaleza",q:"Uraqpacha yatiqaña",s:"Conocer la tierra",col:"#60a5fa",c:{yo:"Uraqpacha yatiqtha",tu:"Uraqpacha yatiqta",el:"Uraqpacha yatiqitu",nos:"Uraqpacha yatiqapxtha",nex:"Uraqpacha yatiqapxtha",uds:"Uraqpacha yatiqapxta",ell:"Uraqpacha yatiqapxitu"},ex:[{q:"Uraqpacha yatiqtha.",s:"Aprendo / conozco la tierra."}],note:"Uraqpacha=tierra y tiempo."},
 ,
-  {cat:"Cuerpo",q:"Iki&#xF1;a",s:"Dormir",col:"#2dd4bf",c:{yo:"Ikitha",tu:"Ikita",el:"Ikiitu",nos:"Ikipxtha",nex:"Ikipxtha",uds:"Ikipxta",ell:"Ikipxitu"},ex:[{q:"Wali ikitha.",s:"Duermo bien."}],note:"Aruma = noche. Wali = bien/mucho."},
-  {cat:"Cuerpo",q:"Manq'a&#xF1;a",s:"Comer",col:"#2dd4bf",c:{yo:"Manq'tha",tu:"Manq'ta",el:"Manq'itu",nos:"Manq'apxtha",nex:"Manq'apxtha",uds:"Manq'apxta",ell:"Manq'apxitu"},ex:[{q:"Aka manq'ata manq'tha.",s:"Como esta comida."}],note:"Manq'a = comida/alimento."},
-  {cat:"Emocion",q:"Kusisi&#xF1;a",s:"Alegrarse",col:"#fbbf24",c:{yo:"Kusistha",tu:"Kusista",el:"Kusiitu",nos:"Kusipxtha",nex:"Kusipxtha",uds:"Kusipxta",ell:"Kusipxitu"},ex:[{q:"Wali kusistha.",s:"Estoy muy feliz."}],note:"Kusi = alegr&#xED;a."},
-  {cat:"Accion",q:"Lura&#xF1;a",s:"Hacer / trabajar",col:"#fbbf24",c:{yo:"Lurtha",tu:"Lurta",el:"Luritu",nos:"Lurpxtha",nex:"Lurpxtha",uds:"Lurpxta",ell:"Lurpxitu"},ex:[{q:"Kuna lurtha?",s:"&#xBF;Qu&#xE9; hago?"}],note:"Lura = obra, trabajo."},
-  {cat:"Comunicacion",q:"Arsu&#xF1;a",s:"Hablar / conversar",col:"#60a5fa",c:{yo:"Arstha",tu:"Arsta",el:"Arsitu",nos:"Arspxtha",nex:"Arspxtha",uds:"Arspxta",ell:"Arspxitu"},ex:[{q:"Aymarata arstha.",s:"Hablo aymara."}],note:"Arsu = palabra, discurso."},
-  {cat:"Percepcion",q:"U&#xF1;ja&#xF1;a",s:"Ver / mirar",col:"#60a5fa",c:{yo:"U&#xF1;jtha",tu:"U&#xF1;jta",el:"U&#xF1;jitu",nos:"U&#xF1;japxtha",nex:"U&#xF1;japxtha",uds:"U&#xF1;japxta",ell:"U&#xF1;japxitu"},ex:[{q:"U&#xF1;jani&#xF1;ani.",s:"Nos veremos."}],note:"U&#xF1;a&#xF1;a = ojos."},
-  {cat:"Percepcion",q:"Ist'a&#xF1;a",s:"Escuchar / o&#xED;r",col:"#60a5fa",c:{yo:"Ist'tha",tu:"Ist'ta",el:"Ist'itu",nos:"Ist'apxtha",nex:"Ist'apxtha",uds:"Ist'apxta",ell:"Ist'apxitu"},ex:[{q:"Aymarata ist'tha.",s:"Escucho el aymara."}],note:"Ist'ana = o&#xED;do."},
-  {cat:"Agricultura",q:"Apsu&#xF1;a",s:"Cosechar / sacar",col:"#34d399",c:{yo:"Apstha",tu:"Apsta",el:"Apsitu",nos:"Apspxtha",nex:"Apspxtha",uds:"Apspxta",ell:"Apspxitu"},ex:[{q:"Papa apsutha.",s:"Cosecho papas."}],note:"Ap- = sacar, extraer."}];
+  {cat:"Cuerpo",q:"Ikiña",s:"Dormir",col:"#2dd4bf",c:{yo:"Ikitha",tu:"Ikita",el:"Ikiitu",nos:"Ikipxtha",nex:"Ikipxtha",uds:"Ikipxta",ell:"Ikipxitu"},ex:[{q:"Wali ikitha.",s:"Duermo bien."}],note:"Aruma = noche. Wali = bien/mucho."},
+  {cat:"Cuerpo",q:"Manq'aña",s:"Comer",col:"#2dd4bf",c:{yo:"Manq'tha",tu:"Manq'ta",el:"Manq'itu",nos:"Manq'apxtha",nex:"Manq'apxtha",uds:"Manq'apxta",ell:"Manq'apxitu"},ex:[{q:"Aka manq'ata manq'tha.",s:"Como esta comida."}],note:"Manq'a = comida/alimento."},
+  {cat:"Emocion",q:"Kusisiña",s:"Alegrarse",col:"#fbbf24",c:{yo:"Kusistha",tu:"Kusista",el:"Kusiitu",nos:"Kusipxtha",nex:"Kusipxtha",uds:"Kusipxta",ell:"Kusipxitu"},ex:[{q:"Wali kusistha.",s:"Estoy muy feliz."}],note:"Kusi = alegría."},
+  {cat:"Accion",q:"Luraña",s:"Hacer / trabajar",col:"#fbbf24",c:{yo:"Lurtha",tu:"Lurta",el:"Luritu",nos:"Lurpxtha",nex:"Lurpxtha",uds:"Lurpxta",ell:"Lurpxitu"},ex:[{q:"Kuna lurtha?",s:"¿Qué hago?"}],note:"Lura = obra, trabajo."},
+  {cat:"Comunicacion",q:"Arsuña",s:"Hablar / conversar",col:"#60a5fa",c:{yo:"Arstha",tu:"Arsta",el:"Arsitu",nos:"Arspxtha",nex:"Arspxtha",uds:"Arspxta",ell:"Arspxitu"},ex:[{q:"Aymarata arstha.",s:"Hablo aymara."}],note:"Arsu = palabra, discurso."},
+  {cat:"Percepcion",q:"Uñjaña",s:"Ver / mirar",col:"#60a5fa",c:{yo:"Uñjtha",tu:"Uñjta",el:"Uñjitu",nos:"Uñjapxtha",nex:"Uñjapxtha",uds:"Uñjapxta",ell:"Uñjapxitu"},ex:[{q:"Uñjaniñani.",s:"Nos veremos."}],note:"Uñaña = ojos."},
+  {cat:"Percepcion",q:"Ist'aña",s:"Escuchar / oír",col:"#60a5fa",c:{yo:"Ist'tha",tu:"Ist'ta",el:"Ist'itu",nos:"Ist'apxtha",nex:"Ist'apxtha",uds:"Ist'apxta",ell:"Ist'apxitu"},ex:[{q:"Aymarata ist'tha.",s:"Escucho el aymara."}],note:"Ist'ana = oído."},
+  {cat:"Agricultura",q:"Apsuña",s:"Cosechar / sacar",col:"#34d399",c:{yo:"Apstha",tu:"Apsta",el:"Apsitu",nos:"Apspxtha",nex:"Apspxtha",uds:"Apspxta",ell:"Apspxitu"},ex:[{q:"Papa apsutha.",s:"Cosecho papas."}],note:"Ap- = sacar, extraer."}];
 
 const SUFIJOS_Q=[
   {cat:"Caso nominal",q:"-pi",s:"En (locativo)",uso:"Lugar donde ocurre algo.",ex:[{q:"Wasípi puñuni.",s:"Duermo en la casa."}],note:"Para movimiento: -man."},
@@ -818,12 +816,11 @@ const SUFIJOS_Q=[
   {cat:"Diminutivo",q:"-cha",s:"Diminutivo / cariño",uso:"Pequeñez o afecto.",ex:[{q:"Wawcha.",s:"Bebecito."}],note:"Diferente del -cha conjetural."}
 ,
   {cat:"Caso nominal",q:"-rayku",s:"Por (causa/motivo)",uso:"Expresa causa o motivo.",ex:[{q:"Qanrayku kutirimuni.",s:"Regreso por ti."}],note:"Yaku+rayku = por el agua."},
-  {cat:"Caso nominal",q:"-nta",s:"Por (direcci&#xF3;n/v&#xED;a)",uso:"Direcci&#xF3;n, v&#xED;a, medio.",ex:[{q:"Wasinta yaykuni.",s:"Entro por la casa."}],note:"-nta indica el camino tomado."},
-  {cat:"Verbal",q:"-ri-",s:"Repetici&#xF3;n / habitual",uso:"Acci&#xF3;n que se repite o es habitual.",ex:[{q:"Mikhurini.",s:"Suelo comer regularmente."}],note:"Indica costumbre."},
-  {cat:"Evidencial",q:"-taq",s:"Y / en cambio / &#xE9;nfasis",uso:"Contraste o &#xE9;nfasis en el discurso.",ex:[{q:"Qantaq?",s:"&#xBF;Y t&#xFA;?"}],note:"Muy com&#xFA;n en el di&#xE1;logo cotidiano."},
-  {cat:"Evidencial",q:"-chus",s:"&#xBF;Acaso? / duda",uso:"Duda o pregunta ret&#xF3;rica.",ex:[{q:"Rikunki-chus?",s:"&#xBF;Acaso lo ver&#xE1;s?"}],note:"Expresa incertidumbre."},
-  {cat:"Evidencial",q:"-qa",s:"T&#xF3;pico (el tema del discurso)",uso:"Marca el tema del que se habla.",ex:[{q:"&#xD1;uqaqa Qusqumantam kani.",s:"Yo, por mi parte, soy del Cusco."}],note:"Equivale a 'wa' en japon&#xE9;s."},
-  {cat:"Numero",q:"-lla",s:"Solo / apenas",uso:"Limitativo o afectivo.",ex:[{q:"Huk llamallam tiyan.",s:"Solo hay una llama."}],note:"Tambi&#xE9;n afectivo: Wawayllam."}];
+  {cat:"Verbal",q:"-ri-",s:"Repetición / habitual",uso:"Acción que se repite.",ex:[{q:"Mikhurini.",s:"Suelo comer regularmente."}],note:"Indica costumbre."},
+  {cat:"Evidencial",q:"-taq",s:"Y / énfasis",uso:"Contraste o énfasis.",ex:[{q:"Qantaq?",s:"¿Y tú?"}],note:"Muy común en el diálogo."},
+  {cat:"Evidencial",q:"-chus",s:"¿Acaso? / duda",uso:"Duda o pregunta retórica.",ex:[{q:"Rikunki-chus?",s:"¿Acaso lo verás?"}],note:"Expresa incertidumbre."},
+  {cat:"Evidencial",q:"-qa",s:"Tópico (el tema del discurso)",uso:"Marca el tema del que se habla.",ex:[{q:"Ñuqaqa Qusqumantam kani.",s:"Yo, por mi parte, soy del Cusco."}],note:"Equivale a 'wa' en japonés."},
+  {cat:"Numero",q:"-lla",s:"Solo / apenas",uso:"Limitativo o afectivo.",ex:[{q:"Huk llamallam tiyan.",s:"Solo hay una llama."}],note:"También afectivo: Wawayllam."}];
 const SUFIJOS_A=[
   {cat:"Caso",q:"-na",s:"En / sobre (locativo)",uso:"Lugar donde ocurre algo.",ex:[{q:"Utana.",s:"En la casa."}],note:"Equivale al -pi quechua."},
   {cat:"Caso",q:"-ru",s:"A / hacia",uso:"Dirección o destino.",ex:[{q:"Utaru.",s:"Hacia la casa."}],note:"Equivale al -man quechua."},
@@ -862,11 +859,10 @@ const QUIZ_Q=[
   {q:"Pachamama kawsaqmi, mana wañunchu.",opts:["La Madre Tierra está viva, no muere.","La Madre Tierra duerme, no habla.","La Madre Tierra trabaja, no descansa.","La Madre Tierra florece, no cae."],a:0,ex:"Kawsaq = vivo/viviente. Mana...chu = no muere."},
   {q:"Sumayta yachani.",opts:["Sé cosas hermosas.","Aprendo idiomas.","Quiero saber más.","Enseño bien."],a:0,ex:"Yachay = saber/aprender. Sumay = cosas hermosas."},
 ,
-  {q:"Taytay urqup patanpi llamkaqmi.",opts:["Mi padre trabaja en la cima de la monta&#xF1;a.","Mi padre duerme en la monta&#xF1;a.","El padre habla en la cima.","Mi hermano trabaja en el campo."],a:0,ex:"-mi evidencial. Urqu = monta&#xF1;a. Pata = cima/encima."},
-  {q:"Reqsikimankichu?",opts:["&#xBF;Me conoces?","&#xBF;Puedes verme?","&#xBF;Me recuerdas?","&#xBF;Puedes o&#xED;rme?"],a:0,ex:"Reqsiy = conocer (personas). -man = condicional. -chu = pregunta."},
-  {q:"&#xD1;uqaqa Qusqumantam kani.",opts:["Yo soy del Cusco.","Nosotros somos del Cusco.","Yo voy al Cusco.","Yo estoy en el Cusco."],a:0,ex:"-qa = t&#xF3;pico. -manta = de. -m evidencial directo."},
-  {q:"Hamut'arispa rimay.",opts:["Habla reflexionando con sabidur&#xED;a.","Habla m&#xE1;s r&#xE1;pido.","Piensa antes de ir.","Escucha con cuidado."],a:0,ex:"Hamut'ay = reflexionar profundo. -rispa = gerundio."},
-  {q:"Sunqoykipi kusiyta hunt'achiy.",opts:["Llena tu coraz&#xF3;n de alegr&#xED;a.","Escucha a tu coraz&#xF3;n.","Tu coraz&#xF3;n est&#xE1; lleno de amor.","Dale alegr&#xED;a a tu coraz&#xF3;n."],a:0,ex:"Sunqo = coraz&#xF3;n. Hunt'ay = llenar. Kusi = alegr&#xED;a."}];
+  {q:"Taytay urqup patanpi llamkaqmi.",opts:["Mi padre trabaja en la cima de la montaña.","Mi padre duerme en la montaña.","El padre habla en la cima.","Mi hermano trabaja."],a:0,ex:"-mi evidencial. Urqu = montaña. Pata = cima."},
+  {q:"Reqsikimankichu?",opts:["¿Me conoces?","¿Puedes verme?","¿Me recuerdas?","¿Puedes oírme?"],a:0,ex:"Reqsiy = conocer. -man = condicional. -chu = pregunta."},
+  {q:"Hamut'arispa rimay.",opts:["Habla reflexionando con sabiduría.","Habla más rápido.","Piensa antes de ir.","Escucha con cuidado."],a:0,ex:"Hamut'ay = reflexionar profundo. -rispa = gerundio."},
+  {q:"Sunqoykipi kusiyta hunt'achiy.",opts:["Llena tu corazón de alegría.","Escucha a tu corazón.","Tu corazón está lleno de amor.","Dale alegría a tu corazón."],a:0,ex:"Sunqo = corazón. Hunt'ay = llenar. Kusi = alegría."}];
 const QUIZ_A=[
   {q:"Kamisaraki?",opts:["¿Cómo estás?","¿A dónde vas?","¿Qué comes?","¿Quién eres?"],a:0,ex:"Saludo universal Aymara. Respuesta: Waliki."},
   {q:"Nayax jilata muntha.",opts:["Yo quiero a mi hermano mayor.","Yo veo a mi hermana.","Yo ayudo a mi primo.","Yo escucho a mi padre."],a:0,ex:"Naya=yo. Jilata=hermano mayor. Muntha=quiero."},
@@ -924,7 +920,7 @@ function renderP(){
     h+='</div>';
   }
   if(p.notes){
-    h+='<div class="gbox"><div class="gtit">&#x1F4D6; Gramática</div>';
+    h+='<div class="gbox"><div class="gtit">\uD83D\uDCD6 Gramática</div>';
     p.notes.forEach(n=>{ h+='<div class="gterm">'+n.t+'</div><div class="gdef">'+n.d+'</div>'; });
     h+='</div>';
   }
@@ -1074,7 +1070,7 @@ function renderCard(){
     back+='<div class="cexlbl">Ejemplo</div>';
     back+='<div class="cexi"><div class="cexiq">'+v.ex[0].q+'</div><div class="cexis">'+v.ex[0].s+'</div></div>';
   }
-  if(v.note) back+='<div class="cnote">&#x1F4A1; '+v.note+'</div>';
+  if(v.note) back+='<div class="cnote">\uD83D\uDCA1 '+v.note+'</div>';
   document.getElementById('cbf').innerHTML=back;
   setupSwipe();
 }
@@ -1138,7 +1134,7 @@ function setupSwipe(){
 let qData=[],qIdx=0,qScore=0,qAnswered=false,qLang='q';
 function startQuiz(lang){
   qLang=lang;
-  document.getElementById('quiztit').textContent = lang==='q'?'&#x1F3AF; Quiz Quechua':'&#x1F3AF; Quiz Aymara';
+  document.getElementById('quiztit').textContent = lang==='q'?'\uD83C\uDFAF Quiz Quechua':'\uD83C\uDFAF Quiz Aymara';
   qData=shuffle2(lang==='q'?[...QUIZ_Q]:[...QUIZ_A]);
   qIdx=0; qScore=0; qAnswered=false;
   document.getElementById('lscore').textContent='★ 0';
@@ -1160,11 +1156,10 @@ function renderQ(){
 function ansQ(i){
   if(qAnswered)return; qAnswered=true;
   const q=qData[qIdx,
-  {q:"Janiw yatktiti.",opts:["No sabe / no conoce.","No quiere saber.","No puede aprender.","No lo dice."],a:0,ex:"Janiw = no (negaci&#xF3;n Aymara). Yati&#xF1;a = saber."},
-  {q:"Wali kusistha.",opts:["Estoy muy feliz.","Trabajo mucho.","Como bien.","Camino mucho."],a:0,ex:"Wali = muy/bien/mucho. Kusisi&#xF1;a = alegrarse. -tha = 1&#xAA; persona."},
-  {q:"Aka manq'ata manq'tha.",opts:["Como esta comida.","Quiero m&#xE1;s comida.","Esta comida es deliciosa.","Cocino esta comida."],a:0,ex:"Aka = este/esta. Manq'a = comida. Manq'a&#xF1;a = comer."},
-  {q:"U&#xF1;jani&#xF1;ani.",opts:["Nos veremos / hasta luego.","Vamos a mirarlo.","Los dos vemos.","Miremos juntos."],a:0,ex:"U&#xF1;ja&#xF1;a = ver. -ni = 1&#xAA; persona."},
-  {q:"Aymarata ist'tha.",opts:["Escucho el aymara.","Hablo aymara.","Aprendo aymara.","Entiendo aymara."],a:0,ex:"Ist'a&#xF1;a = escuchar. Aymarata = aymara (acusativo). -tha = yo."},
+  {q:"Janiw yatktiti.",opts:["No sabe / no conoce.","No quiere saber.","No puede aprender.","No lo dice."],a:0,ex:"Janiw = no (negación Aymara). Yatiña = saber."},
+  {q:"Wali kusistha.",opts:["Estoy muy feliz.","Trabajo mucho.","Como bien.","Camino mucho."],a:0,ex:"Wali = muy/bien/mucho. Kusisiña = alegrarse."},
+  {q:"Aka manq'ata manq'tha.",opts:["Como esta comida.","Quiero más comida.","Esta comida es deliciosa.","Cocino esta comida."],a:0,ex:"Aka = este/esta. Manq'a = comida. Manq'aña = comer."},
+  {q:"Aymarata ist'tha.",opts:["Escucho el aymara.","Hablo aymara.","Aprendo aymara.","Entiendo aymara."],a:0,ex:"Ist'aña = escuchar. Aymarata = aymara. -tha = yo."},
   {q:"Walikiwa, yusparajaki.",opts:["Estoy bien, gracias.","Muy bien, hasta luego.","Bien, con permiso.","Estoy sano, gracias."],a:0,ex:"Walikiwa = estoy bien. Yusparajaki = gracias en Aymara."}];
   document.querySelectorAll('.qopt').forEach((o,j)=>{
     o.classList.add(j===q.a?'ok':(j===i&&i!==q.a?'bad':'dim'));
@@ -1176,7 +1171,7 @@ function ansQ(i){
 function nextQ(){ qIdx++; renderQ(); }
 function showResult(){
   const pct=Math.round(qScore/qData.length*100);
-  const e=pct>=80?'&#x1F3C6;':pct>=50?'&#x1F3AF;':'&#x1F4DA;';
+  const e=pct>=80?'\uD83C\uDFC6':pct>=50?'\uD83C\uDFAF':'\uD83D\uDCDA';
   const m=pct>=80?'¡Excelente!':pct>=50?'Buen trabajo':'Sigue practicando';
   const s=pct>=80?'¡Dominaste el quiz!':pct>=50?'Vas por buen camino.':'La práctica hace al maestro.';
   document.getElementById('re').textContent=e;
@@ -1204,7 +1199,7 @@ const SUGS={
 };
 function openChat(lang){
   chatLang=lang; chatHistory=[];
-  document.getElementById('chattit').textContent=lang==='q'?'&#x1F916; Tutor IA — Quechua':'&#x1F916; Tutor IA — Aymara';
+  document.getElementById('chattit').textContent=lang==='q'?'\uD83E\uDD16 Tutor IA — Quechua':'\uD83E\uDD16 Tutor IA — Aymara';
   document.getElementById('cmsgs').innerHTML='';
   document.getElementById('csugs').innerHTML=SUGS[lang].map(s=>'<button class="chip" onclick="sendChip(\''+s+'\')">'+s+'</button>').join('');
   addMsg('a','Hola! Soy tu tutor de '+(lang==='q'?'Quechua':'Aymara')+'. ¿Qué quieres aprender hoy?');
