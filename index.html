@@ -1324,13 +1324,13 @@ function renderCard(){
     const cbf=document.getElementById('cbf');
     cbf.innerHTML=window._buildBack(tId);
     cbf.querySelectorAll('.ctbtn').forEach(function(b){
-      b.addEventListener('click',function(){ switchTense(b.dataset.tid); });
+      b.addEventListener('click',function(e){ e.stopPropagation(); switchTense(b.dataset.tid); });
     });
   };
   const cbf=document.getElementById('cbf');
   cbf.innerHTML=window._buildBack('pres');
   cbf.querySelectorAll('.ctbtn').forEach(function(b){
-    b.addEventListener('click',function(){ switchTense(b.dataset.tid); });
+    b.addEventListener('click',function(e){ e.stopPropagation(); switchTense(b.dataset.tid); });
   });
   setupSwipe();
 }
