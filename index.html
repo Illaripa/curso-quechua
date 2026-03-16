@@ -1429,7 +1429,7 @@ async function sendMsg(){
   td.innerHTML='<div class="bbl"><span class="tdot"></span><span class="tdot"></span><span class="tdot"></span></div>';
   d.appendChild(td);d.scrollTop=d.scrollHeight;
   try{
-    if(!getApiKey()){document.getElementById('typing')?.remove();var bk=document.getElementById('apikBanner');if(bk)bk.classList.add('show');addMsg('a','Necesitas ingresar tu API key de Anthropic (arriba).');document.getElementById('sbtn').disabled=false;return;}
+    if(!getApiKey()){document.getElementById('typing')?.remove();var bk=document.getElementById('apikBanner');if(bk)bk.classList.add('show');var prov=(localStorage.getItem('yachay_provider')||'openrouter');addMsg('a','Necesitas ingresar tu API key de '+(prov==='anthropic'?'Anthropic':'OpenRouter')+' (arriba).');document.getElementById('sbtn').disabled=false;return;}
     var provider=localStorage.getItem('yachay_provider')||'openrouter';
     var apiKey2=getApiKey();
     var r2,data2;
