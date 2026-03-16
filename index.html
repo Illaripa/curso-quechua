@@ -1371,6 +1371,14 @@ function renderGoals(){
 }
 function toggleGoal(i){const cb=document.getElementById('g'+i);const label=cb.nextElementSibling;label.style.textDecoration=cb.checked?'line-through':'none';label.style.opacity=cb.checked?'0.5':'1';}
 function addGoal(){const g=prompt('Agregar objetivo:');if(g&&g.trim()){tutGoals.push(g.trim());renderGoals();}}
+function addMsg(role,text){
+  const d=document.getElementById('cmsgs');
+  const div=document.createElement('div');
+  div.className='msg '+(role==='u'?'u':'a');
+  div.innerHTML='<div class="bbl">'+text.replace(/\n/g,'<br>')+'</div>';
+  d.appendChild(div);
+  d.scrollTop=d.scrollHeight;
+}
 function openChat(lang){
   chatLang=lang;chatHistory=[];tutMsgCount=0;tutCorrCount=0;tutLevel='A1';tutGoals=[];tutSessionLog=[];
   document.getElementById('chattit').textContent=lang==='q'?'\u1F916 Tutor IA — Quechua':'\u1F916 Tutor IA — Aymara';
