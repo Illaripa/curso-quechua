@@ -65,28 +65,36 @@ async function testAPI(){
     let r,data;
 
     if(provider==='anthropic'){
-      r=await fetch('https://api.anthropic.com/v1/messages',{
-        method:'POST',
-        headers:{
-          'Content-Type':'application/json',
-          'x-api-key':key,
-          'anthropic-version':'2023-06-01',
-          'anthropic-dangerous-direct-browser-access':'true'
-        },
-        body:JSON.stringify({
-          model:'claude-3-haiku-20240307',
-          max_tokens:100,
-          messages:[{role:'user',content:'Di "Allinllachu! La conexion funciona perfectamente." y nada mas.'}]
-        })
-      });
-      data=await r.json();
-
-      if(r.ok){
-        const text=data.content?.[0]?.text||'(sin texto)';
-        res.textContent='EXITO en '+(Date.now()-start)+'ms\n\nRespuesta: '+text+'\n\nModelo: '+data.model+'\nTokens usados: '+(data.usage?.input_tokens||0)+' entrada, '+(data.usage?.output_tokens||0)+' salida';
-        res.className='ok';
-      }else{
-        res.textContent='ERROR '+r.status+'\n\n'+JSON.stringify(data,null,2);
+      var models=['claude-haiku-4-5-20251001','claude-3-5-haiku-20241022','claude-3-haiku-20240307','claude-3-5-sonnet-20241022','claude-sonnet-4-20250514'];
+      var found=false;
+      for(var m=0;m<models.length;m++){
+        res.textContent='Probando modelo '+(m+1)+'/'+models.length+': '+models[m]+'...';
+        r=await fetch('https://api.anthropic.com/v1/messages',{
+          method:'POST',
+          headers:{
+            'Content-Type':'application/json',
+            'x-api-key':key,
+            'anthropic-version':'2023-06-01',
+            'anthropic-dangerous-direct-browser-access':'true'
+          },
+          body:JSON.stringify({
+            model:models[m],
+            max_tokens:100,
+            messages:[{role:'user',content:'Di "Allinllachu! La conexion funciona perfectamente." y nada mas.'}]
+          })
+        });
+        data=await r.json();
+        if(r.ok){
+          var text=data.content?.[0]?.text||'(sin texto)';
+          localStorage.setItem('yachay_working_model',models[m]);
+          res.textContent='EXITO en '+(Date.now()-start)+'ms\n\nRespuesta: '+text+'\n\nModelo que funciona: '+models[m]+'\nTokens usados: '+(data.usage?.input_tokens||0)+' entrada, '+(data.usage?.output_tokens||0)+' salida';
+          res.className='ok';
+          found=true;
+          break;
+        }
+      }
+      if(!found){
+        res.textContent='NINGUN MODELO FUNCIONA con tu key.\n\nUltimo error ('+models[models.length-1]+'):\n'+JSON.stringify(data,null,2)+'\n\nVerifica tu cuenta en console.anthropic.com';
         res.className='err';
       }
     }else{
