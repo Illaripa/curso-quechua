@@ -412,7 +412,7 @@ html,body{width:100%;min-height:100%;background:var(--bg);color:var(--txt);font-
   </div>
   <div class="tut-body">
     <div class="tut-main">
-      <div class="apik-banner" id="apikBanner"><div class="apik-title">&#x1F511; API Key de Anthropic necesaria</div><div class="apik-desc">Para usar el Tutor IA necesitas una API key de Anthropic (claude.ai/settings). Se guarda solo en tu navegador.</div><div class="apik-row"><input class="apik-inp" id="apikInp" type="password" placeholder="sk-ant-..." /><button class="apik-btn" onclick="saveApiKey()">Guardar</button></div><div class="apik-saved" id="apikSaved">&#x2713; API key guardada</div></div>
+      <div class="apik-banner" id="apikBanner"><div class="apik-title">&#x1F511; Configurar Tutor IA</div><div class="apik-desc">Elige proveedor. <b>OpenRouter</b> es GRATIS (openrouter.ai &rarr; Get API Key). Anthropic requiere saldo (console.anthropic.com). La key se guarda en tu navegador.</div><div class="apik-row" style="margin-bottom:8px"><select class="apik-inp" id="apikProvider" style="flex:0 0 auto;width:auto;padding-right:8px" onchange="updateApikPlaceholder()"><option value="openrouter">OpenRouter (gratis)</option><option value="anthropic">Anthropic</option></select></div><div class="apik-row"><input class="apik-inp" id="apikInp" type="password" placeholder="sk-or-v1-..." /><button class="apik-btn" onclick="saveApiKey()">Guardar</button></div><div class="apik-saved" id="apikSaved">&#x2713; Configuracion guardada</div></div>
 <div class="cmsgs" id="cmsgs"></div>
       <div class="csug" id="csugs"></div>
       <div class="cia">
@@ -1374,10 +1374,16 @@ function renderGoals(){
 function toggleGoal(i){const cb=document.getElementById('g'+i);const label=cb.nextElementSibling;label.style.textDecoration=cb.checked?'line-through':'none';label.style.opacity=cb.checked?'0.5':'1';}
 function addGoal(){const g=prompt('Agregar objetivo:');if(g&&g.trim()){tutGoals.push(g.trim());renderGoals();}}
 function getApiKey(){return localStorage.getItem("yachay_apikey")||"";}
+function updateApikPlaceholder(){
+  var pv=document.getElementById("apikProvider").value;
+  document.getElementById("apikInp").placeholder=pv==="anthropic"?"sk-ant-...":"sk-or-v1-...";
+}
 function saveApiKey(){
   var k=document.getElementById("apikInp").value.trim();
   if(!k)return;
+  var pv=document.getElementById("apikProvider")?.value||"openrouter";
   localStorage.setItem("yachay_apikey",k);
+  localStorage.setItem("yachay_provider",pv);
   var saved=document.getElementById("apikSaved");
   saved.classList.add("show");
   setTimeout(function(){
@@ -1424,17 +1430,22 @@ async function sendMsg(){
   d.appendChild(td);d.scrollTop=d.scrollHeight;
   try{
     if(!getApiKey()){document.getElementById('typing')?.remove();var bk=document.getElementById('apikBanner');if(bk)bk.classList.add('show');addMsg('a','Necesitas ingresar tu API key de Anthropic (arriba).');document.getElementById('sbtn').disabled=false;return;}
-    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':getApiKey(),'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-3-5-sonnet-20241022',max_tokens:800,system:CHAT_SYS[chatLang],messages:chatHistory})});
-    const data=await r.json();
-    if(!r.ok){
-      document.getElementById('typing')?.remove();
-      var errMsg=data.error?.message||'Error '+r.status;
-      if(r.status===401){var bk=document.getElementById('apikBanner');if(bk)bk.classList.add('show');addMsg('a','API key invalida. Por favor ingresa una key valida arriba.');}
-      else{addMsg('a','Error de la API: '+errMsg);}
-      document.getElementById('sbtn').disabled=false;
-      return;
+    var provider=localStorage.getItem('yachay_provider')||'openrouter';
+    var apiKey2=getApiKey();
+    var r2,data2;
+    if(provider==='anthropic'){
+      r2=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':apiKey2,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-3-5-sonnet-20241022',max_tokens:800,system:CHAT_SYS[chatLang],messages:chatHistory})});
+      data2=await r2.json();
+      if(!r2.ok){document.getElementById('typing')?.remove();if(r2.status===401){var bk=document.getElementById('apikBanner');if(bk)bk.classList.add('show');addMsg('a','API key invalida. Ingresa una key valida arriba.');}else{addMsg('a','Error API: '+(data2.error?.message||r2.status));}document.getElementById('sbtn').disabled=false;return;}
+      data2={content:[{text:data2.content?.[0]?.text||''}]};
+    } else {
+      var orMsgs=[{role:'user',content:'[Sistema: '+CHAT_SYS[chatLang].slice(0,300)+']'}].concat(chatHistory.slice(-6));
+      r2=await fetch('https://openrouter.ai/api/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+apiKey2,'HTTP-Referer':'https://illaripa.github.io/curso-quechua/','X-Title':'Yachay Tutor'},body:JSON.stringify({model:'meta-llama/llama-3.2-3b-instruct:free',max_tokens:800,messages:orMsgs})});
+      data2=await r2.json();
+      if(!r2.ok){document.getElementById('typing')?.remove();if(r2.status===401){var bk=document.getElementById('apikBanner');if(bk)bk.classList.add('show');addMsg('a','API key invalida. Registrate gratis en openrouter.ai');}else{addMsg('a','Error OpenRouter: '+(data2.error?.message||r2.status));}document.getElementById('sbtn').disabled=false;return;}
+      data2={content:[{text:data2.choices?.[0]?.message?.content||''}]};
     }
-    const fullReply=data.content?.[0]?.text||'';
+    const fullReply=data2.content[0].text||'';
     if(!fullReply){document.getElementById('typing')?.remove();addMsg('a','Sin respuesta de la API.');document.getElementById('sbtn').disabled=false;return;}
     const cleanReply=fullReply.replace(/FEEDBACK:[\s\S]*$/,'').replace(/NIVEL:\s*[A-B][12][\s\S]*$/,'').replace(/OBJETIVO:[\s\S]*$/,'').trim();
     chatHistory.push({role:'assistant',content:fullReply});
