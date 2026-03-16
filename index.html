@@ -1442,9 +1442,14 @@ async function sendMsg(){
       data2={content:[{text:data2.content?.[0]?.text||''}]};
     } else {
       var orMsgs=[{role:'user',content:'[Sistema: '+CHAT_SYS[chatLang].slice(0,300)+']'}].concat(chatHistory.slice(-6));
-      r2=await fetch('https://openrouter.ai/api/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+apiKey2,'HTTP-Referer':'https://illaripa.github.io/curso-quechua/','X-Title':'Yachay Tutor'},body:JSON.stringify({model:'mistralai/mistral-small-3.1-24b-instruct:free',max_tokens:800,messages:orMsgs})});
-      data2=await r2.json();
-      if(!r2.ok){document.getElementById('typing')?.remove();if(r2.status===401){var bk=document.getElementById('apikBanner');if(bk)bk.classList.add('show');addMsg('a','API key invalida. Registrate gratis en openrouter.ai');}else{addMsg('a','Error OpenRouter: '+(data2.error?.message||r2.status));}document.getElementById('sbtn').disabled=false;return;}
+      var orModels=['mistralai/mistral-small-3.1-24b-instruct:free','google/gemma-3n-e4b-it:free','qwen/qwen3-4b:free','nvidia/nemotron-nano-9b-v2:free','openai/gpt-oss-20b:free'];
+      var orOk=false;
+      for(var oi=0;oi<orModels.length;oi++){
+        r2=await fetch('https://openrouter.ai/api/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+apiKey2,'HTTP-Referer':'https://illaripa.github.io/curso-quechua/','X-Title':'Yachay Tutor'},body:JSON.stringify({model:orModels[oi],max_tokens:800,messages:orMsgs})});
+        data2=await r2.json();
+        if(r2.ok&&data2.choices?.[0]?.message?.content){orOk=true;break;}
+      }
+      if(!orOk){document.getElementById('typing')?.remove();if(r2.status===401){var bk=document.getElementById('apikBanner');if(bk)bk.classList.add('show');addMsg('a','API key invalida. Registrate gratis en openrouter.ai');}else{addMsg('a','Todos los modelos free estan ocupados. Intenta de nuevo en unos segundos.');}document.getElementById('sbtn').disabled=false;return;}
       data2={content:[{text:data2.choices?.[0]?.message?.content||''}]};
     }
     const fullReply=data2.content[0].text||'';

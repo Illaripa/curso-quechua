@@ -98,28 +98,36 @@ async function testAPI(){
         res.className='err';
       }
     }else{
-      r=await fetch('https://openrouter.ai/api/v1/chat/completions',{
-        method:'POST',
-        headers:{
-          'Content-Type':'application/json',
-          'Authorization':'Bearer '+key,
-          'HTTP-Referer':'https://illaripa.github.io/curso-quechua/',
-          'X-Title':'Yachay Tutor'
-        },
-        body:JSON.stringify({
-          model:'mistralai/mistral-small-3.1-24b-instruct:free',
-          max_tokens:100,
-          messages:[{role:'user',content:'Di "Kamisaraki! La conexion funciona perfectamente." y nada mas.'}]
-        })
-      });
-      data=await r.json();
-
-      if(r.ok){
-        const text=data.choices?.[0]?.message?.content||'(sin texto)';
-        res.textContent='EXITO en '+(Date.now()-start)+'ms\n\nRespuesta: '+text+'\n\nModelo: '+(data.model||'?');
-        res.className='ok';
-      }else{
-        res.textContent='ERROR '+r.status+'\n\n'+JSON.stringify(data,null,2);
+      var orModels=['mistralai/mistral-small-3.1-24b-instruct:free','google/gemma-3n-e4b-it:free','qwen/qwen3-4b:free','nvidia/nemotron-nano-9b-v2:free','openai/gpt-oss-20b:free','qwen/qwen3-coder:free'];
+      var orFound=false;
+      for(var om=0;om<orModels.length;om++){
+        res.textContent='Probando modelo '+(om+1)+'/'+orModels.length+': '+orModels[om]+'...';
+        r=await fetch('https://openrouter.ai/api/v1/chat/completions',{
+          method:'POST',
+          headers:{
+            'Content-Type':'application/json',
+            'Authorization':'Bearer '+key,
+            'HTTP-Referer':'https://illaripa.github.io/curso-quechua/',
+            'X-Title':'Yachay Tutor'
+          },
+          body:JSON.stringify({
+            model:orModels[om],
+            max_tokens:100,
+            messages:[{role:'user',content:'Di "Kamisaraki! La conexion funciona perfectamente." y nada mas.'}]
+          })
+        });
+        data=await r.json();
+        if(r.ok&&data.choices?.[0]?.message?.content){
+          var orText=data.choices[0].message.content;
+          localStorage.setItem('yachay_working_or_model',orModels[om]);
+          res.textContent='EXITO en '+(Date.now()-start)+'ms\n\nRespuesta: '+orText+'\n\nModelo que funciona: '+orModels[om];
+          res.className='ok';
+          orFound=true;
+          break;
+        }
+      }
+      if(!orFound){
+        res.textContent='NINGUN MODELO FREE FUNCIONA ahora.\n\nTodos estan rate-limited. Espera unos minutos y prueba de nuevo.\n\nUltimo error: '+JSON.stringify(data,null,2);
         res.className='err';
       }
     }
