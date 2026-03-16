@@ -1405,7 +1405,7 @@ function openChat(lang){
   document.getElementById('tmbChat').classList.add('on');
   document.getElementById('tmbLecc').classList.remove('on');
   renderGoals();
-  if(!getApiKey()){var b=document.getElementById("apikBanner");if(b){b.classList.add("show");var inp=document.getElementById("apikInp");if(inp)inp.value=getApiKey();}}
+  var b=document.getElementById("apikBanner");if(b){if(getApiKey()){b.classList.remove("show");}else{b.classList.add("show");var inp=document.getElementById("apikInp");if(inp)inp.value="";}}
   const greeting=lang==='q'
     ?'Allinllachu! Soy tu tutor de Quechua. Puedes escribirme en espanol o en Quechua. Te dare feedback gramatical en el panel lateral. Que quieres aprender hoy?'
     :'Kamisaraki! Soy tu tutor de Aymara. Puedes escribirme en espanol o en Aymara. Recibiras feedback gramatical en tiempo real. Que quieres aprender?';
