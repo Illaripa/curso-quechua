@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test API - Yachay</title>
+<style>
+  body{font-family:system-ui;max-width:600px;margin:40px auto;padding:20px;background:#1a1a2e;color:#eee}
+  h1{color:#e8a020}
+  select,input,button{padding:10px;margin:5px 0;border-radius:8px;border:1px solid #444;background:#2a2a3e;color:#eee;width:100%;box-sizing:border-box}
+  button{background:#e8a020;color:#000;font-weight:bold;cursor:pointer;border:none}
+  button:hover{background:#d4901a}
+  #result{margin-top:20px;padding:15px;border-radius:8px;background:#2a2a3e;white-space:pre-wrap;min-height:100px}
+  .ok{border:2px solid #4ade80}
+  .err{border:2px solid #f87171}
+  .loading{border:2px solid #e8a020;animation:pulse 1s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+</style>
+</head>
+<body>
+<h1>Test API - Yachay Tutor</h1>
+
+<label>Proveedor:</label>
+<select id="provider" onchange="updatePlaceholder()">
+  <option value="anthropic">Anthropic</option>
+  <option value="openrouter">OpenRouter (gratis)</option>
+</select>
+
+<label>API Key:</label>
+<input type="text" id="apikey" placeholder="sk-ant-...">
+
+<button onclick="testAPI()">Probar conexion</button>
+
+<div id="result">Pega tu API key y haz clic en "Probar conexion"</div>
+
+<script>
+function updatePlaceholder(){
+  document.getElementById('apikey').placeholder=document.getElementById('provider').value==='anthropic'?'sk-ant-...':'sk-or-v1-...';
+}
+
+async function testAPI(){
+  const provider=document.getElementById('provider').value;
+  const key=document.getElementById('apikey').value.trim();
+  const res=document.getElementById('result');
+
+  if(!key){res.textContent='Pega tu API key primero';res.className='err';return;}
+
+  res.textContent='Conectando a '+provider+'...';
+  res.className='loading';
+
+  const start=Date.now();
+
+  try{
+    let r,data;
+
+    if(provider==='anthropic'){
+      r=await fetch('https://api.anthropic.com/v1/messages',{
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json',
+          'x-api-key':key,
+          'anthropic-version':'2023-06-01',
+          'anthropic-dangerous-direct-browser-access':'true'
+        },
+        body:JSON.stringify({
+          model:'claude-3-5-haiku-20241022',
+          max_tokens:100,
+          messages:[{role:'user',content:'Di "Allinllachu! La conexion funciona perfectamente." y nada mas.'}]
+        })
+      });
+      data=await r.json();
+
+      if(r.ok){
+        const text=data.content?.[0]?.text||'(sin texto)';
+        res.textContent='EXITO en '+(Date.now()-start)+'ms\n\nRespuesta: '+text+'\n\nModelo: '+data.model+'\nTokens usados: '+(data.usage?.input_tokens||0)+' entrada, '+(data.usage?.output_tokens||0)+' salida';
+        res.className='ok';
+      }else{
+        res.textContent='ERROR '+r.status+'\n\n'+JSON.stringify(data,null,2);
+        res.className='err';
+      }
+    }else{
+      r=await fetch('https://openrouter.ai/api/v1/chat/completions',{
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json',
+          'Authorization':'Bearer '+key,
+          'HTTP-Referer':'https://illaripa.github.io/curso-quechua/',
+          'X-Title':'Yachay Tutor'
+        },
+        body:JSON.stringify({
+          model:'nvidia/nemotron-3-super-120b-a12b:free',
+          max_tokens:100,
+          messages:[{role:'user',content:'Di "Kamisaraki! La conexion funciona perfectamente." y nada mas.'}]
+        })
+      });
+      data=await r.json();
+
+      if(r.ok){
+        const text=data.choices?.[0]?.message?.content||'(sin texto)';
+        res.textContent='EXITO en '+(Date.now()-start)+'ms\n\nRespuesta: '+text+'\n\nModelo: '+(data.model||'?');
+        res.className='ok';
+      }else{
+        res.textContent='ERROR '+r.status+'\n\n'+JSON.stringify(data,null,2);
+        res.className='err';
+      }
+    }
+  }catch(e){
+    res.textContent='ERROR DE RED en '+(Date.now()-start)+'ms\n\n'+e.message;
+    res.className='err';
+  }
+}
+</script>
+</body>
+</html>
