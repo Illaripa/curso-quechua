@@ -34,6 +34,15 @@
 <div id="result">Pega tu API key y haz clic en "Probar conexion"</div>
 
 <script>
+// Load saved key on page load
+window.addEventListener('DOMContentLoaded',function(){
+  var saved=localStorage.getItem('yachay_api_key')||'';
+  var prov=localStorage.getItem('yachay_provider')||'anthropic';
+  if(saved) document.getElementById('apikey').value=saved;
+  document.getElementById('provider').value=prov;
+  updatePlaceholder();
+});
+
 function updatePlaceholder(){
   document.getElementById('apikey').placeholder=document.getElementById('provider').value==='anthropic'?'sk-ant-...':'sk-or-v1-...';
 }
@@ -41,6 +50,8 @@ function updatePlaceholder(){
 async function testAPI(){
   const provider=document.getElementById('provider').value;
   const key=document.getElementById('apikey').value.trim();
+  // Save to localStorage
+  if(key){localStorage.setItem('yachay_api_key',key);localStorage.setItem('yachay_provider',provider);}
   const res=document.getElementById('result');
 
   if(!key){res.textContent='Pega tu API key primero';res.className='err';return;}
