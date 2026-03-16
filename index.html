@@ -282,6 +282,7 @@ html,body{width:100%;min-height:100%;background:var(--bg);color:var(--txt);font-
   .mn-t{font-size:15px}
   .cft{font-size:23px}
 }
+.apik-banner{background:rgba(255,200,0,0.08);border:1px solid rgba(255,200,0,0.3);border-radius:12px;padding:16px 18px;margin:12px 0;display:none;}.apik-banner.show{display:block;}.apik-title{font-size:13px;font-weight:700;color:var(--gold);margin-bottom:8px;letter-spacing:.5px;}.apik-desc{font-size:12px;color:var(--muted);margin-bottom:10px;line-height:1.5;}.apik-row{display:flex;gap:8px;align-items:center;}.apik-inp{flex:1;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:8px 12px;font-size:13px;color:var(--txt);font-family:inherit;}.apik-inp:focus{outline:none;border-color:var(--gold);}.apik-btn{background:var(--gold);color:#000;border:none;border-radius:8px;padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;}.apik-saved{font-size:11px;color:#4caf50;margin-top:6px;display:none;}.apik-saved.show{display:block;}
 </style>
 </head>
 <body>
@@ -411,7 +412,8 @@ html,body{width:100%;min-height:100%;background:var(--bg);color:var(--txt);font-
   </div>
   <div class="tut-body">
     <div class="tut-main">
-      <div class="cmsgs" id="cmsgs"></div>
+      <div class="apik-banner" id="apikBanner"><div class="apik-title">&#x1F511; API Key de Anthropic necesaria</div><div class="apik-desc">Para usar el Tutor IA necesitas una API key de Anthropic (claude.ai/settings). Se guarda solo en tu navegador.</div><div class="apik-row"><input class="apik-inp" id="apikInp" type="password" placeholder="sk-ant-..." /><button class="apik-btn" onclick="saveApiKey()">Guardar</button></div><div class="apik-saved" id="apikSaved">&#x2713; API key guardada</div></div>
+<div class="cmsgs" id="cmsgs"></div>
       <div class="csug" id="csugs"></div>
       <div class="cia">
         <textarea class="cinp" id="cinp" placeholder="Escribe en espanol o en la lengua..." rows="1" onkeydown="chatKey(event)" oninput="autoR(this)"></textarea>
@@ -1371,6 +1373,17 @@ function renderGoals(){
 }
 function toggleGoal(i){const cb=document.getElementById('g'+i);const label=cb.nextElementSibling;label.style.textDecoration=cb.checked?'line-through':'none';label.style.opacity=cb.checked?'0.5':'1';}
 function addGoal(){const g=prompt('Agregar objetivo:');if(g&&g.trim()){tutGoals.push(g.trim());renderGoals();}}
+function getApiKey(){return localStorage.getItem("yachay_apikey")||"";}
+function saveApiKey(){
+  var k=document.getElementById("apikInp").value.trim();
+  if(!k)return;
+  localStorage.setItem("yachay_apikey",k);
+  var saved=document.getElementById("apikSaved");
+  saved.classList.add("show");
+  setTimeout(function(){
+    document.getElementById("apikBanner").classList.remove("show");
+  },1500);
+}
 function addMsg(role,text){
   const d=document.getElementById('cmsgs');
   const div=document.createElement('div');
@@ -1392,6 +1405,7 @@ function openChat(lang){
   document.getElementById('tmbChat').classList.add('on');
   document.getElementById('tmbLecc').classList.remove('on');
   renderGoals();
+  if(!getApiKey()){var b=document.getElementById("apikBanner");if(b){b.classList.add("show");var inp=document.getElementById("apikInp");if(inp)inp.value=getApiKey();}}
   const greeting=lang==='q'
     ?'Allinllachu! Soy tu tutor de Quechua. Puedes escribirme en espanol o en Quechua. Te dare feedback gramatical en el panel lateral. Que quieres aprender hoy?'
     :'Kamisaraki! Soy tu tutor de Aymara. Puedes escribirme en espanol o en Aymara. Recibiras feedback gramatical en tiempo real. Que quieres aprender?';
@@ -1409,7 +1423,7 @@ async function sendMsg(){
   td.innerHTML='<div class="bbl"><span class="tdot"></span><span class="tdot"></span><span class="tdot"></span></div>';
   d.appendChild(td);d.scrollTop=d.scrollHeight;
   try{
-    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':'','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:800,system:CHAT_SYS[chatLang],messages:chatHistory})});
+    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':getApiKey(),'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:800,system:CHAT_SYS[chatLang],messages:chatHistory})});
     const data=await r.json();
     const fullReply=data.content?.[0]?.text||'Error de conexion.';
     const cleanReply=fullReply.replace(/FEEDBACK:[\s\S]*$/,'').replace(/NIVEL:\s*[A-B][12][\s\S]*$/,'').replace(/OBJETIVO:[\s\S]*$/,'').trim();
