@@ -877,9 +877,9 @@ button {
 .card-wrap {
   position: relative;
   width: 100%;
-  max-width: 300px;
-  height: 75%;
-  max-height: 400px;
+  max-width: 330px;
+  height: 80%;
+  max-height: 450px;
 }
 
 .ghost-card {
@@ -940,9 +940,6 @@ button {
   text-align: center;
   box-shadow: 0 8px 32px rgba(0,0,0,.2);
 }
-.card-front .card-verb { color: #e8c870 !important; }
-.card-front .card-meaning { color: #c8b898 !important; }
-.card-front .card-tap-hint { color: #8a7a68 !important; }
 
 .card-category-pos {
   position: absolute;
@@ -963,19 +960,16 @@ button {
 
 .card-verb {
   font-family: "Lora", serif;
-  font-size: 38px;
+  font-size: 36px;
   font-weight: 700;
   line-height: 1.1;
-  margin-bottom: 8px;
-  background: linear-gradient(135deg, #f0a500, #ffd166);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  margin-bottom: 10px;
+  color: #e8c870;
 }
 
 .card-meaning {
-  font-size: 16px;
-  color: var(--muted);
+  font-size: 18px;
+  color: #c8b898;
   font-style: italic;
   font-family: "Lora", serif;
   margin-bottom: 18px;
@@ -984,8 +978,8 @@ button {
 .card-tap-hint {
   position: absolute;
   bottom: 15px;
-  font-size: 11px;
-  color: var(--muted);
+  font-size: 12px;
+  color: #8a7a68;
 }
 
 .card-back {
@@ -1001,7 +995,7 @@ button {
 
 .card-back-verb {
   font-family: "Lora", serif;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   color: #7dca7d;
   text-align: center;
@@ -1009,7 +1003,7 @@ button {
 }
 
 .card-back-meaning {
-  font-size: 12px;
+  font-size: 15px;
   color: #a8b8a0;
   font-style: italic;
   text-align: center;
@@ -1031,7 +1025,7 @@ button {
 }
 
 .conj-cell-label {
-  font-size: 8px;
+  font-size: 10px;
   color: #8a9a82;
   font-weight: 700;
   letter-spacing: 0.5px;
@@ -1041,7 +1035,7 @@ button {
 
 .conj-cell-word {
   font-family: "Lora", serif;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
 }
 
@@ -3366,47 +3360,47 @@ function showToast(message, color) {
 
 function setupSwipe() {
   var fc = document.getElementById('flashcard');
-  fc.addEventListener('touchstart', function(e) {
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
-    isDragging = false;
+  var startX = 0, startY = 0, startTime = 0, dragging = false;
+
+  // Remove old listeners by cloning
+  var newFc = fc.cloneNode(true);
+  newFc.onclick = function() { flipCard(); };
+  fc.parentNode.replaceChild(newFc, fc);
+
+  newFc.addEventListener('touchstart', function(e) {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    startTime = Date.now();
+    dragging = false;
   }, {passive: true});
 
-  fc.addEventListener('touchmove', function(e) {
-    var dx = e.touches[0].clientX - touchStartX;
-    var dy = e.touches[0].clientY - touchStartY;
-    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 10) {
-      isDragging = true;
-      var flipped = cardFlipped ? 'rotateY(180deg) ' : '';
-      fc.style.transform = flipped + 'translateX(' + dx + 'px) rotate(' + (dx * 0.04) + 'deg)';
-      document.getElementById('swipeRight').style.opacity = dx > 40 ? '1' : '0';
-      document.getElementById('swipeLeft').style.opacity = dx < -40 ? '1' : '0';
+  newFc.addEventListener('touchmove', function(e) {
+    var dx = e.touches[0].clientX - startX;
+    var dy = e.touches[0].clientY - startY;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 15) {
+      dragging = true;
+      var flip = cardFlipped ? 'rotateY(180deg) ' : '';
+      newFc.style.transform = flip + 'translateX(' + dx + 'px) rotate(' + (dx * 0.03) + 'deg)';
+      document.getElementById('swipeRight').style.opacity = dx > 50 ? '1' : '0';
+      document.getElementById('swipeLeft').style.opacity = dx < -50 ? '1' : '0';
     }
   }, {passive: true});
 
-  var swipeStartTime;
-  fc.removeEventListener('touchstart', fc._tsHandler);
-  fc._tsHandler = function(e) {
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
-    swipeStartTime = Date.now();
-    isDragging = false;
-  };
-  fc.addEventListener('touchstart', fc._tsHandler, {passive: true});
+  newFc.addEventListener('touchend', function(e) {
+    var dx = e.changedTouches[0].clientX - startX;
+    newFc.style.transform = cardFlipped ? 'rotateY(180deg)' : '';
+    document.getElementById('swipeRight').style.opacity = '0';
+    document.getElementById('swipeLeft').style.opacity = '0';
 
-  fc.addEventListener('touchend', function(e) {
-    var dx = e.changedTouches[0].clientX - touchStartX;
-    var elapsed = Date.now() - swipeStartTime;
-    fc.style.transform = cardFlipped ? 'rotateY(180deg)' : '';
-    document.getElementById('swipeRight').style.opacity = 0;
-    document.getElementById('swipeLeft').style.opacity = 0;
-    if (isDragging && Math.abs(dx) > 60) {
+    if (dragging && Math.abs(dx) > 60) {
+      // SWIPE: change card
       if (dx > 60) learnCard();
       else skipCard();
-    } else if (!isDragging && elapsed < 300) {
+    } else if (!dragging && (Date.now() - startTime) < 400) {
+      // TAP: flip card
       flipCard();
     }
-    isDragging = false;
+    dragging = false;
   });
 }
 
