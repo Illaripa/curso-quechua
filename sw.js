@@ -1,4 +1,4 @@
-var CACHE_NAME = 'yachay-v1';
+var CACHE_NAME = 'yachay-v2';
 var urlsToCache = [
   './',
   './index.html',
@@ -38,6 +38,7 @@ var urlsToCache = [
 ];
 
 self.addEventListener('install', function(event) {
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME).then(function(cache) {
       return cache.addAll(urlsToCache);
@@ -46,11 +47,27 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
-  event.respondWith(
-    caches.match(event.request).then(function(response) {
-      return response || fetch(event.request);
-    })
-  );
+  // Network first for JS/CSS, cache first for data/icons
+  var url = event.request.url;
+  if (url.includes('/js/') || url.includes('/css/') || url.endsWith('.html') || url.endsWith('sw.js')) {
+    // Network first: try fresh, fallback to cache
+    event.respondWith(
+      fetch(event.request).then(function(response) {
+        var clone = response.clone();
+        caches.open(CACHE_NAME).then(function(cache) { cache.put(event.request, clone); });
+        return response;
+      }).catch(function() {
+        return caches.match(event.request);
+      })
+    );
+  } else {
+    // Cache first for heavy data files
+    event.respondWith(
+      caches.match(event.request).then(function(response) {
+        return response || fetch(event.request);
+      })
+    );
+  }
 });
 
 self.addEventListener('activate', function(event) {
@@ -63,6 +80,8 @@ self.addEventListener('activate', function(event) {
           return caches.delete(name);
         })
       );
+    }).then(function() {
+      return self.clients.claim();
     })
   );
 });

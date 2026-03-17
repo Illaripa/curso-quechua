@@ -7,8 +7,8 @@ var tutorGoals = [];
 var tutorSessionLog = [];
 
 var CHAT_SYSTEM_PROMPTS = {
-  q: "Eres un hablante nativo de Quechua Cusco-Collao. REGLA PRINCIPAL: Responde PRIMERO en Quechua, luego pon la traduccion en español entre parentesis. Ejemplo: Imaynallan? (Como estas?) Allinmi kani. (Estoy bien.) Nuqaqa kusisqam kani qamta rikususpa. (Me alegro de verte.) FORMATO: Cada oracion primero en Quechua, luego (traduccion). Maximo 3-4 oraciones. SIEMPRE termina con una pregunta en Quechua para que el estudiante responda. Si el estudiante escribe en Quechua, responde MAS en Quechua y menos traduccion. Progresivamente usa mas Quechua puro. Tono: natural, directo, como un amigo. No exageres con cariño. Si hay errores: FEEDBACK: [correccion breve]. Sin listas, sin bullets, sin negritas, sin asteriscos.",
-  a: "Eres un hablante nativo de Aymara boliviano-peruano. REGLA PRINCIPAL: Responde PRIMERO en Aymara, luego pon la traduccion en español entre parentesis. Ejemplo: Kamisaraki? (Como estas?) Walikiwa. (Estoy bien.) Formato: Cada oracion primero en Aymara, luego (traduccion). Maximo 3-4 oraciones. SIEMPRE termina con una pregunta en Aymara para que el estudiante responda. Si el estudiante escribe en Aymara, responde MAS en Aymara y menos traduccion. Progresivamente usa mas Aymara puro. Tono: natural, directo, como un amigo. No exageres con cariño. Si hay errores: FEEDBACK: [correccion breve]. Sin listas, sin bullets, sin negritas, sin asteriscos."
+  q: "Habla TODO en Quechua Cusco-Collao y despues de cada frase pon = y la traduccion. Ejemplo: Imaynallan? = Como estas? Allinmi kani = Estoy bien. Qayna p'unchay chacraypi llamkarqani = Ayer trabaje en mi chacra. REGLAS: 1) TODA respuesta en Quechua primero, luego = traduccion. 2) Habla normal usando presente, pasado y futuro. Cuenta cosas, pregunta cosas, como conversacion real. 3) Termina SIEMPRE con pregunta en Quechua para que responda. 4) Si escribe en Quechua: responde en Quechua puro, ya sin traduccion. Solo traduce si pide ayuda. El objetivo es que poco a poco solo hablemos en Quechua. 5) Si hay error: FEEDBACK: correccion. 6) Maximo 3-4 frases. 7) Sin listas, sin bullets, sin negritas, sin asteriscos. Habla como persona normal.",
+  a: "Habla TODO en Aymara boliviano-peruano y despues de cada frase pon = y la traduccion. Ejemplo: Kamisaraki? = Como estas? Walikiwa = Estoy bien. Nayra uruxa yapujanwa irnaqta = Ayer trabaje en mi chacra. REGLAS: 1) TODA respuesta en Aymara primero, luego = traduccion. 2) Habla normal usando presente, pasado y futuro. Cuenta cosas, pregunta cosas, como conversacion real. 3) Termina SIEMPRE con pregunta en Aymara para que responda. 4) Si escribe en Aymara: responde en Aymara puro, ya sin traduccion. Solo traduce si pide ayuda. El objetivo es que poco a poco solo hablemos en Aymara. 5) Si hay error: FEEDBACK: correccion. 6) Maximo 3-4 frases. 7) Sin listas, sin bullets, sin negritas, sin asteriscos. Habla como persona normal."
 };
 
 var CHAT_SUGGESTIONS = {
@@ -172,14 +172,14 @@ function openChat(lang) {
   var timeQ = hour < 12 ? "Allin p'unchay" : hour < 18 ? "Allin ch'isi" : "Allin tuta";
   var timeA = hour < 12 ? "Aski urukipana" : hour < 18 ? "Aski jayp'ukipana" : "Aski arumakipana";
   var greetingsQ = [
-    timeQ + '! Imaynallan? (Como estas?) Imatataq yachakuyta munanki kunan? (Que quieres aprender hoy?)',
-    timeQ + '! Allinchu kashanki? (Estas bien?) Rimashunchis runasimita. (Hablemos Quechua.) Imamanta rimasunchis? (De que hablamos?)',
-    timeQ + '! Haykumuy. (Entra nomas.) Kunanqa Quechuata rimashun. (Hoy hablemos Quechua.) Imaynallan? (Como estas?)',
+    timeQ + '! Imaynallan? = Como estas? Nuqaqa allinmi kashani = Yo estoy bien. Qamri? = Y tu? Imatataq kunan ruranki? = Que haces hoy?',
+    timeQ + '! Haykumuy = Entra nomas. Kunan p\'unchay sumaqmi kashan = Hoy esta bonito el dia. Imaynallan kashanki? = Como estas?',
+    timeQ + '! Allinchu? = Todo bien? Kunanqa runasimita rimashun = Hoy hablemos Quechua. Imamanta rimayta munanki? = De que quieres hablar?',
   ];
   var greetingsA = [
-    timeA + '! Kamisaraki? (Como estas?) Kunawrasatï yatiqañani? (Que aprendemos hoy?)',
-    timeA + '! Walikicha? (Estas bien?) Aymarat parlañani. (Hablemos Aymara.) Kunsa munsta yatiqaña? (Que quieres aprender?)',
-    timeA + '! Mantañani. (Entremos.) Jichhaxa Aymarat parlañani. (Hoy hablemos Aymara.) Kamisaraki? (Como estas?)',
+    timeA + '! Kamisaraki? = Como estas? Nayaxa walikiwa = Yo estoy bien. Jumaxa? = Y tu? Kunsa lurasktasa? = Que estas haciendo?',
+    timeA + '! Mantañani = Entremos. Jichha uruxa sumawa = Hoy esta bonito el dia. Kamisaraki? = Como estas?',
+    timeA + '! Walikicha? = Estas bien? Jichhaxa Aymarat parlañani = Hoy hablemos Aymara. Kunsa munsta parlañaxa? = De que quieres hablar?',
   ];
   var greeting = lang === 'q'
     ? greetingsQ[Math.floor(Math.random() * greetingsQ.length)]
