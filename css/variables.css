@@ -1,0 +1,21 @@
+:root {
+  --bg: #f5f0e8;
+  --card: #ffffff;
+  --card2: #faf7f2;
+  --bdr: #e2d9c8;
+  --txt: #2c1810;
+  --muted: #7a6b5d;
+  --gold: #c47d1a;
+  --teal: #1a8a7a;
+  --rose: #c44b5c;
+  --violet: #6a5acd;
+  --amber: #b8860b;
+  --green: #2d8659;
+  --q-color: #4a2c0a;
+  --ay-color: #0a3a2c;
+  --radius-sm: 9px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --touch-min: 44px;
+  --transition: 0.3s ease;
+}

@@ -1,0 +1,542 @@
+/* ============================================================
+   FLASHCARDS
+   ============================================================ */
+.cards-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 15px;
+  border-bottom: 1px solid var(--bdr);
+  background: var(--bg);
+  flex-shrink: 0;
+}
+
+.cards-count {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gold);
+  background: rgba(232, 160, 32, 0.1);
+  border: 1px solid rgba(232, 160, 32, 0.25);
+  padding: 4px 11px;
+  border-radius: 20px;
+}
+
+.filter-btn {
+  background: var(--bdr);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 7px 11px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--txt);
+  cursor: pointer;
+  min-height: var(--touch-min);
+}
+
+.card-stage {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  perspective: 1200px;
+  position: relative;
+  padding: 6px 10px 4px;
+}
+
+.card-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 350px;
+  height: 95%;
+  max-height: 580px;
+}
+
+.ghost-card {
+  position: absolute;
+  border-radius: var(--radius-lg);
+  background: #3a2e20;
+  pointer-events: none;
+}
+
+.ghost-card--2 {
+  width: calc(100% - 18px);
+  left: 9px;
+  height: calc(100% - 14px);
+  top: 9px;
+  opacity: 0.3;
+  transform: scale(0.95);
+}
+
+.ghost-card--1 {
+  width: calc(100% - 9px);
+  left: 4px;
+  height: calc(100% - 7px);
+  top: 5px;
+  opacity: 0.18;
+  transform: scale(0.97);
+}
+
+.flashcard {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s;
+  user-select: none;
+}
+.flashcard.slide-out {
+  transition: transform 0.3s ease-in, opacity 0.3s;
+  opacity: 0;
+}
+.flashcard.slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: scale(0.9) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.flashcard.flipped {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.card-front {
+  background: linear-gradient(145deg, #3a2e20, #2a1f14);
+  border: 1px solid #4a3d2e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 26px 20px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0,0,0,.2);
+}
+
+.card-category-pos {
+  position: absolute;
+  top: 16px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.card-cat-pill {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.card-verb {
+  font-family: "Lora", serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 10px;
+  color: #f0c840;
+}
+
+.card-meaning {
+  font-size: 24px;
+  color: #ffffff;
+  font-style: italic;
+  font-family: "Lora", serif;
+  margin-bottom: 18px;
+}
+
+.card-tap-hint {
+  position: absolute;
+  bottom: 15px;
+  font-size: 13px;
+  color: #b8a888;
+}
+
+.card-back {
+  background: linear-gradient(145deg, #2a3328, #1e2820);
+  border: 1px solid #3a4a38;
+  color: #d8e8d0;
+  transform: rotateY(180deg);
+  padding: 14px 14px 12px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.card-back-verb {
+  font-family: "Lora", serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #f0c840;
+  text-align: center;
+  margin-bottom: 2px;
+}
+
+.card-back-meaning {
+  font-size: 18px;
+  color: #ffffff;
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.conj-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 5px;
+  margin-bottom: 9px;
+}
+
+.conj-cell {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 7px 8px;
+}
+
+.conj-cell-label {
+  font-size: 10px;
+  color: #c0d0b8;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.conj-cell-word {
+  font-family: "Lora", serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #f0c840 !important;
+}
+
+.tense-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.tense-tab {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 7px;
+  padding: 5px 4px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #b0c0a8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.tense-tab.active {
+  background: rgba(240, 200, 64, 0.15);
+  border-color: rgba(240, 200, 64, 0.35);
+  color: var(--gold);
+}
+
+.card-examples-label {
+  font-size: 9px;
+  color: var(--muted);
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.card-example-item {
+  background: rgba(240, 165, 0, 0.06);
+  border: 1px solid rgba(240, 165, 0, 0.15);
+  border-radius: 7px;
+  padding: 7px 9px;
+  margin-bottom: 5px;
+}
+
+.card-example-quechua {
+  font-family: "Lora", serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #f0c840;
+  margin-bottom: 2px;
+}
+
+.card-example-spanish {
+  font-size: 12px;
+  color: #ffffff;
+  font-style: italic;
+}
+
+.card-example-suffix {
+  font-size: 10px;
+  color: #c0d0b8;
+  margin-top: 4px;
+  padding-top: 4px;
+  border-top: 1px solid rgba(240, 165, 0, 0.15);
+  letter-spacing: 0.01em;
+}
+
+.card-note {
+  background: rgba(129, 140, 248, 0.07);
+  border: 1px solid rgba(129, 140, 248, 0.15);
+  border-radius: 7px;
+  padding: 7px 9px;
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* Swipe indicators */
+.swipe-right, .swipe-left {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  font-weight: 700;
+  opacity: 0;
+  transition: opacity 0.15s;
+  pointer-events: none;
+  padding: 6px 11px;
+  border-radius: var(--radius-sm);
+}
+
+.swipe-right {
+  right: 8px;
+  background: rgba(34, 211, 165, 0.15);
+  color: var(--green);
+  border: 1px solid rgba(34, 211, 165, 0.3);
+}
+
+.swipe-left {
+  left: 8px;
+  background: rgba(251, 113, 133, 0.15);
+  color: var(--rose);
+  border: 1px solid rgba(251, 113, 133, 0.3);
+}
+
+/* Card actions */
+.card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 18px 12px;
+  flex-shrink: 0;
+  gap: 11px;
+}
+
+.action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+.action-btn:active {
+  transform: scale(0.9);
+}
+
+.action-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+  border: 2px solid;
+}
+
+.action-skip .action-icon {
+  background: rgba(196, 75, 92, 0.06);
+  border-color: rgba(251, 113, 133, 0.4);
+}
+
+.action-skip span {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--rose);
+}
+
+.action-learned .action-icon {
+  background: rgba(45, 134, 89, 0.06);
+  border-color: rgba(34, 211, 165, 0.4);
+}
+
+.action-learned span {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--green);
+}
+
+.action-flip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--gold);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  border: none;
+  cursor: pointer;
+  min-height: var(--touch-min);
+}
+
+.action-flip:active {
+  opacity: 0.85;
+}
+
+.action-flip span {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Empty deck state */
+.card-empty {
+  flex: 1;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 36px;
+  text-align: center;
+}
+
+.card-empty.active {
+  display: flex;
+}
+
+.card-empty-symbol {
+  font-size: 56px;
+  margin-bottom: 12px;
+}
+
+.card-empty-title {
+  font-family: "Lora", serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 7px;
+}
+
+.card-empty-text {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 22px;
+}
+
+.reset-btn {
+  padding: 13px 26px;
+  border-radius: 12px;
+  border: none;
+  background: var(--gold);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  min-height: var(--touch-min);
+}
+
+/* Filter panel */
+.filter-panel {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 80;
+  display: none;
+  align-items: flex-end;
+}
+
+.filter-panel.active {
+  display: flex;
+}
+
+.filter-sheet {
+  width: 100%;
+  background: #fff;
+  border-radius: 22px 22px 0 0;
+  padding: 18px 18px 36px;
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.1);
+}
+
+.filter-title {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.filter-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.filter-tag {
+  padding: 7px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--bdr);
+  background: transparent;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  min-height: var(--touch-min);
+}
+
+.filter-tag.active {
+  border-color: var(--gold);
+  background: rgba(232, 160, 32, 0.1);
+  color: var(--gold);
+}
+
+.filter-apply {
+  width: 100%;
+  padding: 13px;
+  border-radius: 11px;
+  border: none;
+  background: var(--gold);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  min-height: var(--touch-min);
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-12px);
+  padding: 8px 15px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  opacity: 0;
+  transition: all var(--transition);
+  z-index: 200;
+  white-space: nowrap;
+}
+
+.toast.active {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
