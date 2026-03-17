@@ -250,10 +250,13 @@ button {
 
 .morning-elements {
   display: flex;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
   gap: 10px;
   margin-bottom: 20px;
   animation: fadeUp 0.8s ease 0.7s both;
   overflow-x: auto;
+  overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   padding-bottom: 4px;
@@ -263,11 +266,13 @@ button {
 
 .morning-element {
   flex: 0 0 72px;
+  min-width: 72px;
   background: rgba(255, 255, 255, 0.6);
   border: 1px solid var(--bdr);
   border-radius: 14px;
   padding: 12px 6px 10px;
   text-align: center;
+  scroll-snap-align: start;
   scroll-snap-align: start;
 }
 
@@ -1911,8 +1916,8 @@ button {
   .morning-content { padding: 40px 16px 22px; }
   .home-header { padding: 28px 16px 18px; }
   .home-title { font-size: 24px; }
-  .morning-elements { flex-wrap: wrap; }
-  .morning-element { min-width: calc(50% - 4px); flex: none; }
+  .morning-elements { flex-wrap: nowrap; overflow-x: auto; }
+  .morning-element { min-width: 72px; flex: 0 0 72px; }
   .home-body { padding: 14px 12px 80px; }
   .menu-card { padding: 14px 12px; border-radius: 12px; margin-bottom: 9px; }
   .menu-icon { font-size: 26px; }
