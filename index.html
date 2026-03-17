@@ -3655,9 +3655,24 @@ function openChat(lang) {
     else { banner.classList.add('show'); }
   }
 
+  var hour = new Date().getHours();
+  var timeQ = hour < 12 ? "Allin p'unchay" : hour < 18 ? "Allin ch'isi" : "Allin tuta";
+  var timeA = hour < 12 ? "Aski urukipana" : hour < 18 ? "Aski jayp'ukipana" : "Aski arumakipana";
+  var greetingsQ = [
+    timeQ + ' hijito! Soy Yachaq, tu abuelo. Que gusto verte por aqui. Como estas hoy? Cuentame pues, de que quieres que hablemos?',
+    timeQ + ' wawita! Aqui estoy nomas, tomando mi matecito. Que alegria que vengas a conversar. Como te ha ido? Quieres que practiquemos algo?',
+    timeQ + ' hijito! Uy que bueno que llegas, justo estaba pensando en una palabra bonita en Quechua. Pero primero dime, como andas tu?',
+    timeQ + ' wawita! El inti esta bonito hoy. Sientate nomas, conversemos un rato. Que tal tu dia? Hay algo que quieras aprender hoy?'
+  ];
+  var greetingsA = [
+    timeA + ' wawita! Soy Yatiri, tu abuela. Que lindo que vengas a visitarme. Como estas hijita/o? Cuentame, de que quieres que hablemos hoy?',
+    timeA + ' wawita! Aqui estoy tejiendo mi aguayo mirando el quta. Que alegria verte. Como te sientes hoy? Quieres que te ensene algo?',
+    timeA + ' hijita/o! Justo estaba recordando algo bonito en Aymara. Pero primero dime, como estas tu? Como va tu dia?',
+    timeA + ' wawita! El inti brilla sobre el lago hoy. Ven sientate conmigo. Como andas? Hay algo que te gustaria practicar?'
+  ];
   var greeting = lang === 'q'
-    ? 'Allinllachu wawita! Soy Yachaq, tu abuelo quechua. Ven pues, vamos a hablar en runasimi. Dime que quieres aprender hijito/a, o simplemente saludame en Quechua a ver como te sale!'
-    : 'Kamisaraki wawita! Soy Yatiri, tu abuela aymara. Sientate nomas, vamos a conversar en aymara. Dime que te gustaria aprender, o saludame en Aymara a ver pues!';
+    ? greetingsQ[Math.floor(Math.random() * greetingsQ.length)]
+    : greetingsA[Math.floor(Math.random() * greetingsA.length)];
 
   addChatMessage('a', greeting);
   chatHistory.push({role: 'assistant', content: greeting});
