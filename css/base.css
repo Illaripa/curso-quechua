@@ -1,0 +1,100 @@
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--txt);
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ============================================================
+   SCREEN CONTAINERS
+   ============================================================ */
+.screen {
+  display: none;
+  min-height: 100vh;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+.screen.active {
+  display: flex;
+}
+
+.screen--full {
+  display: none;
+  height: 100vh;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.screen--full.active {
+  display: flex;
+}
+
+.screen--morning {
+  display: none;
+  min-height: 100vh;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.screen--morning.active {
+  display: flex;
+}
+
+/* ============================================================
+   LANGUAGE TABS
+   ============================================================ */
+.lang-tabs {
+  display: flex;
+  background: #ede6da;
+  border-bottom: 2px solid var(--bdr);
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+
+.lang-tab {
+  flex: 1;
+  padding: 13px 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  background: none;
+  color: var(--muted);
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  letter-spacing: 0.5px;
+  min-height: var(--touch-min);
+}
+
+.lang-tab.active {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+
+.lang-tab--aymara.active {
+  color: var(--teal);
+  border-bottom-color: var(--teal);
+}
+

@@ -1,0 +1,20 @@
+const QUIZ_A=[
+  {q:"\u00BFC\u00F3mo se dice 'caminar' en aymara?",o:["Iki\u00F1","Sara\u00F1","Manta\u00F1","Luras\u00ED\u00F1"],a:1,note:"Sara\u00F1 = caminar / ir en aymara"},
+  {q:"\u00BFQu\u00E9 significa 'Muna\u00F1a' en aymara?",o:["Trabajar","Querer / amar","Cocinar","Llorar"],a:1,note:"Muna\u00F1a = querer / amar"},
+  {q:"\u00BFC\u00F3mo se dice 'comer' en aymara?",o:["Uma\u00F1a","Manq'a\u00F1","Luqt'a\u00F1","Lura\u00F1a"],a:1,note:"Manq'a\u00F1 = comer en aymara"},
+  {q:"\u00BFQu\u00E9 significa 'Jaka\u00F1' en aymara?",o:["Morir","Dormir","Vivir","Caminar"],a:2,note:"Jaka\u00F1 = vivir (ra\u00EDz de jaka\u00F1a = hogar)"},
+  {q:"\u00BFC\u00F3mo se dice 'saber' en aymara?",o:["Amuya\u00F1a","Yati\u00F1a","U\u00F1ja\u00F1a","Ist'a\u00F1a"],a:1,note:"Yati\u00F1a = saber / conocer en aymara"},
+  {q:"\u00BFQu\u00E9 significa 'Jallu\u00F1a' en aymara?",o:["Brillar el sol","Ventear","Llover","Granizar"],a:2,note:"Jallu\u00F1a = llover (jallu = lluvia)"},
+  {q:"\u00BFC\u00F3mo se dice 'escuchar' en aymara?",o:["U\u00F1ja\u00F1a","Ist'a\u00F1a","Arusi\u00F1a","Jiskt'a\u00F1a"],a:1,note:"Ist'a\u00F1 = escuchar"},
+  {q:"\u00BFQu\u00E9 significa 'Yanapa\u00F1a' en aymara?",o:["Pedir","Ayudar","Vender","Olvidar"],a:1,note:"Yanapa\u00F1a = ayudar"},
+  {q:"\u00BFC\u00F3mo se dice 'preguntar' en aymara?",o:["Arusi\u00F1a","Kutt'aya\u00F1a","Jiskt'a\u00F1a","Sayt'a\u00F1a"],a:2,note:"Jiskt'a\u00F1 = preguntar"},
+  {q:"\u00BFQu\u00E9 significa 'Utja\u00F1a' en aymara?",o:["Morir","Existir / estar","Caminar","Crecer"],a:1,note:"Utja\u00F1a = existir, estar, haber - verbo fundamental"},
+  {q:"\u00BFC\u00F3mo se dice 'hablar' en aymara?",o:["Amuya\u00F1a","Yati\u00F1a","Arusi\u00F1a","Manta\u00F1"],a:2,note:"Arusi\u00F1a = hablar / conversar en aymara"},
+  {q:"\u00BFQu\u00E9 significa 'Jakisi\u00F1a' en aymara?",o:["Pelearse","Vivir juntos / compartir","Separarse","Ignorar"],a:1,note:"Jakisi\u00F1a = vivir juntos (principio comunitario)"},
+  {q:"\u00BFC\u00F3mo se dice 'ver / mirar' en aymara?",o:["Ist'a\u00F1a","Arusi\u00F1a","U\u00F1ja\u00F1a","Lura\u00F1a"],a:2,note:"U\u00F1ja\u00F1a = ver / mirar"},
+  {q:"\u00BFQu\u00E9 significa 'Yupaycha\u00F1a' en aymara?",o:["Insultar","Agradecer","Olvidar","Robar"],a:1,note:"Yupaycha\u00F1a = agradecer, honrar"},
+  {q:"\u00BFC\u00F3mo se dice 'llorar' en aymara?",o:["Qhanata\u00F1a","Waqa\u00F1a","Taqui\u00F1a","Khuya\u00F1a"],a:1,note:"Waqa\u00F1a = llorar en aymara"},
+  {q:"\u00BFQu\u00E9 significa 'Jiwa\u00F1' en aymara?",o:["Nacer","Dormir","Morir","Crecer"],a:2,note:"Jiwa\u00F1 = morir en aymara"},
+  {q:"\u00BFC\u00F3mo se dice 'dormir' en aymara?",o:["Sara\u00F1","Iki\u00F1","Jaka\u00F1","Manta\u00F1"],a:1,note:"Iki\u00F1 = dormir en aymara"},
+  {q:"\u00BFQu\u00E9 significa 'Khuya\u00F1a' en aymara?",o:["Trabajar","Amar / tener cari\u00F1o","Cocinar","Cantar"],a:1,note:"Khuya\u00F1a = amar, tener cari\u00F1o"}
+];

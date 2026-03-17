@@ -1,0 +1,42 @@
+/* ============================================================
+   MOBILE RESPONSIVE
+   ============================================================ */
+@media (max-width: 600px) {
+  .tutor-sidebar {
+    display: none;
+  }
+
+  .tutor-body {
+    height: calc(100vh - 50px);
+  }
+}
+
+@media (max-width: 480px) {
+  .morning-content { padding: 40px 16px 22px; }
+  .home-header { padding: 28px 16px 18px; }
+  .home-title { font-size: 24px; }
+  .morning-elements { flex-wrap: nowrap; overflow-x: auto; }
+  .morning-element { min-width: 72px; flex: 0 0 72px; }
+  .home-body { padding: 14px 12px 80px; }
+  .menu-card { padding: 14px 12px; border-radius: 12px; margin-bottom: 9px; }
+  .menu-icon { font-size: 26px; }
+  .menu-title { font-size: 16px; }
+  .menu-desc { font-size: 13px; }
+  .morning-btn { font-size: 16px; padding: 17px; }
+  .piece-title { font-size: 20px; }
+  .toggle-btn { font-size: 13px; padding: 10px 4px; }
+  .content-body { padding: 14px 12px 80px; }
+  .topbar { padding: 10px 12px; }
+  .ref-tab { font-size: 13px; padding: 13px 6px; }
+  .ref-search input { font-size: 16px; }
+  .chat-input { font-size: 16px; }
+  .send-btn { width: 44px; height: 44px; font-size: 18px; }
+  .quiz-sentence { font-size: 20px; }
+  .quiz-option { font-size: 15px; padding: 14px; }
+}
+
+@media (max-width: 360px) {
+  .home-title { font-size: 21px; }
+  .menu-title { font-size: 15px; }
+}
+</style>

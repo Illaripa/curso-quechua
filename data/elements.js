@@ -1,0 +1,91 @@
+var ELEMENTS = [
+  {id:'inti',sym:'\u25C9',q:'Inti',s:'Sol — Padre del universo',prayers:[
+    {q:"Inti Tayta, k'anchaywayku kay p'unchaypi. Muhuykikunawan sunqoykuta munakuywan hunt'achiy.",s:"Padre Sol, ilumínanos en este día. Que tus semillas llenen nuestro corazón de amor."},
+    {q:"Inti, qampa k'anchayniykiwan ñoqap ñawiyta kichay, cheqaq ñanta rikuchiway.",s:"Sol, con tu luz abre mis ojos, muéstrame el camino verdadero."},
+    {q:"Tayta Inti, ruphayniykiwan qawaykuway, kawsayta qoway, kallpata qoway.",s:"Padre Sol, con tu calor míranos, danos vida, danos fuerza."},
+    {q:"Inti Tayta, sapa p'unchay llaqsimuspa kawsayta musuqyachinki. Sulpayki k'anchayniykimanta.",s:"Padre Sol, cada día al salir renuevas la vida. Gracias por tu luz."},
+    {q:"Intip k'anchaynin sunqoypi tiyachun, tutayaqta q'onichispa.",s:"Que la luz del Sol habite en mi corazón, calentando la oscuridad."},
+  ]},
+  {id:'pachamama',sym:'\u25C7',q:'Pachamama',s:'Madre Tierra — Fuente de vida',prayers:[
+    {q:"Pachamama, sulpayki kawsaymanta, mikhuykunamanta, munakuyniykimanta. Qampi kawsani.",s:"Madre Tierra, gracias por la vida, por los alimentos, por tu amor. En ti vivo."},
+    {q:"Allpamama, makiykikunawan hapiykuway. Chakiykuna qampa sunqoykipi sayachun.",s:"Madre Tierra, sostenme con tus manos. Que mis pies se paren en tu corazón."},
+    {q:"Pachamama, hampiyniykiwan hampiway. Munayniyuqmi kanki, munakuyniyuqmi kanki.",s:"Pachamama, sáname con tu medicina. Tienes poder, tienes amor."},
+    {q:"Mama Allpa, qamman kutimusqayku. Samiyniykita mañakuyku, haywarikuyku sunqoykuwan.",s:"Madre Tierra, a ti volvemos. Pedimos tu bendición, te ofrendamos nuestro corazón."},
+    {q:"Pachamama, tukuy kawsaqkunap maman. Wiñaypaq munakuyniyuqmi kanki.",s:"Pachamama, madre de todos los seres vivos. Por siempre tienes amor."},
+  ]},
+  {id:'apu',sym:'\u25B2',q:'Apu',s:'Espíritu de las montañas',prayers:[
+    {q:"Apu, urqukunap kamachiqnin, kallpaykita qoway. Hampiyniykiwan hampiway, munakuyniykiwan qaway.",s:"Apu, señor de las montañas, dame tu fuerza. Sáname con tu medicina, mira con tu amor."},
+    {q:"Apukuna, patamanta qawamuwayku. Samiyniykichikta apamuwayku, ñanta rikuchiwayku.",s:"Apus, desde lo alto mírennos. Traigan su bendición, muéstrennos el camino."},
+    {q:"Apu, sinchim kanki, wiñaypaqmi kanki. Yachayniykita ñoqaman qoway.",s:"Apu, eres fuerte, eres eterno. Dame tu sabiduría."},
+    {q:"Hatun Apu, qampa sampayniykim sunqoyta tiyaykuchin. Sulpayki wiñay kayniykimanta.",s:"Gran Apu, tu aliento hace descansar mi corazón. Gracias por tu eternidad."},
+    {q:"Apukunam taytaykuna kanku. Paykunam qawanku, paykunam waqaychanku.",s:"Los Apus son nuestros padres. Ellos nos observan, ellos nos protegen."},
+  ]},
+  {id:'yaku',sym:'\u2248',q:'Yaku',s:'Agua — Sangre de la tierra',prayers:[
+    {q:"Yaku mama, puririsqaykiwan kawsayta apamunki. Llimphu sunqowan puririway.",s:"Madre Agua, con tu fluir traes vida. Hazme fluir con corazón puro."},
+    {q:"Yaku, mana saykuqmi kanki. Yachachiwayku mana saykuspa puriyta.",s:"Agua, eres incansable. Enséñanos a caminar sin cansarnos."},
+    {q:"Yaku, tukuy mapa kaykunata apapuway. Ch'uyayachiwayku sunqoykupi.",s:"Agua, llévate toda impureza. Purifícanos en nuestro corazón."},
+    {q:"Mama Qucha, hatun yakup mamitanmi kanki. Samiykita qoway, kawsaykita qoway.",s:"Madre Mar, eres madre de las grandes aguas. Dame tu bendición, dame tu vida."},
+    {q:"Yakuqa rimawan: kawsaytam qoyki, puririway ñoqa hina, tukuyman chayaykuspa.",s:"El agua me dice: te doy vida, fluye como yo, llegando a todos."},
+  ]},
+  {id:'wayra',sym:'\u224B',q:'Wayra',s:'Viento — Aliento del cosmos',prayers:[
+    {q:"Wayra, samayniykiwan samachiwayku. Hawa pachap rimayninta apamuwayku.",s:"Viento, con tu aliento hazme descansar. Tráeme el mensaje del mundo de arriba."},
+    {q:"Wayra tayta, phukurimuway. Mapa kallpata apapuway, musuq kawsayta qoway.",s:"Padre Viento, sóplame. Llévate la energía pesada, dame vida nueva."},
+    {q:"Wayra, qamqa rikunkim mana rikuchikuspa. Yachachiwayku munay kayninwan puriyta.",s:"Viento, tú ves sin mostrarte. Enséñanos a caminar con poder del amor."},
+    {q:"Wayrap takiynin uyarini. Apukunap rimayninta apamun, Pachamamap sampayninta apamun.",s:"Escucho el canto del viento. Trae las palabras de los Apus, trae el aliento de la Pachamama."},
+    {q:"Wayra, tukuy suyukunaman puriq, willakuyniykita uyarisaqmi.",s:"Viento, que caminas a todas las regiones, escucharé tu mensaje."},
+  ]},
+  {id:'nina',sym:'\u2737',q:'Nina',s:'Fuego — Transformación sagrada',prayers:[
+    {q:"Nina, tukuy mana allin kaqta ruphaykachiy. Musuq kallpawan kawsarichiwayku.",s:"Fuego, quema todo lo que no es bueno. Hazme vivir con fuerza nueva."},
+    {q:"Nina mama, k'anchayniykiwan ñanta rikuchiwayku. Tutayaqta chinkachiy.",s:"Madre Fuego, con tu luz muéstranos el camino. Haz desaparecer la oscuridad."},
+    {q:"Nina, sunqoypi kawsaq, wiñaypaq kachun ruphayniyki. Transformación sagrada.",s:"Fuego que vives en mi corazón, que tu calor sea eterno. Transformación sagrada."},
+    {q:"Hatun Nina, Inti Taytap wawan, ruphaykachiy tukuy manchakuykunata.",s:"Gran Fuego, hijo del Padre Sol, quema todos los miedos."},
+    {q:"Ninap rauraynin sunqoypi. Tukuy imata tikrachiq kallpan qowayku.",s:"La llama del fuego en mi corazón. Danos su poder de transformar todo."},
+  ]},
+  {id:'killa',sym:'\u25D0',q:'Mama Killa',s:'Luna — Madre de los ciclos',prayers:[
+    {q:"Mama Killa, tutapi k'anchayniyuq. Samachiwayku puñuyniyku ukhupi.",s:"Madre Luna, luminosa en la noche. Danos descanso en nuestro sueño."},
+    {q:"Killa mama, warmikunap maman. Yachayniykiwan pusakuwayku sapa killa.",s:"Madre Luna, madre de las mujeres. Con tu sabiduría guíanos cada mes."},
+    {q:"Mama Killa, qolqe k'anchayniyuq, tutap sunqonpi kawsaq. Qaway sunqoyman.",s:"Madre Luna, de luz plateada, que vives en el corazón de la noche. Mira mi corazón."},
+    {q:"Killap k'anchaynin sunqoypi, yakup puriynin ñoqapi. Tukuy huq kachun.",s:"La luz de la luna en mi corazón, el fluir del agua en mí. Que todo sea uno."},
+    {q:"Mama Killa, samiyniykiwan qaway tutapi. Musqoykunaypi yachachiwayku.",s:"Madre Luna, mira con tu bendición en la noche. Enséñanos en nuestros sueños."},
+  ]},
+  {id:'qucha',sym:'\u223F',q:'Qucha',s:'Lago — Espejo del alma',prayers:[
+    {q:"Qucha, ch'uya ñawiyuq. Sunqoypa rikunan kanki. Rikuchiwayku imaynam kani.",s:"Lago, de ojos puros. Eres el espejo de mi corazón. Muéstrame cómo soy."},
+    {q:"Hatun Qucha, samiyuq yaku. Qampi rikukuspa sunqoyta riqsini.",s:"Gran Lago, agua bendita. Mirándome en ti conozco mi corazón."},
+    {q:"Qucha mama, thaqmi kayniykiwan samachiwayku. Sunqoykuta ch'uyayachiy.",s:"Madre Lago, con tu quietud danos descanso. Purifica nuestro corazón."},
+  ]},
+  {id:'chaska',sym:'\u2726',q:"Ch'aska",s:'Estrella — Guía celestial',prayers:[
+    {q:"Ch'aska, hawa pachap k'anchaynin. Ñanta rikuchiwayku tutapi purispa.",s:"Estrella, luz del mundo de arriba. Muéstranos el camino cuando caminamos en la noche."},
+    {q:"Ch'askakunam rikch'ariwanku. Paykunap k'anchayninkuwan ñoqanchis purinchis.",s:"Las estrellas nos despiertan. Con su luz nosotros caminamos."},
+    {q:"Hatun Ch'aska, wiñaypaq k'anchaq. Sunqoypi tiyay, ñawiyta kichay.",s:"Gran Estrella, que brillas eternamente. Habita en mi corazón, abre mis ojos."},
+  ]},
+  {id:'allpa',sym:'\u25A3',q:'Allpa',s:'Tierra — Sustento sagrado',prayers:[
+    {q:"Allpa mama, mikhuykunata qowayku. Makiykunawan llankaspa qamta yupaychayku.",s:"Madre Tierra, danos alimentos. Trabajando con nuestras manos te honramos."},
+    {q:"Allpap sunqonpi muhuykuna kawsanku. Ñoqanchispis hinallataq kawsanchis.",s:"En el corazón de la tierra viven las semillas. Nosotros también vivimos así."},
+    {q:"Allpa, qampi puñukusunchis wañuspa. Qampi kawsarisunchis paqarispa.",s:"Tierra, en ti dormiremos al morir. En ti despertaremos al nacer."},
+  ]},
+  {id:'kuntur',sym:'\u2963',q:'Kuntur',s:'Cóndor — Mensajero celestial',prayers:[
+    {q:"Kuntur, hawa pachap kachaqnin. Rapraykikunawan hawa pachaman apaway.",s:"Cóndor, mensajero del mundo de arriba. Con tus alas llévame al mundo celestial."},
+    {q:"Hatun Kuntur, qampa ñawiykiwan rikuy tukuy imata. Yachayniyuqmi kanki.",s:"Gran Cóndor, con tus ojos miras todo. Tienes sabiduría."},
+    {q:"Kuntur tayta, phawarimuway. Samiyniykiwan sunqoyta kichay.",s:"Padre Cóndor, ven volando. Con tu bendición abre mi corazón."},
+  ]},
+  {id:'amaru',sym:'\u223C',q:'Amaru',s:'Serpiente — Sabiduría ancestral',prayers:[
+    {q:"Amaru, ukhu pachap yachaqnin. Yachayniykiwan rikuchiwayku kay pachap ukhu kayninkunata.",s:"Serpiente, sabia del mundo de abajo. Con tu sabiduría muéstranos los misterios de este mundo."},
+    {q:"Amaru mama, qarantiykiwan musuqyariy yachachiwayku. Tikray kallpata qoway.",s:"Madre Serpiente, con tu muda enséñanos a renovarnos. Dame el poder de transformar."},
+    {q:"Amarup puriynin allpa ukhupi yachayta rikuchin. Pachamama sunqonta riqsin.",s:"El caminar de la serpiente bajo la tierra muestra sabiduría. Conoce el corazón de la Pachamama."},
+  ]},
+  {id:'puma',sym:'\u2318',q:'Puma',s:'Puma — Fuerza del presente',prayers:[
+    {q:"Puma, kay pachap kamachiqnin. Kallpaykiwan kallpachaway, manchakuyta atipaway.",s:"Puma, señor de este mundo. Con tu fuerza fortaléceme, ayúdame a vencer el miedo."},
+    {q:"Puma, ch'in kaypi kawsaq, yachachiwayku kunanpi kayninchista.",s:"Puma, que vives en el silencio, enséñanos a estar presentes en el ahora."},
+    {q:"Hatun Puma, ñawiykip k'anchaynin tutapi rikun. Ñoqatapas rikuchiwayku.",s:"Gran Puma, la luz de tus ojos ve en la oscuridad. Ayúdame a ver también."},
+  ]},
+  {id:'kuychi',sym:'\u2312',q:'K\'uychi',s:'Arcoíris — Puente entre mundos',prayers:[
+    {q:"K'uychi, hawa pachawan kay pachawan tinkuchiq. Sunqoypi llimp'ikunaykita churay.",s:"Arcoíris, que unes el mundo de arriba con este mundo. Pon tus colores en mi corazón."},
+    {q:"K'uychi mama, para qhepaman rikhurimuq. Llakiy qhepaman kusiy apamuy.",s:"Madre Arcoíris, que apareces después de la lluvia. Después de la tristeza trae alegría."},
+    {q:"K'uychip llimp'inkuna kawsaypa llimp'inkuna. Sapa llimp'i huk kallpam.",s:"Los colores del arcoíris son los colores de la vida. Cada color es una fuerza."},
+  ]},
+  {id:'pacha',sym:'\u2300',q:'Pacha',s:'Cosmos — Tiempo y espacio',prayers:[
+    {q:"Hatun Pacha, tukuy imaymanap churanin. Qampi tukuy kawsay, qampi tukuy wañuy, qampi tukuy musuqyay.",s:"Gran Cosmos, contenedor de todo. En ti toda vida, toda muerte, toda renovación."},
+    {q:"Kay Pacha, Hanan Pacha, Ukhu Pacha. Kimsantin pachakuna huqllapi tinkuchun.",s:"Este mundo, el mundo de arriba, el mundo de abajo. Que los tres mundos se unan en uno."},
+    {q:"Pachap sunqonpi kawsanchis. Pachap sunqonpi purinchis. Tukuy huq kanchis.",s:"En el corazón del cosmos vivimos. En el corazón del cosmos caminamos. Todos somos uno."},
+  ]},
+];
