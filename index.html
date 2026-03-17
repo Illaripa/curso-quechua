@@ -3596,15 +3596,7 @@ function addGoal() {
 }
 
 function getApiKey() {
-  var k = localStorage.getItem('yachay_apikey') || '';
-  if (!k) {
-    k = prompt('Ingresa tu API key de OpenRouter (solo una vez):');
-    if (k && k.trim()) {
-      localStorage.setItem('yachay_apikey', k.trim());
-      localStorage.setItem('yachay_provider', 'openrouter');
-    }
-  }
-  return k || '';
+  return localStorage.getItem('yachay_apikey') || '';
 }
 
 function updateApiPlaceholder() {
@@ -3658,7 +3650,10 @@ function openChat(lang) {
   renderGoals();
 
   var banner = document.getElementById('apiBanner');
-  if (banner) { banner.classList.remove('show'); }
+  if (banner) {
+    if (getApiKey()) { banner.classList.remove('show'); }
+    else { banner.classList.add('show'); }
+  }
 
   var greeting = lang === 'q'
     ? 'Allinllachu! Soy tu compa para practicar Quechua. Preguntame lo que quieras o dime que tema te interesa y arrancamos.'
@@ -3692,7 +3687,8 @@ async function sendMessage() {
   try {
     if (!getApiKey()) {
       removeTypingIndicator();
-      addChatMessage('a', 'No se pudo obtener la API key. Recarga la pagina e ingresala cuando se te pida.');
+      var b = document.getElementById('apiBanner'); if (b) b.classList.add('show');
+      addChatMessage('a', 'Primero ingresa tu API key arriba. Es gratis en openrouter.ai');
       document.getElementById('sendBtn').disabled = false;
       return;
     }
