@@ -259,16 +259,13 @@ async function sendMessage() {
 
     } else {
       // OpenRouter with fallback models
-      var orMsgs = [{role: 'system', content: CHAT_SYSTEM_PROMPTS[chatLang]}].concat(chatHistory.slice(-8));
+      var orMsgs = [{role: 'user', content: '[INSTRUCCIONES] ' + CHAT_SYSTEM_PROMPTS[chatLang] + ' [/INSTRUCCIONES]'}, {role: 'assistant', content: 'Entendido, soy tu tutor.'}].concat(chatHistory.slice(-8));
       var models = [
-        'meta-llama/llama-4-maverick:free',
-        'meta-llama/llama-4-scout:free',
         'google/gemma-3-27b-it:free',
         'google/gemma-3n-e4b-it:free',
-        'mistralai/mistral-small-3.1-24b-instruct:free',
         'qwen/qwen3-4b:free',
-        'deepseek/deepseek-chat-v3-0324:free',
-        'nvidia/llama-3.1-nemotron-ultra-253b:free'
+        'mistralai/mistral-small-3.1-24b-instruct:free',
+        'deepseek/deepseek-chat-v3-0324:free'
       ];
       var success = false;
 
