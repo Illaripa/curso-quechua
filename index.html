@@ -878,8 +878,8 @@ button {
   position: relative;
   width: 100%;
   max-width: 340px;
-  height: 85%;
-  max-height: 480px;
+  height: 90%;
+  max-height: 520px;
 }
 
 .ghost-card {
@@ -912,8 +912,19 @@ button {
   inset: 0;
   cursor: pointer;
   transform-style: preserve-3d;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s;
   user-select: none;
+}
+.flashcard.slide-out {
+  transition: transform 0.3s ease-in, opacity 0.3s;
+  opacity: 0;
+}
+.flashcard.slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: scale(0.9) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
 .flashcard.flipped {
@@ -964,12 +975,12 @@ button {
   font-weight: 700;
   line-height: 1.1;
   margin-bottom: 10px;
-  color: #e8c870;
+  color: #f0c840;
 }
 
 .card-meaning {
-  font-size: 20px;
-  color: #ede0c8;
+  font-size: 22px;
+  color: #ffffff;
   font-style: italic;
   font-family: "Lora", serif;
   margin-bottom: 18px;
@@ -3322,25 +3333,46 @@ function flipCard() {
   fc.className = 'flashcard' + (cardFlipped ? ' flipped' : '');
 }
 
+function slideAndDo(direction, callback) {
+  var fc = document.getElementById('flashcard');
+  fc.style.transition = 'transform 0.25s ease-in, opacity 0.25s';
+  fc.style.transform = 'translateX(' + (direction * 300) + 'px) rotate(' + (direction * 10) + 'deg)';
+  fc.style.opacity = '0';
+  setTimeout(function() {
+    callback();
+    fc.style.transition = 'none';
+    fc.style.transform = 'scale(0.9) translateY(20px)';
+    fc.style.opacity = '0';
+    setTimeout(function() {
+      fc.style.transition = 'transform 0.25s ease-out, opacity 0.25s';
+      fc.style.transform = '';
+      fc.style.opacity = '1';
+    }, 30);
+  }, 250);
+}
+
 function learnCard() {
   if (cardIndex >= deck.length) return;
-  var verb = deck[cardIndex];
-  var saved = JSON.parse(localStorage.getItem('yachay_v5_' + cardLang) || '{}');
-  saved[verb.q] = 1;
-  localStorage.setItem('yachay_v5_' + cardLang, JSON.stringify(saved));
-  showToast('Aprendido!', 'var(--green)');
-  deck.splice(cardIndex, 1);
-  if (cardIndex >= deck.length) cardIndex = Math.max(0, deck.length - 1);
-  cardFlipped = false;
-  renderCard();
+  slideAndDo(1, function() {
+    var verb = deck[cardIndex];
+    var saved = JSON.parse(localStorage.getItem('yachay_v5_' + cardLang) || '{}');
+    saved[verb.q] = 1;
+    localStorage.setItem('yachay_v5_' + cardLang, JSON.stringify(saved));
+    showToast('Aprendido!', 'var(--green)');
+    deck.splice(cardIndex, 1);
+    if (cardIndex >= deck.length) cardIndex = Math.max(0, deck.length - 1);
+    cardFlipped = false;
+    renderCard();
+  });
 }
 
 function skipCard() {
   if (cardIndex >= deck.length) return;
-  var verb = deck.splice(cardIndex, 1)[0];
-  deck.push(verb);
-  if (cardIndex >= deck.length) cardIndex = 0;
-  cardFlipped = false;
+  slideAndDo(-1, function() {
+    var verb = deck.splice(cardIndex, 1)[0];
+    deck.push(verb);
+    if (cardIndex >= deck.length) cardIndex = 0;
+    cardFlipped = false;
   renderCard();
 }
 
