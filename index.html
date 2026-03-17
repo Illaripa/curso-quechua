@@ -250,18 +250,25 @@ button {
 
 .morning-elements {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   margin-bottom: 20px;
   animation: fadeUp 0.8s ease 0.7s both;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+  scroll-snap-type: x mandatory;
 }
+.morning-elements::-webkit-scrollbar { display: none; }
 
 .morning-element {
-  flex: 1;
-  background: rgba(255, 255, 255, 0.5);
+  flex: 0 0 72px;
+  background: rgba(255, 255, 255, 0.6);
   border: 1px solid var(--bdr);
-  border-radius: 11px;
-  padding: 10px 5px;
+  border-radius: 14px;
+  padding: 12px 6px 10px;
   text-align: center;
+  scroll-snap-align: start;
 }
 
 .morning-element-symbol {
@@ -2271,19 +2278,37 @@ var ELEMENTS = [
     {q:"Allpap sunqonpi muhuykuna kawsanku. Ñoqanchispis hinallataq kawsanchis.",s:"En el corazón de la tierra viven las semillas. Nosotros también vivimos así."},
     {q:"Allpa, qampi puñukusunchis wañuspa. Qampi kawsarisunchis paqarispa.",s:"Tierra, en ti dormiremos al morir. En ti despertaremos al nacer."},
   ]},
+  {id:'kuntur',sym:'\u2963',q:'Kuntur',s:'Cóndor — Mensajero celestial',prayers:[
+    {q:"Kuntur, hawa pachap kachaqnin. Rapraykikunawan hawa pachaman apaway.",s:"Cóndor, mensajero del mundo de arriba. Con tus alas llévame al mundo celestial."},
+    {q:"Hatun Kuntur, qampa ñawiykiwan rikuy tukuy imata. Yachayniyuqmi kanki.",s:"Gran Cóndor, con tus ojos miras todo. Tienes sabiduría."},
+    {q:"Kuntur tayta, phawarimuway. Samiyniykiwan sunqoyta kichay.",s:"Padre Cóndor, ven volando. Con tu bendición abre mi corazón."},
+  ]},
+  {id:'amaru',sym:'\u223C',q:'Amaru',s:'Serpiente — Sabiduría ancestral',prayers:[
+    {q:"Amaru, ukhu pachap yachaqnin. Yachayniykiwan rikuchiwayku kay pachap ukhu kayninkunata.",s:"Serpiente, sabia del mundo de abajo. Con tu sabiduría muéstranos los misterios de este mundo."},
+    {q:"Amaru mama, qarantiykiwan musuqyariy yachachiwayku. Tikray kallpata qoway.",s:"Madre Serpiente, con tu muda enséñanos a renovarnos. Dame el poder de transformar."},
+    {q:"Amarup puriynin allpa ukhupi yachayta rikuchin. Pachamama sunqonta riqsin.",s:"El caminar de la serpiente bajo la tierra muestra sabiduría. Conoce el corazón de la Pachamama."},
+  ]},
+  {id:'puma',sym:'\u2318',q:'Puma',s:'Puma — Fuerza del presente',prayers:[
+    {q:"Puma, kay pachap kamachiqnin. Kallpaykiwan kallpachaway, manchakuyta atipaway.",s:"Puma, señor de este mundo. Con tu fuerza fortaléceme, ayúdame a vencer el miedo."},
+    {q:"Puma, ch'in kaypi kawsaq, yachachiwayku kunanpi kayninchista.",s:"Puma, que vives en el silencio, enséñanos a estar presentes en el ahora."},
+    {q:"Hatun Puma, ñawiykip k'anchaynin tutapi rikun. Ñoqatapas rikuchiwayku.",s:"Gran Puma, la luz de tus ojos ve en la oscuridad. Ayúdame a ver también."},
+  ]},
+  {id:'kuychi',sym:'\u2312',q:'K\'uychi',s:'Arcoíris — Puente entre mundos',prayers:[
+    {q:"K'uychi, hawa pachawan kay pachawan tinkuchiq. Sunqoypi llimp'ikunaykita churay.",s:"Arcoíris, que unes el mundo de arriba con este mundo. Pon tus colores en mi corazón."},
+    {q:"K'uychi mama, para qhepaman rikhurimuq. Llakiy qhepaman kusiy apamuy.",s:"Madre Arcoíris, que apareces después de la lluvia. Después de la tristeza trae alegría."},
+    {q:"K'uychip llimp'inkuna kawsaypa llimp'inkuna. Sapa llimp'i huk kallpam.",s:"Los colores del arcoíris son los colores de la vida. Cada color es una fuerza."},
+  ]},
+  {id:'pacha',sym:'\u2300',q:'Pacha',s:'Cosmos — Tiempo y espacio',prayers:[
+    {q:"Hatun Pacha, tukuy imaymanap churanin. Qampi tukuy kawsay, qampi tukuy wañuy, qampi tukuy musuqyay.",s:"Gran Cosmos, contenedor de todo. En ti toda vida, toda muerte, toda renovación."},
+    {q:"Kay Pacha, Hanan Pacha, Ukhu Pacha. Kimsantin pachakuna huqllapi tinkuchun.",s:"Este mundo, el mundo de arriba, el mundo de abajo. Que los tres mundos se unan en uno."},
+    {q:"Pachap sunqonpi kawsanchis. Pachap sunqonpi purinchis. Tukuy huq kanchis.",s:"En el corazón del cosmos vivimos. En el corazón del cosmos caminamos. Todos somos uno."},
+  ]},
 ];
 
 var currentElement = null;
 
 function renderMorningElements() {
-  var day = Math.floor(Date.now() / 86400000);
-  var shown = [];
-  while (shown.length < 4) {
-    var idx = (day + shown.length * 3) % ELEMENTS.length;
-    if (shown.indexOf(idx) === -1) shown.push(idx);
-  }
-  var html = shown.map(function(i) {
-    var el = ELEMENTS[i];
+  var html = ELEMENTS.map(function(el) {
     return '<div class="morning-element" onclick="openElement(\'' + el.id + '\')">' +
       '<span class="morning-element-symbol">' + el.sym + '</span>' +
       '<div class="morning-element-quechua">' + el.q + '</div>' +
