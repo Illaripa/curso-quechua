@@ -15,8 +15,8 @@ function openCards(lang) {
   var cats = getUniqueCategories(data);
   activeCategories = cats.slice();
   var saved = JSON.parse(localStorage.getItem('yachay_v5_' + lang) || '{}');
+  // Keep original order, no shuffle
   deck = data.filter(function(x) { return !saved[x.q]; });
-  shuffleArray(deck);
   cardIndex = 0;
   setupCardFilters(lang);
   renderCard();
@@ -38,46 +38,41 @@ function toggleCategory(cat) {
   else { activeCategories.push(cat); }
   document.getElementById('filterTag_' + cat.replace(/\s/g, '_')).className =
     'filter-tag' + (activeCategories.indexOf(cat) >= 0 ? ' active' : '');
+  applyCardFilter();
 }
 
-function openFilter() {
-  document.getElementById('filterPanel').classList.add('active');
-}
-
-function closeFilterPanel(event) {
-  if (event.target === document.getElementById('filterPanel')) {
-    document.getElementById('filterPanel').classList.remove('active');
-  }
-}
-
-function applyFilter() {
-  document.getElementById('filterPanel').classList.remove('active');
+function applyCardFilter() {
   var data = cardLang === 'q' ? VERBOS_Q : cardLang === 'p' ? PALABRAS_Q : VERBOS_A;
   var saved = JSON.parse(localStorage.getItem('yachay_v5_' + cardLang) || '{}');
   deck = data.filter(function(x) {
-    return activeCategories.indexOf(x.cat) >= 0 && !saved[x.q];
+    return !saved[x.q] && activeCategories.indexOf(x.cat) >= 0;
   });
-  shuffleArray(deck);
   cardIndex = 0;
   cardFlipped = false;
   renderCard();
+  document.getElementById('filterPanel').classList.remove('active');
+}
+
+function getUniqueCategories(data) {
+  var seen = {};
+  var cats = [];
+  data.forEach(function(x) {
+    if (!seen[x.cat]) { seen[x.cat] = true; cats.push(x.cat); }
+  });
+  return cats;
 }
 
 function shuffleArray(arr) {
   for (var i = arr.length - 1; i > 0; i--) {
     var j = Math.floor(Math.random() * (i + 1));
-    var temp = arr[i];
-    arr[i] = arr[j];
-    arr[j] = temp;
+    var t = arr[i]; arr[i] = arr[j]; arr[j] = t;
   }
 }
 
 function renderCard() {
-  var totalData = cardLang === 'q' ? VERBOS_Q : cardLang === 'p' ? PALABRAS_Q : VERBOS_A;
-  var total = totalData.length;
-  var savedCount = Object.keys(JSON.parse(localStorage.getItem('yachay_v5_' + cardLang) || '{}')).length;
-  document.getElementById('cardsProgress').style.width = (savedCount / total * 100) + '%';
-  document.getElementById('cardsCount').textContent = deck.length + ' restantes';
+  var countEl = document.getElementById('cardCount');
+  var learnedCount = Object.keys(JSON.parse(localStorage.getItem('yachay_v5_' + cardLang) || '{}')).length;
+  countEl.textContent = (cardIndex + 1) + ' / ' + deck.length + (learnedCount > 0 ? ' (' + learnedCount + ' learned)' : '');
 
   if (deck.length === 0 || cardIndex >= deck.length) {
     showEmptyDeck();
@@ -99,7 +94,7 @@ function renderCard() {
     '<div class="card-category-pos"><div class="card-cat-pill" style="background:' + verb.col + '22;color:' + verb.col + '">' + verb.cat + '</div></div>' +
     '<div class="card-verb">' + verb.q + '</div>' +
     '<div class="card-meaning">' + verb.s + '</div>' +
-    '<div class="card-tap-hint">Toca para ver conjugaci\u00F3n</div>';
+    '<div class="card-tap-hint">Toca para voltear</div>';
 
   // Back face with tense tabs
   var pronounLabels = isAy
@@ -148,24 +143,14 @@ function renderCard() {
     return back;
   };
 
-  window.switchTense = function(tenseId) {
-    var backEl = document.getElementById('cardBack');
-    backEl.innerHTML = window._buildCardBack(tenseId);
-    backEl.querySelectorAll('.tense-tab').forEach(function(btn) {
-      btn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        switchTense(btn.dataset.tid);
-      });
-    });
-  };
+  document.getElementById('cardBack').innerHTML = window._buildCardBack('pres');
 
-  var backEl = document.getElementById('cardBack');
-  backEl.innerHTML = window._buildCardBack('pres');
-  backEl.querySelectorAll('.tense-tab').forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      switchTense(btn.dataset.tid);
-    });
+  // Tense tab clicks
+  document.getElementById('cardBack').addEventListener('click', function(e) {
+    var tab = e.target.closest('.tense-tab');
+    if (tab) {
+      document.getElementById('cardBack').innerHTML = window._buildCardBack(tab.getAttribute('data-tid'));
+    }
   });
 
   setupSwipe();
@@ -201,30 +186,65 @@ function slideAndDo(direction, callback) {
   }, 250);
 }
 
+// Swipe RIGHT = next card
+function nextCard() {
+  if (deck.length === 0) return;
+  if (cardIndex < deck.length - 1) {
+    slideAndDo(-1, function() {
+      cardIndex++;
+      cardFlipped = false;
+      renderCard();
+    });
+  }
+}
+
+// Swipe LEFT = previous card
+function prevCard() {
+  if (deck.length === 0) return;
+  if (cardIndex > 0) {
+    slideAndDo(1, function() {
+      cardIndex--;
+      cardFlipped = false;
+      renderCard();
+    });
+  }
+}
+
+// Mark as learned — separate action via button
 function learnCard() {
   if (cardIndex >= deck.length) return;
-  slideAndDo(1, function() {
-    var verb = deck[cardIndex];
-    var saved = JSON.parse(localStorage.getItem('yachay_v5_' + cardLang) || '{}');
-    saved[verb.q] = 1;
-    localStorage.setItem('yachay_v5_' + cardLang, JSON.stringify(saved));
-    showToast('Aprendido!', 'var(--green)');
-    deck.splice(cardIndex, 1);
-    if (cardIndex >= deck.length) cardIndex = Math.max(0, deck.length - 1);
-    cardFlipped = false;
-    renderCard();
-  });
+  var verb = deck[cardIndex];
+  var saved = JSON.parse(localStorage.getItem('yachay_v5_' + cardLang) || '{}');
+  saved[verb.q] = 1;
+  localStorage.setItem('yachay_v5_' + cardLang, JSON.stringify(saved));
+  showToast('Aprendido!', 'var(--green)');
+  deck.splice(cardIndex, 1);
+  if (cardIndex >= deck.length) cardIndex = Math.max(0, deck.length - 1);
+  cardFlipped = false;
+  renderCard();
+}
+
+// View learned cards
+function viewLearned() {
+  var saved = JSON.parse(localStorage.getItem('yachay_v5_' + cardLang) || '{}');
+  var data = cardLang === 'q' ? VERBOS_Q : cardLang === 'p' ? PALABRAS_Q : VERBOS_A;
+  var learned = data.filter(function(x) { return saved[x.q]; });
+
+  if (learned.length === 0) {
+    showToast('No tienes fichas aprendidas aun', 'var(--gold)');
+    return;
+  }
+
+  // Show learned cards in the deck temporarily
+  deck = learned;
+  cardIndex = 0;
+  cardFlipped = false;
+  showToast(learned.length + ' fichas aprendidas', 'var(--green)');
+  renderCard();
 }
 
 function skipCard() {
-  if (cardIndex >= deck.length) return;
-  slideAndDo(-1, function() {
-    var verb = deck.splice(cardIndex, 1)[0];
-    deck.push(verb);
-    if (cardIndex >= deck.length) cardIndex = 0;
-    cardFlipped = false;
-    renderCard();
-  });
+  nextCard();
 }
 
 function resetDeck() {
@@ -274,9 +294,9 @@ function setupSwipe() {
     document.getElementById('swipeLeft').style.opacity = '0';
 
     if (moved > 80) {
-      // SWIPE: change card
-      if (dx > 0) learnCard();
-      else skipCard();
+      // SWIPE: navigate cards like real cards
+      if (dx < 0) nextCard();   // swipe left = next
+      else prevCard();          // swipe right = previous
     } else if (moved < 20) {
       // TAP: flip card
       flipCard();
