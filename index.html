@@ -120,8 +120,8 @@
         <div class="card-face card-front" id="cardFront"></div>
         <div class="card-face card-back" id="cardBack"></div>
       </div>
-      <div class="swipe-right" id="swipeRight">Aprendido</div>
-      <div class="swipe-left" id="swipeLeft">Repasar</div>
+      <div class="swipe-right" id="swipeRight">Siguiente</div>
+      <div class="swipe-left" id="swipeLeft">Anterior</div>
     </div>
     <div class="card-empty" id="cardEmpty">
       <div class="card-empty-symbol">&#10022;</div>
@@ -131,9 +131,9 @@
     </div>
   </div>
   <div class="card-actions" id="cardActions">
-    <button class="action-btn action-skip" onclick="skipCard()"><div class="action-icon">&#8634;</div><span>Repasar</span></button>
-    <button class="action-flip" onclick="flipCard()"><span>&#9673; Ver conjugacion</span></button>
-    <button class="action-btn action-learned" onclick="learnCard()"><div class="action-icon">&#10003;</div><span>Aprendido</span></button>
+    <button class="action-btn action-skip" onclick="viewLearned()"><div class="action-icon">&#9733;</div><span>Aprendidas</span></button>
+    <button class="action-flip" onclick="learnCard()"><span>&#10003; Aprendido</span></button>
+    <button class="action-btn action-learned" onclick="flipCard()"><div class="action-icon">&#9673;</div><span>Voltear</span></button>
   </div>
 </div>
 
