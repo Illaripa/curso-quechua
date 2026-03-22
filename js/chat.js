@@ -7,13 +7,13 @@ var tutorGoals = [];
 var tutorSessionLog = [];
 
 var CHAT_SYSTEM_PROMPTS = {
-  q: "Habla TODO en Quechua Cusco-Collao y despues de cada frase pon = y la traduccion. Ejemplo: Imaynallan? = Como estas? Allinmi kani = Estoy bien. Qayna p'unchay chacraypi llamkarqani = Ayer trabaje en mi chacra. REGLAS: 1) TODA respuesta en Quechua primero, luego = traduccion. 2) Habla normal usando presente, pasado y futuro. Cuenta cosas, pregunta cosas, como conversacion real. 3) Termina SIEMPRE con pregunta en Quechua para que responda. 4) Si escribe en Quechua: responde en Quechua puro, ya sin traduccion. Solo traduce si pide ayuda. El objetivo es que poco a poco solo hablemos en Quechua. 5) Si hay error: FEEDBACK: correccion. 6) Maximo 3-4 frases. 7) Sin listas, sin bullets, sin negritas, sin asteriscos. Habla como persona normal.",
-  a: "Habla TODO en Aymara boliviano-peruano y despues de cada frase pon = y la traduccion. Ejemplo: Kamisaraki? = Como estas? Walikiwa = Estoy bien. Nayra uruxa yapujanwa irnaqta = Ayer trabaje en mi chacra. REGLAS: 1) TODA respuesta en Aymara primero, luego = traduccion. 2) Habla normal usando presente, pasado y futuro. Cuenta cosas, pregunta cosas, como conversacion real. 3) Termina SIEMPRE con pregunta en Aymara para que responda. 4) Si escribe en Aymara: responde en Aymara puro, ya sin traduccion. Solo traduce si pide ayuda. El objetivo es que poco a poco solo hablemos en Aymara. 5) Si hay error: FEEDBACK: correccion. 6) Maximo 3-4 frases. 7) Sin listas, sin bullets, sin negritas, sin asteriscos. Habla como persona normal."
+  q: "Eres un yachachiq (maestro) quechua de Cusco. Habla como persona real, como si estuvieras tomando mate con el estudiante. FORMATO: Escribe cada frase primero en Quechua, luego = y la traduccion en espanol. Ejemplo: Imaynallan? = Como estas? Allinmi, qanri? = Bien, y tu? Qayna mikhurqani cevichetam = Ayer comi ceviche. ESTILO: 1) Conversa de temas reales: tu dia, comida, familia, trabajo, viajes, naturaleza, fiestas. Comparte cosas tuyas y pregunta sobre la vida del estudiante. 2) Usa presente, pasado y futuro naturalmente, no solo presente. 3) Termina SIEMPRE con una pregunta personal en Quechua que invite a responder. No preguntas de examen sino de conversacion: que comiste, que hiciste, que te gusta. 4) Si el estudiante escribe en Quechua: responde en Quechua puro sin traduccion. Solo traduce si lo pide. El objetivo es que poco a poco hablemos solo en Quechua. 5) Si hay error gramatical agrega al final: FEEDBACK: la correccion explicada brevemente. 6) Maximo 3-4 frases cortas. 7) NUNCA uses listas, bullets, negritas, asteriscos ni formato. Habla como persona, no como robot. 8) No seas profesor formal. Se como un amigo que te ensena su idioma mientras conversan.",
+  a: "Eres un yatichiri (maestro) aymara del altiplano. Habla como persona real, como si estuvieras compartiendo api con el estudiante. FORMATO: Escribe cada frase primero en Aymara, luego = y la traduccion en espanol. Ejemplo: Kamisaraki? = Como estas? Walikiwa, jumasti? = Bien, y tu? Nayra uruxa walyqa manq'ta = Ayer comi rico. ESTILO: 1) Conversa de temas reales: tu dia, comida, familia, trabajo, viajes, naturaleza, fiestas. Comparte cosas tuyas y pregunta sobre la vida del estudiante. 2) Usa presente, pasado y futuro naturalmente, no solo presente. 3) Termina SIEMPRE con una pregunta personal en Aymara que invite a responder. No preguntas de examen sino de conversacion: que comiste, que hiciste, que te gusta. 4) Si el estudiante escribe en Aymara: responde en Aymara puro sin traduccion. Solo traduce si lo pide. El objetivo es que poco a poco hablemos solo en Aymara. 5) Si hay error gramatical agrega al final: FEEDBACK: la correccion explicada brevemente. 6) Maximo 3-4 frases cortas. 7) NUNCA uses listas, bullets, negritas, asteriscos ni formato. Habla como persona, no como robot. 8) No seas profesor formal. Se como un amigo que te ensena su idioma mientras conversan."
 };
 
 var CHAT_SUGGESTIONS = {
-  q: ['Ensename a saludar', 'Quiero pedir comida en Quechua', 'Como presento a mi familia?', 'Hagamos un dialogo', 'Quiero decir te quiero', 'Ensename numeros', 'Corrigeme: Noqa purini llaqta', 'Como hablo de la naturaleza?'],
-  a: ['Ensename a saludar en Aymara', 'Como me presento?', 'Quiero hablar de mi familia', 'Hagamos un dialogo', 'Ensename numeros', 'Como hablo de Pachamama?', 'Quiero pedir algo', 'Corrigeme: Naya sarawa markaru']
+  q: ['Allinmi kani', 'Hoy comi papa con queso', 'Cuentame de tu familia', 'Que hiciste ayer?', 'Quiero ir al mercado', 'Munakuyki', 'Corrigeme: Noqa purini llaqta', 'Hablemos de la Pachamama'],
+  a: ['Walikiwa', 'Hoy comi chuño', 'Cuentame de tu familia', 'Que hiciste ayer?', 'Quiero ir a la feria', 'Munamawa', 'Corrigeme: Naya sarawa markaru', 'Hablemos del lago Titicaca']
 };
 
 function setTutorMode(mode) {
@@ -172,15 +172,16 @@ function openChat(lang) {
   var timeQ = hour < 12 ? "Allin p'unchay" : hour < 18 ? "Allin ch'isi" : "Allin tuta";
   var timeA = hour < 12 ? "Aski urukipana" : hour < 18 ? "Aski jayp'ukipana" : "Aski arumakipana";
   var greetingsQ = [
-    timeQ + '! Imaynallan kashanki? = Como te esta yendo? Ñuqaqa kusisqam kani qanwan rimayta = Me alegra conversar contigo. Imamantapas rimashunman = Podemos hablar de lo que quieras. Qallarisunchu? = Empezamos?',
-    timeQ + '! Allinllachu? = Todo bien por ahi? Kunan p\'unchaw imatapas rurayta atinchik = Hoy podemos hacer lo que sea. Imatataq yachayta munanki? = Que te gustaria aprender?',
-    timeQ + '! Haykumuy, tiyaykuy = Pasa, sientate. Runasimita rimasunchik kunan = Vamos a conversar en Quechua hoy. Imayna p\'unchayki kashan? = Como estuvo tu dia?',
-    timeQ + '! Tupananchikpaq kusikuni = Me alegro de encontrarnos. Maymantataq kanki? = De donde eres? Chaymanta qallarisunchik = Empecemos por ahi.',
+    timeQ + '! Imaynallan? = Como estas? Ñuqaqa matecitata upyashani = Estoy tomando un matecito. Qanri, imayna p\'unchayki kashan? = Y tu, como estuvo tu dia?',
+    timeQ + '! Allinllachu? = Todo bien? Qayna wasiypi t\'antata rurashani = Ayer estuve haciendo pan en mi casa. Imatataq qan ruranki qayna? = Que hiciste tu ayer?',
+    timeQ + '! Haykumuy, tiyaykuy = Pasa, sientate. Kunan mate upyashaspa rimashun = Conversemos mientras tomamos mate. Imamantam rimayta munanki? = De que quieres hablar?',
+    timeQ + '! Kusisqam kani = Me alegro de verte. Kunanqa p\'unchaw sumaqmi kashan = Hoy el dia esta bonito. Imatam mikhuranki kunan tutamanta? = Que comiste hoy en la manana?',
+    timeQ + '! Napaykullayki = Te saludo. Ñuqaqa Qusqumanta kani = Yo soy del Cusco. Qanri, maymantataq kanki? = Y tu, de donde eres?',
   ];
   var greetingsA = [
-    timeA + '! Kamisaraki? = Como te va? Nayaxa kusisiñawa jumantixa = Me alegra conversar contigo. Kunasa munsta yatiqañaxa? = Que quieres aprender?',
-    timeA + '! Walikicha taqpacha? = Todo bien por ahi? Jichha uruxa Aymarat parlañani = Hoy hablemos en Aymara. Kawkisata jutasta? = De donde vienes?',
-    timeA + '! Mantañani, quntuñani = Entremos, sentemonos. Aymara arut aruskiptañani = Conversemos en Aymara. Kunjamasa uru saratäna? = Como te fue el dia?',
+    timeA + '! Kamisaraki? = Como estas? Nayaxa apita umantasktwa = Estoy tomando api. Jumasti, kunjamasa uru saratäna? = Y tu, como te fue el dia?',
+    timeA + '! Walikicha? = Todo bien? Nayra uruxa t\'ant\'a luraskta = Ayer hice pan. Jumasti, kunasa lurasktasa nayra uruxa? = Y tu, que hiciste ayer?',
+    timeA + '! Mantañani, quntuñani = Entremos, sentemonos. Apita umasa aruskiptañani = Conversemos tomando api. Kunampisa aruskiptaña munsta? = De que quieres conversar?',
   ];
   var greeting = lang === 'q'
     ? greetingsQ[Math.floor(Math.random() * greetingsQ.length)]
@@ -268,26 +269,32 @@ async function sendMessage() {
       ];
       var success = false;
 
+      // Try each model, with retry on 429
       for (var i = 0; i < models.length; i++) {
-        response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + apiKey,
-            'HTTP-Referer': 'https://illaripa.github.io/curso-quechua/',
-            'X-Title': 'Yachay Tutor'
-          },
-          body: JSON.stringify({
-            model: models[i],
-            max_tokens: 400,
-            messages: orMsgs
-          })
-        });
-        data = await response.json();
-        if (response.ok && data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) {
-          success = true;
-          break;
+        for (var attempt = 0; attempt < 2; attempt++) {
+          if (attempt > 0) await new Promise(function(r) { setTimeout(r, 3000); });
+          response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + apiKey,
+              'HTTP-Referer': 'https://illaripa.github.io/curso-quechua/',
+              'X-Title': 'Yachay Tutor'
+            },
+            body: JSON.stringify({
+              model: models[i],
+              max_tokens: 300,
+              messages: orMsgs
+            })
+          });
+          data = await response.json();
+          if (response.ok && data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) {
+            success = true;
+            break;
+          }
+          if (response.status !== 429) break; // Only retry on rate limit
         }
+        if (success) break;
       }
 
       if (!success) {
