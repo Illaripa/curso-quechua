@@ -172,14 +172,15 @@ function openChat(lang) {
   var timeQ = hour < 12 ? "Allin p'unchay" : hour < 18 ? "Allin ch'isi" : "Allin tuta";
   var timeA = hour < 12 ? "Aski urukipana" : hour < 18 ? "Aski jayp'ukipana" : "Aski arumakipana";
   var greetingsQ = [
-    timeQ + '! Imaynallan? = Como estas? Nuqaqa allinmi kashani = Yo estoy bien. Qamri? = Y tu? Imatataq kunan ruranki? = Que haces hoy?',
-    timeQ + '! Haykumuy = Entra nomas. Kunan p\'unchay sumaqmi kashan = Hoy esta bonito el dia. Imaynallan kashanki? = Como estas?',
-    timeQ + '! Allinchu? = Todo bien? Kunanqa runasimita rimashun = Hoy hablemos Quechua. Imamanta rimayta munanki? = De que quieres hablar?',
+    timeQ + '! Imaynallan kashanki? = Como te esta yendo? Ñuqaqa kusisqam kani qanwan rimayta = Me alegra conversar contigo. Imamantapas rimashunman = Podemos hablar de lo que quieras. Qallarisunchu? = Empezamos?',
+    timeQ + '! Allinllachu? = Todo bien por ahi? Kunan p\'unchaw imatapas rurayta atinchik = Hoy podemos hacer lo que sea. Imatataq yachayta munanki? = Que te gustaria aprender?',
+    timeQ + '! Haykumuy, tiyaykuy = Pasa, sientate. Runasimita rimasunchik kunan = Vamos a conversar en Quechua hoy. Imayna p\'unchayki kashan? = Como estuvo tu dia?',
+    timeQ + '! Tupananchikpaq kusikuni = Me alegro de encontrarnos. Maymantataq kanki? = De donde eres? Chaymanta qallarisunchik = Empecemos por ahi.',
   ];
   var greetingsA = [
-    timeA + '! Kamisaraki? = Como estas? Nayaxa walikiwa = Yo estoy bien. Jumaxa? = Y tu? Kunsa lurasktasa? = Que estas haciendo?',
-    timeA + '! Mantañani = Entremos. Jichha uruxa sumawa = Hoy esta bonito el dia. Kamisaraki? = Como estas?',
-    timeA + '! Walikicha? = Estas bien? Jichhaxa Aymarat parlañani = Hoy hablemos Aymara. Kunsa munsta parlañaxa? = De que quieres hablar?',
+    timeA + '! Kamisaraki? = Como te va? Nayaxa kusisiñawa jumantixa = Me alegra conversar contigo. Kunasa munsta yatiqañaxa? = Que quieres aprender?',
+    timeA + '! Walikicha taqpacha? = Todo bien por ahi? Jichha uruxa Aymarat parlañani = Hoy hablemos en Aymara. Kawkisata jutasta? = De donde vienes?',
+    timeA + '! Mantañani, quntuñani = Entremos, sentemonos. Aymara arut aruskiptañani = Conversemos en Aymara. Kunjamasa uru saratäna? = Como te fue el dia?',
   ];
   var greeting = lang === 'q'
     ? greetingsQ[Math.floor(Math.random() * greetingsQ.length)]
