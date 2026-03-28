@@ -162,9 +162,11 @@ function openChat(lang) {
   document.getElementById('modeBtnLesson').classList.remove('active');
   renderGoals();
 
+  // Hide API banner on Vercel (proxy handles it), show only on GitHub Pages
   var banner = document.getElementById('apiBanner');
   if (banner) {
-    if (getApiKey()) { banner.classList.remove('show'); }
+    var isVercel = window.location.hostname.indexOf('vercel.app') >= 0;
+    if (isVercel || getApiKey()) { banner.classList.remove('show'); }
     else { banner.classList.add('show'); }
   }
 
@@ -217,24 +219,33 @@ async function sendMessage() {
     var proxyOk = false;
 
     // Try server proxy first (Vercel deploy — API key hidden on server)
-    try {
-      var proxyRes = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          system: CHAT_SYSTEM_PROMPTS[chatLang],
-          messages: chatHistory.slice(-8)
-        })
-      });
-      if (proxyRes.ok) {
+    var isVercel = window.location.hostname.indexOf('vercel.app') >= 0;
+    if (isVercel) {
+      try {
+        var proxyRes = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            system: CHAT_SYSTEM_PROMPTS[chatLang],
+            messages: chatHistory.slice(-8)
+          })
+        });
         var proxyData = await proxyRes.json();
-        if (proxyData.content) {
+        if (proxyRes.ok && proxyData.content) {
           fullReplyText = proxyData.content;
           proxyOk = true;
+        } else if (!proxyRes.ok) {
+          removeTypingIndicator();
+          addChatMessage('a', 'Error del servidor: ' + (proxyData.error || 'intenta de nuevo'));
+          document.getElementById('sendBtn').disabled = false;
+          return;
         }
+      } catch (e) {
+        removeTypingIndicator();
+        addChatMessage('a', 'Error de conexion. Intenta de nuevo.');
+        document.getElementById('sendBtn').disabled = false;
+        return;
       }
-    } catch (e) {
-      // Proxy not available (GitHub Pages) — fall through to client-side
     }
 
     // Fallback: client-side API call (needs user's API key)
