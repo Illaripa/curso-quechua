@@ -213,103 +213,115 @@ async function sendMessage() {
   container.scrollTop = container.scrollHeight;
 
   try {
-    if (!getApiKey()) {
-      removeTypingIndicator();
-      var b = document.getElementById('apiBanner'); if (b) b.classList.add('show');
-      addChatMessage('a', 'Primero ingresa tu API key arriba. Es gratis en openrouter.ai');
-      document.getElementById('sendBtn').disabled = false;
-      return;
-    }
+    var fullReplyText = '';
+    var proxyOk = false;
 
-    var provider = localStorage.getItem('yachay_provider') || 'openrouter';
-    var apiKey = getApiKey();
-    var response, data;
-
-    if (provider === 'anthropic') {
-      response = await fetch('https://api.anthropic.com/v1/messages', {
+    // Try server proxy first (Vercel deploy — API key hidden on server)
+    try {
+      var proxyRes = await fetch('/api/chat', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-api-key': apiKey,
-          'anthropic-version': '2023-06-01',
-          'anthropic-dangerous-direct-browser-access': 'true'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          model: 'claude-3-haiku-20240307',
-          max_tokens: 400,
           system: CHAT_SYSTEM_PROMPTS[chatLang],
-          messages: chatHistory
+          messages: chatHistory.slice(-8)
         })
       });
-
-      data = await response.json();
-
-      if (!response.ok) {
-        removeTypingIndicator();
-        if (response.status === 401) {
-          document.getElementById('apiBanner').classList.add('show');
-          addChatMessage('a', 'API key invalida. Ingresa una key valida arriba.');
-        } else {
-          addChatMessage('a', 'Error API (' + response.status + '): ' + (data.error && data.error.message || JSON.stringify(data).slice(0, 200)));
+      if (proxyRes.ok) {
+        var proxyData = await proxyRes.json();
+        if (proxyData.content) {
+          fullReplyText = proxyData.content;
+          proxyOk = true;
         }
-        document.getElementById('sendBtn').disabled = false;
-        return;
       }
-      data = {content: [{text: data.content && data.content[0] && data.content[0].text || ''}]};
-
-    } else {
-      // OpenRouter with fallback models
-      var orMsgs = [{role: 'user', content: '[INSTRUCCIONES] ' + CHAT_SYSTEM_PROMPTS[chatLang] + ' [/INSTRUCCIONES]'}, {role: 'assistant', content: 'Entendido, soy tu tutor.'}].concat(chatHistory.slice(-8));
-      var models = [
-        'google/gemma-3-27b-it:free',
-        'google/gemma-3n-e4b-it:free',
-        'qwen/qwen3-4b:free',
-        'mistralai/mistral-small-3.1-24b-instruct:free',
-        'deepseek/deepseek-chat-v3-0324:free'
-      ];
-      var success = false;
-
-      // Try each model, with retry on 429
-      for (var i = 0; i < models.length; i++) {
-        for (var attempt = 0; attempt < 2; attempt++) {
-          if (attempt > 0) await new Promise(function(r) { setTimeout(r, 3000); });
-          response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': 'Bearer ' + apiKey,
-              'HTTP-Referer': 'https://illaripa.github.io/curso-quechua/',
-              'X-Title': 'Yachay Tutor'
-            },
-            body: JSON.stringify({
-              model: models[i],
-              max_tokens: 300,
-              messages: orMsgs
-            })
-          });
-          data = await response.json();
-          if (response.ok && data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) {
-            success = true;
-            break;
-          }
-          if (response.status !== 429) break; // Only retry on rate limit
-        }
-        if (success) break;
-      }
-
-      if (!success) {
-        removeTypingIndicator();
-        if (response.status === 401) {
-          document.getElementById('apiBanner').classList.add('show');
-          addChatMessage('a', 'API key invalida. Registrate gratis en openrouter.ai');
-        } else {
-          addChatMessage('a', 'Todos los modelos free estan ocupados. Intenta de nuevo en unos segundos.');
-        }
-        document.getElementById('sendBtn').disabled = false;
-        return;
-      }
-      data = {content: [{text: data.choices[0].message.content || ''}]};
+    } catch (e) {
+      // Proxy not available (GitHub Pages) — fall through to client-side
     }
+
+    // Fallback: client-side API call (needs user's API key)
+    if (!proxyOk) {
+      if (!getApiKey()) {
+        removeTypingIndicator();
+        var b = document.getElementById('apiBanner'); if (b) b.classList.add('show');
+        addChatMessage('a', 'Primero ingresa tu API key arriba. Es gratis en openrouter.ai');
+        document.getElementById('sendBtn').disabled = false;
+        return;
+      }
+
+      var provider = localStorage.getItem('yachay_provider') || 'openrouter';
+      var apiKey = getApiKey();
+      var response, data;
+
+      if (provider === 'anthropic') {
+        response = await fetch('https://api.anthropic.com/v1/messages', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-api-key': apiKey,
+            'anthropic-version': '2023-06-01',
+            'anthropic-dangerous-direct-browser-access': 'true'
+          },
+          body: JSON.stringify({
+            model: 'claude-3-haiku-20240307',
+            max_tokens: 400,
+            system: CHAT_SYSTEM_PROMPTS[chatLang],
+            messages: chatHistory
+          })
+        });
+        data = await response.json();
+        if (!response.ok) {
+          removeTypingIndicator();
+          addChatMessage('a', 'Error API (' + response.status + '): ' + (data.error && data.error.message || 'Error'));
+          document.getElementById('sendBtn').disabled = false;
+          return;
+        }
+        fullReplyText = data.content && data.content[0] && data.content[0].text || '';
+
+      } else {
+        // OpenRouter with fallback models
+        var orMsgs = [{role: 'user', content: '[INSTRUCCIONES] ' + CHAT_SYSTEM_PROMPTS[chatLang] + ' [/INSTRUCCIONES]'}, {role: 'assistant', content: 'Entendido, soy tu tutor.'}].concat(chatHistory.slice(-8));
+        var models = [
+          'google/gemma-3-27b-it:free',
+          'google/gemma-3n-e4b-it:free',
+          'qwen/qwen3-4b:free',
+          'mistralai/mistral-small-3.1-24b-instruct:free',
+          'deepseek/deepseek-chat-v3-0324:free'
+        ];
+        var success = false;
+
+        for (var i = 0; i < models.length; i++) {
+          for (var attempt = 0; attempt < 2; attempt++) {
+            if (attempt > 0) await new Promise(function(r) { setTimeout(r, 3000); });
+            response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + apiKey,
+                'HTTP-Referer': 'https://illaripa.github.io/curso-quechua/',
+                'X-Title': 'Yachay Tutor'
+              },
+              body: JSON.stringify({ model: models[i], max_tokens: 300, messages: orMsgs })
+            });
+            data = await response.json();
+            if (response.ok && data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) {
+              success = true;
+              break;
+            }
+            if (response.status !== 429) break;
+          }
+          if (success) break;
+        }
+
+        if (!success) {
+          removeTypingIndicator();
+          addChatMessage('a', 'Todos los modelos estan ocupados. Intenta de nuevo en unos segundos.');
+          document.getElementById('sendBtn').disabled = false;
+          return;
+        }
+        fullReplyText = data.choices[0].message.content || '';
+      }
+    }
+
+    var data = {content: [{text: fullReplyText}]};
 
     var fullReply = data.content[0].text || '';
     if (!fullReply) {
