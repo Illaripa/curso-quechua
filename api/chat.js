@@ -8,37 +8,47 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Missing messages or system' });
   }
 
-  // Try Anthropic (Claude) first, then OpenRouter as fallback
+  // Try Anthropic (Claude) first
   var anthropicKey = process.env.ANTHROPIC_API_KEY;
   if (anthropicKey) {
-    try {
-      var response = await fetch('https://api.anthropic.com/v1/messages', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-api-key': anthropicKey,
-          'anthropic-version': '2023-06-01'
-        },
-        body: JSON.stringify({
-          model: 'claude-3-haiku-20240307',
-          max_tokens: 150,
-          system: body.system,
-          messages: body.messages.slice(-8)
-        })
-      });
-      var data = await response.json();
-      if (response.ok && data.content && data.content[0] && data.content[0].text) {
-        return res.status(200).json({ content: data.content[0].text });
+    var models = ['claude-sonnet-4-20250514', 'claude-3-5-haiku-20241022', 'claude-3-haiku-20240307'];
+    for (var m = 0; m < models.length; m++) {
+      try {
+        var response = await fetch('https://api.anthropic.com/v1/messages', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-api-key': anthropicKey,
+            'anthropic-version': '2023-06-01'
+          },
+          body: JSON.stringify({
+            model: models[m],
+            max_tokens: 150,
+            system: body.system,
+            messages: body.messages.slice(-8)
+          })
+        });
+        var data = await response.json();
+        if (response.ok && data.content && data.content[0] && data.content[0].text) {
+          return res.status(200).json({ content: data.content[0].text });
+        }
+        // If 404 (model not found), try next model
+        if (response.status === 404) continue;
+        // Other errors: return the error
+        return res.status(response.status).json({ error: data.error ? data.error.message : 'Anthropic error', model: models[m] });
+      } catch (e) {
+        continue;
       }
-    } catch (e) {
-      // Fall through to OpenRouter
     }
   }
 
   // Fallback: OpenRouter free models
   var orKey = process.env.OPENROUTER_API_KEY;
-  if (!orKey) {
+  if (!orKey && !anthropicKey) {
     return res.status(500).json({ error: 'No API key configured' });
+  }
+  if (!orKey) {
+    return res.status(502).json({ error: 'Anthropic models unavailable' });
   }
 
   var models = [
