@@ -70,9 +70,12 @@ function shuffleArray(arr) {
 }
 
 function renderCard() {
-  var countEl = document.getElementById('cardCount');
+  var countEl = document.getElementById('cardsCount');
+  var data = cardLang === 'q' ? VERBOS_Q : cardLang === 'p' ? PALABRAS_Q : VERBOS_A;
+  var total = data.length;
   var learnedCount = Object.keys(JSON.parse(localStorage.getItem('yachay_v5_' + cardLang) || '{}')).length;
-  countEl.textContent = (cardIndex + 1) + ' / ' + deck.length + (learnedCount > 0 ? ' (' + learnedCount + ' learned)' : '');
+  countEl.textContent = (cardIndex + 1) + ' / ' + deck.length + (learnedCount > 0 ? ' (' + learnedCount + ' aprendidas)' : '');
+  document.getElementById('cardsProgress').style.width = (total > 0 ? (learnedCount / total * 100) : 0) + '%';
 
   if (deck.length === 0 || cardIndex >= deck.length) {
     showEmptyDeck();
@@ -302,4 +305,19 @@ function setupSwipe() {
       flipCard();
     }
   });
+}
+
+function openFilter() {
+  document.getElementById('filterPanel').classList.add('active');
+}
+
+function closeFilterPanel(event) {
+  if (event.target === document.getElementById('filterPanel')) {
+    document.getElementById('filterPanel').classList.remove('active');
+  }
+}
+
+function applyFilter() {
+  document.getElementById('filterPanel').classList.remove('active');
+  applyCardFilter();
 }
