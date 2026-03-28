@@ -150,9 +150,7 @@ function openChat(lang) {
 
   document.getElementById('chatTitle').textContent = lang === 'q' ? '\u25C6 Tutor IA -- Quechua' : '\u25C6 Tutor IA -- Aymara';
   document.getElementById('chatMessages').innerHTML = '';
-  document.getElementById('chatSuggestions').innerHTML = CHAT_SUGGESTIONS[lang].map(function(s) {
-    return '<button class="chip" onclick="sendChip(\'' + s.replace(/'/g, "\\'") + '\')">' + s + '</button>';
-  }).join('');
+  document.getElementById('chatSuggestions').innerHTML = '';
   document.getElementById('tutorFeedback').innerHTML = '<div class="tutor-fb-empty">Escribe algo para recibir feedback...</div>';
   document.getElementById('tutorLevel').textContent = 'A1 -- Principiante';
   document.getElementById('tutorProgressBar').style.width = '5%';
