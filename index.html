@@ -113,6 +113,7 @@
   </div>
   <div class="progress-bar"><div class="progress-fill" id="cardsProgress" style="background:var(--gold)"></div></div>
   <div class="card-stage">
+    <button class="card-nav card-nav--prev" id="cardPrev" onclick="prevCard()" title="Anterior">&#8249;</button>
     <div class="card-wrap" id="cardWrap">
       <div class="ghost-card ghost-card--2"></div>
       <div class="ghost-card ghost-card--1"></div>
@@ -123,6 +124,7 @@
       <div class="swipe-right" id="swipeRight">Siguiente</div>
       <div class="swipe-left" id="swipeLeft">Anterior</div>
     </div>
+    <button class="card-nav card-nav--next" id="cardNext" onclick="nextCard()" title="Siguiente">&#8250;</button>
     <div class="card-empty" id="cardEmpty">
       <div class="card-empty-symbol">&#10022;</div>
       <div class="card-empty-title">Lo aprendiste todo!</div>

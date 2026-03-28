@@ -77,6 +77,12 @@ function renderCard() {
   countEl.textContent = (cardIndex + 1) + ' / ' + deck.length + (learnedCount > 0 ? ' (' + learnedCount + ' aprendidas)' : '');
   document.getElementById('cardsProgress').style.width = (total > 0 ? (learnedCount / total * 100) : 0) + '%';
 
+  // Update nav arrows visibility
+  var prevBtn = document.getElementById('cardPrev');
+  var nextBtn = document.getElementById('cardNext');
+  if (prevBtn) prevBtn.style.opacity = cardIndex > 0 ? '1' : '0.25';
+  if (nextBtn) nextBtn.style.opacity = cardIndex < deck.length - 1 ? '1' : '0.25';
+
   if (deck.length === 0 || cardIndex >= deck.length) {
     showEmptyDeck();
     return;
@@ -321,3 +327,13 @@ function applyFilter() {
   document.getElementById('filterPanel').classList.remove('active');
   applyCardFilter();
 }
+
+// Keyboard navigation for flashcards
+document.addEventListener('keydown', function(e) {
+  var cardsScreen = document.getElementById('cards');
+  if (!cardsScreen || !cardsScreen.classList.contains('active')) return;
+  if (e.key === 'ArrowRight') { nextCard(); e.preventDefault(); }
+  else if (e.key === 'ArrowLeft') { prevCard(); e.preventDefault(); }
+  else if (e.key === ' ') { flipCard(); e.preventDefault(); }
+  else if (e.key === 'Enter') { learnCard(); e.preventDefault(); }
+});
