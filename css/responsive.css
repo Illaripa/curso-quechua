@@ -39,4 +39,10 @@
   .home-title { font-size: 21px; }
   .menu-title { font-size: 15px; }
 }
-</style>
+
+/* iPhone notch / safe area */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .chat-input-area { padding-bottom: calc(14px + env(safe-area-inset-bottom)); }
+  .card-actions { padding-bottom: calc(12px + env(safe-area-inset-bottom)); }
+  .morning-btn { margin-bottom: env(safe-area-inset-bottom); }
+}
