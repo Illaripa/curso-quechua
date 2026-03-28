@@ -1,16 +1,22 @@
 /* ============================================================
    MOBILE RESPONSIVE
    ============================================================ */
-@media (max-width: 600px) {
-  .tutor-sidebar {
-    display: none;
-  }
 
-  .tutor-body {
-    height: calc(100vh - 50px);
-  }
+/* Tablets and small desktops */
+@media (max-width: 768px) {
+  .card-wrap { max-width: 90%; }
+  .card-verb { font-size: 36px; }
+  .card-meaning { font-size: 20px; }
 }
 
+/* Large phones */
+@media (max-width: 600px) {
+  .tutor-sidebar { display: none; }
+  .tutor-body { height: calc(100dvh - 50px); }
+  .screen--full { height: 100dvh; }
+}
+
+/* Standard phones */
 @media (max-width: 480px) {
   .morning-content { padding: 40px 16px 22px; }
   .home-header { padding: 28px 16px 18px; }
@@ -33,11 +39,25 @@
   .send-btn { width: 44px; height: 44px; font-size: 18px; }
   .quiz-sentence { font-size: 20px; }
   .quiz-option { font-size: 15px; padding: 14px; }
+  .card-verb { font-size: 32px; }
+  .card-meaning { font-size: 18px; }
+  .conj-grid { grid-template-columns: 1fr 1fr; gap: 4px; }
+  .conj-cell { padding: 6px 7px; }
+  .conj-cell-word { font-size: 13px; }
+  .card-back { padding: 12px 10px; }
+  .card-back-verb { font-size: 18px; }
+  .card-back-meaning { font-size: 15px; }
+  .bubble { font-size: 15px; padding: 10px 14px; }
+  .chip { font-size: 13px; padding: 7px 13px; }
 }
 
+/* Small phones */
 @media (max-width: 360px) {
   .home-title { font-size: 21px; }
   .menu-title { font-size: 15px; }
+  .card-verb { font-size: 28px; }
+  .card-meaning { font-size: 16px; }
+  .conj-grid { grid-template-columns: 1fr 1fr; }
 }
 
 /* iPhone notch / safe area */
@@ -45,4 +65,9 @@
   .chat-input-area { padding-bottom: calc(14px + env(safe-area-inset-bottom)); }
   .card-actions { padding-bottom: calc(12px + env(safe-area-inset-bottom)); }
   .morning-btn { margin-bottom: env(safe-area-inset-bottom); }
+}
+
+/* Prevent iOS zoom on input focus */
+@media (max-width: 600px) {
+  input, textarea, select { font-size: 16px !important; }
 }

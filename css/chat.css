@@ -6,6 +6,7 @@
   flex: 1;
   overflow: hidden;
   height: calc(100vh - 50px);
+  height: calc(100dvh - 50px);
 }
 
 .tutor-main {
