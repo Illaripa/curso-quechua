@@ -36,11 +36,42 @@
 .card-stage {
   flex: 1;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   perspective: 1200px;
   position: relative;
   padding: 6px 10px 4px;
+  gap: 8px;
+}
+
+.card-nav {
+  background: var(--card);
+  border: 1px solid var(--bdr);
+  color: var(--muted);
+  font-size: 32px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: color 0.2s, border-color 0.2s, opacity 0.2s;
+  z-index: 2;
+}
+
+.card-nav:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+.card-nav:active {
+  transform: scale(0.92);
+}
+
+@media (max-width: 480px) {
+  .card-nav { width: 36px; height: 36px; font-size: 26px; }
 }
 
 .card-wrap {
