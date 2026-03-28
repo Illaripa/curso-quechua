@@ -3,60 +3,72 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  var apiKey = process.env.OPENROUTER_API_KEY;
-  if (!apiKey) {
-    return res.status(500).json({ error: 'API key not configured on server' });
-  }
-
   var body = req.body;
   if (!body || !body.messages || !body.system) {
     return res.status(400).json({ error: 'Missing messages or system' });
   }
 
+  // Try Anthropic (Claude) first, then OpenRouter as fallback
+  var anthropicKey = process.env.ANTHROPIC_API_KEY;
+  if (anthropicKey) {
+    try {
+      var response = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': anthropicKey,
+          'anthropic-version': '2023-06-01'
+        },
+        body: JSON.stringify({
+          model: 'claude-3-haiku-20240307',
+          max_tokens: 150,
+          system: body.system,
+          messages: body.messages.slice(-8)
+        })
+      });
+      var data = await response.json();
+      if (response.ok && data.content && data.content[0] && data.content[0].text) {
+        return res.status(200).json({ content: data.content[0].text });
+      }
+    } catch (e) {
+      // Fall through to OpenRouter
+    }
+  }
+
+  // Fallback: OpenRouter free models
+  var orKey = process.env.OPENROUTER_API_KEY;
+  if (!orKey) {
+    return res.status(500).json({ error: 'No API key configured' });
+  }
+
   var models = [
     'google/gemma-3-27b-it:free',
     'google/gemma-3n-e4b-it:free',
-    'qwen/qwen3-4b:free',
-    'mistralai/mistral-small-3.1-24b-instruct:free',
-    'deepseek/deepseek-chat-v3-0324:free'
+    'qwen/qwen3-4b:free'
   ];
-
   var orMsgs = [
     { role: 'user', content: '[INSTRUCCIONES] ' + body.system + ' [/INSTRUCCIONES]' },
     { role: 'assistant', content: 'Entendido, soy tu tutor.' }
   ].concat(body.messages.slice(-8));
 
   for (var i = 0; i < models.length; i++) {
-    for (var attempt = 0; attempt < 2; attempt++) {
-      if (attempt > 0) await new Promise(function(r) { setTimeout(r, 3000); });
-      try {
-        var response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + apiKey,
-            'HTTP-Referer': 'https://illaripa.github.io/curso-quechua/',
-            'X-Title': 'Yachay Tutor'
-          },
-          body: JSON.stringify({
-            model: models[i],
-            max_tokens: 150,
-            messages: orMsgs
-          })
-        });
-
-        var data = await response.json();
-        if (response.ok && data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) {
-          return res.status(200).json({
-            content: data.choices[0].message.content
-          });
-        }
-        if (response.status !== 429) break;
-      } catch (e) {
-        break;
+    try {
+      var resp = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + orKey,
+          'HTTP-Referer': 'https://yachay-tutor.vercel.app/',
+          'X-Title': 'Yachay Tutor'
+        },
+        body: JSON.stringify({ model: models[i], max_tokens: 150, messages: orMsgs })
+      });
+      var d = await resp.json();
+      if (resp.ok && d.choices && d.choices[0] && d.choices[0].message && d.choices[0].message.content) {
+        return res.status(200).json({ content: d.choices[0].message.content });
       }
-    }
+    } catch (e) { continue; }
   }
 
-  return res.status(502).json({ error: 'All models unavailable. Try again in a few seconds.' });
+  return res.status(502).json({ error: 'All models unavailable' });
 }
