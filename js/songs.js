@@ -103,6 +103,71 @@ function openSongDetail(index) {
   document.getElementById('songsBody').scrollTop = 0;
 }
 
+var transcriptorLang = 'q';
+
+function openTranscriptor() {
+  showScreen('transcriptor');
+}
+
+function setTranscriptorLang(lang) {
+  transcriptorLang = lang;
+  var gold = '#c47d1a', teal = '#1a8a7a';
+  var color = lang === 'q' ? gold : teal;
+  document.getElementById('tLangQ').style.cssText = 'flex:1;padding:12px;border-radius:10px;border:2px solid ' + (lang==='q'?gold:'var(--bdr)') + ';background:' + (lang==='q'?gold:'var(--card)') + ';color:' + (lang==='q'?'#fff':'var(--txt)') + ';font-weight:700;font-size:14px;cursor:pointer';
+  document.getElementById('tLangA').style.cssText = 'flex:1;padding:12px;border-radius:10px;border:2px solid ' + (lang==='a'?teal:'var(--bdr)') + ';background:' + (lang==='a'?teal:'var(--card)') + ';color:' + (lang==='a'?'#fff':'var(--txt)') + ';font-weight:700;font-size:14px;cursor:pointer';
+  document.getElementById('transcriptorBtn').style.background = color;
+}
+
+function runTranscriptor() {
+  var url = document.getElementById('transcriptorUrl').value.trim();
+  if (!url) { alert('Pega un link de YouTube primero'); return; }
+
+  var match = url.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+  if (!match) { alert('Link de YouTube no válido'); return; }
+  var youtubeId = match[1];
+
+  var btn = document.getElementById('transcriptorBtn');
+  var status = document.getElementById('transcriptorStatus');
+  var result = document.getElementById('transcriptorResult');
+
+  btn.disabled = true;
+  btn.textContent = '⏳ Transcribiendo...';
+  status.textContent = 'Descargando audio y transcribiendo... puede tardar 30-60 segundos.';
+  result.style.display = 'none';
+
+  fetch('/api/transcribe', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ youtube_id: youtubeId, lang: transcriptorLang })
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    btn.disabled = false;
+    btn.textContent = '⚙ Transcribir con IA';
+    if (data.error) {
+      status.textContent = 'Error: ' + data.error;
+    } else {
+      status.textContent = '✓ Listo';
+      document.getElementById('transcriptorText').value = data.text;
+      result.style.display = 'block';
+    }
+  })
+  .catch(function(err) {
+    btn.disabled = false;
+    btn.textContent = '⚙ Transcribir con IA';
+    status.textContent = 'Error: ' + err.message;
+  });
+}
+
+function copyTranscription() {
+  var text = document.getElementById('transcriptorText').value;
+  navigator.clipboard.writeText(text).then(function() {
+    var btn = event.target;
+    btn.textContent = '✓ Copiado!';
+    setTimeout(function() { btn.textContent = '✓ Copiar texto'; }, 2000);
+  });
+}
+
 function transcribeSong(youtubeId) {
   var btn = document.getElementById('transcribeBtn');
   var result = document.getElementById('transcribeResult');

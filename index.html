@@ -273,6 +273,47 @@
 </div>
 
 <!-- ============================================================
+     TRANSCRIPTOR SCREEN
+     ============================================================ -->
+<div id="transcriptor" class="screen">
+  <div class="topbar">
+    <button class="topbar-back" onclick="goHome()">&#8592;</button>
+    <span class="topbar-title">&#9881; Transcribir Cancion</span>
+    <span></span>
+  </div>
+  <div class="content-body" style="padding-top:20px">
+    <p class="section-label" style="margin-bottom:12px">Pega el link de YouTube</p>
+    <input id="transcriptorUrl" type="url" placeholder="https://www.youtube.com/watch?v=..."
+      style="width:100%;padding:14px;border-radius:12px;border:1px solid var(--bdr);background:var(--card);font-size:15px;color:var(--txt);box-sizing:border-box;margin-bottom:12px"/>
+    <div style="display:flex;gap:8px;margin-bottom:20px">
+      <button onclick="setTranscriptorLang('q')" id="tLangQ"
+        style="flex:1;padding:12px;border-radius:10px;border:2px solid #c47d1a;background:#c47d1a;color:#fff;font-weight:700;font-size:14px;cursor:pointer">
+        Quechua
+      </button>
+      <button onclick="setTranscriptorLang('a')" id="tLangA"
+        style="flex:1;padding:12px;border-radius:10px;border:2px solid var(--bdr);background:var(--card);color:var(--txt);font-weight:700;font-size:14px;cursor:pointer">
+        Aymara
+      </button>
+    </div>
+    <button onclick="runTranscriptor()" id="transcriptorBtn"
+      style="width:100%;padding:16px;border-radius:12px;border:none;background:#c47d1a;color:#fff;font-size:16px;font-weight:700;cursor:pointer;min-height:52px">
+      &#9881; Transcribir con IA
+    </button>
+    <div id="transcriptorStatus" style="text-align:center;margin-top:16px;font-size:14px;color:var(--muted)"></div>
+    <div id="transcriptorResult" style="display:none;margin-top:20px">
+      <p class="section-label" style="margin-bottom:8px">Letra transcrita</p>
+      <textarea id="transcriptorText"
+        style="width:100%;min-height:300px;padding:14px;border-radius:12px;border:1px solid var(--bdr);background:var(--card);font-size:14px;color:var(--txt);line-height:1.6;box-sizing:border-box;resize:vertical"
+        readonly></textarea>
+      <button onclick="copyTranscription()"
+        style="width:100%;padding:14px;border-radius:12px;border:1px solid var(--bdr);background:var(--card);font-size:15px;font-weight:700;cursor:pointer;margin-top:8px">
+        &#10003; Copiar texto
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
      ELEMENT PRAYER SCREEN
      ============================================================ -->
 <div id="elementPrayer" class="screen">

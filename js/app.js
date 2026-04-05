@@ -46,6 +46,7 @@ function renderHomeBody() {
     {i:'\u25A3', t:'Fichas -- Desliza y aprende', d:'Stories de verbos -- Voltea -- Aprendido', fn:"openCards('q')"},
     {i:'\u25C9', t:'Quiz Quechua', d:'Traduce oraciones completas', fn:"startQuiz('q')"},
     {i:'\u266B', t:'Canciones Quechua', d:'Letra, traducci\u00F3n y link de YouTube', fn:"openSongs('q')"},
+    {i:'\u2699', t:'Transcribir canci\u00F3n', d:'Pega un link de YouTube y transcribe la letra con IA', fn:"openTranscriptor()"},
     {i:'\u25C6', t:'Tutor IA', d:'Pregunta, corrige oraciones, conversa', fn:"openChat('q')"}
   ] : [
     {i:'\u2248', t:'Oraciones en Aymara', d:'Familia, naturaleza, saludos, vida diaria', fn:"openReader('aymara_or')"},
@@ -56,6 +57,7 @@ function renderHomeBody() {
     {i:'\u25A4', t:'Fichas Vocabulario', d:'Familia, naturaleza, n\u00FAmeros y m\u00E1s', fn:"openCards('p')"},
     {i:'\u25C9', t:'Quiz Aymara', d:'Practica traduciendo oraciones', fn:"startQuiz('a')"},
     {i:'\u266B', t:'Canciones Aymara', d:'Letra, traducci\u00F3n y link de YouTube', fn:"openSongs('a')"},
+    {i:'\u2699', t:'Transcribir canci\u00F3n', d:'Pega un link de YouTube y transcribe la letra con IA', fn:"openTranscriptor()"},
     {i:'\u25C6', t:'Tutor IA -- Aymara', d:'Practica con inteligencia artificial', fn:"openChat('a')"}
   ];
 
