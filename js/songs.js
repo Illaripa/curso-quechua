@@ -3,12 +3,20 @@ var songsIndex = 0;
 var songsLang = 'q';
 
 function openSongs(lang) {
-  songsLang = lang;
-  songsData = lang === 'q' ? CANCIONES_Q : CANCIONES_A;
-  songsIndex = 0;
-  document.getElementById('songsTitle').textContent = lang === 'q' ? 'Canciones Quechua' : 'Canciones Aymara';
-  renderSong();
-  showScreen('songs');
+  try {
+    songsLang = lang;
+    songsData = lang === 'q' ? CANCIONES_Q : CANCIONES_A;
+    if (!songsData || !songsData.length) {
+      alert('Error cargando canciones. Recarga la página.');
+      return;
+    }
+    songsIndex = 0;
+    document.getElementById('songsTitle').textContent = lang === 'q' ? 'Canciones Quechua' : 'Canciones Aymara';
+    renderSong();
+    showScreen('songs');
+  } catch(e) {
+    alert('Error: ' + e.message);
+  }
 }
 
 function renderSong() {
