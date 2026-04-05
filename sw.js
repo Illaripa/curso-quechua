@@ -1,4 +1,4 @@
-var CACHE_NAME = 'yachay-v3';
+var CACHE_NAME = 'yachay-v4';
 var urlsToCache = [
   './',
   './index.html',
@@ -25,6 +25,8 @@ var urlsToCache = [
   './data/vocabulary.js',
   './data/quiz-quechua.js',
   './data/quiz-aymara.js',
+  './data/songs-quechua.js',
+  './data/songs-aymara.js',
   './js/morning.js',
   './js/elements.js',
   './js/reader.js',
@@ -32,6 +34,7 @@ var urlsToCache = [
   './js/flashcards.js',
   './js/quiz.js',
   './js/chat.js',
+  './js/songs.js',
   './js/app.js',
   './icons/icon-192.png',
   './icons/icon-512.png'
