@@ -32,6 +32,22 @@ const SUFIJOS_A=[
   {cat:"Derivacional",q:"-iri",s:"Agentivo (el que hace)",uso:"Indica qui\u00E9n realiza la acci\u00F3n.",ex:[{q:"Yatichiri.",s:"El que ense\u00F1a / el maestro."}],note:"Equivale al -q quechua agentivo."},
   {cat:"Derivacional",q:"-wi",s:"Nominalizador de lugar",uso:"Indica el lugar donde ocurre algo.",ex:[{q:"Manq'awi.",s:"El lugar para comer / comedor."}],note:"Forma sustantivos de lugar a partir de verbos."},
   {cat:"Evidencial",q:"-smawa",s:"Reportativo (dicen que)",uso:"Informaci\u00F3n de segunda mano.",ex:[{q:"Jilata jutismawa.",s:"Dicen que vino el hermano."}],note:"Equivale al -si quechua. Para rumores o relatos ajenos."},
-  {cat:"Modal",q:"-kata",s:"Participio pasado",uso:"Acci\u00F3n ya realizada, nominalizada.",ex:[{q:"Sarakata.",s:"El que fue / habiendo ido."}],note:"\u00DAtil para formar oraciones relativas."}
+  {cat:"Modal",q:"-kata",s:"Participio pasado",uso:"Acci\u00F3n ya realizada, nominalizada.",ex:[{q:"Sarakata.",s:"El que fue / habiendo ido."}],note:"\u00DAtil para formar oraciones relativas."},
+  {cat:"Verbal",q:"-pxta",s:"T\u00FA plural (presente)",uso:"Segunda persona plural.",ex:[{q:"Yatapxta.",s:"Ustedes saben."}],note:""},
+  {cat:"Verbal",q:"-\u00F1ani",s:"Futuro yusivo (vamos a)",uso:"Sugiere una acci\u00F3n futura conjunta.",ex:[{q:"Sara\u00F1ani.",s:"Vamos a ir."}],note:"Equivale al 'vamos a' espa\u00F1ol."},
+  {cat:"Tiempo",q:"-\u00E1nwa",s:"Pasado reciente",uso:"Acci\u00F3n ocurrida hace poco.",ex:[{q:"Jut\u00E1nwa.",s:"Acaba de llegar."}],note:"Expresa proximidad temporal al presente."},
+  {cat:"Tiempo",q:"-pacha",s:"En el tiempo de / cuando",uso:"Marca contexto temporal.",ex:[{q:"Jichhapacha.",s:"Ahora mismo / en este momento."}],note:"Muy usado para situar acciones en el tiempo."},
+  {cat:"Posesivo",q:"-sa",s:"Su (reflexivo posesor)",uso:"Indica que el sujeto posee algo propio.",ex:[{q:"Jupansa uta.",s:"Su propia casa (de \u00E9l mismo)."}],note:"Distingue posesi\u00F3n propia de la de otro."},
+  {cat:"Caso",q:"-xaru",s:"Hacia (con \u00E9nfasis)",uso:"Direcci\u00F3n con mayor \u00E9nfasis que -ru.",ex:[{q:"Jupaxaru parlt'tha.",s:"Le hablo a \u00E9l (precisamente)."}],note:"Combina -xa (t\u00F3pico) + -ru (direcci\u00F3n)."},
+  {cat:"Caso",q:"-tkiri",s:"A trav\u00E9s de / por",uso:"Movimiento a trav\u00E9s de un lugar.",ex:[{q:"Nayraткiri.",s:"Por el frente / por delante."}],note:"Indica trayecto o paso por un lugar."},
+  {cat:"Negaci\u00F3n",q:"Jani...ti",s:"Negaci\u00F3n suave",uso:"Niega sin \u00E9nfasis.",ex:[{q:"Jani yatkti.",s:"No s\u00E9 (neutro)."}],note:"Versi\u00F3n menos enf\u00E1tica que Janiw...kiti."},
+  {cat:"Foco",q:"-wa",s:"Afirmaci\u00F3n enf\u00E1tica",uso:"Refuerza la afirmaci\u00F3n del predicado.",ex:[{q:"Jutwa.",s:"S\u00ED viene (con seguridad)."}],note:"Es el evidencial de certeza m\u00E1s frecuente del Aymara."},
+  {cat:"Derivacional",q:"-ta-",s:"Causativo de estado",uso:"Indica que algo fue puesto en un estado.",ex:[{q:"Sarnaqatatha.",s:"Hago que camine."}],note:"Variante del causativo para verbos de movimiento."},
+  {cat:"Derivacional",q:"-su-",s:"Direcci\u00F3n hacia afuera",uso:"La acci\u00F3n va hacia afuera o se aleja.",ex:[{q:"Anatasitha.",s:"Salgo a jugar."}],note:"Marca alejamiento del hablante."},
+  {cat:"Aspecto",q:"-rpaya-",s:"Acci\u00F3n r\u00E1pida / s\u00FAbita",uso:"Indica que la acci\u00F3n ocurre de golpe.",ex:[{q:"Sararpayatha.",s:"Me fui de repente."}],note:"Equivale al 'de pronto' o 'de golpe' espa\u00F1ol."},
+  {cat:"Aspecto",q:"-rapi-",s:"Benefactivo (hacer por otro)",uso:"La acci\u00F3n se realiza en beneficio de alguien.",ex:[{q:"Apsurapitha.",s:"Lo saqué para ti."}],note:"Equivale al -pu- quechua."},
+  {cat:"Modal",q:"-chi",s:"Duda / posibilidad",uso:"Expresa incertidumbre sobre lo dicho.",ex:[{q:"Jutchi.",s:"Tal vez venga."}],note:"Equivale al -chus quechua. Para conjeturas."},
+  {cat:"Modal",q:"-ma",s:"Imperativo (orden)",uso:"Da una orden directa.",ex:[{q:"Jutama.",s:"\u00A1Ven! / \u00A1Venga!"}],note:"Imperativo de segunda persona singular."},
+  {cat:"Discursivo",q:"-xa",s:"T\u00F3pico (tema del discurso)",uso:"Marca el elemento principal del que se habla.",ex:[{q:"Jupxa parlt'itu.",s:"\u00C9l (de quien hablamos) habla."}],note:"Uno de los sufijos m\u00E1s frecuentes. Equivale al -qa quechua."}
 ];
 
