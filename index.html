@@ -263,14 +263,14 @@
   <div class="topbar">
     <button class="topbar-back" onclick="goHome()">&#8592;</button>
     <span class="topbar-title" id="songsTitle"></span>
-    <div style="display:flex;align-items:center;gap:6px">
-      <span style="font-size:12px;color:var(--muted)" id="songsNum"></span>
-      <button class="nav-btn" id="songsPrev" onclick="prevSong()">&#9664;</button>
-      <button class="nav-btn" id="songsNext" onclick="nextSong()">&#9654;</button>
-    </div>
+    <span style="font-size:12px;color:var(--muted)" id="songsNum"></span>
   </div>
   <div class="progress-bar"><div class="progress-fill" id="songsProgress"></div></div>
-  <div class="content-body" id="songsBody"></div>
+  <div class="content-body" id="songsBody" style="padding-bottom:80px"></div>
+  <div style="position:fixed;bottom:0;left:0;right:0;display:flex;gap:8px;padding:12px 16px;background:var(--bg);border-top:1px solid var(--bdr);z-index:10">
+    <button id="songsPrev" onclick="prevSong()" style="flex:1;padding:14px;border-radius:12px;border:1px solid var(--bdr);background:var(--card);font-size:20px;cursor:pointer;min-height:52px">&#9664;</button>
+    <button id="songsNext" onclick="nextSong()" style="flex:2;padding:14px;border-radius:12px;border:none;background:var(--gold);color:#fff;font-size:16px;font-weight:700;cursor:pointer;min-height:52px">Siguiente &#9654;</button>
+  </div>
 </div>
 
 <!-- ============================================================
