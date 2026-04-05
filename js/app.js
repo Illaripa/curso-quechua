@@ -51,6 +51,7 @@ function renderHomeBody() {
     {i:'\u2248', t:'Oraciones en Aymara', d:'Familia, naturaleza, saludos, vida diaria', fn:"openReader('aymara_or')"},
     {i:'\u274B', t:'Poes\u00EDa Aymara', d:'Poemas de la cultura Aymara', fn:"openReader('aymara_po')"},
     {i:'\u26A1', t:'Verbos Aymara -- Referencia', d:'50+ verbos con conjugaciones completas', fn:"openRef('aymara_verbos')"},
+    {i:'\u25CE', t:'Sufijos Aymara', d:'Sufijos y part\u00EDculas esenciales', fn:"openRef('aymara_sufijos')"},
     {i:'\u25A3', t:'Fichas Aymara', d:'Aprende verbos deslizando', fn:"openCards('a')"},
     {i:'\u25A4', t:'Fichas Vocabulario', d:'Familia, naturaleza, n\u00FAmeros y m\u00E1s', fn:"openCards('p')"},
     {i:'\u25C9', t:'Quiz Aymara', d:'Practica traduciendo oraciones', fn:"startQuiz('a')"},
