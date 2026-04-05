@@ -18,6 +18,20 @@ const SUFIJOS_A=[
   {cat:"Negaci\u00F3n",q:"Janiw...kiti",s:"Negaci\u00F3n",uso:"Negar una oraci\u00F3n.",ex:[{q:"Janiw yatkti.",s:"No s\u00E9."}],note:"Janiw al inicio, -kiti al final."},
   {cat:"Evidencial",q:"-wa",s:"Afirmaci\u00F3n / certeza",uso:"Confirma lo que se dice.",ex:[{q:"Sumawa.",s:"Es hermoso (con seguridad)."}],note:"Muy usado en Aymara cotidiano."},
   {cat:"Causativo",q:"-ya-",s:"Causativo",uso:"Hacer que otro realice la acci\u00F3n.",ex:[{q:"Yatichitha.",s:"Te ense\u00F1o."}],note:"Equivale al -chi quechua."},
-  {cat:"Diminutivo",q:"-lla",s:"Diminutivo / suavizante",uso:"Suaviza o a\u00F1ade afecto.",ex:[{q:"Uywa llawa.",s:"Es un animalito."}],note:"Similar al -cha quechua."}
+  {cat:"Diminutivo",q:"-lla",s:"Diminutivo / suavizante",uso:"Suaviza o a\u00F1ade afecto.",ex:[{q:"Uywa llawa.",s:"Es un animalito."}],note:"Similar al -cha quechua."},
+  {cat:"Caso",q:"-kama",s:"Hasta (l\u00EDmite)",uso:"L\u00EDmite espacial o temporal.",ex:[{q:"Tupanakamawa.",s:"Hasta que nos veamos."}],note:"Equivale al -kama quechua. Frecuente en despedidas."},
+  {cat:"Caso",q:"-pura",s:"Entre (miembros de grupo)",uso:"Acci\u00F3n dentro de un grupo.",ex:[{q:"Jilatanapura parlt'apxtha.",s:"Conversamos entre hermanos."}],note:"Indica reciprocidad o acci\u00F3n intragrupal."},
+  {cat:"Discursivo",q:"-sti",s:"Contraste / cambio de tema",uso:"Marca contraste o retoma un tema.",ex:[{q:"Jumaasti?",s:"\u00BFY t\u00FA (en cambio)?"}],note:"Similar al -taq quechua. Muy usado en conversaci\u00F3n."},
+  {cat:"Discursivo",q:"-raki",s:"Tambi\u00E9n / igualmente",uso:"A\u00F1ade un elemento al anterior.",ex:[{q:"Nayaraki yattha.",s:"Yo tambi\u00E9n s\u00E9."}],note:"Equivale al 'tambi\u00E9n' espa\u00F1ol."},
+  {cat:"Discursivo",q:"-pini",s:"Siempre / definitivamente",uso:"Enfatiza certeza o repetici\u00F3n.",ex:[{q:"Jutapini.",s:"Siempre viene."}],note:"Intensificador de afirmaci\u00F3n."},
+  {cat:"Foco",q:"-ki",s:"Foco / precisamente",uso:"Resalta un elemento de la oraci\u00F3n.",ex:[{q:"Jupaki puritta.",s:"Solo \u00E9l camin\u00F3."}],note:"Equivale al 'precisamente' o 'solo' enf\u00E1tico."},
+  {cat:"Reflexivo",q:"-si-",s:"Reflexivo",uso:"El sujeto act\u00FAa sobre s\u00ED mismo.",ex:[{q:"Armasitha.",s:"Me ba\u00F1o (a m\u00ED mismo)."}],note:"Se inserta en el verbo. Equivale al -ku- quechua."},
+  {cat:"Verbal aspecto",q:"-sa",s:"Gerundio simult\u00E1neo",uso:"Dos acciones al mismo tiempo.",ex:[{q:"Sarasa parlt'tha.",s:"Hablo mientras voy."}],note:"Requiere mismo sujeto. Equivale al -spa quechua."},
+  {cat:"Verbal aspecto",q:"-tata",s:"Aspecto completivo",uso:"Acci\u00F3n completamente terminada.",ex:[{q:"Manq'atatawa.",s:"Ya termin\u00F3 de comer."}],note:"Marca que la acci\u00F3n lleg\u00F3 a su fin total."},
+  {cat:"Derivacional",q:"-\u00F1a",s:"Nominalizador (infinitivo)",uso:"Convierte el verbo en sustantivo.",ex:[{q:"Yati\u00F1a sumawa.",s:"Aprender es bueno."}],note:"Equivale al -y/-na quechua. Muy productivo."},
+  {cat:"Derivacional",q:"-iri",s:"Agentivo (el que hace)",uso:"Indica qui\u00E9n realiza la acci\u00F3n.",ex:[{q:"Yatichiri.",s:"El que ense\u00F1a / el maestro."}],note:"Equivale al -q quechua agentivo."},
+  {cat:"Derivacional",q:"-wi",s:"Nominalizador de lugar",uso:"Indica el lugar donde ocurre algo.",ex:[{q:"Manq'awi.",s:"El lugar para comer / comedor."}],note:"Forma sustantivos de lugar a partir de verbos."},
+  {cat:"Evidencial",q:"-smawa",s:"Reportativo (dicen que)",uso:"Informaci\u00F3n de segunda mano.",ex:[{q:"Jilata jutismawa.",s:"Dicen que vino el hermano."}],note:"Equivale al -si quechua. Para rumores o relatos ajenos."},
+  {cat:"Modal",q:"-kata",s:"Participio pasado",uso:"Acci\u00F3n ya realizada, nominalizada.",ex:[{q:"Sarakata.",s:"El que fue / habiendo ido."}],note:"\u00DAtil para formar oraciones relativas."}
 ];
 
