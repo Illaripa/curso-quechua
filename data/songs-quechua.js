@@ -251,5 +251,178 @@ const CANCIONES_Q = [
       { t: "Liqlla", d: "Mantilla andina" },
       { t: "Chalina", d: "Bufanda, chalina" }
     ]
+  },
+  {
+    title: "Sapay Kani",
+    artist: "Uchpa",
+    genre: "Blues andino",
+    youtube_id: "-LzefF9-zyc",
+    lines: [
+      { q: "Chiri chisi ñuqawan iskaymy kaniku",     s: "La noche fría y yo somos dos" },
+      { q: "Munaycuripuita sapallaypi",               s: "Queremos irnos" },
+      { q: "Manan manan tarynqachu ñuqaqina",        s: "No va a encontrar igual que yo" },
+      { q: "Sapay kani, kaypim kani tutapi",          s: "Estoy solo, estoy aquí en la noche" },
+      { q: "Chirillaña",                              s: "Fría" },
+      { q: "Sapay kani, kaypim kani guitarraywan",   s: "Estoy solo, con mi guitarra" },
+      { q: "Llakimustin",                             s: "Muy triste" }
+    ],
+    notes: [
+      { t: "Sapay", d: "Solo, único" },
+      { t: "Chiri", d: "Frío" },
+      { t: "Llaki", d: "Tristeza, pena" }
+    ]
+  },
+  {
+    title: "Tijeras",
+    artist: "Renata Flores",
+    genre: "Rap / trap quechua",
+    youtube_id: "VQUrV_v7OK8",
+    lines: [
+      { q: "Manan pipas qawanchu manan imatapas",    s: "Nadie mira nada" },
+      { q: "Atinichu ruwayta, rimayta munani",        s: "No puedo, quiero hablar" },
+      { q: "Manan uyarikunchu rimasqayta",            s: "Nadie escucha lo que digo" },
+      { q: "Qinaspa nini: qhaparisaqmi",              s: "Entonces digo: gritaré" },
+      { q: "Uyariy nisqayki",                         s: "Escucha y te diré" },
+      { q: "Manchakuychu rimayta",                    s: "No tengas miedo de hablar" },
+      { q: "Warmikuna… quñusqa kasun",                s: "Mujeres… estemos unidas" }
+    ],
+    notes: [
+      { t: "Rimayta", d: "Hablar" },
+      { t: "Qhapari", d: "Gritar" },
+      { t: "Manchakuy", d: "Miedo" }
+    ]
+  },
+  {
+    title: "Citaray",
+    artist: "Magaly Solier",
+    genre: "Huayno tradicional andino",
+    youtube_id: "zRVPT6tuEHQ",
+    lines: [
+      { q: "¿Wak warmiqa maytataq rillachkan?",       s: "¿Aquella mujer adónde está yendo?" },
+      { q: "¡Watantintam pubrilla maskarqa!",         s: "¡Todo un año humildemente lo buscó!" },
+      { q: "Ay! ¡Citay, Citay, Citara!",              s: "¡Ay! ¡Citara mía, Citara!" },
+      { q: "¿Maytam rinki, Citara?",                  s: "¿Adónde vas, Citara?" },
+      { q: "¡Qacha uyacha, qacha chakicha!",          s: "¡Carita áspera, piececito calloso!" },
+      { q: "Wawallaymanmi, duci ducinta apallachkani", s: "A mi hijo voy llevando su almuerzo" },
+      { q: "Chakrachallaypim llamkapuwachkan",         s: "Está trabajando en mi sembradío" },
+      { q: "Sara qallmaypi",                           s: "Aporcando el maizal" },
+      { q: "Tariniñamá wawallaytaqa",                  s: "Claro que ya encontré a mi hijo" },
+      { q: "Hakuyá, hakuyá, qawaykamusun",             s: "Pues vamos, mirémoslos" }
+    ],
+    notes: [
+      { t: "Wawa", d: "Hijo/a, bebé" },
+      { t: "Sara", d: "Maíz" },
+      { t: "Chakra", d: "Sembradío, chacra" }
+    ]
+  },
+  {
+    title: "Warmi Kuyay",
+    artist: "Uchpa",
+    genre: "Blues andino",
+    youtube_id: "Eo7YJjmMqNs",
+    lines: [
+      { q: "Warmi kuyay",          s: "Mujer amada" },
+      { q: "Qam nuqawan",          s: "Tú y yo" },
+      { q: "Tutaykunapi",          s: "En mis noches" },
+      { q: "Sapallaypi",           s: "De soledad" },
+      { q: "Asikuy",               s: "Sonríe" },
+      { q: "Allillamanta",         s: "Suavemente" },
+      { q: "Yuyarayasqayta",       s: "Mi fantasía" },
+      { q: "Chayna ya kachun",     s: "Se hizo realidad" }
+    ],
+    notes: [
+      { t: "Warmi", d: "Mujer" },
+      { t: "Kuyay", d: "Amor, querer" },
+      { t: "Tutay", d: "Noche, oscuridad" }
+    ]
+  },
+  {
+    title: "Corazón Contento",
+    artist: "Uchpa",
+    genre: "Blues andino",
+    youtube_id: "nLfSvM6D8P4",
+    lines: [
+      { q: "Pawarqamuy, lluksirqamuy",       s: "Salta, vamos, sal, vamos" },
+      { q: "Corazón contento",               s: "Corazón contento" },
+      { q: "Killa qawariq tumpachalla",       s: "Cuando la luna sale poco a poco" },
+      { q: "Inti qawariq tumpachalla",        s: "Cuando el sol sale poco a poco" },
+      { q: "Kuyaqchallaykim suyachkaykim",   s: "El que te quiere te está buscando" },
+      { q: "Kuyawankichu icha manachu",       s: "¿Me quieres o no me quieres?" },
+      { q: "Ay rusaschay, rusaschay",         s: "Ay rosa, rosita" },
+      { q: "Mayu patapi, rusaschay",          s: "En la orilla del río, rosita" },
+      { q: "Yaqalla lluchkaykamuni",          s: "Por ti me resbalé" },
+      { q: "Yaqalla urmaykamuni",             s: "Por tu culpa me caí" }
+    ],
+    notes: [
+      { t: "Killa", d: "Luna" },
+      { t: "Inti", d: "Sol" },
+      { t: "Mayu", d: "Río" },
+      { t: "Rusa", d: "Rosa (flor)" }
+    ]
+  },
+  {
+    title: "Akakaw",
+    artist: "Renata Flores ft. Los Mirlos",
+    genre: "Cumbia amazónica / rap quechua",
+    youtube_id: "JrqSnbQkOdw",
+    lines: [
+      { q: "Kay raymipi rupa, rupan",             s: "En esta fiesta arde, arde" },
+      { q: "Kay pachapi rupa, rupan",             s: "En esta tierra arde, arde" },
+      { q: "Llapa runam tusukuchkanku",           s: "Toda la gente está bailando" },
+      { q: "Tukuy runam kusikuchkanku",           s: "Toda la gente se está alegrando" },
+      { q: "Ninam kani",                          s: "Soy fuego" },
+      { q: "Kay manaraqmi tukunraqchu",           s: "Esto todavía no termina" },
+      { q: "Kay qallarichkanraqmi",               s: "Esto apenas está empezando" },
+      { q: "Yunka ruphachkan, ¿imataq tukuchkan?", s: "La selva está ardiendo, ¿qué está pasando?" },
+      { q: "Runa kasqanchikta qonqanchis",        s: "Olvidamos que somos seres humanos" }
+    ],
+    notes: [
+      { t: "Nina", d: "Fuego" },
+      { t: "Raymi", d: "Fiesta, celebración" },
+      { t: "Tusuy", d: "Bailar" },
+      { t: "Yunka", d: "Selva, zona cálida" }
+    ]
+  },
+  {
+    title: "Sirenitay",
+    artist: "Edith Leni",
+    genre: "Huayno tradicional cusqueño",
+    youtube_id: "qM3okoqyInM",
+    lines: [
+      { q: "Tutalla visitamusiayki, sirenitay",   s: "Sólo de noche te visito, mi sirenita" },
+      { q: "Runaq siminta manchaspa, sirenitay",  s: "Temiendo a la boca de la gente, mi sirenita" },
+      { q: "Hakuchu purikamushun, sirenitay",     s: "Vamos a caminar, mi sirenita" },
+      { q: "Mamayki puñunashiankama, sirenitay",  s: "Mientras duerme tu mamá, mi sirenita" },
+      { q: "Taytayki silecianankama, sirenitay",  s: "Mientras tu papá está en silencio" },
+      { q: "Noqacha panachay nisayki, sirenitay", s: "Yo te diré hermanita, mi sirenita" },
+      { q: "Qantaq turachay niwanki, sirenitay",  s: "Y tú me dirás hermanito, mi sirenita" }
+    ],
+    notes: [
+      { t: "Sirena", d: "Sirena (ser mítico andino)" },
+      { t: "Pana", d: "Hermanita (de hombre a mujer)" },
+      { t: "Tura", d: "Hermanito (de mujer a hombre)" }
+    ]
+  },
+  {
+    title: "Puro Sentimiento",
+    artist: "Nelly Munguía",
+    genre: "Huayno tradicional",
+    youtube_id: "GbH32rjsQg0",
+    lines: [
+      { q: "Altun pawaq chiwillituy",             s: "Chivillito que vuelas alto" },
+      { q: "Tapuripusqayki",                      s: "Te pregunto" },
+      { q: "¿Kaynintachun pasallarca",            s: "¿Ha pasado por aquí" },
+      { q: "Sapan ripuq urpi, ingrata paloma?",   s: "Una paloma que iba sola, ingrata paloma?" },
+      { q: "Kikichallanmi pasallarca kuyay yanallaypa", s: "Por su propia decisión se fue mi amada" },
+      { q: "Mana imapi piñachichkatiy",            s: "Sin que yo la haga enojar" },
+      { q: "Puro sentimiento, ingrata paloma",     s: "Puro sentimiento, ingrata paloma" },
+      { q: "Ama ya trago, ama ya aqa",             s: "Ya no trago, ya no chicha" },
+      { q: "Sencillamente, humildemente",          s: "Sencillamente, humildemente" }
+    ],
+    notes: [
+      { t: "Urpi", d: "Paloma" },
+      { t: "Kuyay", d: "Amor, amado/a" },
+      { t: "Aqa", d: "Chicha (bebida andina)" }
+    ]
   }
 ];
