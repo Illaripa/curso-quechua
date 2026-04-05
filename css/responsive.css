@@ -65,6 +65,16 @@
   .chat-input-area { padding-bottom: calc(14px + env(safe-area-inset-bottom)); }
   .card-actions { padding-bottom: calc(12px + env(safe-area-inset-bottom)); }
   .morning-btn { margin-bottom: env(safe-area-inset-bottom); }
+  #songsNav { padding-bottom: calc(12px + env(safe-area-inset-bottom)); }
+}
+
+/* Very small phones (320px) */
+@media (max-width: 320px) {
+  .home-title { font-size: 19px; }
+  .menu-title { font-size: 14px; }
+  .menu-desc { font-size: 13px; }
+  .card-verb { font-size: 26px; }
+  .topbar-title { font-size: 13px; }
 }
 
 /* Prevent iOS zoom on input focus */

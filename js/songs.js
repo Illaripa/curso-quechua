@@ -19,13 +19,18 @@ function renderSongList() {
     html += '<button onclick="openSongDetail(' + i + ')" style="' +
       'display:flex;align-items:center;gap:14px;width:100%;text-align:left;' +
       'background:var(--card);border:1px solid var(--bdr);border-radius:14px;' +
-      'padding:14px 16px;margin-bottom:10px;cursor:pointer;">';
-    html += '<div style="width:40px;height:40px;border-radius:50%;background:' + color + '22;' +
+      'padding:14px 16px;margin-bottom:10px;cursor:pointer;min-height:64px;' +
+      '-webkit-tap-highlight-color:rgba(0,0,0,0.06);transition:opacity 0.15s,transform 0.15s;" ' +
+      'onmousedown="this.style.opacity=\'0.7\';this.style.transform=\'scale(0.98)\'" ' +
+      'onmouseup="this.style.opacity=\'\';this.style.transform=\'\'" ' +
+      'ontouchstart="this.style.opacity=\'0.7\';this.style.transform=\'scale(0.98)\'" ' +
+      'ontouchend="this.style.opacity=\'\';this.style.transform=\'\'">';
+    html += '<div style="width:44px;height:44px;border-radius:50%;background:' + color + '22;' +
       'display:flex;align-items:center;justify-content:center;flex-shrink:0;' +
-      'font-size:18px;">&#9834;</div>';
+      'font-size:20px;">&#9834;</div>';
     html += '<div style="flex:1;min-width:0">';
     html += '<div style="font-weight:700;font-size:15px;color:var(--txt);margin-bottom:2px">' + song.title + '</div>';
-    html += '<div style="font-size:12px;color:var(--muted)">' + song.artist + ' &middot; ' + song.genre + '</div>';
+    html += '<div style="font-size:14px;color:var(--muted)">' + song.artist + ' &middot; ' + song.genre + '</div>';
     html += '</div>';
     html += '<div style="color:var(--muted);font-size:18px;">&#8250;</div>';
     html += '</button>';
@@ -56,8 +61,8 @@ function openSongDetail(index) {
   // YouTube
   html += '<div style="text-align:center;margin:12px 0 20px">';
   html += '<a href="https://www.youtube.com/watch?v=' + song.youtube_id + '" target="_blank" rel="noopener" ';
-  html += 'style="display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:50px;';
-  html += 'background:#ff0000;color:#fff;text-decoration:none;font-size:13px;font-weight:700;">';
+  html += 'style="display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:50px;';
+  html += 'background:#ff0000;color:#fff;text-decoration:none;font-size:14px;font-weight:700;min-height:44px;">';
   html += '&#9654; Ver en YouTube</a>';
   html += '</div>';
 
