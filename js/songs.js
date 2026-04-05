@@ -66,6 +66,15 @@ function openSongDetail(index) {
   html += '&#9654; Ver en YouTube</a>';
   html += '</div>';
 
+  // Transcribir
+  html += '<div style="text-align:center;margin-bottom:16px">';
+  html += '<button onclick="transcribeSong(\'' + song.youtube_id + '\')" id="transcribeBtn" ';
+  html += 'style="display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:50px;';
+  html += 'border:1px solid var(--bdr);background:var(--card);font-size:14px;font-weight:700;cursor:pointer;min-height:44px">';
+  html += '&#9881; Transcribir con IA</button>';
+  html += '<div id="transcribeResult" style="margin-top:12px;font-size:13px;color:var(--muted)"></div>';
+  html += '</div>';
+
   // Letra
   html += '<div style="background:var(--card);border-radius:16px;padding:16px;margin-bottom:16px;border:1px solid rgba(0,0,0,0.07)">';
   html += '<div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:' + color + ';margin-bottom:12px">&#9834; Letra</div>';
@@ -92,6 +101,37 @@ function openSongDetail(index) {
 
   document.getElementById('songsBody').innerHTML = html;
   document.getElementById('songsBody').scrollTop = 0;
+}
+
+function transcribeSong(youtubeId) {
+  var btn = document.getElementById('transcribeBtn');
+  var result = document.getElementById('transcribeResult');
+  btn.disabled = true;
+  btn.textContent = '⏳ Transcribiendo...';
+  result.textContent = 'Esto puede tardar 30-60 segundos...';
+
+  fetch('/api/transcribe', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ youtube_id: youtubeId, lang: songsLang })
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    if (data.error) {
+      result.textContent = 'Error: ' + data.error;
+      btn.disabled = false;
+      btn.textContent = '⚙ Transcribir con IA';
+    } else {
+      btn.style.display = 'none';
+      result.style.cssText = 'margin-top:12px;background:var(--card);border-radius:12px;padding:14px;border:1px solid var(--bdr);text-align:left;white-space:pre-wrap;font-size:14px;color:var(--txt)';
+      result.textContent = data.text;
+    }
+  })
+  .catch(function(err) {
+    result.textContent = 'Error de conexión: ' + err.message;
+    btn.disabled = false;
+    btn.textContent = '⚙ Transcribir con IA';
+  });
 }
 
 function songsBack() {

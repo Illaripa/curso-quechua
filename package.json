@@ -1,0 +1,9 @@
+{
+  "name": "curso-quechua",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "@distube/ytdl-core": "^4.16.6",
+    "openai": "^4.0.0"
+  }
+}
