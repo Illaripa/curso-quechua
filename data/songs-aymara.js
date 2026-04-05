@@ -372,5 +372,54 @@ const CANCIONES_A = [
       { t: "Pajxsi", d: "Luna" },
       { t: "Warawa", d: "Estrella" }
     ]
+  },
+  {
+    title: "Ama Sua Ama Llulla Ama Quella",
+    artist: "K'ala Marka (Kalamarka)",
+    genre: "Música andina boliviana / Canción social",
+    youtube_id: "F7ZMA_rG87w",
+    lines: [
+      { a: "Hombres venidos de otros lugares",         s: "Hombres venidos de otros lugares" },
+      { a: "Has elegido en mi pueblo vivir",           s: "Has elegido en mi pueblo vivir" },
+      { a: "Debes pensar en todos tus hijos",          s: "Debes pensar en todos tus hijos" },
+      { a: "Que ellos también nacieron aquí",          s: "Que ellos también nacieron aquí" },
+      { a: "Ama sua, ama llulla, ama quella",          s: "No robes, no mientas, no seas ocioso" },
+      { a: "Jan Apanimti leyemanaca",                  s: "No traigas tus leyes" },
+      { a: "Janiw markajatakiti",                      s: "No son para este pueblo" },
+      { a: "Ist'am markajan Arupa",                    s: "Escucha la voz del pueblo" },
+      { a: "Ucanquiw Orak'en c'hamapaj",              s: "En eso está la fuerza del país" },
+      { a: "Jallalla Bolivia jallalla Bolivia",        s: "¡Viva Bolivia! ¡Viva Bolivia!" },
+      { a: "Tu cultura es linda",                      s: "Tu cultura es linda" },
+      { a: "Orgulloso de ser indio",                   s: "Orgulloso de ser indio" },
+      { a: "Todos somos campesinos",                   s: "Todos somos campesinos" }
+    ],
+    notes: [
+      { t: "Ama sua", d: "No robes (ley ancestral andina)" },
+      { t: "Ama llulla", d: "No mientas (ley ancestral andina)" },
+      { t: "Ama quella", d: "No seas ocioso (ley ancestral andina)" },
+      { t: "Jallalla", d: "¡Viva! (exclamación aymara)" }
+    ]
+  },
+  {
+    title: "Guerrero Aymara",
+    artist: "Awatiñas",
+    genre: "Música andina boliviana / Canción social",
+    youtube_id: "YkXn9Hj5Q8c",
+    lines: [
+      { a: "Hace más de cien mil años cuando el odio no existía", s: "Hace más de cien mil años cuando el odio no existía" },
+      { a: "Un cóndor de piedra sacudió la noche andina",        s: "Un cóndor de piedra sacudió la noche andina" },
+      { a: "El viento con mil quenas conmovidas",                s: "El viento con mil quenas conmovidas" },
+      { a: "Cruzaba un cielo cuajado de vicuñas fugitivas",      s: "Cruzaba un cielo cuajado de vicuñas fugitivas" },
+      { a: "Chuquiago era un valle íntimo como un cántaro",      s: "Chuquiago (La Paz) era un valle íntimo como un cántaro" },
+      { a: "Donde la luna aymara guardaba sus topos de plata",   s: "Donde la luna aymara guardaba sus topos de plata" },
+      { a: "Yo quise volar altísimo, quise aletear en la cima",  s: "Yo quise volar altísimo, quise aletear en la cima" },
+      { a: "Duérmete guerrero aymara que tú serás nuestro guía", s: "Duérmete guerrero aymara que tú serás nuestro guía" }
+    ],
+    notes: [
+      { t: "Chuquiago", d: "Nombre ancestral de La Paz, Bolivia" },
+      { t: "Cóndor", d: "Ave sagrada andina, símbolo del espíritu" },
+      { t: "Quena", d: "Flauta andina tradicional" },
+      { t: "Topo", d: "Joya tradicional andina (broche de manta)" }
+    ]
   }
 ];
