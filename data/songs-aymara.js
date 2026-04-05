@@ -245,5 +245,132 @@ const CANCIONES_A = [
       { t: "Tawaque", d: "Muchacha joven" },
       { t: "Qullasuyu", d: "Nombre ancestral de Bolivia" }
     ]
+  },
+  {
+    title: "Ponchos Rojos",
+    artist: "K'ala Marka (Kalamarka)",
+    genre: "Música andina / Laquita",
+    youtube_id: "Lg99KO6eWHo",
+    lines: [
+      { a: "Laquita ritmo de la tierra",                    s: "Laquita, ritmo de la tierra" },
+      { a: "Ritmo de dioses de Achacachi",                  s: "Ritmo de los dioses de Achacachi" },
+      { a: "Janiw asjarayxstuti jiwaña",                    s: "No hay que temer a la muerte" },
+      { a: "Aymaratwa kala suninkiri jaq'e",                s: "Soy Aymara, hombre duro como la piedra" },
+      { a: "Achachilanacajan arunacapja ist'apjtua",         s: "Escucho las palabras de mis ancestros" },
+      { a: "Llampu jacañataqi llampu chuymanacampi",        s: "Para vivir en paz, con corazón suave" },
+      { a: "Jilatanaca, qullacanaca",                       s: "Hermanos, hermanas del altiplano" },
+      { a: "Thacjpachani sarthasipjañani",                  s: "Todos juntos nos levantaremos" },
+      { a: "Jallalla qollasuy marca, Jallalla",             s: "¡Viva el pueblo del sur! ¡Viva!" }
+    ],
+    notes: [
+      { t: "Laquita", d: "Instrumento de viento andino ceremonial" },
+      { t: "Achachila", d: "Ancestro, espíritu de montaña" },
+      { t: "Jallalla", d: "¡Viva! (exclamación aymara)" },
+      { t: "Llampu", d: "Suave, tierno" }
+    ]
+  },
+  {
+    title: "Cuando Florezca el Chuño",
+    artist: "K'ala Marka (Kalamarka)",
+    genre: "Música andina / Toba",
+    youtube_id: "GwbfilwurP0",
+    lines: [
+      { a: "Si tus padres ya me odian, es por mi mala culpa",   s: "Si tus padres ya me odian, es por mi culpa" },
+      { a: "Si las citoyas no silban, es por tu mala ausencia", s: "Si los pájaros no silban, es por tu ausencia" },
+      { a: "Jumanpi, nayampi",                                  s: "Contigo, conmigo" },
+      { a: "Cuando florezca el chuño",                          s: "Cuando florezca el chuño (lo imposible)" },
+      { a: "No digás que has olvidado la tierra donde naciste", s: "No digas que olvidaste la tierra donde naciste" },
+      { a: "Dicen que vuelves, como el río que se va al lago",  s: "Dicen que vuelves, como el río que va al lago" }
+    ],
+    notes: [
+      { t: "Chuño", d: "Papa deshidratada; 'cuando florezca' = nunca" },
+      { t: "Jumanpi", d: "Contigo (aymara)" },
+      { t: "Nayampi", d: "Conmigo (aymara)" }
+    ]
+  },
+  {
+    title: "Inti Wawa",
+    artist: "Awatiñas",
+    genre: "Huayno aymara",
+    youtube_id: "tAhBeDtzwY0",
+    lines: [
+      { a: "Inti wawaxa jachaskiwa",      s: "El niño sol está llorando" },
+      { a: "Tatapawa jiwxatayna",         s: "Porque su padre murió" },
+      { a: "Jiwxatayna ukat jichhax",     s: "Murió, y por eso ahora" },
+      { a: "Wawaxa sinti llakitaw",       s: "El niño está muy triste" },
+      { a: "Jichhaxa sapakiw jaki",       s: "Ahora está solo en el mundo" },
+      { a: "Jupax amuyiw jupamp jikisiñ", s: "Él espera reencontrarse con su padre" }
+    ],
+    notes: [
+      { t: "Inti", d: "Sol" },
+      { t: "Wawa", d: "Niño/a, bebé" },
+      { t: "Jachaña", d: "Llorar" },
+      { t: "Jiwaña", d: "Morir" }
+    ]
+  },
+  {
+    title: "Tunupan Samiripa",
+    artist: "Luzmila Carpio",
+    genre: "Folklore aymara boliviano",
+    youtube_id: "S0tGL3Qjilk",
+    lines: [
+      { a: "Sawt'ir, sawt'ir, sumax imilla",              s: "Tejedora, tejedora, joven buena" },
+      { a: "Thaya luman, thaya pampana",                  s: "Con el frío de la loma y de la pampa" },
+      { a: "Lupi lupina uñar sawt'iri",                   s: "Con los rayos del sol, tejedora" },
+      { a: "Suni luman pinkill tuqht'iri",                s: "En la puna, que baila pinkillada" },
+      { a: "Qarwa awatiri, q'uraw k'antiri",              s: "Que pastea llamas, que trenza hondas" },
+      { a: "Qaputamasa, sawutamasa, taqi munkañaway",     s: "Tu hilado, tu tejido, todos los quisiéramos" },
+      { a: "Sumax kullak, sumak jilata, taqiw irnaqañani", s: "Hermanas, hermanos, todos trabajaremos" }
+    ],
+    notes: [
+      { t: "Sawt'iri", d: "Tejedora" },
+      { t: "Qarwa", d: "Llama (animal andino)" },
+      { t: "Pinkill", d: "Flauta andina" },
+      { t: "Kullaka", d: "Hermana" }
+    ]
+  },
+  {
+    title: "Bartolina Sisa",
+    artist: "Luzmila Carpio",
+    genre: "Folklore aymara boliviano",
+    youtube_id: "i6nefUit7m8",
+    lines: [
+      { a: "Bartolina Sisa warmi",         s: "Bartolina Sisa, mujer" },
+      { a: "Q'allpa jallp'a jina kanqi",   s: "Eres como la tierra firme y fértil" },
+      { a: "Yawar niqi yawarniqu",         s: "Sangre que corre, su propia sangre" },
+      { a: "Yuyarikuyku",                  s: "Te recordamos" },
+      { a: "Uraqisaw ch'amanitaw",         s: "La tierra misma es tu fuerza" },
+      { a: "Jumatapuniw amtastwa",         s: "Solo en ti pensamos" },
+      { a: "Quli Bartolina",               s: "Hermosa Bartolina" },
+      { a: "Wali puni samkasistwa",        s: "Siempre soñamos contigo" }
+    ],
+    notes: [
+      { t: "Bartolina Sisa", d: "Heroína aymara, luchadora por la libertad (s. XVIII)" },
+      { t: "Warmi", d: "Mujer" },
+      { t: "Yawar", d: "Sangre" },
+      { t: "Uraqui", d: "Tierra" }
+    ]
+  },
+  {
+    title: "Willka Kuty",
+    artist: "K'ala Marka (Kalamarka)",
+    genre: "Ritual aymara – Solsticio",
+    youtube_id: "wja_vI38wNs",
+    lines: [
+      { a: "Munata Achachilanaca, Laq'a Achachilanaca",  s: "Adorados abuelos, abuelo y abuela de la tierra" },
+      { a: "Q'ollana Qh'ap'acj, Apu Inti Wilka Tata",   s: "Espíritu capaz, Señor Sol en las alturas" },
+      { a: "Q'ollana Pajxsimama",                        s: "Señora y Madre Luna" },
+      { a: "Q'ollana Warawaranaca",                      s: "Señores Estrellas del infinito" },
+      { a: "Jumanaqaruw maith'apsma, thajpacha",         s: "A ustedes les pido, para todos" },
+      { a: "Wiñayat wiñayapataqi",                       s: "Desde siempre y para siempre" },
+      { a: "¡Jallalla Tiwanaku Marka!",                  s: "¡Viva el pueblo de Tiwanaku!" },
+      { a: "¡Jallalla Aymara Marka!",                    s: "¡Viva el pueblo Aymara!" }
+    ],
+    notes: [
+      { t: "Willka Kuty", d: "Retorno del Padre Sol (solsticio de invierno)" },
+      { t: "Achachila", d: "Ancestro, espíritu protector de montaña" },
+      { t: "Pajxsi", d: "Luna" },
+      { t: "Warawa", d: "Estrella" }
+    ]
   }
 ];
