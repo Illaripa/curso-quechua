@@ -34,7 +34,7 @@
     <div class="morning-quote-box" id="morningQuote"></div>
     <div class="morning-word" id="morningWord"></div>
     <div class="morning-elements" id="morningElements"></div>
-    <button class="morning-btn" onclick="goHome()">Empezar a aprender</button>
+    <button class="morning-btn" onclick="goHome()" data-i18n="morning.btn">Start learning</button>
   </div>
 </div>
 
@@ -43,8 +43,12 @@
      ============================================================ -->
 <div id="home" class="screen">
   <div class="home-header">
-    <h1 class="home-title">Yachay -- Aprender</h1>
-    <p class="home-subtitle">Quechua & Aymara -- Lenguas de los Andes</p>
+    <div style="display:flex;justify-content:flex-end;gap:6px;margin-bottom:10px">
+      <button class="ui-tab ui-tab--active" id="uiTabEN" onclick="setUiLang('en')">EN</button>
+      <button class="ui-tab" id="uiTabFR" onclick="setUiLang('fr')">FR</button>
+    </div>
+    <h1 class="home-title" data-i18n="home.title">Yachay — Learn</h1>
+    <p class="home-subtitle" data-i18n="home.subtitle">Quechua & Aymara — Languages of the Andes</p>
   </div>
   <div class="lang-tabs">
     <button class="lang-tab active" id="langTabQ" onclick="setLang('q')">Quechua</button>
@@ -59,7 +63,7 @@
 <div id="m2" class="screen">
   <div class="topbar">
     <button class="topbar-back" onclick="goHome()">&#8592;</button>
-    <span class="topbar-title">Bienvenida del dia</span>
+    <span class="topbar-title" data-i18n="m2.title">Daily greeting</span>
     <span></span>
   </div>
   <div class="content-body" id="m2Body"></div>
@@ -91,13 +95,13 @@
     <span style="font-size:12px;color:var(--muted)" id="refCount"></span>
   </div>
   <div class="ref-tabs" id="refTabs"></div>
-  <div class="ref-search"><input id="refInput" placeholder="Buscar..." oninput="filterRef()"/></div>
+  <div class="ref-search"><input id="refInput" placeholder="Search…" data-i18n="ref.search" data-i18n-attr="placeholder" oninput="filterRef()"/></div>
   <div id="refList" style="flex:1;overflow-y:auto"></div>
 </div>
 
 <!-- Detail panel (overlay) -->
 <div class="detail-panel" id="detailPanel">
-  <button class="detail-close" onclick="closeDetail()">&#8592; Volver</button>
+  <button class="detail-close" onclick="closeDetail()" data-i18n="detail.close">← Back</button>
   <div class="detail-header" id="detailHeader"></div>
   <div class="detail-body" id="detailBody"></div>
 </div>
@@ -121,30 +125,30 @@
         <div class="card-face card-front" id="cardFront"></div>
         <div class="card-face card-back" id="cardBack"></div>
       </div>
-      <div class="swipe-right" id="swipeRight">Siguiente</div>
-      <div class="swipe-left" id="swipeLeft">Anterior</div>
+      <div class="swipe-right" id="swipeRight" data-i18n="cards.swipe.next">Next</div>
+      <div class="swipe-left" id="swipeLeft" data-i18n="cards.swipe.prev">Previous</div>
     </div>
     <button class="card-nav card-nav--next" id="cardNext" onclick="nextCard()" title="Siguiente">&#8250;</button>
     <div class="card-empty" id="cardEmpty">
       <div class="card-empty-symbol">&#10022;</div>
-      <div class="card-empty-title">Lo aprendiste todo!</div>
-      <div class="card-empty-text">Has dominado todos los verbos.</div>
-      <button class="reset-btn" onclick="resetDeck()">Reiniciar</button>
+      <div class="card-empty-title" data-i18n="cards.empty.title">You learned it all!</div>
+      <div class="card-empty-text" data-i18n="cards.empty.text">You mastered all the verbs.</div>
+      <button class="reset-btn" onclick="resetDeck()" data-i18n="cards.reset">Restart</button>
     </div>
   </div>
   <div class="card-actions" id="cardActions">
-    <button class="action-btn action-skip" onclick="viewLearned()"><div class="action-icon">&#9733;</div><span>Aprendidas</span></button>
-    <button class="action-flip" onclick="learnCard()"><span>&#10003; Aprendido</span></button>
-    <button class="action-btn action-learned" onclick="flipCard()"><div class="action-icon">&#9673;</div><span>Voltear</span></button>
+    <button class="action-btn action-skip" onclick="viewLearned()"><div class="action-icon">&#9733;</div><span data-i18n="cards.learned">Learned</span></button>
+    <button class="action-flip" onclick="learnCard()"><span data-i18n="cards.mark">✓ Mark as learned</span></button>
+    <button class="action-btn action-learned" onclick="flipCard()"><div class="action-icon">&#9673;</div><span data-i18n="cards.flip">Flip</span></button>
   </div>
 </div>
 
 <!-- Filter panel -->
 <div class="filter-panel" id="filterPanel" onclick="closeFilterPanel(event)">
   <div class="filter-sheet">
-    <div class="filter-title">Filtrar categoria</div>
+    <div class="filter-title" data-i18n="filter.title">Filter by category</div>
     <div class="filter-tags" id="filterTags"></div>
-    <button class="filter-apply" onclick="applyFilter()">Aplicar</button>
+    <button class="filter-apply" onclick="applyFilter()" data-i18n="filter.apply">Apply</button>
   </div>
 </div>
 
@@ -163,7 +167,7 @@
   <div class="progress-bar"><div class="progress-fill" id="quizProgress" style="background:var(--gold)"></div></div>
   <div class="content-body">
     <div class="score-bar">
-      <span style="color:var(--muted)">Puntuacion</span>
+      <span style="color:var(--muted)" data-i18n="quiz.score">Score</span>
       <span style="font-weight:700;color:var(--gold)" id="quizScore">0</span>
     </div>
     <div id="quizBody"></div>
@@ -181,16 +185,16 @@
     <div class="result-stats">
       <div class="result-stat">
         <div class="result-number" id="resultCorrect" style="color:var(--gold)"></div>
-        <div class="result-label">correctas</div>
+        <div class="result-label" data-i18n="result.correct">correct</div>
       </div>
       <div class="result-stat">
         <div class="result-number" id="resultPercent" style="color:var(--teal)"></div>
-        <div class="result-label">puntuacion</div>
+        <div class="result-label" data-i18n="result.score">score</div>
       </div>
     </div>
     <div style="width:100%;display:flex;flex-direction:column;gap:8px">
-      <button class="btn-main" style="background:var(--gold);color:#fff" id="resultRepeat">REPETIR QUIZ</button>
-      <button class="btn-ghost" onclick="goHome()">IR AL INICIO</button>
+      <button class="btn-main" style="background:var(--gold);color:#fff" id="resultRepeat" data-i18n="result.repeat">REPEAT QUIZ</button>
+      <button class="btn-ghost" onclick="goHome()" data-i18n="result.home">GO HOME</button>
     </div>
   </div>
 </div>
@@ -201,7 +205,7 @@
 <div id="chat" class="screen--full">
   <div class="topbar">
     <button class="topbar-back" onclick="goHome()">&#8592;</button>
-    <span class="topbar-title" id="chatTitle">&#9670; Tutor IA</span>
+    <span class="topbar-title" id="chatTitle" data-i18n="chat.title">◆ AI Tutor</span>
     <span class="tutor-mode-toggle">
       <button class="tutor-mode-btn active" id="modeBtnChat" onclick="setTutorMode('chat')" title="Chat libre">&#9671;</button>
       <button class="tutor-mode-btn" id="modeBtnLesson" onclick="setTutorMode('lecc')" title="Leccion">&#9636;</button>
@@ -211,8 +215,8 @@
   <div class="tutor-body">
     <div class="tutor-main">
       <div class="api-banner" id="apiBanner">
-        <div class="api-title">&#9881; Configurar Tutor IA</div>
-        <div class="api-desc">Elige proveedor. <b>OpenRouter</b> es GRATIS (openrouter.ai -> Get API Key). Anthropic requiere saldo (console.anthropic.com). La key se guarda en tu navegador.</div>
+        <div class="api-title" data-i18n="chat.api.title">⚙ Configure AI Tutor</div>
+        <div class="api-desc" data-i18n="chat.api.desc">Choose provider. <b>OpenRouter</b> is FREE (openrouter.ai → Get API Key). Anthropic requires credits. Key is saved in your browser.</div>
         <div class="api-row" style="margin-bottom:8px">
           <select class="api-input" id="apiProvider" style="flex:0 0 auto;width:auto;padding-right:8px" onchange="updateApiPlaceholder()">
             <option value="openrouter">OpenRouter (gratis)</option>
@@ -221,36 +225,36 @@
         </div>
         <div class="api-row">
           <input class="api-input" id="apiKeyInput" type="password" placeholder="sk-or-v1-..." />
-          <button class="api-save-btn" onclick="saveApiKey()">Guardar</button>
+          <button class="api-save-btn" onclick="saveApiKey()" data-i18n="chat.api.save">Save</button>
         </div>
-        <div class="api-saved" id="apiSaved">&#10003; Configuracion guardada</div>
+        <div class="api-saved" id="apiSaved" data-i18n="chat.api.saved">✓ Configuration saved</div>
       </div>
       <div class="chat-messages" id="chatMessages"></div>
       <div class="chat-suggestions" id="chatSuggestions"></div>
       <div class="chat-input-area">
-        <textarea class="chat-input" id="chatInput" placeholder="Escribe en espanol o en la lengua..." rows="1" onkeydown="chatKeyHandler(event)" oninput="autoResize(this)"></textarea>
+        <textarea class="chat-input" id="chatInput" placeholder="Write in English or in the language…" data-i18n="chat.placeholder" data-i18n-attr="placeholder" rows="1" onkeydown="chatKeyHandler(event)" oninput="autoResize(this)"></textarea>
         <button class="send-btn" id="sendBtn" onclick="sendMessage()">&#8593;</button>
       </div>
     </div>
     <div class="tutor-sidebar" id="tutorSidebar">
       <div class="tutor-box">
-        <div class="tutor-section-title">&#9639; Nivel</div>
-        <div class="tutor-level" id="tutorLevel">A1 -- Principiante</div>
+        <div class="tutor-section-title" data-i18n="chat.level">▙ Level</div>
+        <div class="tutor-level" id="tutorLevel" data-i18n="chat.level.a1">A1 — Beginner</div>
         <div class="tutor-progress-wrap"><div class="tutor-progress-bar" id="tutorProgressBar" style="width:5%"></div></div>
-        <div class="tutor-stats" id="tutorStats">0 mensajes -- 0 correcciones</div>
+        <div class="tutor-stats" id="tutorStats" data-i18n="chat.stats">0 messages — 0 corrections</div>
       </div>
       <div class="tutor-box">
-        <div class="tutor-section-title">&#9678; Ultimo feedback</div>
-        <div id="tutorFeedback" class="tutor-fb-empty">Escribe algo para recibir feedback gramatical...</div>
+        <div class="tutor-section-title" data-i18n="chat.feedback.title">◎ Last feedback</div>
+        <div id="tutorFeedback" class="tutor-fb-empty" data-i18n="chat.feedback.empty">Write something to receive grammar feedback…</div>
       </div>
       <div class="tutor-box">
-        <div class="tutor-section-title">&#9673; Objetivos</div>
+        <div class="tutor-section-title" data-i18n="chat.goals.title">◉ Goals</div>
         <ul id="tutorGoals" class="tutor-goals-list"></ul>
-        <button class="tutor-add-btn" onclick="addGoal()">+ Agregar objetivo</button>
+        <button class="tutor-add-btn" onclick="addGoal()" data-i18n="chat.goals.add">+ Add goal</button>
       </div>
       <div class="tutor-box">
-        <div class="tutor-section-title">&#9636; Diario de sesion</div>
-        <div id="tutorDiary" class="tutor-diary-empty">La sesion no ha comenzado aun...</div>
+        <div class="tutor-section-title" data-i18n="chat.diary.title">▶ Session diary</div>
+        <div id="tutorDiary" class="tutor-diary-empty" data-i18n="chat.diary.empty">Session not started yet…</div>
       </div>
     </div>
   </div>
@@ -268,7 +272,7 @@
   <div class="progress-bar"><div class="progress-fill" id="songsProgress"></div></div>
   <div class="content-body" id="songsBody" style="padding-bottom:20px"></div>
   <div id="songsNav" style="display:none;position:fixed;bottom:0;left:0;right:0;padding:12px 16px;background:var(--bg);border-top:1px solid var(--bdr);z-index:10">
-    <button onclick="songsBack()" style="width:100%;padding:14px;border-radius:12px;border:1px solid var(--bdr);background:var(--card);font-size:15px;font-weight:700;cursor:pointer;min-height:52px">&#8592; Volver a la lista</button>
+    <button onclick="songsBack()" data-i18n="songs.back" style="width:100%;padding:14px;border-radius:12px;border:1px solid var(--bdr);background:var(--card);font-size:15px;font-weight:700;cursor:pointer;min-height:52px">← Back to list</button>
   </div>
 </div>
 
@@ -278,11 +282,11 @@
 <div id="transcriptor" class="screen">
   <div class="topbar">
     <button class="topbar-back" onclick="goHome()">&#8592;</button>
-    <span class="topbar-title">&#9881; Transcribir Cancion</span>
+    <span class="topbar-title" data-i18n="transcriptor.title">⚙ Transcribe Song</span>
     <span></span>
   </div>
   <div class="content-body" style="padding-top:20px">
-    <p class="section-label" style="margin-bottom:12px">Pega el link de YouTube</p>
+    <p class="section-label" style="margin-bottom:12px" data-i18n="transcriptor.label">Paste YouTube link</p>
     <input id="transcriptorUrl" type="url" placeholder="https://www.youtube.com/watch?v=..."
       style="width:100%;padding:14px;border-radius:12px;border:1px solid var(--bdr);background:var(--card);font-size:15px;color:var(--txt);box-sizing:border-box;margin-bottom:12px"/>
     <div style="display:flex;gap:8px;margin-bottom:20px">
@@ -297,17 +301,17 @@
     </div>
     <button onclick="runTranscriptor()" id="transcriptorBtn"
       style="width:100%;padding:16px;border-radius:12px;border:none;background:#c47d1a;color:#fff;font-size:16px;font-weight:700;cursor:pointer;min-height:52px">
-      &#9881; Transcribir con IA
+      <span data-i18n="transcriptor.btn">⚙ Transcribe with AI</span>
     </button>
     <div id="transcriptorStatus" style="text-align:center;margin-top:16px;font-size:14px;color:var(--muted)"></div>
     <div id="transcriptorResult" style="display:none;margin-top:20px">
-      <p class="section-label" style="margin-bottom:8px">Letra transcrita</p>
+      <p class="section-label" style="margin-bottom:8px" data-i18n="transcriptor.result.label">Transcribed lyrics</p>
       <textarea id="transcriptorText"
         style="width:100%;min-height:300px;padding:14px;border-radius:12px;border:1px solid var(--bdr);background:var(--card);font-size:14px;color:var(--txt);line-height:1.6;box-sizing:border-box;resize:vertical"
         readonly></textarea>
       <button onclick="copyTranscription()"
         style="width:100%;padding:14px;border-radius:12px;border:1px solid var(--bdr);background:var(--card);font-size:15px;font-weight:700;cursor:pointer;margin-top:8px">
-        &#10003; Copiar texto
+        <span data-i18n="transcriptor.copy">✓ Copy text</span>
       </button>
     </div>
   </div>

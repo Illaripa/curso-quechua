@@ -2,10 +2,9 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "curso-quechua",
+      "name": "yachay",
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "8080"],
-      "cwd": ".",
       "port": 8080
     }
   ]
