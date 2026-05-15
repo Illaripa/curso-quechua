@@ -211,7 +211,6 @@ function renderHomeBody() {
     {i:'▣', t:u('menu.q.fichas'),       d:u('menu.q.fichas.d'),       fn:"openCards('q')"},
     {i:'◉', t:u('menu.q.quiz'),         d:u('menu.q.quiz.d'),         fn:"startQuiz('q')"},
     {i:'♫', t:u('menu.q.songs'),        d:u('menu.q.songs.d'),        fn:"openSongs('q')"},
-    {i:'⚙', t:u('menu.q.transcriptor'), d:u('menu.q.transcriptor.d'), fn:"openTranscriptor()"},
     {i:'◆', t:u('menu.q.tutor'),        d:u('menu.q.tutor.d'),        fn:"openChat('q')"}
   ] : [
     {i:'≈', t:u('menu.a.oraciones'),    d:u('menu.a.oraciones.d'),    fn:"openReader('aymara_or')"},
@@ -222,7 +221,6 @@ function renderHomeBody() {
     {i:'▤', t:u('menu.a.vocab'),        d:u('menu.a.vocab.d'),        fn:"openCards('p')"},
     {i:'◉', t:u('menu.a.quiz'),         d:u('menu.a.quiz.d'),         fn:"startQuiz('a')"},
     {i:'♫', t:u('menu.a.songs'),        d:u('menu.a.songs.d'),        fn:"openSongs('a')"},
-    {i:'⚙', t:u('menu.a.transcriptor'), d:u('menu.a.transcriptor.d'), fn:"openTranscriptor()"},
     {i:'◆', t:u('menu.a.tutor'),        d:u('menu.a.tutor.d'),        fn:"openChat('a')"}
   ];
 
