@@ -5,6 +5,32 @@ var tutorCorrCount = 0;
 var tutorLevel = 'A1';
 var tutorGoals = [];
 var tutorSessionLog = [];
+var ttsEnabled = true;
+var ttsAudio = null;
+
+function toggleTts() {
+  ttsEnabled = !ttsEnabled;
+  var btn = document.getElementById('ttsToggleBtn');
+  if (btn) btn.textContent = ttsEnabled ? '🔊' : '🔇';
+}
+
+async function speakText(text) {
+  if (!ttsEnabled || !text) return;
+  if (ttsAudio) { ttsAudio.pause(); ttsAudio = null; }
+  try {
+    var res = await fetch('/api/tts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text: text })
+    });
+    if (!res.ok) return;
+    var blob = await res.blob();
+    var url = URL.createObjectURL(blob);
+    ttsAudio = new Audio(url);
+    ttsAudio.play();
+    ttsAudio.onended = function() { URL.revokeObjectURL(url); ttsAudio = null; };
+  } catch(e) {}
+}
 
 var CHAT_SYSTEM_PROMPTS = {
   q: "Eres un amigo quechua de Cusco. REGLA MAS IMPORTANTE: Responde CORTO. Maximo 2 frases en Quechua con su traduccion y 1 pregunta. NUNCA escribas parrafos largos. Ejemplo perfecto de respuesta: Allinmi! = Que bien! Imatam mikhuranki? = Que comiste? FORMATO: Frase en Quechua = traduccion. ESTILO: Habla como persona real, no como profesor. Comparte algo breve tuyo y pregunta algo personal. Si el estudiante escribe en Quechua: responde en Quechua puro, sin traduccion. Si hay error: agrega FEEDBACK: correccion breve. PROHIBIDO: listas, bullets, negritas, asteriscos, parrafos largos, explicaciones gramaticales no pedidas.",
@@ -259,6 +285,7 @@ async function sendMessage() {
     chatHistory.push({role: 'assistant', content: fullReply});
     removeTypingIndicator();
     addChatMessage('a', cleanReply || fullReply);
+    speakText(cleanReply || fullReply);
     updateTutorSidebar(fullReply, text);
 
     // Extract TRADUCE challenge and show as chip
