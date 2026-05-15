@@ -30,14 +30,20 @@ function renderPiece() {
     html += '<div class="toggle-row">';
     var modes = [
       {m: 'parallel', l: 'Ambos'},
-      {m: 'qonly', l: 'Solo ' + (isAy ? 'Aymara' : 'Quechua')},
-      {m: 'sonly', l: 'Solo Espa\u00F1ol'}
+      {m: 'qonly', l: 'Solo ' + (isAy ? 'Aymara' : 'Quechua')}
     ];
     modes.forEach(function(mode) {
       var isActive = readerMode === mode.m;
       var style = isActive ? 'background:' + readerData.color + '22;color:' + readerData.color + ';border-color:' + readerData.color : '';
       html += '<button class="toggle-btn' + (isActive ? ' active' : '') + '" style="' + style + '" onclick="setReaderMode(\'' + mode.m + '\')">' + mode.l + '</button>';
     });
+    // Audio button inline with toggle row
+    if (piece.poem || piece.legend) {
+      var ttsText = (piece.lines || []).map(function(l) { return l.q; }).join('. ');
+      if (ttsText) {
+        html += '<button onclick="speakText(' + JSON.stringify(ttsText) + ')" style="padding:8px 14px;border-radius:20px;border:1px solid var(--bdr);background:none;cursor:pointer;font-size:14px" title="Escuchar">\uD83D\uDD0A</button>';
+      }
+    }
     html += '</div>';
   }
 
@@ -45,7 +51,8 @@ function renderPiece() {
   if (piece.poem) {
     html += '<div class="' + readerMode + ' poem" style="text-align:center;padding:10px 0">';
     piece.lines.forEach(function(l) {
-      html += '<div class="' + lineClass + '" style="text-align:center">' + l.q + '</div>' +
+      var btn = '<button onclick="speakText(' + JSON.stringify(l.q) + ')" style="background:none;border:none;cursor:pointer;font-size:13px;opacity:0.4;padding:0 4px;vertical-align:middle" title="Escuchar">🔊</button>';
+      html += '<div class="' + lineClass + '" style="text-align:center">' + l.q + btn + '</div>' +
         '<div class="spanish-line">' + l.s + '</div>';
     });
     html += '</div>';
@@ -56,17 +63,10 @@ function renderPiece() {
   } else {
     html += '<div class="' + readerMode + '">';
     piece.lines.forEach(function(l) {
-      html += '<div class="' + lineClass + '">' + l.q + '</div><div class="spanish-line">' + l.s + '</div>';
+      var btn = '<button onclick="speakText(' + JSON.stringify(l.q) + ')" style="background:none;border:none;cursor:pointer;font-size:13px;opacity:0.4;padding:0 4px;vertical-align:middle" title="Escuchar">🔊</button>';
+      html += '<div class="' + lineClass + '">' + l.q + btn + '</div><div class="spanish-line">' + l.s + '</div>';
     });
     html += '</div>';
-  }
-
-  // TTS button for poems and legends (Quechua and Aymara)
-  if (piece.poem || piece.legend) {
-    var ttsText = (piece.lines || []).map(function(l) { return l.q; }).join('. ');
-    if (ttsText) {
-      html += '<button onclick="speakText(' + JSON.stringify(ttsText) + ')" style="display:inline-flex;align-items:center;gap:6px;margin:12px 0 4px;background:none;border:1px solid var(--bdr);border-radius:20px;padding:6px 14px;cursor:pointer;font-size:13px;color:var(--muted)">\uD83D\uDD0A Escuchar</button>';
-    }
   }
 
   // Grammar notes
