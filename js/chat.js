@@ -171,8 +171,11 @@ function addChatMessage(role, text) {
   var container = document.getElementById('chatMessages');
   var div = document.createElement('div');
   div.className = 'message ' + (role === 'u' ? 'message--user' : 'message--assistant');
+  var quechuaOnly = text.split('\n').map(function(l) {
+    return l.indexOf('=') !== -1 ? l.split('=')[0].trim() : l;
+  }).filter(Boolean).join('. ');
   var speakBtn = (role === 'a' && chatLang === 'q')
-    ? '<button onclick="speakText(decodeURIComponent(\'' + encodeURIComponent(text) + '\'))" style="display:block;margin-top:6px;background:none;border:none;cursor:pointer;font-size:16px;opacity:0.5;padding:0" title="Escuchar">🔊</button>'
+    ? '<button onclick="speakText(decodeURIComponent(\'' + encodeURIComponent(quechuaOnly) + '\'))" style="display:block;margin-top:6px;background:none;border:none;cursor:pointer;font-size:16px;opacity:0.5;padding:0" title="Escuchar">🔊</button>'
     : '';
   div.innerHTML = '<div class="bubble">' + text.replace(/\n/g, '<br>') + speakBtn + '</div>';
   container.appendChild(div);
