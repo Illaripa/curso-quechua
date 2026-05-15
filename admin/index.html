@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin — Quechua & Aymara</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f0f0f; color: #e8e0d4; min-height: 100vh; }
+
+  #loginScreen { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+  .login-box { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 16px; padding: 40px; width: 320px; text-align: center; }
+  .login-box h1 { font-size: 20px; margin-bottom: 8px; color: #c47d1a; }
+  .login-box p { font-size: 13px; color: #888; margin-bottom: 24px; }
+  .login-box input { width: 100%; padding: 12px; background: #111; border: 1px solid #333; border-radius: 8px; color: #e8e0d4; font-size: 15px; margin-bottom: 12px; }
+  .login-box button { width: 100%; padding: 12px; background: #c47d1a; border: none; border-radius: 8px; color: #fff; font-size: 15px; font-weight: 700; cursor: pointer; }
+  .login-error { color: #e55; font-size: 13px; margin-top: 10px; }
+
+  #adminScreen { display: none; max-width: 900px; margin: 0 auto; padding: 24px 16px; }
+  .admin-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; }
+  .admin-header h1 { font-size: 22px; color: #c47d1a; }
+  .admin-header span { font-size: 13px; color: #666; }
+
+  .tabs { display: flex; gap: 8px; margin-bottom: 24px; }
+  .tab { padding: 10px 20px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: #888; cursor: pointer; font-size: 14px; font-weight: 600; }
+  .tab.active { background: #c47d1a; border-color: #c47d1a; color: #fff; }
+
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  .card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; padding: 24px; margin-bottom: 16px; }
+  .card h2 { font-size: 16px; margin-bottom: 16px; color: #e8e0d4; }
+  label { display: block; font-size: 13px; color: #888; margin-bottom: 6px; }
+  input[type=text], input[type=url], select, textarea {
+    width: 100%; padding: 10px 12px; background: #111; border: 1px solid #333;
+    border-radius: 8px; color: #e8e0d4; font-size: 14px; margin-bottom: 16px;
+  }
+  textarea { min-height: 120px; resize: vertical; }
+  .file-drop {
+    border: 2px dashed #333; border-radius: 10px; padding: 32px;
+    text-align: center; cursor: pointer; margin-bottom: 16px; transition: border-color 0.2s;
+  }
+  .file-drop:hover, .file-drop.drag { border-color: #c47d1a; }
+  .file-drop p { color: #666; font-size: 14px; }
+  .file-drop strong { color: #c47d1a; }
+  .btn { padding: 10px 20px; border-radius: 8px; border: none; font-size: 14px; font-weight: 700; cursor: pointer; }
+  .btn-primary { background: #c47d1a; color: #fff; }
+  .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+  .btn-danger { background: #c0392b; color: #fff; font-size: 12px; padding: 6px 12px; }
+  .btn-secondary { background: #2a2a2a; color: #e8e0d4; border: 1px solid #333; }
+
+  .progress { margin-top: 12px; font-size: 13px; color: #888; }
+  .progress.ok { color: #2ecc71; }
+  .progress.err { color: #e74c3c; }
+
+  .lang-toggle { display: flex; gap: 8px; margin-bottom: 16px; }
+  .lang-btn { flex: 1; padding: 10px; border-radius: 8px; border: 1px solid #333; background: #111; color: #888; cursor: pointer; font-weight: 700; font-size: 14px; }
+  .lang-btn.active-q { background: #c47d1a; border-color: #c47d1a; color: #fff; }
+  .lang-btn.active-a { background: #1a8a7a; border-color: #1a8a7a; color: #fff; }
+
+  .file-list { margin-top: 16px; }
+  .file-item { display: flex; align-items: center; justify-content: space-between; padding: 10px 12px; background: #111; border-radius: 8px; margin-bottom: 6px; }
+  .file-item-name { font-size: 13px; color: #ccc; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .file-item-size { font-size: 12px; color: #555; margin: 0 12px; }
+
+  .segments { margin-top: 16px; }
+  .segment { background: #111; border-radius: 8px; padding: 12px; margin-bottom: 8px; }
+  .segment-time { font-size: 11px; color: #555; margin-bottom: 4px; }
+  .segment-original { font-size: 14px; color: #e8e0d4; font-style: italic; margin-bottom: 4px; }
+  .segment-spanish { font-size: 13px; color: #888; }
+  .segment input { margin-bottom: 4px; }
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginScreen">
+  <div class="login-box">
+    <h1>Yachay Admin</h1>
+    <p>Acceso restringido</p>
+    <input type="password" id="pwInput" placeholder="Contraseña" onkeydown="if(event.key==='Enter')login()">
+    <button onclick="login()">Entrar</button>
+    <div class="login-error" id="loginError"></div>
+  </div>
+</div>
+
+<!-- ADMIN -->
+<div id="adminScreen">
+  <div class="admin-header">
+    <h1>Yachay Admin</h1>
+    <span>Quechua & Aymara</span>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="showPanel('songs')">Canciones</button>
+    <button class="tab" onclick="showPanel('pdfs')">PDFs / Textos</button>
+    <button class="tab" onclick="showPanel('files')">Archivos</button>
+  </div>
+
+  <!-- CANCIONES -->
+  <div id="panel-songs" class="panel active">
+    <div class="card">
+      <h2>Agregar canción</h2>
+
+      <div class="lang-toggle">
+        <button class="lang-btn active-q" id="sLangQ" onclick="setSongLang('q')">Quechua</button>
+        <button class="lang-btn" id="sLangA" onclick="setSongLang('a')">Aymara</button>
+      </div>
+
+      <label>Título de la canción</label>
+      <input type="text" id="songTitle" placeholder="Ej: Flor de Retama">
+
+      <label>Artista</label>
+      <input type="text" id="songArtist" placeholder="Ej: Tradicional">
+
+      <label>Género</label>
+      <input type="text" id="songGenre" placeholder="Ej: Huayno, Wayra...">
+
+      <label>Link de YouTube</label>
+      <div style="display:flex;gap:8px;align-items:center">
+        <input type="url" id="songYoutube" placeholder="https://www.youtube.com/watch?v=..." style="flex:1">
+        <button class="btn btn-primary" id="ytdlBtn" onclick="downloadFromYoutube()" style="white-space:nowrap">Descargar audio</button>
+      </div>
+      <div class="progress" id="ytdlProgress"></div>
+
+      <label>Audio (MP3 o M4A)</label>
+      <div class="file-drop" id="audioDrop" onclick="document.getElementById('audioInput').click()">
+        <p><strong>Haz click</strong> o arrastra el archivo de audio aquí</p>
+        <p id="audioFileName" style="margin-top:8px;color:#c47d1a"></p>
+      </div>
+      <input type="file" id="audioInput" accept="audio/*" style="display:none" onchange="onAudioSelect(this)">
+
+      <button class="btn btn-primary" id="processBtn" onclick="processSong()">Subir y transcribir</button>
+      <div class="progress" id="songProgress"></div>
+    </div>
+
+    <div class="card" id="resultCard" style="display:none">
+      <h2>Resultado — revisa y edita</h2>
+      <div class="segments" id="segmentsContainer"></div>
+      <button class="btn btn-primary" style="margin-top:16px" onclick="exportSong()">Exportar JSON para la app</button>
+      <textarea id="exportOutput" style="display:none;margin-top:12px;font-size:12px;font-family:monospace" rows="20"></textarea>
+    </div>
+  </div>
+
+  <!-- PDFs -->
+  <div id="panel-pdfs" class="panel">
+    <div class="card">
+      <h2>Subir PDF o texto</h2>
+      <div class="file-drop" id="pdfDrop" onclick="document.getElementById('pdfInput').click()">
+        <p><strong>Haz click</strong> o arrastra el PDF aquí</p>
+        <p id="pdfFileName" style="margin-top:8px;color:#c47d1a"></p>
+      </div>
+      <input type="file" id="pdfInput" accept=".pdf,.txt" style="display:none" onchange="onPdfSelect(this)">
+
+      <label>Descripción (opcional)</label>
+      <input type="text" id="pdfDesc" placeholder="Ej: Gramática Quechua — Universidad Mayor de San Marcos">
+
+      <button class="btn btn-primary" id="pdfBtn" onclick="uploadPdf()">Subir PDF</button>
+      <div class="progress" id="pdfProgress"></div>
+    </div>
+
+    <div class="card">
+      <h2>PDFs subidos</h2>
+      <div class="file-list" id="pdfList">Cargando...</div>
+    </div>
+  </div>
+
+  <!-- ARCHIVOS -->
+  <div id="panel-files" class="panel">
+    <div class="card">
+      <h2>Todos los archivos en R2</h2>
+      <button class="btn btn-secondary" onclick="loadFiles()">Recargar</button>
+      <div class="file-list" id="allFilesList" style="margin-top:16px">Cargando...</div>
+    </div>
+  </div>
+</div>
+
+<script>
+var songLang = 'q';
+var selectedAudio = null;
+var selectedPdf = null;
+var currentSegments = [];
+
+// AUTH
+async function login() {
+  const pw = document.getElementById('pwInput').value;
+  const r = await fetch('/api/admin/auth', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ password: pw })
+  });
+  const d = await r.json();
+  if (d.ok) {
+    sessionStorage.setItem('admin', '1');
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('adminScreen').style.display = 'block';
+    loadPdfs();
+    loadFiles();
+  } else {
+    document.getElementById('loginError').textContent = 'Contraseña incorrecta';
+  }
+}
+
+if (sessionStorage.getItem('admin')) {
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('adminScreen').style.display = 'block';
+  loadPdfs();
+  loadFiles();
+}
+
+// TABS
+function showPanel(name) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('panel-' + name).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// LANG
+function setSongLang(lang) {
+  songLang = lang;
+  document.getElementById('sLangQ').className = 'lang-btn' + (lang === 'q' ? ' active-q' : '');
+  document.getElementById('sLangA').className = 'lang-btn' + (lang === 'a' ? ' active-a' : '');
+}
+
+// AUDIO SELECT
+function onAudioSelect(input) {
+  selectedAudio = input.files[0];
+  document.getElementById('audioFileName').textContent = selectedAudio ? selectedAudio.name : '';
+}
+
+// PDF SELECT
+function onPdfSelect(input) {
+  selectedPdf = input.files[0];
+  document.getElementById('pdfFileName').textContent = selectedPdf ? selectedPdf.name : '';
+}
+
+// DRAG DROP
+function setupDrop(dropId, onFile) {
+  const el = document.getElementById(dropId);
+  el.addEventListener('dragover', e => { e.preventDefault(); el.classList.add('drag'); });
+  el.addEventListener('dragleave', () => el.classList.remove('drag'));
+  el.addEventListener('drop', e => {
+    e.preventDefault();
+    el.classList.remove('drag');
+    onFile(e.dataTransfer.files[0]);
+  });
+}
+setupDrop('audioDrop', f => { selectedAudio = f; document.getElementById('audioFileName').textContent = f.name; });
+setupDrop('pdfDrop', f => { selectedPdf = f; document.getElementById('pdfFileName').textContent = f.name; });
+
+function uploadToR2(file, folder, onProgress) {
+  return new Promise((resolve, reject) => {
+    const params = new URLSearchParams({ folder, filename: file.name });
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '/api/admin/upload?' + params.toString());
+    xhr.setRequestHeader('Content-Type', file.type || 'application/octet-stream');
+    xhr.upload.onprogress = e => {
+      if (e.lengthComputable && onProgress) onProgress(Math.round(e.loaded / e.total * 100));
+    };
+    xhr.onload = () => {
+      try {
+        const d = JSON.parse(xhr.responseText);
+        if (!d.ok) reject(new Error(d.error || 'Upload falló'));
+        else resolve(d.key);
+      } catch { reject(new Error('Respuesta inválida del servidor')); }
+    };
+    xhr.onerror = () => reject(new Error('Error de red'));
+    xhr.send(file);
+  });
+}
+
+// DOWNLOAD FROM YOUTUBE
+async function downloadFromYoutube() {
+  const url = document.getElementById('songYoutube').value.trim();
+  if (!url) { alert('Pega la URL de YouTube primero'); return; }
+  const btn = document.getElementById('ytdlBtn');
+  const progress = document.getElementById('ytdlProgress');
+  btn.disabled = true;
+  progress.className = 'progress';
+  progress.textContent = 'Descargando audio de YouTube... (puede tardar 1-2 min)';
+  try {
+    const r = await fetch('/api/admin/ytdl', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url })
+    });
+    const d = await r.json();
+    if (!d.ok) throw new Error(d.error || 'Error al descargar');
+    progress.className = 'progress ok';
+    progress.textContent = '✓ Audio descargado. Iniciando transcripción...';
+    selectedAudio = { _r2key: d.key, name: d.filename };
+    document.getElementById('audioFileName').textContent = d.filename + ' (desde YouTube)';
+    btn.disabled = false;
+    processSong();
+    return;
+  } catch(e) {
+    progress.className = 'progress err';
+    progress.textContent = 'Error: ' + e.message;
+  }
+  btn.disabled = false;
+}
+
+// PROCESS SONG
+async function processSong() {
+  if (!selectedAudio) { alert('Selecciona un archivo de audio primero'); return; }
+
+  const btn = document.getElementById('processBtn');
+  const progress = document.getElementById('songProgress');
+  btn.disabled = true;
+  progress.className = 'progress';
+  progress.textContent = 'Subiendo audio a R2...';
+
+  try {
+    let key;
+    if (selectedAudio._r2key) {
+      key = selectedAudio._r2key;
+      progress.textContent = 'Audio listo, transcribiendo con Whisper...';
+    } else {
+      key = await uploadToR2(selectedAudio, 'audio', p => { progress.textContent = `Subiendo audio... ${p}%`; });
+    }
+
+    progress.textContent = 'Transcribiendo con Whisper... (puede tardar 1-2 min)';
+
+    // Process
+    const procResp = await fetch('/api/admin/process', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ key: key, lang: songLang })
+    });
+    const procData = await procResp.json();
+    if (procData.error) throw new Error(procData.error);
+
+    currentSegments = procData.segments;
+    progress.className = 'progress ok';
+    progress.textContent = '✓ Transcripción completada — ' + currentSegments.length + ' segmentos';
+    renderSegments();
+  } catch(e) {
+    progress.className = 'progress err';
+    progress.textContent = 'Error: ' + e.message;
+  }
+  btn.disabled = false;
+}
+
+function renderSegments() {
+  const container = document.getElementById('segmentsContainer');
+  container.innerHTML = currentSegments.map((s, i) => `
+    <div class="segment">
+      <div class="segment-time">${fmtTime(s.start)} → ${fmtTime(s.end)}</div>
+      <input type="text" value="${esc(s.original)}" onchange="currentSegments[${i}].original=this.value" placeholder="Original">
+      <input type="text" value="${esc(s.spanish)}" onchange="currentSegments[${i}].spanish=this.value" placeholder="Traducción al español">
+    </div>
+  `).join('');
+  document.getElementById('resultCard').style.display = 'block';
+}
+
+function fmtTime(s) {
+  const m = Math.floor(s / 60);
+  const sec = Math.floor(s % 60);
+  return m + ':' + String(sec).padStart(2, '0');
+}
+
+function esc(s) { return (s || '').replace(/"/g, '&quot;'); }
+
+function exportSong() {
+  const title = document.getElementById('songTitle').value || 'Sin título';
+  const artist = document.getElementById('songArtist').value || 'Desconocido';
+  const genre = document.getElementById('songGenre').value || '';
+  const yt = document.getElementById('songYoutube').value || '';
+  const ytMatch = yt.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+  const ytId = ytMatch ? ytMatch[1] : '';
+
+  const langKey = songLang === 'q' ? 'q' : 'a';
+  const lines = currentSegments.map(s => ({
+    [langKey]: s.original,
+    s: s.spanish,
+    start: s.start,
+    end: s.end
+  }));
+
+  const obj = { title, artist, genre, youtube_id: ytId, lines, notes: [] };
+  const out = document.getElementById('exportOutput');
+  out.style.display = 'block';
+  out.value = JSON.stringify(obj, null, 2);
+}
+
+// UPLOAD PDF
+async function uploadPdf() {
+  if (!selectedPdf) { alert('Selecciona un PDF primero'); return; }
+  const btn = document.getElementById('pdfBtn');
+  const progress = document.getElementById('pdfProgress');
+  btn.disabled = true;
+  progress.className = 'progress';
+  progress.textContent = 'Subiendo...';
+
+  try {
+    const key = await uploadToR2(selectedPdf, 'pdfs', p => { progress.textContent = `Subiendo... ${p}%`; });
+    progress.className = 'progress ok';
+    progress.textContent = '✓ PDF subido correctamente';
+    loadPdfs();
+  } catch(e) {
+    progress.className = 'progress err';
+    progress.textContent = 'Error: ' + e.message;
+  }
+  btn.disabled = false;
+}
+
+// LOAD FILES
+async function loadPdfs() {
+  const r = await fetch('/api/admin/upload?action=list&folder=pdfs');
+  const d = await r.json();
+  const el = document.getElementById('pdfList');
+  if (!d.files || !d.files.length) { el.innerHTML = '<p style="color:#555;font-size:13px">No hay PDFs subidos aún</p>'; return; }
+  el.innerHTML = d.files.map(f => `
+    <div class="file-item">
+      <span class="file-item-name">${f.key.split('/').pop()}</span>
+      <span class="file-item-size">${fmtSize(f.size)}</span>
+      <button class="btn btn-danger" onclick="deleteFile('${f.key}', loadPdfs)">Borrar</button>
+    </div>
+  `).join('');
+}
+
+async function loadFiles() {
+  const r = await fetch('/api/admin/upload?action=list');
+  const d = await r.json();
+  const el = document.getElementById('allFilesList');
+  if (!d.files || !d.files.length) { el.innerHTML = '<p style="color:#555;font-size:13px">No hay archivos</p>'; return; }
+  el.innerHTML = d.files.filter(f => f.key !== 'test.txt').map(f => `
+    <div class="file-item">
+      <span class="file-item-name">${f.key}</span>
+      <span class="file-item-size">${fmtSize(f.size)}</span>
+      <button class="btn btn-danger" onclick="deleteFile('${f.key}', loadFiles)">Borrar</button>
+    </div>
+  `).join('');
+}
+
+async function deleteFile(key, reload) {
+  if (!confirm('¿Borrar ' + key + '?')) return;
+  await fetch('/api/admin/upload', {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ key })
+  });
+  reload();
+}
+
+function fmtSize(b) {
+  if (b > 1048576) return (b / 1048576).toFixed(1) + ' MB';
+  if (b > 1024) return (b / 1024).toFixed(0) + ' KB';
+  return b + ' B';
+}
+</script>
+</body>
+</html>
