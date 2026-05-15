@@ -61,6 +61,14 @@ function renderPiece() {
     html += '</div>';
   }
 
+  // TTS button for poems and legends (Quechua and Aymara)
+  if (piece.poem || piece.legend) {
+    var ttsText = (piece.lines || []).map(function(l) { return l.q; }).join('. ');
+    if (ttsText) {
+      html += '<button onclick="speakText(' + JSON.stringify(ttsText) + ')" style="display:inline-flex;align-items:center;gap:6px;margin:12px 0 4px;background:none;border:1px solid var(--bdr);border-radius:20px;padding:6px 14px;cursor:pointer;font-size:13px;color:var(--muted)">\uD83D\uDD0A Escuchar</button>';
+    }
+  }
+
   // Grammar notes
   if (piece.notes) {
     html += '<div class="grammar-box"><div class="grammar-title">\u25A4 Gram\u00E1tica</div>';

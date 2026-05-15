@@ -57,6 +57,7 @@ var UI = {
     'menu.q.sufijos': 'Sufijos — Referencia',  'menu.q.sufijos.d': '35+ sufijos con reglas y ejemplos',
     'menu.q.fichas': 'Fichas — Desliza y aprende', 'menu.q.fichas.d': 'Historias de verbos — Voltear — Aprendido',
     'menu.q.quiz': 'Quiz Quechua',             'menu.q.quiz.d': 'Traduce frases completas',
+    'menu.q.leyendas': 'Leyendas Quechuas',    'menu.q.leyendas.d': 'Cuentos y mitos andinos con audio',
     'menu.q.songs': 'Canciones Quechua',       'menu.q.songs.d': 'Letra, traducción y video de YouTube',
     'menu.q.transcriptor': 'Transcribir canción', 'menu.q.transcriptor.d': 'Pega un link de YouTube y transcribe la letra con IA',
     'menu.q.tutor': 'Tutor IA',                'menu.q.tutor.d': 'Preguntas, correcciones, conversación',
@@ -68,6 +69,7 @@ var UI = {
     'menu.a.fichas': 'Fichas Aymara',          'menu.a.fichas.d': 'Aprende verbos deslizando',
     'menu.a.vocab': 'Fichas de vocabulario',   'menu.a.vocab.d': 'Familia, naturaleza, números y más',
     'menu.a.quiz': 'Quiz Aymara',              'menu.a.quiz.d': 'Practica traduciendo frases',
+    'menu.a.leyendas': 'Leyendas Aymaras',      'menu.a.leyendas.d': 'Cuentos y mitos del altiplano con audio',
     'menu.a.songs': 'Canciones Aymara',        'menu.a.songs.d': 'Letra, traducción y video de YouTube',
     'menu.a.transcriptor': 'Transcribir canción', 'menu.a.transcriptor.d': 'Pega un link de YouTube y transcribe la letra con IA',
     'menu.a.tutor': 'Tutor IA — Aymara',       'menu.a.tutor.d': 'Practica con inteligencia artificial',
@@ -277,6 +279,7 @@ function renderHomeBody() {
     {i:'◎', t:u('menu.q.sufijos'),      d:u('menu.q.sufijos.d'),      fn:"openRef('sufijos')"},
     {i:'▣', t:u('menu.q.fichas'),       d:u('menu.q.fichas.d'),       fn:"openCards('q')"},
     {i:'◉', t:u('menu.q.quiz'),         d:u('menu.q.quiz.d'),         fn:"startQuiz('q')"},
+    {i:'📖', t:u('menu.q.leyendas'),     d:u('menu.q.leyendas.d'),     fn:"openReader('leyendas')"},
     {i:'♫', t:u('menu.q.songs'),        d:u('menu.q.songs.d'),        fn:"openSongs('q')"},
     {i:'◆', t:u('menu.q.tutor'),        d:u('menu.q.tutor.d'),        fn:"openChat('q')"}
   ] : [
@@ -287,6 +290,7 @@ function renderHomeBody() {
     {i:'▣', t:u('menu.a.fichas'),       d:u('menu.a.fichas.d'),       fn:"openCards('a')"},
     {i:'▤', t:u('menu.a.vocab'),        d:u('menu.a.vocab.d'),        fn:"openCards('p')"},
     {i:'◉', t:u('menu.a.quiz'),         d:u('menu.a.quiz.d'),         fn:"startQuiz('a')"},
+    {i:'📖', t:u('menu.a.leyendas'),     d:u('menu.a.leyendas.d'),     fn:"openReader('leyendas_a')"},
     {i:'♫', t:u('menu.a.songs'),        d:u('menu.a.songs.d'),        fn:"openSongs('a')"},
     {i:'◆', t:u('menu.a.tutor'),        d:u('menu.a.tutor.d'),        fn:"openChat('a')"}
   ];

@@ -54,6 +54,47 @@ const CONT_Q={
       {q:"kay sumaq pachapi.",s:"en este mundo hermoso."}
     ],notes:[{t:"-sqa+rayku",d:"Kawsasqayrayku=por vivir aqu\u00ED."},{t:"Tiyakuy",d:"Habitar."}]}
   ]},
+  leyendas:{title:"Leyendas Quechuas",color:"#f59e0b",pieces:[
+    {type:"Leyenda",title:"Manco Qhapaq",sub:"El primer Inca",legend:true,lines:[
+      {q:"Ñawpa pacha, Intiqa churinkunata kamachirqa:",s:"En tiempos antiguos, el Sol ordenó a sus hijos:"},
+      {q:"'Ripuychis, runakunata yachachichis!'",s:"'¡Id y enseñad a la gente!'"},
+      {q:"Manco Qhapaqmi llaqsan wayqenkunawan rikurirqa,",s:"Manco Qhapaq apareció con sus hermanos,"},
+      {q:"Titiqaqa qochamantam lluqsirqaku.",s:"emergieron del lago Titicaca."},
+      {q:"Qori toppawan allpata tinqarirqa,",s:"Con una vara de oro tocó la tierra,"},
+      {q:"chaypi Qusquta ruwarqaku.",s:"y allí fundaron el Cusco."},
+      {q:"Paymantam Inka llaqta wiñarqa,",s:"De él creció el pueblo Inca,"},
+      {q:"Tawantinsuyu sutiyuq.",s:"llamado Tawantinsuyu."}
+    ],notes:[{t:"Ñawpa pacha",d:"En tiempos antiguos, en el pasado remoto"},{t:"Qori toppa",d:"Vara de oro, cetro del Inca"},{t:"-rqa-",d:"Marca de tiempo pasado"}]},
+    {type:"Cuento",title:"Achkay",sub:"La bruja de la montaña",legend:true,lines:[
+      {q:"Huk ñawpa pachapi, urqopi achkay tiyarqa.",s:"En tiempos lejanos, en la montaña vivía una bruja."},
+      {q:"Achkayqa runata mikhuq karqa.",s:"La achkay se comía a las personas."},
+      {q:"Huk sipas warmiqa mana manchakuqchu karqa.",s:"Una joven muchacha no tenía miedo."},
+      {q:"Achkaytam tapurqa: '¿Imatam munankiri?'",s:"Le preguntó a la bruja: '¿Qué quieres?'"},
+      {q:"'Kuyayta munani,' nerqa achkay.",s:"'Quiero amor,' dijo la bruja."},
+      {q:"Sipasqa achkayta kuyarqa,",s:"La joven amó a la bruja,"},
+      {q:"chaysi achkay runa tukorqa.",s:"y entonces la bruja se convirtió en persona."}
+    ],notes:[{t:"Achkay",d:"Bruja/ogro en la tradición andina"},{t:"Sipas",d:"Joven mujer, doncella"},{t:"-q karqa",d:"Imperfecto habitual: 'solía hacer'"}]},
+    {type:"Mito",title:"Inti Raymi",sub:"La fiesta del Sol",legend:true,lines:[
+      {q:"Sapa wata, Inti Raymim tiyakun.",s:"Cada año se celebra el Inti Raymi."},
+      {q:"Intiqa wiñay kawsan, mana wañunchu.",s:"El Sol vive eternamente, no muere."},
+      {q:"Inkakunam Intita yuyarirqaku,",s:"Los Incas recordaban al Sol,"},
+      {q:"mihuyta, aqata qorqaku.",s:"le ofrendaban comida y chicha."},
+      {q:"'Taytay Inti, k'ancharimuway!'",s:"'¡Padre Sol, ilumíname!'"},
+      {q:"nerqaku tukuy runakuna.",s:"decían todos."},
+      {q:"Kunampis, Qusqupi,",s:"Hoy también, en el Cusco,"},
+      {q:"Inti Raymi kusisqam kachkan.",s:"el Inti Raymi está lleno de alegría."}
+    ],notes:[{t:"Sapa wata",d:"Cada año"},{t:"Wiñay",d:"Eternamente, siempre"},{t:"Aqha",d:"Chicha, bebida sagrada andina"}]},
+    {type:"Leyenda",title:"Qori Challwa",sub:"El pez de oro",legend:true,lines:[
+      {q:"Titiqaqa qochapin huk qori challwa kawsarqa.",s:"En el lago Titicaca vivía un pez de oro."},
+      {q:"Sapa tutam qori k'anchiywan lluqsirqa.",s:"Cada noche salía con luz dorada."},
+      {q:"Huk wawacha challwata rikorqa",s:"Un niño vio al pez"},
+      {q:"noqa munasqayki ninata.",s:"y le dijo 'te quiero'."},
+      {q:"Challwaqa wawacha maqtaman tukorqa,",s:"El pez se convirtió en muchacho,"},
+      {q:"paykunam ayllu tukorqaku.",s:"y se hicieron familia."},
+      {q:"Ninsi qocha pachakamapin",s:"Dicen que aún en las profundidades del lago"},
+      {q:"paykunam puriykachanku.",s:"ellos siguen caminando."}
+    ],notes:[{t:"Challwa",d:"Pez"},{t:"Noqa munasqayki",d:"Te quiero (yo te amo)"},{t:"Ninsi",d:"Dicen que..., según dicen"}]}
+  ]},
   ensayos:{title:"Textos cortos",color:"#fb7185",pieces:[
     {type:"Filosof\u00EDa",title:"Sumaq Kausay",sub:"El Buen Vivir",essay:true,paras:[
       {q:"Sumaq Kausay nisqaqa mana qolqellachu. Kay rimaymi nin: allinpi kawsakuy, Pachamamawan tinkuykuspa, runakunawan kusikuykuspa.",s:"El llamado Sumaq Kausay no es solo riqueza material. Dice: vivir bien, conect\u00E1ndose con la Madre Tierra y alegr\u00E1ndose con la gente."},
