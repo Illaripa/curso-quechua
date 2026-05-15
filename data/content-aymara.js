@@ -87,6 +87,47 @@ const CONT_A={
       {q:"nayra pacharuw yatichiri.",s:"ense\u00F1ando sobre los tiempos antiguos."},
       {q:"Kunturinakax chullpankir phawapxarakiwa,",s:"Los c\u00F3ndores a\u00FAn vuelan sobre las chullpas,"},
       {q:"nayra jaqinakan u\u00F1jasi\u00F1ataki.",s:"para ver a la gente de antes."}
-    ],notes:[{t:"Chullpa",d:"Torre funeraria de piedra del per\u00EDodo preinca"},{t:"Nayra jaqix",d:"La gente antigua, los antepasados"},{t:"Walt'awiri",d:"El que puede resistir / soportar"}]}
+    ],notes:[{t:"Chullpa",d:"Torre funeraria de piedra del per\u00EDodo preinca"},{t:"Nayra jaqix",d:"La gente antigua, los antepasados"},{t:"Walt'awiri",d:"El que puede resistir / soportar"}]},
+    {type:"Cuento",title:"Titi Puma",sub:"El gato del lago",legend:true,isAy:true,lines:[
+      {q:"Titiqaqa sutinxa titi pumampiwa.",s:"El nombre Titicaca viene del gato puma."},
+      {q:"Nayra pachax huk jach'a titi kawkaski.",s:"En tiempos antiguos viv\u00EDa un gran gato."},
+      {q:"Aka titix qutax u\u00F1naqirina.",s:"Este gato vigilaba el lago."},
+      {q:"Sapa jutir jalluwa quta chuyma yatxataski.",s:"Cada tormenta que llegaba, el lago le contaba sus secretos."},
+      {q:"Titix quta uraqi yatiyirina,",s:"El gato ense\u00F1aba los secretos de la tierra del lago,"},
+      {q:"jaqinakanx yatxatayatayna.",s:"y lo ense\u00F1\u00F3 a la gente."},
+      {q:"Kuntur titimpiw phawatayna janqharu,",s:"El c\u00F3ndor y el gato volaron juntos hacia arriba,"},
+      {q:"qutax sutiparuw sartatayna.",s:"y el lago qued\u00F3 con ese nombre."}
+    ],notes:[{t:"Titi",d:"Gato de los Andes, felino sagrado"},{t:"Quta chuyma",d:"Secreto del lago, coraz\u00F3n del lago"},{t:"Janqharu",d:"Hacia arriba, al cielo"}]},
+    {type:"Mito",title:"Mama Quta",sub:"La madre del lago",legend:true,isAy:true,lines:[
+      {q:"Titiqaqa qutax Mama Qutas uywatayna.",s:"El lago Titicaca era cuidado por la Madre Lago."},
+      {q:"Mama Qutax jach'a warmisawa,",s:"La Madre Lago era una gran mujer,"},
+      {q:"quta ukharurakiw sartatayna.",s:"y viv\u00EDa dentro del lago."},
+      {q:"Jayphux jaqinakaruw yanapaski,",s:"En tiempo de hambre ayudaba a la gente,"},
+      {q:"challwanakaw apatayna.",s:"y les tra\u00EDa peces."},
+      {q:"'Janix jan wali lura\u00F1axa,' satayna.",s:"'No hagan el mal,' dec\u00EDa."},
+      {q:"Suma lurir jaqinakarux,",s:"A los que hac\u00EDan el bien,"},
+      {q:"quta yakuw sum yatichatayna.",s:"el agua del lago les ense\u00F1aba bien."}
+    ],notes:[{t:"Mama Quta",d:"Madre Lago, divinidad femenina del Titicaca"},{t:"Jayphu",d:"Hambre, escasez"},{t:"Challwa",d:"Pez, pescado"}]},
+    {type:"F\u00E1bula",title:"Paja Brava",sub:"El viento y la paja",legend:true,isAy:true,lines:[
+      {q:"Jach'a wayra phuqtatayna altiplanoruwa.",s:"Un gran viento sopl\u00F3 sobre el altiplano."},
+      {q:"Tukuy qhu\u00F1anakax icxatayna.",s:"Todas las plantas se doblaron."},
+      {q:"Ichu phak'ax icxataynati?",s:"\u00BFAcaso la paja brava tambi\u00E9n se dobl\u00F3?"},
+      {q:"Janikiwa, ichu phak'ax sarantatayna.",s:"No, la paja brava sigui\u00F3 de pie."},
+      {q:"Wayra tapuyi: '\u00BFKunasa sarantaski?'",s:"El viento pregunt\u00F3: '\u00BFPor qu\u00E9 sigues de pie?'"},
+      {q:"Ichu nerqi: 'Uraqi chuymaruw mantitha.',",s:"La paja respondi\u00F3: 'Entr\u00E9 al coraz\u00F3n de la tierra.'"},
+      {q:"Jaka\u00F1ax maynist ichukiwa,",s:"La vida es como la paja brava,"},
+      {q:"uraqi chuymaruwa manta\u00F1apawa.",s:"hay que entrar al coraz\u00F3n de la tierra."}
+    ],notes:[{t:"Ichu phak'a",d:"Paja brava, planta resistente del altiplano"},{t:"Uraqi chuyma",d:"Coraz\u00F3n de la tierra, profundidad"},{t:"Saranta\u00F1a",d:"Seguir de pie, continuar"}]},
+    {type:"Leyenda",title:"Iskay Punchunaka",sub:"Las dos estrellas",legend:true,isAy:true,lines:[
+      {q:"Alaxpacha ururunakanx iskaynix qhana.",s:"En el cielo nocturno brillaban dos estrellas."},
+      {q:"Sapallakirakiw qhanantaski,",s:"Brillaban solos cada uno,"},
+      {q:"jan tinkipxatayna.",s:"y no se encontraban."},
+      {q:"Pachamamax tinkiyatayna:",s:"La Pachamama los uni\u00F3:"},
+      {q:"'Tantachisimkpana,' satatayna.",s:"'Acercaos,' les dijo."},
+      {q:"Iskaynix tantatatayna,",s:"Los dos se juntaron,"},
+      {q:"jach'a qhanwa luratayna.",s:"e hicieron una gran luz."},
+      {q:"Aka qhanax Titiqaqan u\u00F1jasiwa,",s:"Esta luz se ve en el Titicaca,"},
+      {q:"yaku ukharurakiwa qhantaski.",s:"y brilla tambi\u00E9n dentro del agua."}
+    ],notes:[{t:"Alaxpacha",d:"Cielo, el mundo de arriba"},{t:"Ururu",d:"Noche, nocturno"},{t:"Tantachiy",d:"Unir, juntar, acercar"}]}
   ]}
 };
