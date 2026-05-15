@@ -15,32 +15,22 @@ function toggleTts() {
   if (btn) btn.textContent = ttsEnabled ? '🔊' : '🔇';
 }
 
-async function speakText(text, btn) {
+function speakText(text, btn) {
   if (!text) return;
-  // Stop current playback
-  if (ttsSource) { try { ttsSource.stop(); } catch(e) {} ttsSource = null; }
-  // Unlock AudioContext on user gesture (must be synchronous)
-  if (!ttsCtx) ttsCtx = new (window.AudioContext || window.webkitAudioContext)();
-  if (ttsCtx.state === 'suspended') ttsCtx.resume();
-  if (btn) { btn.textContent = '⏳'; btn.disabled = true; }
-  try {
-    var res = await fetch('/api/tts', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ text: text })
-    });
-    if (!res.ok) throw new Error('Error servidor');
-    var arrayBuffer = await res.arrayBuffer();
-    var audioBuffer = await ttsCtx.decodeAudioData(arrayBuffer);
-    ttsSource = ttsCtx.createBufferSource();
-    ttsSource.buffer = audioBuffer;
-    ttsSource.connect(ttsCtx.destination);
-    ttsSource.start(0);
-    if (btn) { btn.textContent = '🔊'; btn.disabled = false; }
-    ttsSource.onended = function() { ttsSource = null; };
-  } catch(e) {
-    if (btn) { btn.textContent = '🔊'; btn.disabled = false; }
+  window.speechSynthesis.cancel();
+  var utter = new SpeechSynthesisUtterance(text);
+  utter.lang = 'es-PE';
+  utter.rate = 0.85;
+  var voices = window.speechSynthesis.getVoices();
+  var peVoice = voices.find(function(v) { return v.lang === 'es-PE'; }) ||
+                voices.find(function(v) { return v.lang.startsWith('es'); });
+  if (peVoice) utter.voice = peVoice;
+  if (btn) {
+    btn.textContent = '⏳';
+    utter.onend = function() { btn.textContent = '🔊'; };
+    utter.onerror = function() { btn.textContent = '🔊'; };
   }
+  window.speechSynthesis.speak(utter);
 }
 
 var CHAT_SYSTEM_PROMPTS = {
