@@ -137,7 +137,9 @@
     <div class="card" id="resultCard" style="display:none">
       <h2>Resultado — revisa y edita</h2>
       <div class="segments" id="segmentsContainer"></div>
-      <button class="btn btn-primary" style="margin-top:16px" onclick="exportSong()">Exportar JSON para la app</button>
+      <button class="btn btn-primary" style="margin-top:16px" onclick="saveToLibrary()">Guardar en biblioteca</button>
+      <div class="progress" id="saveProgress"></div>
+      <button class="btn" style="margin-top:8px" onclick="exportSong()">Exportar JSON</button>
       <textarea id="exportOutput" style="display:none;margin-top:12px;font-size:12px;font-family:monospace" rows="20"></textarea>
     </div>
   </div>
@@ -382,6 +384,34 @@ function exportSong() {
   const out = document.getElementById('exportOutput');
   out.style.display = 'block';
   out.value = JSON.stringify(obj, null, 2);
+}
+
+// SAVE TO LIBRARY
+async function saveToLibrary() {
+  const progress = document.getElementById('saveProgress');
+  progress.className = 'progress';
+  progress.textContent = 'Guardando...';
+  try {
+    const r = await fetch('/api/admin/save-song', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        title: document.getElementById('songTitle').value || 'Sin título',
+        artist: document.getElementById('songArtist').value || 'Desconocido',
+        genre: document.getElementById('songGenre').value || 'Tradicional',
+        youtube_url: document.getElementById('songYoutube').value || '',
+        lang: songLang,
+        segments: currentSegments.map(s => ({ text: s.original, translation: s.spanish }))
+      })
+    });
+    const d = await r.json();
+    if (!d.ok) throw new Error(d.error || 'Error al guardar');
+    progress.className = 'progress ok';
+    progress.textContent = '✓ Canción guardada en la biblioteca';
+  } catch(e) {
+    progress.className = 'progress err';
+    progress.textContent = 'Error: ' + e.message;
+  }
 }
 
 // UPLOAD PDF

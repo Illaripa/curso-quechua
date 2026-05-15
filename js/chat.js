@@ -160,13 +160,9 @@ function openChat(lang) {
   document.getElementById('modeBtnLesson').classList.remove('active');
   renderGoals();
 
-  // Hide API banner on Vercel (proxy handles it), show only on GitHub Pages
+  // API banner always hidden — server handles the key
   var banner = document.getElementById('apiBanner');
-  if (banner) {
-    var isVercel = window.location.hostname.indexOf('vercel.app') >= 0;
-    if (isVercel || getApiKey()) { banner.classList.remove('show'); }
-    else { banner.classList.add('show'); }
-  }
+  if (banner) banner.classList.remove('show');
 
   var hour = new Date().getHours();
   var timeQ = hour < 12 ? "Allin p'unchay" : hour < 18 ? "Allin ch'isi" : "Allin tuta";
@@ -214,120 +210,31 @@ async function sendMessage() {
 
   try {
     var fullReplyText = '';
-    var proxyOk = false;
 
-    // Try server proxy first (Vercel deploy — API key hidden on server)
-    var isVercel = window.location.hostname.indexOf('vercel.app') >= 0;
-    if (isVercel) {
-      try {
-        var proxyRes = await fetch('/api/chat', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            system: CHAT_SYSTEM_PROMPTS[chatLang],
-            messages: chatHistory.slice(-8)
-          })
-        });
-        var proxyData = await proxyRes.json();
-        if (proxyRes.ok && proxyData.content) {
-          fullReplyText = proxyData.content;
-          proxyOk = true;
-        } else if (!proxyRes.ok) {
-          removeTypingIndicator();
-          addChatMessage('a', 'Error del servidor: ' + (proxyData.error || 'intenta de nuevo'));
-          document.getElementById('sendBtn').disabled = false;
-          return;
-        }
-      } catch (e) {
-        removeTypingIndicator();
-        addChatMessage('a', 'Error de conexion. Intenta de nuevo.');
-        document.getElementById('sendBtn').disabled = false;
-        return;
-      }
-    }
-
-    // Fallback: client-side API call (needs user's API key)
-    if (!proxyOk) {
-      if (!getApiKey()) {
-        removeTypingIndicator();
-        var b = document.getElementById('apiBanner'); if (b) b.classList.add('show');
-        addChatMessage('a', 'Primero ingresa tu API key arriba. Es gratis en openrouter.ai');
-        document.getElementById('sendBtn').disabled = false;
-        return;
-      }
-
-      var provider = localStorage.getItem('yachay_provider') || 'openrouter';
-      var apiKey = getApiKey();
-      var response, data;
-
-      if (provider === 'anthropic') {
-        response = await fetch('https://api.anthropic.com/v1/messages', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'x-api-key': apiKey,
-            'anthropic-version': '2023-06-01',
-            'anthropic-dangerous-direct-browser-access': 'true'
-          },
-          body: JSON.stringify({
-            model: 'claude-3-haiku-20240307',
-            max_tokens: 150,
-            system: CHAT_SYSTEM_PROMPTS[chatLang],
-            messages: chatHistory
-          })
-        });
-        data = await response.json();
-        if (!response.ok) {
-          removeTypingIndicator();
-          addChatMessage('a', 'Error API (' + response.status + '): ' + (data.error && data.error.message || 'Error'));
-          document.getElementById('sendBtn').disabled = false;
-          return;
-        }
-        fullReplyText = data.content && data.content[0] && data.content[0].text || '';
-
+    // Always use server proxy
+    try {
+      var proxyRes = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          system: CHAT_SYSTEM_PROMPTS[chatLang],
+          messages: chatHistory.slice(-8)
+        })
+      });
+      var proxyData = await proxyRes.json();
+      if (proxyRes.ok && proxyData.content) {
+        fullReplyText = proxyData.content;
       } else {
-        // OpenRouter with fallback models
-        var orMsgs = [{role: 'user', content: '[INSTRUCCIONES] ' + CHAT_SYSTEM_PROMPTS[chatLang] + ' [/INSTRUCCIONES]'}, {role: 'assistant', content: 'Entendido, soy tu tutor.'}].concat(chatHistory.slice(-8));
-        var models = [
-          'google/gemma-3-27b-it:free',
-          'google/gemma-3n-e4b-it:free',
-          'qwen/qwen3-4b:free',
-          'mistralai/mistral-small-3.1-24b-instruct:free',
-          'deepseek/deepseek-chat-v3-0324:free'
-        ];
-        var success = false;
-
-        for (var i = 0; i < models.length; i++) {
-          for (var attempt = 0; attempt < 2; attempt++) {
-            if (attempt > 0) await new Promise(function(r) { setTimeout(r, 3000); });
-            response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + apiKey,
-                'HTTP-Referer': 'https://illaripa.github.io/curso-quechua/',
-                'X-Title': 'Yachay Tutor'
-              },
-              body: JSON.stringify({ model: models[i], max_tokens: 150, messages: orMsgs })
-            });
-            data = await response.json();
-            if (response.ok && data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) {
-              success = true;
-              break;
-            }
-            if (response.status !== 429) break;
-          }
-          if (success) break;
-        }
-
-        if (!success) {
-          removeTypingIndicator();
-          addChatMessage('a', 'Todos los modelos estan ocupados. Intenta de nuevo en unos segundos.');
-          document.getElementById('sendBtn').disabled = false;
-          return;
-        }
-        fullReplyText = data.choices[0].message.content || '';
+        removeTypingIndicator();
+        addChatMessage('a', 'Error del servidor: ' + (proxyData.error || 'intenta de nuevo'));
+        document.getElementById('sendBtn').disabled = false;
+        return;
       }
+    } catch (e) {
+      removeTypingIndicator();
+      addChatMessage('a', 'Error de conexion. Intenta de nuevo.');
+      document.getElementById('sendBtn').disabled = false;
+      return;
     }
 
     var data = {content: [{text: fullReplyText}]};
