@@ -93,7 +93,47 @@ const CONT_Q={
       {q:"paykunam ayllu tukorqaku.",s:"y se hicieron familia."},
       {q:"Ninsi qocha pachakamapin",s:"Dicen que aún en las profundidades del lago"},
       {q:"paykunam puriykachanku.",s:"ellos siguen caminando."}
-    ],notes:[{t:"Challwa",d:"Pez"},{t:"Noqa munasqayki",d:"Te quiero (yo te amo)"},{t:"Ninsi",d:"Dicen que..., según dicen"}]}
+    ],notes:[{t:"Challwa",d:"Pez"},{t:"Noqa munasqayki",d:"Te quiero (yo te amo)"},{t:"Ninsi",d:"Dicen que..., según dicen"}]},
+    {type:"Leyenda",title:"Puma Orqo",sub:"El cerro del puma",legend:true,lines:[
+      {q:"Ñawpa pachapi huk hatun puma urqopi kawsarqa.",s:"En tiempos antiguos un gran puma vivía en el cerro."},
+      {q:"Tukuy llaqtakuna manchakurqaku.",s:"Todos los pueblos le tenían miedo."},
+      {q:"Huk wayna maqtam pumarihuan rimarirqa.",s:"Un joven habló con el puma."},
+      {q:"'Imatam munankiri, puma tayta?'",s:"'¿Qué quieres, señor puma?'"},
+      {q:"'Aylluyta maskhani,' nerqa puma.",s:"'Busco mi familia,' dijo el puma."},
+      {q:"Wayna maqtam pumata yanaparqa,",s:"El joven ayudó al puma,"},
+      {q:"paymi aylluyta tarirqa.",s:"y él encontró a su familia."},
+      {q:"Puma orqom sutin kachkan kunankama.",s:"El cerro del puma sigue con ese nombre hasta hoy."}
+    ],notes:[{t:"Puma",d:"León de montaña, animal sagrado andino"},{t:"Wayna maqta",d:"Joven, muchacho"},{t:"Maskay",d:"Buscar"}]},
+    {type:"Fábula",title:"Atuq Achachi",sub:"El zorro astuto",legend:true,lines:[
+      {q:"Huk atuqmi achachim karqa, yuyayniyuq.",s:"Había un zorro muy sabio y astuto."},
+      {q:"Sapa p'unchay mikhuyta maskharqa.",s:"Cada día buscaba qué comer."},
+      {q:"Huk urpim qorinta wayqopi saqirqa.",s:"Una paloma dejó su comida en el barranco."},
+      {q:"Atuqmi urpita rimарirqa:",s:"El zorro le habló a la paloma:"},
+      {q:"'Sumaqta takiykuy, urpicha!'",s:"'¡Canta hermoso, palomita!'"},
+      {q:"Urpiqa takiyta qallarirqa,",s:"La paloma empezó a cantar,"},
+      {q:"qorinmi urmurqa.",s:"y su comida cayó."},
+      {q:"Atuqmi qorita mikhorqa, asikuspan.",s:"El zorro comió la comida, riéndose."}
+    ],notes:[{t:"Atuq",d:"Zorro (animal pícaro en la tradición andina)"},{t:"Urpi",d:"Paloma"},{t:"Takiy",d:"Cantar"}]},
+    {type:"Mito",title:"Ukuku",sub:"El hijo del oso y la mujer",legend:true,lines:[
+      {q:"Ukukuqa ukukuwan warmiwan churin karqa.",s:"El Ukuku era hijo de un oso y una mujer."},
+      {q:"Mana runa, mana ukuku kikillanchu.",s:"No era persona ni tampoco era solo oso."},
+      {q:"Iskay sunqoyuqmi karqa.",s:"Tenía dos corazones."},
+      {q:"Ukukuqa urqokunapi purerqa,",s:"El Ukuku caminaba por las montañas,"},
+      {q:"ichaqa llaqtakunatam yanapakurqa.",s:"pero ayudaba a los pueblos."},
+      {q:"Inti Raymipim Ukuku rikurikun,",s:"En el Inti Raymi el Ukuku aparece,"},
+      {q:"ritita urayk'uspan,",s:"bajando desde las nieves,"},
+      {q:"millma p'achawan pisqo rikchasqa.",s:"disfrazado de ave con su ropa de lana."}
+    ],notes:[{t:"Ukuku",d:"Ser mítico andino, mitad oso mitad hombre"},{t:"Iskay sunqo",d:"Dos corazones, dualidad andina"},{t:"Riti",d:"Nieve, glaciar"}]},
+    {type:"Cuento",title:"Sirenita del Lago",sub:"La sirena del Titicaca",legend:true,lines:[
+      {q:"Titiqaqa qochapin huk sirena kawsarqa.",s:"En el lago Titicaca vivía una sirena."},
+      {q:"Chay sirenaqa sumaqta takiq karqa.",s:"Esa sirena cantaba hermoso."},
+      {q:"Takiyninwan qochaqa kusikurqa,",s:"Con su canto el lago se alegraba,"},
+      {q:"challwakunam tusurqaku.",s:"y los peces bailaban."},
+      {q:"Huk runa sirenata munakurqa,",s:"Un hombre se enamoró de la sirena,"},
+      {q:"qochamanta lluqsimunantas mañakurqa.",s:"y le pidió que saliera del lago."},
+      {q:"Sirenaqa nerqa: 'Mana atinichu,",s:"La sirena dijo: 'No puedo,"},
+      {q:"qocham sunqoy, qocham kawsayni.'",s:"el lago es mi corazón, el lago es mi vida.'"}
+    ],notes:[{t:"Sirena",d:"Ser mítico de los lagos andinos"},{t:"Munakuy",d:"Enamorarse, amar"},{t:"Sunqo",d:"Corazón, esencia"}]}
   ]},
   ensayos:{title:"Textos cortos",color:"#fb7185",pieces:[
     {type:"Filosof\u00EDa",title:"Sumaq Kausay",sub:"El Buen Vivir",essay:true,paras:[
