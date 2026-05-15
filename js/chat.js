@@ -270,13 +270,7 @@ async function sendMessage() {
         sugDiv.innerHTML = '<button class="chip" onclick="sendChip(\'' + challenge.replace(/'/g, "\\'") + '\')">' + challenge + '</button>';
       }
     } else {
-      // Fallback: show follow-up suggestions
-      var followUps = chatLang === 'q'
-        ? ['Otra frase', 'No entendi', 'Mas dificil', 'Cambiemos de tema']
-        : ['Otra frase', 'No entendi', 'Mas dificil', 'Cambiemos de tema'];
-      sugDiv.innerHTML = followUps.map(function(s) {
-        return '<button class="chip" onclick="sendChip(\'' + s + '\')">' + s + '</button>';
-      }).join('');
+      sugDiv.innerHTML = '';
     }
 
   } catch (error) {
