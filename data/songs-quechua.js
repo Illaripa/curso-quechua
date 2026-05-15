@@ -424,5 +424,225 @@ const CANCIONES_Q = [
       { t: "Kuyay", d: "Amor, amado/a" },
       { t: "Aqa", d: "Chicha (bebida andina)" }
     ]
+  },
+  {
+    title: "Hanaq Pachap Kusikuynin",
+    artist: "Anónimo colonial (1631)",
+    genre: "Himno colonial",
+    youtube_id: "oFPnUrDYfhw",
+    lines: [
+      { q: "Hanaq pachap kusikuynin",        s: "Alegría del cielo" },
+      { q: "Waranqakta much'asqayki",        s: "Te adoro mil veces" },
+      { q: "Yurak qomer sagra sisa",         s: "Flor blanca y verde, sagrada" },
+      { q: "Huk k'anchaymi kanki killa",     s: "Eres una sola luna brillante" },
+      { q: "Inti qyllurmi kanki",            s: "Eres el sol y la estrella" },
+      { q: "Qoyllurnikis k'anchariynin",     s: "Tu estrella es nuestra luz" },
+      { q: "Ñoqanchej kanchariynin",         s: "Iluminas nuestro camino" },
+      { q: "Diospa Maman, Mamay kiki",       s: "Madre de Dios, mi propia madre" }
+    ],
+    notes: [
+      { t: "Hanaq pacha", d: "El cielo, el mundo de arriba" },
+      { t: "Much'ay", d: "Adorar, besar" },
+      { t: "Qoyllur", d: "Estrella" },
+      { t: "K'anchay", d: "Luz, brillar" }
+    ]
+  },
+  {
+    title: "Warmisitay",
+    artist: "Tradicional andino",
+    genre: "Huayno",
+    youtube_id: "7Zn8Z3BWKQY",
+    lines: [
+      { q: "Warmisitay, warmisitay",         s: "Mujercita mía, mujercita mía" },
+      { q: "Maypin kashanki",                s: "¿Dónde estás?" },
+      { q: "Qampim sunqoy saqerqan",         s: "Contigo dejé mi corazón" },
+      { q: "Kutimuytam mañakuyki",           s: "Te pido que vuelvas" },
+      { q: "Manam qonqayta atinichu",        s: "No puedo olvidarte" },
+      { q: "Kuyasqay warmisitay",            s: "Mujercita mía querida" },
+      { q: "Ima manchaytam llakini",         s: "Qué tristeza tan grande siento" },
+      { q: "Kutipumuway, kuyay",             s: "Regresa a mí, amor" }
+    ],
+    notes: [
+      { t: "Warmi", d: "Mujer" },
+      { t: "Sunqo", d: "Corazón, alma" },
+      { t: "Kutimuy", d: "Regresar (imperativo)" },
+      { t: "Llaki", d: "Tristeza, pena" }
+    ]
+  },
+  {
+    title: "Manchaypuytu",
+    artist: "Tradicional quechua",
+    genre: "Harawi antiguo",
+    youtube_id: "Yb5pMPsUXPY",
+    lines: [
+      { q: "Manchaypuytu, manchaypuytu",     s: "El que provoca miedo, el que provoca miedo" },
+      { q: "Ripusaqmi kay llaqtamanta",      s: "Me iré de este pueblo" },
+      { q: "Manaqa ima llakillam",           s: "Solo qué tristeza" },
+      { q: "Qan kikikim saqirqanki",         s: "Tú mismo me abandonaste" },
+      { q: "Uywa michijlla kaspa",           s: "Siendo solo un pastorcito" },
+      { q: "Munasqaykichus karqani",         s: "¿Acaso fui tu amado?" },
+      { q: "Ripuytam munani",                s: "Quiero irme" },
+      { q: "Llakispa saqiykuspa",            s: "Con tristeza, dejándolo todo" }
+    ],
+    notes: [
+      { t: "Manchay", d: "Miedo, terror" },
+      { t: "Ripuy", d: "Irse, partir" },
+      { t: "Uywa michi", d: "Pastor de animales" },
+      { t: "Saqiy", d: "Dejar, abandonar" }
+    ]
+  },
+  {
+    title: "Sumaq Sisa",
+    artist: "Tradicional cusqueño",
+    genre: "Huayno",
+    youtube_id: "vU5FQVHY-dA",
+    lines: [
+      { q: "Sumaq sisa, sumaq sisa",         s: "Hermosa flor, hermosa flor" },
+      { q: "Pitaq churarqasunki",            s: "¿Quién te plantó?" },
+      { q: "Kay hatun rumi patapi",          s: "En lo alto de esta gran roca" },
+      { q: "Wayra apamurqasunki",            s: "El viento te trajo" },
+      { q: "Sisaykunki, sisaykunki",         s: "Floreces, floreces" },
+      { q: "Tarpuqniyki mana kaspa",         s: "Sin que nadie te siembre" },
+      { q: "Sumaq sisa kanki qan",           s: "Tú eres una hermosa flor" },
+      { q: "Andisninchejpi wiñasqayki",      s: "Que creció en nuestros Andes" }
+    ],
+    notes: [
+      { t: "Sisa", d: "Flor" },
+      { t: "Sumaq", d: "Hermoso/a, bello/a" },
+      { t: "Wayra", d: "Viento" },
+      { t: "Wiñay", d: "Crecer, siempre" }
+    ]
+  },
+  {
+    title: "Inti Taytay",
+    artist: "Tradicional andino",
+    genre: "Canción ceremonial",
+    youtube_id: "A3p_LPzBjRQ",
+    lines: [
+      { q: "Inti taytay, inti taytay",       s: "Padre sol, padre sol" },
+      { q: "K'ancharimuway",                 s: "Ilumíname" },
+      { q: "Kay kawsayta kay p'unchaypi",    s: "Esta vida, en este día" },
+      { q: "Sumaqta riqsichiway",            s: "Muéstramela hermosa" },
+      { q: "Pachamama, pachamama",           s: "Madre tierra, madre tierra" },
+      { q: "Kawsarichiy ñoqaykuta",          s: "Danos vida a nosotros" },
+      { q: "Yuyay, munay, llank'ay",         s: "Pensamiento, amor y trabajo" },
+      { q: "Kimsantin kawsayninchej",        s: "Los tres pilares de nuestra vida" }
+    ],
+    notes: [
+      { t: "Inti", d: "Sol" },
+      { t: "Tayta", d: "Padre (respetuoso)" },
+      { t: "K'anchay", d: "Iluminar, luz" },
+      { t: "Yuyay / Munay / Llank'ay", d: "Los tres principios andinos: Pensar / Amar / Trabajar" }
+    ]
+  },
+  {
+    title: "Mana Qonqasqayki",
+    artist: "Los Morochucos",
+    genre: "Huayno ayacuchano",
+    youtube_id: "SH4TLW8XJOE",
+    lines: [
+      { q: "Mana qonqasqayki, mana qonqasqayki", s: "No te he olvidado, no te he olvidado" },
+      { q: "Sunqoypi kachkanki",             s: "Estás en mi corazón" },
+      { q: "Mana ripuwaqchu qam",            s: "Tú no te irás" },
+      { q: "Kawsayniypim kachkanki",         s: "Estás en mi vida" },
+      { q: "Mosqoypipis rikuyki",            s: "En mis sueños te veo" },
+      { q: "Wayrapipismi rimayki",           s: "En el viento te hablo" },
+      { q: "Qonqawaqchu kanki qanpis",       s: "¿Acaso tú también me olvidarás?" },
+      { q: "Mana qonqawaqchu, kuyay",        s: "No me olvidarás, amor" }
+    ],
+    notes: [
+      { t: "Qonqay", d: "Olvidar" },
+      { t: "Sunqo", d: "Corazón" },
+      { t: "Mosqoy", d: "Sueño" },
+      { t: "Wayra", d: "Viento" }
+    ]
+  },
+  {
+    title: "Kunanmanta Tukuy",
+    artist: "Damaris",
+    genre: "Fusión contemporánea",
+    youtube_id: "pG2XzuHH1_Q",
+    lines: [
+      { q: "Kunanmanta tukuy llakiy",        s: "Desde ahora toda tristeza" },
+      { q: "Tukuchun, tukuchun",             s: "Que termine, que termine" },
+      { q: "Sumaqta kawsasun",               s: "Viviremos bien" },
+      { q: "Allin ñanpi purisun",            s: "Caminaremos por el buen camino" },
+      { q: "Pacha tikrarimushajtin",         s: "Cuando el tiempo cambie" },
+      { q: "Kausarisun, kausarisun",         s: "Resurgiremos, resurgiremos" },
+      { q: "Ñoqaykum kanchis Andesmanta",   s: "Somos del pueblo de los Andes" },
+      { q: "Manam qonqasunchejchu",          s: "No olvidaremos" }
+    ],
+    notes: [
+      { t: "Kunanmanta", d: "Desde ahora" },
+      { t: "Tukuy", d: "Todo / Terminar" },
+      { t: "Allin ñan", d: "Buen camino (concepto andino)" },
+      { t: "Kausarisun", d: "Resurgiremos (futuro plural)" }
+    ]
+  },
+  {
+    title: "Qori Wayra",
+    artist: "Saywa",
+    genre: "Fusión andina",
+    youtube_id: "xBdZHBHbMoE",
+    lines: [
+      { q: "Qori wayra, qori wayra",         s: "Viento dorado, viento dorado" },
+      { q: "Andesmanta hamukushaj",          s: "Vengo de los Andes" },
+      { q: "Pachamama k'anchariwan",         s: "La Pachamama me ilumina" },
+      { q: "Inti sunqoypi kawsan",           s: "El sol vive en mi corazón" },
+      { q: "Sisa wiñayta munani",            s: "Quiero florecer siempre" },
+      { q: "Kay allpapi wiñaspa",            s: "Creciendo en esta tierra" },
+      { q: "Qori wayra apamuwaj",            s: "El viento dorado me llevará" },
+      { q: "Hanaq pachaman ichapis",         s: "Quizás al cielo" }
+    ],
+    notes: [
+      { t: "Qori", d: "Oro, dorado" },
+      { t: "Wayra", d: "Viento" },
+      { t: "Allpa", d: "Tierra, suelo" },
+      { t: "Wiñay", d: "Crecer, siempre" }
+    ]
+  },
+  {
+    title: "Llorando me Fui",
+    artist: "Los Kjarkas",
+    genre: "Canción andina",
+    youtube_id: "yx0QBbHqPAA",
+    lines: [
+      { q: "Waqaspa rirqani",                s: "Llorando me fui" },
+      { q: "Llakispa saqirqani",             s: "Con tristeza te dejé" },
+      { q: "Qanta sunqoypim saqirqani",      s: "En mi corazón te dejé" },
+      { q: "Mana qonqayta atispa",           s: "Sin poder olvidarte" },
+      { q: "Kutimuyta munani",               s: "Quiero regresar" },
+      { q: "Qanta rikunaypajpis",            s: "Solo para verte a ti" },
+      { q: "Manam kutimuniy atinichu",       s: "No puedo regresar" },
+      { q: "Llakiy pusawarqan",              s: "La tristeza me llevó" }
+    ],
+    notes: [
+      { t: "Waqay", d: "Llorar" },
+      { t: "Llaki", d: "Tristeza, pena" },
+      { t: "Saqiy", d: "Dejar, abandonar" },
+      { t: "Kutimuy", d: "Regresar" }
+    ]
+  },
+  {
+    title: "Pukllay",
+    artist: "Tradicional (Carnaval)",
+    genre: "Carnaval andino",
+    youtube_id: "sBPTaicM1ek",
+    lines: [
+      { q: "Pukllasun, pukllasun",           s: "Juguemos, juguemos" },
+      { q: "Carnavalpi tususun",             s: "En carnaval bailemos" },
+      { q: "Ch'uñuwan papawan",              s: "Con chuño y con papa" },
+      { q: "Mikhurispa kusisun",             s: "Comiendo alegremos" },
+      { q: "Wayra puririwajtin",             s: "Cuando el viento nos lleva" },
+      { q: "Sisasapa panpapi",               s: "En la pampa llena de flores" },
+      { q: "Ñoqaykum pukllashayku",          s: "Nosotros estamos jugando" },
+      { q: "Kusisqa suyupi",                 s: "En la región alegre" }
+    ],
+    notes: [
+      { t: "Pukllay", d: "Jugar, carnaval" },
+      { t: "Tusuy", d: "Bailar" },
+      { t: "Ch'uño", d: "Papa deshidratada (producto andino)" },
+      { t: "Kusiy", d: "Alegría, alegrarse" }
+    ]
   }
 ];
