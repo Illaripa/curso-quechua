@@ -36,7 +36,7 @@ export default async function handler(req, res) {
     genre: genre || 'Tradicional',
     youtube_id: ytMatch ? ytMatch[1] : '',
     lang: langKey,
-    lines: segments.map(s => ({ [langKey]: s.text, s: s.translation || '' })),
+    lines: segments.map(s => ({ [langKey]: s.text, s: s.translation || '', start: s.start ?? null, end: s.end ?? null })),
     notes: []
   };
 
