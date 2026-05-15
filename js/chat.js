@@ -6,7 +6,8 @@ var tutorLevel = 'A1';
 var tutorGoals = [];
 var tutorSessionLog = [];
 var ttsEnabled = true;
-var ttsAudio = null;
+var ttsCtx = null;
+var ttsSource = null;
 
 function toggleTts() {
   ttsEnabled = !ttsEnabled;
@@ -14,22 +15,32 @@ function toggleTts() {
   if (btn) btn.textContent = ttsEnabled ? '🔊' : '🔇';
 }
 
-async function speakText(text) {
-  if (!ttsEnabled || !text) return;
-  if (ttsAudio) { ttsAudio.pause(); ttsAudio = null; }
+async function speakText(text, btn) {
+  if (!text) return;
+  // Stop current playback
+  if (ttsSource) { try { ttsSource.stop(); } catch(e) {} ttsSource = null; }
+  // Unlock AudioContext on user gesture (must be synchronous)
+  if (!ttsCtx) ttsCtx = new (window.AudioContext || window.webkitAudioContext)();
+  if (ttsCtx.state === 'suspended') ttsCtx.resume();
+  if (btn) { btn.textContent = '⏳'; btn.disabled = true; }
   try {
     var res = await fetch('/api/tts', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ text: text })
     });
-    if (!res.ok) return;
-    var blob = await res.blob();
-    var url = URL.createObjectURL(blob);
-    ttsAudio = new Audio(url);
-    ttsAudio.play();
-    ttsAudio.onended = function() { URL.revokeObjectURL(url); ttsAudio = null; };
-  } catch(e) {}
+    if (!res.ok) throw new Error('Error servidor');
+    var arrayBuffer = await res.arrayBuffer();
+    var audioBuffer = await ttsCtx.decodeAudioData(arrayBuffer);
+    ttsSource = ttsCtx.createBufferSource();
+    ttsSource.buffer = audioBuffer;
+    ttsSource.connect(ttsCtx.destination);
+    ttsSource.start(0);
+    if (btn) { btn.textContent = '🔊'; btn.disabled = false; }
+    ttsSource.onended = function() { ttsSource = null; };
+  } catch(e) {
+    if (btn) { btn.textContent = '🔊'; btn.disabled = false; }
+  }
 }
 
 var CHAT_SYSTEM_PROMPTS = {
