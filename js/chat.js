@@ -161,7 +161,7 @@ function addChatMessage(role, text) {
   var div = document.createElement('div');
   div.className = 'message ' + (role === 'u' ? 'message--user' : 'message--assistant');
   var speakBtn = (role === 'a' && chatLang === 'q')
-    ? '<button onclick="speakText(' + JSON.stringify(text) + ')" style="display:block;margin-top:6px;background:none;border:none;cursor:pointer;font-size:16px;opacity:0.5;padding:0" title="Escuchar">🔊</button>'
+    ? '<button onclick="speakText(decodeURIComponent(\'' + encodeURIComponent(text) + '\'))" style="display:block;margin-top:6px;background:none;border:none;cursor:pointer;font-size:16px;opacity:0.5;padding:0" title="Escuchar">🔊</button>'
     : '';
   div.innerHTML = '<div class="bubble">' + text.replace(/\n/g, '<br>') + speakBtn + '</div>';
   container.appendChild(div);

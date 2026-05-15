@@ -41,7 +41,7 @@ function renderPiece() {
     if (piece.poem || piece.legend) {
       var ttsText = (piece.lines || []).map(function(l) { return l.q; }).join('. ');
       if (ttsText) {
-        html += '<button onclick="speakText(' + JSON.stringify(ttsText) + ')" style="padding:8px 14px;border-radius:20px;border:1px solid var(--bdr);background:none;cursor:pointer;font-size:14px" title="Escuchar">\uD83D\uDD0A</button>';
+        html += '<button onclick="speakText(decodeURIComponent(\'' + encodeURIComponent(ttsText) + '\'))" style="padding:8px 14px;border-radius:20px;border:1px solid var(--bdr);background:none;cursor:pointer;font-size:14px" title="Escuchar">\uD83D\uDD0A</button>';
       }
     }
     html += '</div>';
@@ -51,7 +51,7 @@ function renderPiece() {
   if (piece.poem) {
     html += '<div class="' + readerMode + ' poem" style="text-align:center;padding:10px 0">';
     piece.lines.forEach(function(l) {
-      var btn = '<button onclick="speakText(' + JSON.stringify(l.q) + ')" style="background:none;border:none;cursor:pointer;font-size:13px;opacity:0.4;padding:0 4px;vertical-align:middle" title="Escuchar">🔊</button>';
+      var btn = '<button onclick="speakText(decodeURIComponent(\'' + encodeURIComponent(l.q) + '\'))" style="background:none;border:none;cursor:pointer;font-size:13px;opacity:0.4;padding:0 4px;vertical-align:middle" title="Escuchar">🔊</button>';
       html += '<div class="' + lineClass + '" style="text-align:center">' + l.q + btn + '</div>' +
         '<div class="spanish-line">' + l.s + '</div>';
     });
@@ -63,7 +63,7 @@ function renderPiece() {
   } else {
     html += '<div class="' + readerMode + '">';
     piece.lines.forEach(function(l) {
-      var btn = '<button onclick="speakText(' + JSON.stringify(l.q) + ')" style="background:none;border:none;cursor:pointer;font-size:13px;opacity:0.4;padding:0 4px;vertical-align:middle" title="Escuchar">🔊</button>';
+      var btn = '<button onclick="speakText(decodeURIComponent(\'' + encodeURIComponent(l.q) + '\'))" style="background:none;border:none;cursor:pointer;font-size:13px;opacity:0.4;padding:0 4px;vertical-align:middle" title="Escuchar">🔊</button>';
       html += '<div class="' + lineClass + '">' + l.q + btn + '</div><div class="spanish-line">' + l.s + '</div>';
     });
     html += '</div>';
