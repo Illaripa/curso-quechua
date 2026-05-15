@@ -8,7 +8,27 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Missing messages or system' });
   }
 
-  // Try Anthropic (Claude) first
+  // Try OpenAI first
+  var openaiKey = process.env.OPENAI_API_KEY;
+  if (openaiKey) {
+    try {
+      var oaResp = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + openaiKey },
+        body: JSON.stringify({
+          model: 'gpt-4o-mini',
+          max_tokens: 200,
+          messages: [{ role: 'system', content: body.system }, ...body.messages.slice(-8)]
+        })
+      });
+      var oaData = await oaResp.json();
+      if (oaResp.ok && oaData.choices && oaData.choices[0].message.content) {
+        return res.status(200).json({ content: oaData.choices[0].message.content });
+      }
+    } catch (e) {}
+  }
+
+  // Fallback: Anthropic
   var anthropicKey = process.env.ANTHROPIC_API_KEY;
   if (anthropicKey) {
     var models = ['claude-sonnet-4-20250514', 'claude-3-5-haiku-20241022', 'claude-3-haiku-20240307'];
