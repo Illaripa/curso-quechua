@@ -160,7 +160,10 @@ function addChatMessage(role, text) {
   var container = document.getElementById('chatMessages');
   var div = document.createElement('div');
   div.className = 'message ' + (role === 'u' ? 'message--user' : 'message--assistant');
-  div.innerHTML = '<div class="bubble">' + text.replace(/\n/g, '<br>') + '</div>';
+  var speakBtn = (role === 'a' && chatLang === 'q')
+    ? '<button onclick="speakText(' + JSON.stringify(text) + ')" style="display:block;margin-top:6px;background:none;border:none;cursor:pointer;font-size:16px;opacity:0.5;padding:0" title="Escuchar">🔊</button>'
+    : '';
+  div.innerHTML = '<div class="bubble">' + text.replace(/\n/g, '<br>') + speakBtn + '</div>';
   container.appendChild(div);
   container.scrollTop = container.scrollHeight;
 }
@@ -285,7 +288,6 @@ async function sendMessage() {
     chatHistory.push({role: 'assistant', content: fullReply});
     removeTypingIndicator();
     addChatMessage('a', cleanReply || fullReply);
-    speakText(cleanReply || fullReply);
     updateTutorSidebar(fullReply, text);
 
     // Extract TRADUCE challenge and show as chip
