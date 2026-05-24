@@ -164,3 +164,83 @@
   margin-top: 2px;
 }
 
+
+/* ============================================================
+   COMPLETAR ORACIONES
+   ============================================================ */
+.comp-groups {
+  display: flex;
+  gap: 7px;
+  padding: 10px 15px;
+  overflow-x: auto;
+  flex-shrink: 0;
+  scrollbar-width: none;
+}
+.comp-groups::-webkit-scrollbar { display: none; }
+
+.comp-pill {
+  flex-shrink: 0;
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1.5px solid var(--bdr);
+  background: var(--card2);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition);
+  min-height: 34px;
+  white-space: nowrap;
+}
+.comp-pill--active {
+  background: var(--q-color);
+  border-color: var(--q-color);
+  color: #fff;
+}
+
+.comp-card {
+  background: var(--card);
+  border: 1px solid var(--bdr);
+  border-radius: var(--radius-md);
+  padding: 17px 15px;
+  margin-bottom: 15px;
+}
+
+.comp-sentence {
+  font-family: "Lora", serif;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.55;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.comp-blank {
+  color: var(--gold);
+  letter-spacing: 2px;
+}
+
+.comp-feedback {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--bdr);
+  animation: fadeInUp 0.25s ease;
+}
+
+.comp-translation {
+  font-family: "Lora", serif;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--q-color);
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.comp-score-badge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gold);
+}

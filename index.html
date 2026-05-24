@@ -172,6 +172,26 @@
 </div>
 
 <!-- ============================================================
+     COMPLETAR ORACIONES SCREEN
+     ============================================================ -->
+<div id="completar" class="screen">
+  <div class="topbar">
+    <button class="topbar-back" onclick="goHome()">&#8592;</button>
+    <span class="topbar-title" id="completarTitle">◈ Completar Quechua</span>
+    <span class="comp-score-badge">&#9830; <span id="compScoreVal">0</span></span>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="compProgress" style="background:var(--gold)"></div></div>
+  <div class="comp-groups" id="compGroups"></div>
+  <div class="content-body">
+    <div class="score-bar">
+      <span style="color:var(--muted)">Pregunta</span>
+      <span style="font-weight:700;color:var(--muted)" id="compCount">1/20</span>
+    </div>
+    <div id="compBody"></div>
+  </div>
+</div>
+
+<!-- ============================================================
      RESULT SCREEN
      ============================================================ -->
 <div id="result" class="screen">
@@ -338,6 +358,7 @@
 <script src="data/vocabulary.js?v=2"></script>
 <script src="data/quiz-quechua.js?v=2"></script>
 <script src="data/quiz-aymara.js?v=2"></script>
+<script src="data/oraciones-completar.js?v=1"></script>
 <script src="data/songs-quechua.js?v=2"></script>
 <script src="data/songs-aymara.js?v=2"></script>
 <script src="js/morning.js?v=2"></script>
@@ -346,6 +367,7 @@
 <script src="js/reference.js?v=2"></script>
 <script src="js/flashcards.js?v=2"></script>
 <script src="js/quiz.js?v=2"></script>
+<script src="js/completar.js?v=1"></script>
 <script src="js/chat.js?v=2"></script>
 <script src="js/songs.js?v=2"></script>
 <script src="js/app.js?v=2"></script>
