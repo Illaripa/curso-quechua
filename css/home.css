@@ -1,6 +1,85 @@
 /* ============================================================
    HOME SCREEN
    ============================================================ */
+
+/* Language Dashboard */
+.lang-dashboard {
+  padding: 20px 15px 50px;
+}
+.dashboard-eyebrow {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.lang-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 12px 22px;
+  border-radius: 20px;
+  border: 1.5px solid var(--bdr);
+  background: var(--card);
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.15s, border-color 0.2s, box-shadow 0.2s;
+  min-height: 148px;
+}
+.lang-card:active { transform: scale(0.95); }
+.lang-card-flag {
+  font-size: 42px;
+  margin-bottom: 10px;
+  display: block;
+  line-height: 1;
+}
+.lang-card-name {
+  font-family: 'Lora', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--txt);
+  margin-bottom: 5px;
+}
+.lang-card-sub {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.4px;
+  line-height: 1.4;
+}
+.lang-card--q  { background: linear-gradient(145deg,#fffbf0,var(--card)); border-color: rgba(196,125,26,0.25); }
+.lang-card--q:active  { border-color: var(--gold); box-shadow: 0 4px 18px rgba(196,125,26,0.18); }
+.lang-card--a  { background: linear-gradient(145deg,#f0fffe,var(--card)); border-color: rgba(26,138,122,0.25); }
+.lang-card--a:active  { border-color: var(--teal); box-shadow: 0 4px 18px rgba(26,138,122,0.18); }
+.lang-card--en { background: linear-gradient(145deg,#eff6ff,var(--card)); border-color: rgba(59,130,246,0.25); }
+.lang-card--en:active { border-color: #3b82f6; box-shadow: 0 4px 18px rgba(59,130,246,0.18); }
+.lang-card--fr { background: linear-gradient(145deg,#faf5ff,var(--card)); border-color: rgba(139,92,246,0.25); }
+.lang-card--fr:active { border-color: #8b5cf6; box-shadow: 0 4px 18px rgba(139,92,246,0.18); }
+
+/* Back to dashboard button */
+.back-to-dashboard {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: 1px solid var(--bdr);
+  border-radius: 20px;
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  cursor: pointer;
+  margin-bottom: 14px;
+  letter-spacing: 0.5px;
+  min-height: 36px;
+}
 .home-header {
   background: linear-gradient(170deg, #ede3cc, #f5edd8 65%);
   padding: 44px 22px 22px;
