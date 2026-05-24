@@ -128,5 +128,131 @@ const DIALOGOS = [
       {s:'Brian', q:'Paykunaqa yakullatam utaq gaseosat am upyachkanku.',t:'Ellos beben solo agua o gaseosa.'}
     ],
     note:'-kichik = 2ª persona plural: rurachkankichik (ustedes están haciendo). -iku = 1ª plural exclusiva: rurachkaniku (nosotros estamos haciendo). -wan = con: taytamaywan (con mis padres).'
+  },
+  {
+    id:'d8', book:'R1·4', color:'#0d9488',
+    title:'Chay warmiqa pitataq?',
+    subtitle:'Preguntar por personas · Who is that?',
+    context:'Lucía llega a casa de Rosa y ve fotos en la pared. Pregunta por cada persona.',
+    speakers:{Lucía:'#0d9488', Rosa:'#8b5cf6'},
+    lines:[
+      {s:'Lucía', q:'Chay warmiqa pitataq?',               t:'¿Quién es esa mujer?'},
+      {s:'Rosa',  q:'Payqa mamáymi.',                       t:'Es mi mamá.'},
+      {s:'Lucía', q:'¿Maypitaq kawsachkan?',               t:'¿Dónde vive?'},
+      {s:'Rosa',  q:'Cuscopin kawsan.',                     t:'Vive en Cusco.'},
+      {s:'Lucía', q:'¿Chay runaqa pitataq?',               t:'¿Y ese hombre, quién es?'},
+      {s:'Rosa',  q:'Payqa taitáymi, Limapim kawsan.',      t:'Es mi papá, vive en Lima.'},
+      {s:'Lucía', q:'¿Qanri, maypitaq kawsanki?',          t:'¿Y tú, dónde vives?'},
+      {s:'Rosa',  q:'Ñuqaqa kaypin kawsani, Arequipapi.',  t:'Yo vivo aquí, en Arequipa.'}
+    ],
+    note:'pit- interrogativo: pitaq = quién. maypit- = dónde (con sufijo locativo -pi). -m/-mi = validador evidencial (información de primera mano).'
+  },
+  {
+    id:'d9', book:'R1·5', color:'#7c3aed',
+    title:'Imanasqataq?',
+    subtitle:'Saludos y estado · Greetings',
+    context:'Amigos se encuentran en el mercado y se preguntan cómo están.',
+    speakers:{Carlos:'#7c3aed', Lidia:'#059669'},
+    lines:[
+      {s:'Carlos', q:'Imanasqataq, Lidia?',                t:'¿Cómo estás, Lidia?'},
+      {s:'Lidia',  q:'Allinmi kachkani, qanrí?',            t:'Estoy bien, ¿y tú?'},
+      {s:'Carlos', q:'Ñuqapis allinmi. ¿Maymanta?',        t:'Yo también estoy bien. ¿De dónde vienes?'},
+      {s:'Lidia',  q:'Qhatum qhatumanta hamurani.',         t:'Vengo del mercado grande.'},
+      {s:'Carlos', q:'¿Imatam rantirqanki?',               t:'¿Qué compraste?'},
+      {s:'Lidia',  q:'Papata, sarata, kinuatawan.',         t:'Papa, maíz y quinua.'},
+      {s:'Carlos', q:'¿Manachu kiwicha rantirqanki?',      t:'¿No compraste kiwicha?'},
+      {s:'Lidia',  q:'Mana, tukukuqtinmi tukurqan.',       t:'No, ya se había acabado.'}
+    ],
+    note:'Imanasqa = ¿cómo estás? (lit. ¿qué te ha pasado?). -rqanki = pasado de 2ª persona: rantirqanki (tú compraste). -wan = y (enumeración): saratawan (y maíz).'
+  },
+  {
+    id:'d10', book:'R2·5', color:'#b45309',
+    title:'Llank\'ay',
+    subtitle:'Trabajo y ocupaciones · Work',
+    context:'Pedro y Ana se encuentran después de mucho tiempo. Se preguntan por sus trabajos.',
+    speakers:{Pedro:'#b45309', Ana:'#2563eb'},
+    lines:[
+      {s:'Pedro', q:'¿Imastataq llank\'anki kunan?',        t:'¿En qué trabajas ahora?'},
+      {s:'Ana',   q:'Yachachiqmi kani, iskuylapi.',         t:'Soy profesora, en la escuela.'},
+      {s:'Pedro', q:'¿Imastataq yachachinki?',             t:'¿Qué enseñas?'},
+      {s:'Ana',   q:'Runasimitam yachachini, wawaqunaman.', t:'Enseño quechua, a los niños.'},
+      {s:'Pedro', q:'¡Allinmi! ¿Qanrí, maypitaq llank\'anki?', t:'¡Qué bueno! ¿Y tú, dónde trabajas?'},
+      {s:'Pedro', q:'Chakrapi llank\'ani, tarpuqmi kani.',  t:'Trabajo en el campo, soy agricultor.'},
+      {s:'Ana',   q:'¿Imatam tarpunki?',                   t:'¿Qué siembras?'},
+      {s:'Pedro', q:'Papata, sarata, habastawan.',          t:'Papa, maíz y habas.'}
+    ],
+    note:'-mi kani = soy (verbo ser con validador): yachachiqmi kani (soy profesora, lo sé de primera mano). tarpuq = el que siembra → sustantivo agentivo.'
+  },
+  {
+    id:'d11', book:'R2·6', color:'#dc2626',
+    title:'Punchaw ruraykuna',
+    subtitle:'Rutina diaria · Daily routine',
+    context:'Julia le cuenta a su amiga cómo es un día típico suyo.',
+    speakers:{Julia:'#dc2626', Amiga:'#0891b2'},
+    lines:[
+      {s:'Amiga', q:'¿Imastataq ruwanki paqarin?',          t:'¿Qué haces por la mañana?'},
+      {s:'Julia', q:'Sapa paqarin, intiq llaqsimuqtinmi hatarichkani.', t:'Cada mañana me levanto cuando sale el sol.'},
+      {s:'Amiga', q:'¿Manachu chiriqa?',                    t:'¿No hace frío?'},
+      {s:'Julia', q:'Arí, chirim, ichaqa sumaqmi.',         t:'Sí, hace frío, pero es hermoso.'},
+      {s:'Amiga', q:'¿Hinapiñataq?',                        t:'¿Y luego?'},
+      {s:'Julia', q:'Unu apay, cocina ruway, ayllu michiy.', t:'Traigo agua, cocino, cuido la familia.'},
+      {s:'Amiga', q:'¿Tutapiñataq?',                        t:'¿Y por la noche?'},
+      {s:'Julia', q:'Ninata rawrachispa, takiyku rímayku.',  t:'Encendemos fuego y cantamos, conversamos.'}
+    ],
+    note:'sapa = cada: sapa paqarin (cada mañana). -spa = gerundio: rawrachispa (encendiendo). -yku = 1ª plural exclusiva: takiyku (nosotros cantamos, sin incluir al oyente).'
+  },
+  {
+    id:'d12', book:'R1·6', color:'#059669',
+    title:'Chay imastataq?',
+    subtitle:'Identificar objetos · What is this?',
+    context:'Un turista visita un mercado andino y pregunta por los productos que ve.',
+    speakers:{Turista:'#059669', Vendedora:'#d97706'},
+    lines:[
+      {s:'Turista',   q:'Chay imastataq?',                  t:'¿Qué es eso?'},
+      {s:'Vendedora', q:'Chayqa chuñum.',                   t:'Eso es chuño (papa deshidratada).'},
+      {s:'Turista',   q:'¿Imaynatataq ruwanku chayqa?',     t:'¿Cómo lo hacen?'},
+      {s:'Vendedora', q:'Chiripipim papata sayaychanku, chay qhipam ch\'aqchinku.', t:'En el frío de la noche secan la papa y después la exprimen.'},
+      {s:'Turista',   q:'¿Kay laqa munapunichu?',           t:'¿Y este otro también es bueno?'},
+      {s:'Vendedora', q:'Arí, kayqa kiwicha, hatun kallpayuqmi.', t:'Sí, esto es kiwicha, tiene mucha fuerza.'},
+      {s:'Turista',   q:'¿Haykapim?',                       t:'¿Cuánto cuesta?'},
+      {s:'Vendedora', q:'Iskay solespim chunka gramuta.',   t:'Diez gramos por dos soles.'}
+    ],
+    note:'Chayqa = eso (con tópico -qa). -tataq = interrogativo de identificación: imastataq (¿qué exactamente?). kayqa = esto (kay + qa). haykap- = ¿cuánto cuesta?'
+  },
+  {
+    id:'d13', book:'R2·7', color:'#6366f1',
+    title:'Millay chisi',
+    subtitle:'Tiempo y clima · Weather',
+    context:'Mariana llama por teléfono a su tía que vive en la sierra.',
+    speakers:{Mariana:'#6366f1', Tía:'#e11d48'},
+    lines:[
+      {s:'Mariana', q:'¿Ima pacha chaypiqa?',               t:'¿Qué tiempo hace allá?'},
+      {s:'Tía',     q:'Paranmi, parayachkanmi.',             t:'Está lloviendo, está lloviendo mucho.'},
+      {s:'Mariana', q:'¿Chirichu?',                         t:'¿Hace frío?'},
+      {s:'Tía',     q:'Arí, chakriyuqkunaqa llakishanaqllanmi.', t:'Sí, los que tienen chacra están muy preocupados.'},
+      {s:'Mariana', q:'¿Inti lloqsinanpiñachu?',            t:'¿Ya va a salir el sol?'},
+      {s:'Tía',     q:'Mana yachanichu, paqarim rikurisonqa.', t:'No sé, mañana veremos.'},
+      {s:'Mariana', q:'¿Chakraykiqa allinchu?',             t:'¿Tu chacra está bien?'},
+      {s:'Tía',     q:'Ari, papay wiñarichkanñam, Pachamamata yupaychani.', t:'Sí, mi papa ya está creciendo, agradezco a la Pachamama.'}
+    ],
+    note:'pacha = tiempo/clima. Para- = llover: parayachkan (está lloviendo con intensidad). -nqa = futuro: rikurisonqa (aparecerá). Yupaychay = agradecer, honrar.'
+  },
+  {
+    id:'d14', book:'R2·8', color:'#0f766e',
+    title:'Qhipa p\'unchaw',
+    subtitle:'Planes y futuro · Future plans',
+    context:'Dos jóvenes planifican qué van a hacer el fin de semana.',
+    speakers:{Marco:'#0f766e', Vera:'#9333ea'},
+    lines:[
+      {s:'Marco', q:'¿Qhipa p\'unchawqa imatataq ruranki?',  t:'¿Qué vas a hacer el fin de semana?'},
+      {s:'Vera',  q:'Mamayta watukuyman, Pisacpi kawsan.',   t:'Voy a visitar a mi mamá, vive en Pisac.'},
+      {s:'Marco', q:'¿Imaynatataq rinki, buspim?',          t:'¿Cómo vas a ir, en bus?'},
+      {s:'Vera',  q:'Arí, inti lloqsimuytawan rinqaykum.',  t:'Sí, me iré al amanecer.'},
+      {s:'Marco', q:'¿Ñuqawanmi rinki?',                    t:'¿Vas conmigo?'},
+      {s:'Vera',  q:'Arí ripuñanchik, allintam.',           t:'Sí, podemos irnos juntos, está bien.'},
+      {s:'Marco', q:'¿Hayk\'aqtaq kutimunki?',              t:'¿Cuándo vas a volver?'},
+      {s:'Vera',  q:'P\'unchaw tiqramuytawan kutimunqaykum.', t:'Vuelvo al anochecer.'}
+    ],
+    note:'-man = condicional/deseo: watukuyman (voy a visitar, quisiera visitar). -nqayki = futuro 1ª pers.: rinqaykum (me iré). haykaq = cuándo. tiqramuy = anochecer.'
   }
 ];

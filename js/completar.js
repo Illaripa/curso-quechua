@@ -39,7 +39,7 @@ function loadCompletar() {
   var isFR = compLang === 'fr';
   var isA  = compLang === 'a';
   var minG = compLang === 'q' ? 1 : compLang === 'r2' ? 11 : (isEN || isFR || isA) ? 1 : 9;
-  var maxG = compLang === 'q' ? 8 : compLang === 'r2' ? 18 : isEN ? 6 : isFR ? 6 : isA ? 16 : 10;
+  var maxG = compLang === 'q' ? 8 : compLang === 'r2' ? 18 : isEN ? 10 : isFR ? 10 : isA ? 16 : 10;
   var baseData = isEN ? COMPLETAR_EN : isFR ? COMPLETAR_FR : isA ? (typeof COMPLETAR_A !== 'undefined' ? COMPLETAR_A : COMPLETAR_Q) : COMPLETAR_Q;
   var source = baseData.filter(function(x) {
     if (compGroup === 0) return x.g >= minG && x.g <= maxG;
