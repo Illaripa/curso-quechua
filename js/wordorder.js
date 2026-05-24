@@ -3,8 +3,20 @@ var woData = [];
 var woIndex = 0;
 var woScore = 0;
 var woAnswered = false;
-var woSelected = [];  // array of words placed in slots (null = empty)
-var woBank = [];      // remaining words in bank
+var woSelected = [];  // null = empty slot
+var woBank = [];
+
+function buildWoBodyHtml() {
+  return '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">' +
+    '<span style="font-size:13px;color:var(--muted)">Puntos</span>' +
+    '<span id="woScore" style="font-size:18px;font-weight:700;color:#c47d1a">0</span></div>' +
+    '<div id="woPrompt" style="font-size:18px;font-weight:700;margin-bottom:20px;line-height:1.4;min-height:52px"></div>' +
+    '<div id="woSlots" style="display:flex;flex-wrap:wrap;gap:8px;min-height:48px;padding:12px;background:var(--card);border:1px solid var(--bdr);border-radius:12px;margin-bottom:16px;align-items:center"></div>' +
+    '<div id="woBank" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px"></div>' +
+    '<div id="woFeedback" class="wo-feedback"></div>' +
+    '<div id="woNote" class="al-note" style="display:none;margin-bottom:12px"></div>' +
+    '<button id="woNextBtn" style="display:none;width:100%;padding:15px;border-radius:12px;background:#c47d1a;color:#fff;border:none;font-size:15px;font-weight:700;cursor:pointer;min-height:52px" onclick="woNext()">Siguiente →</button>';
+}
 
 function startWordOrder(lang) {
   woLang = lang;
@@ -15,6 +27,8 @@ function startWordOrder(lang) {
   woAnswered = false;
   var titles = {q:'Ordenar — Quechua', a:'Ordenar — Aymara', en:'Ordenar — English', fr:'Ordenar — Français'};
   document.getElementById('woTitle').textContent = titles[lang] || 'Ordenar palabras';
+  // Restore body structure (may have been replaced by result screen)
+  document.getElementById('woBody').innerHTML = buildWoBodyHtml();
   renderWoQuestion();
   showScreen('wordorder');
 }
@@ -49,7 +63,7 @@ function renderWoState() {
   var slotsHtml = '';
   for (var i = 0; i < q.ans.length; i++) {
     if (woSelected[i] !== null) {
-      slotsHtml += '<button class="wo-slot filled" onclick="removeSlotWord(' + i + ')">' + woSelected[i] + '</button>';
+      slotsHtml += '<button class="wo-slot filled" onclick="removeSlotWord(' + i + ')">' + escapeHtml(woSelected[i]) + '</button>';
     } else {
       slotsHtml += '<span class="wo-slot empty"></span>';
     }
@@ -66,7 +80,6 @@ function renderWoState() {
 function selectWordBtn(bankIdx) {
   if (woAnswered) return;
   var word = woBank[bankIdx];
-  // Place into first empty slot
   for (var i = 0; i < woSelected.length; i++) {
     if (woSelected[i] === null) {
       woSelected[i] = word;
