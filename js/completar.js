@@ -37,9 +37,10 @@ function startCompletar(lang) {
 function loadCompletar() {
   var isEN = compLang === 'en';
   var isFR = compLang === 'fr';
-  var minG = compLang === 'q' ? 1 : compLang === 'r2' ? 11 : (isEN || isFR) ? 1 : 9;
-  var maxG = compLang === 'q' ? 8 : compLang === 'r2' ? 15 : (isEN || isFR) ? 3 : 10;
-  var baseData = isEN ? COMPLETAR_EN : isFR ? COMPLETAR_FR : COMPLETAR_Q;
+  var isA  = compLang === 'a';
+  var minG = compLang === 'q' ? 1 : compLang === 'r2' ? 11 : (isEN || isFR || isA) ? 1 : 9;
+  var maxG = compLang === 'q' ? 8 : compLang === 'r2' ? 18 : isEN ? 6 : isFR ? 6 : isA ? 16 : 10;
+  var baseData = isEN ? COMPLETAR_EN : isFR ? COMPLETAR_FR : isA ? (typeof COMPLETAR_A !== 'undefined' ? COMPLETAR_A : COMPLETAR_Q) : COMPLETAR_Q;
   var source = baseData.filter(function(x) {
     if (compGroup === 0) return x.g >= minG && x.g <= maxG;
     return x.g === compGroup;
@@ -59,8 +60,9 @@ function selectCompGroup(g) {
 }
 
 function renderCompGroups() {
-  var minG = compLang === 'q' ? 1 : compLang === 'r2' ? 11 : 9;
-  var maxG = compLang === 'q' ? 8 : compLang === 'r2' ? 15 : 10;
+  var isA2 = compLang === 'a';
+  var minG = compLang === 'q' ? 1 : compLang === 'r2' ? 11 : compLang === 'en' ? 1 : compLang === 'fr' ? 1 : isA2 ? 1 : 9;
+  var maxG = compLang === 'q' ? 8 : compLang === 'r2' ? 18 : compLang === 'en' ? 6 : compLang === 'fr' ? 6 : isA2 ? 16 : 10;
   var progress = compGetProgress();
   var html = '<button class="comp-pill' + (compGroup === 0 ? ' comp-pill--active' : '') + '" onclick="selectCompGroup(0)">Todos</button>';
   for (var g = minG; g <= maxG; g++) {
