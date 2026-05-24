@@ -337,6 +337,7 @@ function renderHomeBody() {
       {i:'▣', t:u('menu.a.fichas'),     d:u('menu.a.fichas.d'),     fn:"openCards('a')"},
       {i:'▤', t:u('menu.a.vocab'),      d:u('menu.a.vocab.d'),      fn:"openCards('p')"},
       {i:'◉', t:u('menu.a.quiz'),       d:u('menu.a.quiz.d'),       fn:"startQuiz('a')"},
+      {i:'✏', t:'Completar oraciones', d:'Direcciones y frases — elige la palabra correcta', fn:"startCompletar('a')"},
       {i:'📖', t:u('menu.a.leyendas'),   d:u('menu.a.leyendas.d'),   fn:"openReader('leyendas_a')"},
       {i:'♫', t:u('menu.a.songs'),      d:u('menu.a.songs.d'),      fn:"openSongs('a')"},
       {i:'◉', t:'Ordenar palabras',     d:'Forma oraciones en el orden correcto', fn:"startWordOrder('a')"},
