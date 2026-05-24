@@ -6,7 +6,7 @@ function openReader(key) {
   var src = key.startsWith('aymara') ? CONT_A : CONT_Q;
   var section = src[key];
   readerData = { title: section.title, color: section.color, pieces: section.pieces.slice() };
-  shuffleArray(readerData.pieces);
+  readerData.pieces.sort(function(a, b) { return (a.level || 2) - (b.level || 2); });
   readerIndex = 0;
   readerMode = 'parallel';
   document.getElementById('readerTitle').textContent = readerData.title;
