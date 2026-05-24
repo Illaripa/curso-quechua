@@ -187,8 +187,10 @@ function renderCard() {
       if (examples && examples.length) {
         back += '<div class="card-examples-label">Oraciones de uso</div>';
         examples.forEach(function(e) {
-          back += '<div class="card-example-item"><div class="card-example-quechua">' + (e.q || '') + '</div>' +
-            '<div class="card-example-spanish">' + (e.s || '') + '</div>';
+          var safeQ = (e.q || '').replace(/'/g, "\\'");
+          back += '<div class="card-example-item"><div class="card-example-quechua">' + (e.q || '') +
+            ' <button class="card-ex-speak" onclick="event.stopPropagation();speakTextLang(\'' + safeQ + '\',\'' + cardLang + '\',this)" title="Escuchar">🔊</button>' +
+            '</div><div class="card-example-spanish">' + (e.s || '') + '</div>';
           if (e.suf) back += '<div class="card-example-suffix">*' + e.suf + '</div>';
           back += '</div>';
         });
