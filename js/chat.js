@@ -1,3 +1,7 @@
+function escapeHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
 var chatHistory = [];
 var chatLang = 'q';
 var tutorMsgCount = 0;
@@ -66,7 +70,7 @@ function updateTutorSidebar(reply, userMsg) {
     var fbDiv = document.getElementById('tutorFeedback');
     var html = '';
     if (fbText.indexOf('Perfecto') >= 0 || fbText.indexOf('correcto') >= 0 || fbText.indexOf('bien') >= 0) {
-      html = '<div class="tutor-fb-item tutor-fb-ok">' + fbText + '</div>';
+      html = '<div class="tutor-fb-item tutor-fb-ok">' + escapeHtml(fbText) + '</div>';
     } else {
       var lines = fbText.split(/[.!\n]/).filter(function(l) { return l.trim(); });
       html = lines.map(function(l) {
@@ -74,11 +78,11 @@ function updateTutorSidebar(reply, userMsg) {
         if (!t) return '';
         var cls = (t.indexOf('bien') >= 0 || t.indexOf('OK') >= 0 || t.indexOf('correcto') >= 0) ? 'tutor-fb-ok' :
           (t.indexOf('error') >= 0 || t.indexOf('incorrecto') >= 0) ? 'tutor-fb-warn' : 'tutor-fb-tip';
-        return '<div class="tutor-fb-item ' + cls + '">' + t + '</div>';
+        return '<div class="tutor-fb-item ' + cls + '">' + escapeHtml(t) + '</div>';
       }).join('');
       tutorCorrCount++;
     }
-    fbDiv.innerHTML = html || '<div class="tutor-fb-item tutor-fb-tip">' + fbText + '</div>';
+    fbDiv.innerHTML = html || '<div class="tutor-fb-item tutor-fb-tip">' + escapeHtml(fbText) + '</div>';
   }
 
   if (lvlMatch) {
@@ -116,7 +120,7 @@ function renderGoals() {
     return;
   }
   ul.innerHTML = tutorGoals.slice(0, 5).map(function(g, i) {
-    return '<li class="tutor-goal-item"><input type="checkbox" id="goal' + i + '" onchange="toggleGoal(' + i + ')"><label for="goal' + i + '" style="font-size:12px;cursor:pointer">' + g + '</label></li>';
+    return '<li class="tutor-goal-item"><input type="checkbox" id="goal' + i + '" onchange="toggleGoal(' + i + ')"><label for="goal' + i + '" style="font-size:12px;cursor:pointer">' + escapeHtml(g) + '</label></li>';
   }).join('');
 }
 
@@ -167,7 +171,7 @@ function addChatMessage(role, text) {
   var speakBtn = (role === 'a' && chatLang === 'q')
     ? '<button onclick="speakText(decodeURIComponent(\'' + encodeURIComponent(quechuaOnly) + '\'))" style="display:block;margin-top:6px;background:none;border:none;cursor:pointer;font-size:16px;opacity:0.5;padding:0" title="Escuchar">🔊</button>'
     : '';
-  div.innerHTML = '<div class="bubble">' + text.replace(/\n/g, '<br>') + speakBtn + '</div>';
+  div.innerHTML = '<div class="bubble">' + escapeHtml(text).replace(/\n/g, '<br>') + speakBtn + '</div>';
   container.appendChild(div);
   container.scrollTop = container.scrollHeight;
 }
@@ -250,7 +254,7 @@ async function sendMessage() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          system: CHAT_SYSTEM_PROMPTS[chatLang],
+          lang: chatLang,
           messages: chatHistory.slice(-8)
         })
       });
@@ -300,7 +304,13 @@ async function sendMessage() {
     if (traduceMatch) {
       var challenge = traduceMatch[1].trim().split('\n')[0].trim();
       if (challenge.length > 2) {
-        sugDiv.innerHTML = '<button class="chip" onclick="sendChip(\'' + challenge.replace(/'/g, "\\'") + '\')">' + challenge + '</button>';
+        var safeChallenge = escapeHtml(challenge);
+        var btn = document.createElement('button');
+        btn.className = 'chip';
+        btn.textContent = challenge;
+        btn.onclick = function() { sendChip(challenge); };
+        sugDiv.innerHTML = '';
+        sugDiv.appendChild(btn);
       }
     } else {
       sugDiv.innerHTML = '';
