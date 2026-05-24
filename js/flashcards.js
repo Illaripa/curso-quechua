@@ -110,7 +110,12 @@ function renderCard() {
   var simple = isSimpleLang(cardLang);
 
   // Front face
+  var imgKeyword = verb.img || null;
+  var imgHtml = imgKeyword
+    ? '<div class="card-img-wrap"><img class="card-img" src="https://source.unsplash.com/featured/400x180/?' + encodeURIComponent(imgKeyword) + '" alt="" loading="lazy" onerror="this.parentNode.style.display=\'none\'"></div>'
+    : '';
   document.getElementById('cardFront').innerHTML =
+    imgHtml +
     '<div class="card-category-pos"><div class="card-cat-pill" style="background:' + verb.col + '22;color:' + verb.col + '">' + verb.cat + '</div></div>' +
     '<div class="card-verb">' + verb.q + '</div>' +
     '<div class="card-meaning">' + verb.s + '</div>' +

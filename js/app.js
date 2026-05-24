@@ -251,6 +251,7 @@ function goHome() {
     s.classList.remove('active');
   });
   document.getElementById('home').classList.add('active');
+  currentLang = null;
   renderHomeBody();
   window.scrollTo(0, 0);
 }
@@ -402,9 +403,7 @@ window.addEventListener('load', function() {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js');
   }
-  if (currentLang) {
-    goHome();
-  } else {
-    document.getElementById('morning').classList.add('active');
-  }
+  // Siempre empieza en el dashboard, saltando la pantalla matutina
+  currentLang = null;
+  goHome();
 });
