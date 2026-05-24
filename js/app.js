@@ -1,4 +1,4 @@
-let currentLang = 'q'; // 'q' = Quechua, 'a' = Aymara
+let currentLang = null; // null = dashboard, 'q'/'a'/'en'/'fr' = idioma activo
 let uiLang = 'es';
 
 // ============================================================
@@ -269,19 +269,40 @@ function showScreen(id) {
 // ============================================================
 function setLang(lang) {
   currentLang = lang;
-  ['langTabQ','langTabA','langTabEN','langTabFR'].forEach(function(id) {
-    var el = document.getElementById(id);
-    if (el) el.classList.remove('active');
-  });
-  var tabId = {q:'langTabQ', a:'langTabA', en:'langTabEN', fr:'langTabFR'}[lang];
-  if (tabId && document.getElementById(tabId)) document.getElementById(tabId).classList.add('active');
+  renderHomeBody();
+}
+
+function showLangDashboard() {
+  currentLang = null;
   renderHomeBody();
 }
 
 // ============================================================
 // HOME MENU
 // ============================================================
+function renderDashboard() {
+  var langs = [
+    {code:'q',  flag:'🇵🇪', name:'Runasimi',   sub:'Quechua · Andes', cls:'lang-card--q'},
+    {code:'a',  flag:'🇧🇴', name:'Aymar aru',  sub:'Aymara · Altiplano', cls:'lang-card--a'},
+    {code:'en', flag:'🇬🇧', name:'English',    sub:'Inglés · Spiritual', cls:'lang-card--en'},
+    {code:'fr', flag:'🇫🇷', name:'Français',   sub:'Francés · Sagesse', cls:'lang-card--fr'}
+  ];
+  var html = '<div class="lang-dashboard">' +
+    '<p class="dashboard-eyebrow">Elige tu idioma</p>' +
+    '<div class="dashboard-grid">';
+  langs.forEach(function(l) {
+    html += '<button class="lang-card ' + l.cls + '" onclick="setLang(\'' + l.code + '\')">' +
+      '<span class="lang-card-flag">' + l.flag + '</span>' +
+      '<div class="lang-card-name">' + l.name + '</div>' +
+      '<div class="lang-card-sub">' + l.sub + '</div>' +
+      '</button>';
+  });
+  html += '</div></div>';
+  document.getElementById('homeBody').innerHTML = html;
+}
+
 function renderHomeBody() {
+  if (!currentLang) { renderDashboard(); return; }
   var lang = currentLang;
   var items;
   var sectionLabel;
@@ -352,8 +373,12 @@ function renderHomeBody() {
     ];
   }
 
+  var langColors = {q:'var(--gold)', a:'var(--teal)', en:'#3b82f6', fr:'#8b5cf6'};
+  var langColor = langColors[lang] || 'var(--gold)';
+
   document.getElementById('homeBody').innerHTML =
-    '<p class="section-label" style="margin-top:4px">' + sectionLabel + '</p>' +
+    '<button class="back-to-dashboard" onclick="showLangDashboard()">&#8592; Idiomas</button>' +
+    '<p class="section-label" style="margin-top:4px;border-left:3px solid ' + langColor + ';padding-left:8px">' + sectionLabel + '</p>' +
     items.map(function(x) {
       return '<button class="menu-card" onclick="' + x.fn + '">' +
         '<span class="menu-icon">' + x.i + '</span>' +
