@@ -28,14 +28,15 @@ function compSaveGroupResult(g, correct, total) {
 function startCompletar(lang) {
   compLang = lang;
   compGroup = 0;
-  document.getElementById('completarTitle').textContent = lang === 'q' ? '◈ Completar Quechua' : '◈ Completar Aymara';
+  var titles = {q:'◈ Completar Quechua', r2:'✎ Completar Avanzado', a:'◈ Completar Aymara'};
+  document.getElementById('completarTitle').textContent = titles[lang] || '◈ Completar';
   loadCompletar();
   showScreen('completar');
 }
 
 function loadCompletar() {
-  var minG = compLang === 'q' ? 1 : 9;
-  var maxG = compLang === 'q' ? 8 : 10;
+  var minG = compLang === 'q' ? 1 : compLang === 'r2' ? 11 : 9;
+  var maxG = compLang === 'q' ? 8 : compLang === 'r2' ? 15 : 10;
   var source = COMPLETAR_Q.filter(function(x) {
     if (compGroup === 0) return x.g >= minG && x.g <= maxG;
     return x.g === compGroup;
@@ -55,8 +56,8 @@ function selectCompGroup(g) {
 }
 
 function renderCompGroups() {
-  var minG = compLang === 'q' ? 1 : 9;
-  var maxG = compLang === 'q' ? 8 : 10;
+  var minG = compLang === 'q' ? 1 : compLang === 'r2' ? 11 : 9;
+  var maxG = compLang === 'q' ? 8 : compLang === 'r2' ? 15 : 10;
   var progress = compGetProgress();
   var html = '<button class="comp-pill' + (compGroup === 0 ? ' comp-pill--active' : '') + '" onclick="selectCompGroup(0)">Todos</button>';
   for (var g = minG; g <= maxG; g++) {
