@@ -8,14 +8,24 @@ var touchStartX = 0;
 var touchStartY = 0;
 var isDragging = false;
 
+function getCardData(lang) {
+  if (lang === 'q') return VERBOS_Q;
+  if (lang === 'p') return PALABRAS_Q;
+  if (lang === 'a') return VERBOS_A;
+  if (lang === 'en') return (typeof PALABRAS_EN !== 'undefined' ? PALABRAS_EN : []);
+  if (lang === 'fr') return (typeof PALABRAS_FR !== 'undefined' ? PALABRAS_FR : []);
+  return VERBOS_Q;
+}
+
+function isSimpleLang(lang) { return lang === 'en' || lang === 'fr' || lang === 'p'; }
+
 function openCards(lang) {
   cardLang = lang;
   cardFlipped = false;
-  var data = lang === 'q' ? VERBOS_Q : lang === 'p' ? PALABRAS_Q : VERBOS_A;
+  var data = getCardData(lang);
   var cats = getUniqueCategories(data);
   activeCategories = cats.slice();
   var saved = JSON.parse(localStorage.getItem('yachay_v5_' + lang) || '{}');
-  // Keep original order, no shuffle
   deck = data.filter(function(x) { return !saved[x.q]; });
   cardIndex = 0;
   setupCardFilters(lang);
@@ -24,7 +34,7 @@ function openCards(lang) {
 }
 
 function setupCardFilters(lang) {
-  var data = lang === 'q' ? VERBOS_Q : lang === 'p' ? PALABRAS_Q : VERBOS_A;
+  var data = getCardData(lang);
   var cats = getUniqueCategories(data);
   allCategories = cats;
   document.getElementById('filterTags').innerHTML = cats.map(function(c) {
@@ -42,7 +52,7 @@ function toggleCategory(cat) {
 }
 
 function applyCardFilter() {
-  var data = cardLang === 'q' ? VERBOS_Q : cardLang === 'p' ? PALABRAS_Q : VERBOS_A;
+  var data = getCardData(cardLang);
   var saved = JSON.parse(localStorage.getItem('yachay_v5_' + cardLang) || '{}');
   deck = data.filter(function(x) {
     return !saved[x.q] && activeCategories.indexOf(x.cat) >= 0;
@@ -71,7 +81,7 @@ function shuffleArray(arr) {
 
 function renderCard() {
   var countEl = document.getElementById('cardsCount');
-  var data = cardLang === 'q' ? VERBOS_Q : cardLang === 'p' ? PALABRAS_Q : VERBOS_A;
+  var data = getCardData(cardLang);
   var total = data.length;
   var learnedCount = Object.keys(JSON.parse(localStorage.getItem('yachay_v5_' + cardLang) || '{}')).length;
   countEl.textContent = (cardIndex + 1) + ' / ' + deck.length + (learnedCount > 0 ? ' (' + learnedCount + ' aprendidas)' : '');
@@ -97,6 +107,7 @@ function renderCard() {
   document.getElementById('cardActions').style.display = 'flex';
 
   var isAy = cardLang === 'a';
+  var simple = isSimpleLang(cardLang);
 
   // Front face
   document.getElementById('cardFront').innerHTML =
@@ -105,54 +116,63 @@ function renderCard() {
     '<div class="card-meaning">' + verb.s + '</div>' +
     '<div class="card-tap-hint">Toca para voltear</div>';
 
-  // Back face with tense tabs
-  var pronounLabels = isAy
-    ? ['Naya', 'Juma', 'Jupa', 'Nanaka', 'Jiwasa', 'Jumana', 'Jupanaka']
-    : ['Nuqam', 'Qam', 'Pay', 'Nuqanchik', 'Nuqayku', 'Qamkuna', 'Paykuna'];
-  var pronounKeys = ['yo', 'tu', 'el', 'nos', 'nex', 'uds', 'ellos'];
-  var tenses = [
-    {id: 'pres', label: 'Presente', data: verb.c || {}},
-    {id: 'past', label: 'Pasado', data: verb.p || verb.c || {}},
-    {id: 'fut', label: 'Futuro', data: verb.f || verb.c || {}}
-  ];
-
-  function buildConjGrid(tenseData) {
-    var grid = '<div class="conj-grid">';
-    pronounLabels.forEach(function(label, i) {
-      var key = pronounKeys[i];
-      grid += '<div class="conj-cell"><div class="conj-cell-label">' + label + '</div>' +
-        '<div class="conj-cell-word" style="color:' + verb.col + '">' + (tenseData[key] || '\u2014') + '</div></div>';
-    });
-    grid += '</div>';
-    return grid;
-  }
-
-  window._buildCardBack = function(tenseId) {
-    var tense = tenses.find(function(t) { return t.id === tenseId; }) || tenses[0];
-    var back = '<div class="card-back-verb">' + verb.q + '</div>' +
+  if (simple) {
+    // Simple back: just word + translation + note (no conjugation grid)
+    var simpleBack = '<div class="card-back-verb">' + verb.q + '</div>' +
       '<div class="card-back-meaning">' + verb.s + '</div>';
-    back += '<div class="tense-tabs">';
-    tenses.forEach(function(t) {
-      back += '<button class="tense-tab' + (t.id === tenseId ? ' active' : '') + '" data-tid="' + t.id + '">' + t.label + '</button>';
-    });
-    back += '</div>';
-    back += buildConjGrid(tense.data);
+    if (verb.note) simpleBack += '<div class="card-note">' + escapeHtml(verb.note) + '</div>';
+    document.getElementById('cardBack').innerHTML = simpleBack;
+    window._buildCardBack = function() { return simpleBack; };
+  } else {
+    // Back face with tense tabs (Quechua / Aymara verbs)
+    var pronounLabels = isAy
+      ? ['Naya', 'Juma', 'Jupa', 'Nanaka', 'Jiwasa', 'Jumana', 'Jupanaka']
+      : ['Nuqam', 'Qam', 'Pay', 'Nuqanchik', 'Nuqayku', 'Qamkuna', 'Paykuna'];
+    var pronounKeys = ['yo', 'tu', 'el', 'nos', 'nex', 'uds', 'ellos'];
+    var tenses = [
+      {id: 'pres', label: 'Presente', data: verb.c || {}},
+      {id: 'past', label: 'Pasado', data: verb.p || verb.c || {}},
+      {id: 'fut', label: 'Futuro', data: verb.f || verb.c || {}}
+    ];
 
-    var examples = verb.ejs || null;
-    if (examples && examples.length) {
-      back += '<div class="card-examples-label">Oraciones de uso</div>';
-      examples.forEach(function(e) {
-        back += '<div class="card-example-item"><div class="card-example-quechua">' + (e.q || '') + '</div>' +
-          '<div class="card-example-spanish">' + (e.s || '') + '</div>';
-        if (e.suf) back += '<div class="card-example-suffix">*' + e.suf + '</div>';
-        back += '</div>';
+    function buildConjGrid(tenseData) {
+      var grid = '<div class="conj-grid">';
+      pronounLabels.forEach(function(label, i) {
+        var key = pronounKeys[i];
+        grid += '<div class="conj-cell"><div class="conj-cell-label">' + label + '</div>' +
+          '<div class="conj-cell-word" style="color:' + verb.col + '">' + (tenseData[key] || '\u2014') + '</div></div>';
       });
+      grid += '</div>';
+      return grid;
     }
-    if (verb.note) back += '<div class="card-note">*' + verb.note + '</div>';
-    return back;
-  };
 
-  document.getElementById('cardBack').innerHTML = window._buildCardBack('pres');
+    window._buildCardBack = function(tenseId) {
+      var tense = tenses.find(function(t) { return t.id === tenseId; }) || tenses[0];
+      var back = '<div class="card-back-verb">' + verb.q + '</div>' +
+        '<div class="card-back-meaning">' + verb.s + '</div>';
+      back += '<div class="tense-tabs">';
+      tenses.forEach(function(t) {
+        back += '<button class="tense-tab' + (t.id === tenseId ? ' active' : '') + '" data-tid="' + t.id + '">' + t.label + '</button>';
+      });
+      back += '</div>';
+      back += buildConjGrid(tense.data);
+
+      var examples = verb.ejs || null;
+      if (examples && examples.length) {
+        back += '<div class="card-examples-label">Oraciones de uso</div>';
+        examples.forEach(function(e) {
+          back += '<div class="card-example-item"><div class="card-example-quechua">' + (e.q || '') + '</div>' +
+            '<div class="card-example-spanish">' + (e.s || '') + '</div>';
+          if (e.suf) back += '<div class="card-example-suffix">*' + e.suf + '</div>';
+          back += '</div>';
+        });
+      }
+      if (verb.note) back += '<div class="card-note">*' + verb.note + '</div>';
+      return back;
+    };
+
+    document.getElementById('cardBack').innerHTML = window._buildCardBack('pres');
+  }
 
   // Tense tab clicks
   document.getElementById('cardBack').addEventListener('click', function(e) {
@@ -236,7 +256,7 @@ function learnCard() {
 // View learned cards
 function viewLearned() {
   var saved = JSON.parse(localStorage.getItem('yachay_v5_' + cardLang) || '{}');
-  var data = cardLang === 'q' ? VERBOS_Q : cardLang === 'p' ? PALABRAS_Q : VERBOS_A;
+  var data = getCardData(cardLang);
   var learned = data.filter(function(x) { return saved[x.q]; });
 
   if (learned.length === 0) {

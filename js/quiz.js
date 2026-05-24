@@ -6,8 +6,9 @@ var quizLang = 'q';
 
 function startQuiz(lang) {
   quizLang = lang;
-  document.getElementById('quizTitle').textContent = lang === 'q' ? '\u25C9 Quiz Quechua' : '\u25C9 Quiz Aymara';
-  var source = lang === 'q' ? QUIZ_Q.slice() : QUIZ_A.slice();
+  var qTitles = {q:'\u25C9 Quiz Quechua', a:'\u25C9 Quiz Aymara', en:'\u25C9 Quiz English', fr:'\u25C9 Quiz Fran\u00E7ais'};
+  document.getElementById('quizTitle').textContent = qTitles[lang] || '\u25C9 Quiz';
+  var source = lang === 'q' ? QUIZ_Q.slice() : lang === 'a' ? QUIZ_A.slice() : lang === 'en' ? QUIZ_EN.slice() : QUIZ_FR.slice();
   shuffleArray(source);
   quizData = source;
   quizIndex = 0;

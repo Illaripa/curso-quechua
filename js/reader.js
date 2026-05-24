@@ -3,9 +3,10 @@ var readerIndex = 0;
 var readerMode = 'parallel';
 
 function openReader(key) {
-  var src = key.startsWith('aymara') ? CONT_A : CONT_Q;
+  var src = key.startsWith('aymara') ? CONT_A : key.startsWith('en_') ? CONT_EN : key.startsWith('fr_') ? CONT_FR : CONT_Q;
   var section = src[key];
-  readerData = { title: section.title, color: section.color, pieces: section.pieces.slice() };
+  var lang = key.startsWith('aymara') ? 'a' : key.startsWith('en_') ? 'en' : key.startsWith('fr_') ? 'fr' : 'q';
+  readerData = { title: section.title, color: section.color, pieces: section.pieces.slice(), lang: lang };
   readerData.pieces.sort(function(a, b) { return (a.level || 2) - (b.level || 2); });
   readerIndex = 0;
   readerMode = 'parallel';
@@ -22,8 +23,10 @@ function renderPiece() {
   document.getElementById('readerProgress').style.cssText =
     'width:' + (((readerIndex + 1) / total) * 100) + '%;background:' + readerData.color;
 
-  var isAy = piece.isAy;
+  var rLang = readerData.lang || 'q';
+  var isAy = rLang === 'a';
   var lineClass = isAy ? 'quechua-line aymara' : 'quechua-line';
+  var langLabel = {q:'Quechua', a:'Aymara', en:'English', fr:'Français'}[rLang] || 'Quechua';
   var html = '<div class="piece-type" style="background:' + readerData.color + '22;color:' + readerData.color + '">' + piece.type + '</div>';
   html += '<h2 class="piece-title">' + piece.title + '</h2><p class="piece-subtitle">' + piece.sub + '</p>';
 
@@ -32,7 +35,7 @@ function renderPiece() {
     html += '<div class="toggle-row">';
     var modes = [
       {m: 'parallel', l: 'Ambos'},
-      {m: 'qonly', l: 'Solo ' + (isAy ? 'Aymara' : 'Quechua')}
+      {m: 'qonly', l: 'Solo ' + langLabel}
     ];
     modes.forEach(function(mode) {
       var isActive = readerMode === mode.m;

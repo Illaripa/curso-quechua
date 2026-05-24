@@ -19,16 +19,23 @@ function toggleTts() {
   if (btn) btn.textContent = ttsEnabled ? '🔊' : '🔇';
 }
 
+var SPEAK_LANG_CODES = {q:'es-PE', a:'es-BO', en:'en-US', fr:'fr-FR'};
+
 function speakText(text, btn) {
+  speakTextLang(text, 'q', btn);
+}
+
+function speakTextLang(text, lang, btn) {
   if (!text) return;
   window.speechSynthesis.cancel();
   var utter = new SpeechSynthesisUtterance(text);
-  utter.lang = 'es-PE';
+  var langCode = SPEAK_LANG_CODES[lang] || 'es-PE';
+  utter.lang = langCode;
   utter.rate = 0.85;
   var voices = window.speechSynthesis.getVoices();
-  var peVoice = voices.find(function(v) { return v.lang === 'es-PE'; }) ||
-                voices.find(function(v) { return v.lang.startsWith('es'); });
-  if (peVoice) utter.voice = peVoice;
+  var match = voices.find(function(v) { return v.lang === langCode; }) ||
+               voices.find(function(v) { return v.lang.startsWith(langCode.split('-')[0]); });
+  if (match) utter.voice = match;
   if (btn) {
     btn.textContent = '⏳';
     utter.onend = function() { btn.textContent = '🔊'; };
@@ -51,9 +58,13 @@ function setTutorMode(mode) {
   document.getElementById('modeBtnChat').classList.toggle('active', mode === 'chat');
   document.getElementById('modeBtnLesson').classList.toggle('active', mode === 'lecc');
   if (mode === 'lecc') {
-    var intro = chatLang === 'q'
-      ? 'Vamos con una leccion estructurada. Nivel basico: Como se dice "yo camino" en Quechua? (Pista: verbo Puriy)'
-      : 'Hagamos una leccion de Aymara. Basico: Como se dice "yo camino" en Aymara? (Pista: verbo Sarana)';
+    var lessonIntros = {
+      q: 'Vamos con una leccion estructurada. Nivel basico: Como se dice "yo camino" en Quechua? (Pista: verbo Puriy)',
+      a: 'Hagamos una leccion de Aymara. Basico: Como se dice "yo camino" en Aymara? (Pista: verbo Sarana)',
+      en: 'Let\'s have a structured lesson. Basic level: How do you say "I walk" in English? (Hint: verb "to walk")',
+      fr: 'Faisons une lecon structuree. Niveau basique: Comment dit-on "je marche" en francais? (Indice: verbe "marcher")'
+    };
+    var intro = lessonIntros[chatLang] || lessonIntros.q;
     addChatMessage('a', intro);
     chatHistory.push({role: 'assistant', content: intro});
   }
@@ -168,8 +179,8 @@ function addChatMessage(role, text) {
   var quechuaOnly = text.split('\n').map(function(l) {
     return l.indexOf('=') !== -1 ? l.split('=')[0].trim() : l;
   }).filter(Boolean).join('. ');
-  var speakBtn = (role === 'a' && chatLang === 'q')
-    ? '<button onclick="speakText(decodeURIComponent(\'' + encodeURIComponent(quechuaOnly) + '\'))" style="display:block;margin-top:6px;background:none;border:none;cursor:pointer;font-size:16px;opacity:0.5;padding:0" title="Escuchar">🔊</button>'
+  var speakBtn = (role === 'a')
+    ? '<button onclick="speakTextLang(decodeURIComponent(\'' + encodeURIComponent(quechuaOnly) + '\'),\'' + chatLang + '\')" style="display:block;margin-top:6px;background:none;border:none;cursor:pointer;font-size:16px;opacity:0.5;padding:0" title="Escuchar">🔊</button>'
     : '';
   div.innerHTML = '<div class="bubble">' + escapeHtml(text).replace(/\n/g, '<br>') + speakBtn + '</div>';
   container.appendChild(div);
