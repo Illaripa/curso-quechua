@@ -4,7 +4,9 @@ var readerMode = 'parallel';
 
 function openReader(key) {
   var src = key.startsWith('aymara') ? CONT_A : CONT_Q;
-  readerData = src[key];
+  var section = src[key];
+  readerData = { title: section.title, color: section.color, pieces: section.pieces.slice() };
+  shuffleArray(readerData.pieces);
   readerIndex = 0;
   readerMode = 'parallel';
   document.getElementById('readerTitle').textContent = readerData.title;
