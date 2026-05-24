@@ -398,9 +398,13 @@ setupMorning('morning');
 renderMorningElements();
 
 window.addEventListener('load', function() {
-  document.getElementById('morning').classList.add('active');
   applyUiTranslations();
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js');
+  }
+  if (currentLang) {
+    goHome();
+  } else {
+    document.getElementById('morning').classList.add('active');
   }
 });
