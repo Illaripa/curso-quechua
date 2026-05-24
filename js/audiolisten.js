@@ -13,19 +13,23 @@ function buildAlData(lang) {
   } else if (lang === 'fr') {
     words = (typeof PALABRAS_FR !== 'undefined' ? PALABRAS_FR : []).slice();
   } else if (lang === 'a') {
-    words = (typeof PALABRAS_Q !== 'undefined' ? PALABRAS_Q.filter(function(w) { return w.cat; }) : []).slice();
-    // Use Aymara words from vocabulary if available
-    var ay = typeof PALABRAS_A !== 'undefined' ? PALABRAS_A : [];
-    if (ay.length) words = ay.slice();
+    words = (typeof VERBOS_A !== 'undefined' ? VERBOS_A : []).slice();
   } else {
-    words = (typeof PALABRAS_Q !== 'undefined' ? PALABRAS_Q : []).slice();
+    words = (typeof VERBOS_Q !== 'undefined' ? VERBOS_Q : []).slice();
   }
   return words.filter(function(w) { return w.q && w.s; });
 }
 
+function buildAlBodyHtml() {
+  return '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">' +
+    '<span style="font-size:13px;color:var(--muted)">Puntos</span>' +
+    '<span id="alScore" style="font-size:18px;font-weight:700;color:#c47d1a">0</span></div>' +
+    '<div id="alQuestion"></div>';
+}
+
 function startAudioListen(lang) {
   if (!window.speechSynthesis) {
-    showToast('Tu navegador no soporta síntesis de voz', 'var(--red, #e55)');
+    showToast('Tu navegador no soporta síntesis de voz', '#e55');
     return;
   }
   alLang = lang;
@@ -41,6 +45,8 @@ function startAudioListen(lang) {
   alAnswered = false;
   var titles = {q:'Escuchar — Quechua', a:'Escuchar — Aymara', en:'Escuchar — English', fr:'Escuchar — Français'};
   document.getElementById('alTitle').textContent = titles[lang] || 'Escuchar y elegir';
+  // Restore body structure (may have been replaced by result screen)
+  document.getElementById('alBody').innerHTML = buildAlBodyHtml();
   renderAlQuestion();
   showScreen('audiolisten');
 }
@@ -57,7 +63,6 @@ function renderAlQuestion() {
   var correct = alData[alIndex];
   var allWords = buildAlData(alLang);
 
-  // Pick 3 distractors different from correct
   var distractors = allWords.filter(function(w) { return w.q !== correct.q && w.s !== correct.s; });
   shuffleArray(distractors);
   var opts = [correct].concat(distractors.slice(0, 3));
@@ -68,22 +73,21 @@ function renderAlQuestion() {
     '<button class="al-play-btn" onclick="speakAlWord()">' +
     '<span style="font-size:32px">🔊</span>' +
     '<div style="font-size:13px;margin-top:6px;font-weight:600">Escuchar</div>' +
-    '</button>' +
-    '</div>' +
+    '</button></div>' +
     '<div id="alOptions" class="al-options">';
 
   opts.forEach(function(opt, i) {
-    html += '<button class="al-option" id="alOpt' + i + '" onclick="answerAl(\'' + opt.q.replace(/'/g, "\\'") + '\',\'' + correct.q.replace(/'/g, "\\'") + '\',' + i + ')">' +
+    var isCorrect = opt.q === correct.q ? '1' : '0';
+    html += '<button class="al-option" data-correct="' + isCorrect + '" data-idx="' + i + '" onclick="answerAl(' + i + ')">' +
       escapeHtml(opt.s) + '</button>';
   });
 
-  html += '</div><div id="alFeedback" class="al-feedback"></div>' +
+  html += '</div>' +
+    '<div id="alFeedback" class="al-feedback"></div>' +
     '<div id="alNote" class="al-note" style="display:none"></div>' +
     '<button id="alNextBtn" style="display:none;width:100%;margin-top:16px;padding:15px;border-radius:12px;background:#c47d1a;color:#fff;border:none;font-size:15px;font-weight:700;cursor:pointer;min-height:52px" onclick="alNext()">Siguiente →</button>';
 
-  document.getElementById('alBody').innerHTML = html;
-
-  // Auto-speak after a short delay
+  document.getElementById('alQuestion').innerHTML = html;
   setTimeout(function() { speakAlWord(); }, 400);
 }
 
@@ -97,36 +101,35 @@ function speakAlWord() {
   window.speechSynthesis.speak(utterance);
 }
 
-function answerAl(selected, correct, optIdx) {
+function answerAl(optIdx) {
   if (alAnswered) return;
   alAnswered = true;
 
-  var isCorrect = selected === correct;
+  var opts = document.querySelectorAll('.al-option');
+  var clickedBtn = opts[optIdx];
+  var isCorrect = clickedBtn && clickedBtn.getAttribute('data-correct') === '1';
+
   if (isCorrect) {
     alScore++;
     document.getElementById('alScore').textContent = alScore;
   }
 
-  // Color all options
-  var opts = document.querySelectorAll('.al-option');
-  var correctWord = alData[alIndex];
-  opts.forEach(function(btn, i) {
-    var btnWord = btn.textContent.trim();
-    // Find if this option IS the correct word (by Spanish translation)
-    if (btnWord === correctWord.s) {
+  opts.forEach(function(btn) {
+    if (btn.getAttribute('data-correct') === '1') {
       btn.className = 'al-option correct';
-    } else if (i === optIdx && !isCorrect) {
+    } else if (btn === clickedBtn && !isCorrect) {
       btn.className = 'al-option wrong';
     }
     btn.disabled = true;
   });
 
+  var correctWord = alData[alIndex];
   var fb = document.getElementById('alFeedback');
   if (isCorrect) {
     fb.textContent = '✓ Correcto';
     fb.className = 'al-feedback correct';
   } else {
-    fb.textContent = '✗ Era: ' + escapeHtml(correctWord.s);
+    fb.textContent = '✗ Era: ' + correctWord.s;
     fb.className = 'al-feedback wrong';
   }
 
