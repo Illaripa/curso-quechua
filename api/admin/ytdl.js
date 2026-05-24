@@ -28,6 +28,9 @@ export default async function handler(req, res) {
   const { url } = req.body || {};
   if (!url) return res.status(400).json({ error: 'Falta URL' });
 
+  const YOUTUBE = /^https?:\/\/(www\.)?(youtube\.com\/watch|youtu\.be\/|youtube\.com\/shorts\/)/;
+  if (!YOUTUBE.test(url)) return res.status(400).json({ error: 'Solo se permiten URLs de YouTube' });
+
   const tmpDir = await mkdtemp(join(tmpdir(), 'ytdl-'));
   const outTemplate = join(tmpDir, '%(title)s.%(ext)s');
 
@@ -37,6 +40,7 @@ export default async function handler(req, res) {
       '--audio-quality', '0',
       '-o', outTemplate,
       '--no-playlist',
+      '--js-runtimes', 'node',
       url
     ]);
 

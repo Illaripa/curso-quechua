@@ -18,6 +18,12 @@ async function readRawBody(req) {
   });
 }
 
+const ALLOWED_PREFIXES = ['audio/', 'songs/', 'uploads/'];
+function safeKey(key) {
+  if (!key || typeof key !== 'string') return false;
+  return ALLOWED_PREFIXES.some(p => key.startsWith(p)) && !key.includes('..');
+}
+
 export default async function handler(req, res) {
   const { action, folder, filename } = req.query;
 
@@ -32,6 +38,7 @@ export default async function handler(req, res) {
   if (req.method === 'DELETE') {
     const body = await readRawBody(req);
     const { key } = JSON.parse(body.toString());
+    if (!safeKey(key)) return res.status(400).json({ error: 'Key no permitida' });
     await s3.send(new DeleteObjectCommand({ Bucket: process.env.R2_BUCKET, Key: key }));
     return res.status(200).json({ ok: true });
   }

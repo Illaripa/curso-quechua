@@ -1,12 +1,26 @@
+const SYSTEM_PROMPTS = {
+  q: "Eres un amigo quechua de Cusco. REGLA MAS IMPORTANTE: Responde CORTO. Maximo 2 frases en Quechua con su traduccion y 1 pregunta. NUNCA escribas parrafos largos. Ejemplo perfecto de respuesta: Allinmi! = Que bien! Imatam mikhuranki? = Que comiste? FORMATO: Frase en Quechua = traduccion. ESTILO: Habla como persona real, no como profesor. Si el estudiante escribe en Quechua: responde en Quechua puro, sin traduccion. Si hay error: agrega FEEDBACK: correccion breve. PROHIBIDO: listas, bullets, negritas, asteriscos, parrafos largos.",
+  a: "Eres un amigo aymara del altiplano. REGLA MAS IMPORTANTE: Responde CORTO. Maximo 2 frases en Aymara con su traduccion y 1 pregunta. NUNCA escribas parrafos largos. Ejemplo perfecto de respuesta: Walikiwa! = Que bien! Kunasa manq'ta? = Que comiste? FORMATO: Frase en Aymara = traduccion. ESTILO: Habla como persona real, no como profesor. Si el estudiante escribe en Aymara: responde en Aymara puro, sin traduccion. Si hay error: agrega FEEDBACK: correccion breve. PROHIBIDO: listas, bullets, negritas, asteriscos, parrafos largos."
+};
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   var body = req.body;
-  if (!body || !body.messages || !body.system) {
-    return res.status(400).json({ error: 'Missing messages or system' });
+  if (!body || !Array.isArray(body.messages)) {
+    return res.status(400).json({ error: 'Missing messages' });
   }
+
+  // System prompt is server-controlled — ignore any client-supplied value
+  var lang = body.lang === 'a' ? 'a' : 'q';
+  var system = SYSTEM_PROMPTS[lang];
+
+  // Limit message history to last 8, each message text to 500 chars
+  var messages = body.messages.slice(-8).map(function(m) {
+    return { role: m.role === 'assistant' ? 'assistant' : 'user', content: String(m.content || '').slice(0, 500) };
+  });
 
   // Try OpenAI first
   var openaiKey = process.env.OPENAI_API_KEY;
@@ -18,7 +32,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: 'gpt-4o-mini',
           max_tokens: 200,
-          messages: [{ role: 'system', content: body.system }, ...body.messages.slice(-8)]
+          messages: [{ role: 'system', content: system }, ...messages]
         })
       });
       var oaData = await oaResp.json();
@@ -44,8 +58,8 @@ export default async function handler(req, res) {
           body: JSON.stringify({
             model: models[m],
             max_tokens: 150,
-            system: body.system,
-            messages: body.messages.slice(-8)
+            system: system,
+            messages: messages
           })
         });
         var data = await response.json();
@@ -77,9 +91,9 @@ export default async function handler(req, res) {
     'qwen/qwen3-4b:free'
   ];
   var orMsgs = [
-    { role: 'user', content: '[INSTRUCCIONES] ' + body.system + ' [/INSTRUCCIONES]' },
+    { role: 'user', content: '[INSTRUCCIONES] ' + system + ' [/INSTRUCCIONES]' },
     { role: 'assistant', content: 'Entendido, soy tu tutor.' }
-  ].concat(body.messages.slice(-8));
+  ].concat(messages);
 
   for (var i = 0; i < models.length; i++) {
     try {

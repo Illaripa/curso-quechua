@@ -17,6 +17,8 @@ export default async function handler(req, res) {
 
   const { key, lang } = req.body || {};
   if (!key) return res.status(400).json({ error: 'Falta key' });
+  if (typeof key !== 'string' || key.includes('..') || !key.match(/^[a-zA-Z0-9/_.\-]+$/))
+    return res.status(400).json({ error: 'Key inválida' });
 
   const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
