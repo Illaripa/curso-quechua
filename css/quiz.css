@@ -244,3 +244,157 @@
   font-weight: 700;
   color: var(--gold);
 }
+
+/* ============================================================
+   RIMANAKUY — DIÁLOGOS INTERACTIVOS
+   ============================================================ */
+.dial-header {
+  padding: 16px 16px 12px;
+  border-bottom: 1px solid var(--bdr);
+}
+.dial-title {
+  font-family: 'Lora', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--fg);
+}
+.dial-subtitle {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 2px;
+  letter-spacing: 0.3px;
+}
+.dial-context {
+  font-size: 13px;
+  color: var(--fg);
+  margin-top: 10px;
+  font-style: italic;
+  background: var(--card);
+  padding: 8px 12px;
+  border-radius: 8px;
+  border-left: 3px solid var(--bdr);
+  line-height: 1.5;
+}
+.dial-lines {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.dial-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.dial-line--right {
+  flex-direction: row-reverse;
+}
+.dial-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+.dial-bubble-wrap {
+  max-width: calc(100% - 48px);
+}
+.dial-speaker {
+  font-size: 10px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+.dial-line--right .dial-speaker {
+  text-align: right;
+}
+.dial-bubble {
+  background: var(--card);
+  border: 1px solid var(--bdr);
+  border-radius: 12px;
+  padding: 10px 13px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.dial-bubble:active {
+  background: var(--bdr);
+}
+.dial-line--right .dial-bubble {
+  border-left: 1px solid var(--bdr);
+  border-right: 3px solid var(--bdr);
+}
+.dial-quechua {
+  display: block;
+  font-size: 15px;
+  color: var(--fg);
+  font-weight: 500;
+  line-height: 1.4;
+}
+.dial-trans {
+  display: none;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid var(--bdr);
+  font-style: italic;
+  line-height: 1.4;
+}
+.dial-note {
+  margin: 4px 16px 16px;
+  background: var(--card);
+  border-left: 3px solid var(--gold);
+  padding: 10px 13px;
+  border-radius: 0 8px 8px 0;
+  font-size: 12px;
+  color: var(--fg);
+  line-height: 1.5;
+}
+.dial-note-label {
+  display: inline-block;
+  background: var(--gold);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 1px 6px;
+  border-radius: 4px;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+.dial-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: 8px;
+  padding: 10px 14px;
+  background: var(--bg);
+  border-top: 1px solid var(--bdr);
+  justify-content: space-between;
+  z-index: 20;
+}
+.btn-dial {
+  background: var(--q-color);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 15px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn-dial--outline {
+  background: transparent;
+  color: var(--fg);
+  border: 1.5px solid var(--bdr);
+}

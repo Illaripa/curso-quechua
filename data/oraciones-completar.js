@@ -126,7 +126,67 @@ const COMPLETAR_Q = [
 {g:10,lv:5,q:"Chay runakuna ____ llaqtankuman kutimunampaqmi tukuy sunqunkuwan maskashankus.",s:"Esas personas buscan con todo el corazón cómo volver a su pueblo.",ans:"imaynatan",opts:["imaynatan","ima raykutaq","maytan","pitaq"],note:"imaynatan = cómo · kutimuna-n-paq-mi = para que vuelvan (propósito + evidencial) · tukuy sunqu-nku-wan = con todo su corazón · maska-sha-nku-s = están buscando"},
 {g:10,lv:5,q:"Nuqam allintam yachani ____ runasimiita rimaqkuna sunqunkupi iman kasqanta.",s:"Sé bien lo que tienen en el corazón quienes hablan quechua.",ans:"chay",opts:["chay","mana","sapa","ima"],note:"allinta-m yacha-ni = sé bien · rimaq-kuna = quienes hablan · sunqu-nku-pi = en su corazón · iman kasqa-n-ta = lo que resulta haber"},
 {g:10,lv:5,q:"Pay simipi rimaq kasqanrayku ____ llantasqa kasqa mana reqsisqankurayku.",s:"Lo castigaron por hablar en ese idioma, por no conocerlo.",ans:"chay",opts:["chay","hatun","sumaq","mana"],note:"chay simipi rimaq kasqa-n-rayku = por haber hablado en ese idioma · llanta-sqa kasqa = resultó castigado · mana reqsi-sqa-nku-rayku = por no haberlo conocido"},
-{g:10,lv:5,q:"Nuqa tukuy kawsayniypin ____ runasimipi rimanisaq.",s:"En toda mi vida seguiré hablando en quechua con amor.",ans:"munaywan",opts:["munaywan","llakiwan","manchaywan","kusiwan"],note:"tukuy kawsay-niy-pi-n = en toda mi vida · munay-wan = con amor · runasimi-pi rima-ni-saq = seguiré hablando en quechua"}
+{g:10,lv:5,q:"Nuqa tukuy kawsayniypin ____ runasimipi rimanisaq.",s:"En toda mi vida seguiré hablando en quechua con amor.",ans:"munaywan",opts:["munaywan","llakiwan","manchaywan","kusiwan"],note:"tukuy kawsay-niy-pi-n = en toda mi vida · munay-wan = con amor · runasimi-pi rima-ni-saq = seguiré hablando en quechua"},
+
+// ─── GRUPO 11 · R1 Lección 1 · Saludos y presentaciones ─────────────
+{g:11,lv:1,q:"¿Allinllachu, ____?",s:"¿Estás bien, señora?",ans:"mamáy",opts:["mamáy","taytáy","masiy","wawqiy"],note:"mamáy = señora (afectuoso) · taytáy = señor · Allinllachu = ¿Estás bien? (saludo informal)"},
+{g:11,lv:1,q:"¡Allinllam ____!",s:"¡Estoy bien, señor!",ans:"taytáy",opts:["taytáy","mamáy","masiy","ñañay"],note:"taytáy = señor (afectuoso) · Allinllam = Estoy bien (respuesta al saludo)"},
+{g:11,lv:1,q:"Saram ____. ¿Qamrí?",s:"Soy Sara. ¿Y tú?",ans:"kani",opts:["kani","kanki","kachkani","kachkan"],note:"kani = soy · Saram kani = Soy Sara (con sufijo -m de evidencia directa)"},
+{g:11,lv:1,q:"¿Pitaq ____?",s:"¿Quién eres?",ans:"kanki",opts:["kanki","kani","kachkanki","kachkani"],note:"¿Pitaq kanki? = ¿Quién eres? (informal) · -nki = 2ª persona singular"},
+{g:11,lv:1,q:"¿Imaynallam ____?",s:"¿Cómo está usted?",ans:"mamáy",opts:["mamáy","taytáy","masiy","wawqiy"],note:"¿Imaynallam mamáy? = ¿Cómo está usted, señora? · saludo formal para persona mayor"},
+{g:11,lv:1,q:"¿Mayqintaq ____?",s:"¿Quién es usted? (formal)",ans:"kachkanki",opts:["kachkanki","kanki","kachkani","kani"],note:"¿Mayqintaq kachkanki? = ¿Quién es usted? · forma FORMAL · ¿Pitaq kanki? = forma informal"},
+{g:11,lv:1,q:"Rogeliom ____ mamáy.",s:"Soy Rogelia, señora.",ans:"kachkani",opts:["kachkani","kani","kachkanki","kanki"],note:"kachkani = soy (con kachkay) · kani = soy (con kay) · ambas son válidas"},
+{g:11,lv:1,q:"Anam kani. ¿____?",s:"Soy Ana. ¿Y tú?",ans:"Qamrí",opts:["Qamrí","Pitaqrí","Mayurí","Sararí"],note:"¿Qamrí? = ¿Y tú? · -rí es sufijo de pregunta adicional: 'y ¿qué hay de ti?'"},
+{g:11,lv:1,q:"Mayum kani. — ¿____ kanki?",s:"Soy Mayu. — ¿Quién eres?",ans:"Pitaq",opts:["Pitaq","Ima","Maypitaq","Imatan"],note:"¿Pitaq kanki? = ¿Quién eres? · Pitaq = quién · Ima = qué · Maypitaq = dónde"},
+{g:11,lv:2,q:"¡Sumaqllach__ Carmen?",s:"¿Estás bien, Carmen? (afectuoso)",ans:"u",opts:["u","a","i","o"],note:"¿Sumaqllachu? = ¿Estás bien? (forma afectuosa) · Sumaqllam = Estoy bien · más cálido que Allinllachu"},
+
+// ─── GRUPO 12 · R1 Lección 2 · Despedidas y actividades próximas ─────
+{g:12,lv:1,q:"Sara, ¿maytataq ____?",s:"Sara, ¿adónde vas?",ans:"richkanki",opts:["richkanki","richkani","richkan","richkanku"],note:"¿Maytataq richkanki? = ¿Adónde vas? · -nki = tú · richkani = voy · richkan = él/ella va"},
+{g:12,lv:1,q:"Pukllaqmi ____.",s:"Voy a jugar.",ans:"richkani",opts:["richkani","kachkani","purichkani","samachkani"],note:"Pukllaqmi richkani = Voy a jugar · -q = sufijo de propósito · richkani = estoy yendo"},
+{g:12,lv:1,q:"¡Paqarinkama ____!",s:"¡Hasta mañana Sara!",ans:"Sara",opts:["Sara","Mayu","taytáy","mamáy"],note:"¡Paqarinkama! = ¡Hasta mañana! · Se añade el nombre de la persona al despedirse"},
+{g:12,lv:1,q:"¡Tupananchik____!",s:"¡Hasta que nos volvamos a ver!",ans:"kama",opts:["kama","manta","pi","ta"],note:"¡Tupananchikkama! = ¡Hasta que nos veamos! · tupananchik = que nos encontremos · kama = hasta"},
+{g:12,lv:1,q:"¡Huk punchaw____!",s:"¡Hasta mañana!",ans:"kama",opts:["kama","manta","pi","ta"],note:"kama = hasta · Huk punchawkama = Hasta el otro día · Paqarinkama = Hasta mañana"},
+{g:12,lv:1,q:"Qam____ allinlláyá.",s:"Tú también, qué bien.",ans:"pas",opts:["pas","taq","mi","chu"],note:"-pas / -pis = también · Qampas = tú también · allinlláyá = qué bien"},
+{g:12,lv:2,q:"Sara, ¿maytataq ____?",s:"Sara, ¿adónde estás yendo?",ans:"richkanki",opts:["richkanki","kachkanki","purichkanki","rurachkanki"],note:"richkanki = estás yendo · ¿maytataq? = ¿adónde? · -nki = tú"},
+{g:12,lv:2,q:"Pukllaq richkani = Voy a ____",s:"Voy a jugar",ans:"jugar",opts:["jugar","jugando","jugué","jugará"],note:"-q richkani = voy A hacer algo (propósito inmediato) · No confundir con progresivo -chka"},
+{g:12,lv:2,q:"Yachaqmi ____.",s:"Voy a estudiar.",ans:"richkani",opts:["richkani","kachkani","purichkani","samachkani"],note:"yachay = aprender · yachaqmi richkani = voy a estudiar · -q marca el propósito"},
+{g:12,lv:2,q:"Allinlláyá. — Qampas ____.",s:"Qué bien. — Tú también, qué bien.",ans:"allinlláyá",opts:["allinlláyá","allinllachu","allinllam","allinmi"],note:"Allinlláyá = expresión de ánimo, '¡qué bien!' · -yá suaviza y expresa complacencia"},
+
+// ─── GRUPO 13 · R2 Lección 1 · Ubicación con -pi y kachkay ──────────
+{g:13,lv:2,q:"¿Maypitaq chillikuyki ____?",s:"¿Dónde está tu teléfono?",ans:"kachkan",opts:["kachkan","kachkani","kachkanki","kachkanku"],note:"kachkan = él/ella está (3ª persona) · -pi = sufijo locativo · chillikuy = teléfono celular"},
+{g:13,lv:2,q:"Chuspaypim ____.",s:"Está en mi bolsillo.",ans:"kachkan",opts:["kachkan","kachkani","kachkanki","kachkanku"],note:"Chuspaypim = en mi bolsillo + sufijo -m de afirmación · chuspa-y-pi-m"},
+{g:13,lv:2,q:"Televisorpa ____ kachkan.",s:"Está al lado del televisor.",ans:"waqtanpim",opts:["waqtanpim","ukunpim","hawanpim","qipanpim"],note:"waqta = al lado · -n = posesivo (su) · -pi = locativo · -m = evidencia directa"},
+{g:13,lv:2,q:"Ichapas punkupa ____.",s:"Quizás está detrás de la puerta.",ans:"qipanpi",opts:["qipanpi","ñawpanpi","hawanpi","ukunpi"],note:"qipa = detrás · punka = puerta · qipanpi = detrás de ella · ichapas = quizás"},
+{g:13,lv:2,q:"Allquqa wasipa ____ kachkan.",s:"El perro está encima de la casa.",ans:"hawanpim",opts:["hawanpim","ukunpim","sikinpim","qipanpim"],note:"hawa = arriba/sobre · wasipa hawanpim = sobre la casa · hawa ≠ uku (dentro) ≠ siki (debajo)"},
+{g:13,lv:2,q:"Misiqa hamparapa ____ kachkan.",s:"El gato está debajo de la silla.",ans:"sikinpim",opts:["sikinpim","ukunpim","hawanpim","pataninpim"],note:"siki = debajo · hampara = silla · sikinpim = debajo de ella · pata = encima (superficie)"},
+{g:13,lv:2,q:"Wasipa ____ kachkani.",s:"Estoy dentro de la casa.",ans:"ukunpim",opts:["ukunpim","hawanpim","sikinpim","qipanpim"],note:"uku = dentro · wasipi = en la casa · wasipa ukunpim = dentro (del interior) de la casa"},
+{g:13,lv:2,q:"Ñuqa wasi____ kachkani.",s:"Estoy en la casa.",ans:"pi",opts:["pi","ta","wan","manta"],note:"-pi = locativo 'en/dentro de' · wasi-pi = en la casa · vs. wasi-ta (hacia la casa), wasi-manta (desde la casa)"},
+{g:13,lv:2,q:"Mayu wasipa ____ kachkan.",s:"Mayu está dentro de la casa.",ans:"ukunpim",opts:["ukunpim","hawanpim","ñawpanpim","chimpanpim"],note:"uku = interior/dentro · hawa = exterior/sobre · ñawpa = delante · chimpa = al frente (lado opuesto)"},
+{g:13,lv:2,q:"¿Maypitaq ____?",s:"¿Dónde estás tú?",ans:"kachkanki",opts:["kachkanki","kachkani","kachkan","kachkanku"],note:"kachkanki = tú estás · kachkani = yo estoy · kachkan = él/ella está · kachkanku = ellos están"},
+
+// ─── GRUPO 14 · R2 Lección 2 · Actividades progresivas (-chka) ───────
+{g:14,lv:2,q:"¿Imatataq ____?",s:"¿Qué estás haciendo?",ans:"rurachkanki",opts:["rurachkanki","rurachkani","rurachkan","rurachkanku"],note:"¿Imatataq rurachkanki? = ¿Qué estás haciendo? · -chka = progresivo · -nki = tú"},
+{g:14,lv:2,q:"Ñuqaqa samach____ kachkani.",s:"Estoy descansando.",ans:"ka",opts:["ka","ki","ku","ni"],note:"samachkani = sama(descansar)+chka(progresivo)+ni(yo) · pisipasqa kachkani = estoy cansado/a"},
+{g:14,lv:2,q:"Payqa ____.",s:"Él/ella está durmiendo.",ans:"puñuchkanmi",opts:["puñuchkanmi","puñuchkani","puñuchkanki","puñuchkanku"],note:"puñu-chka-n-mi = está durmiendo + -mi afirmación · pay = él/ella · -n = 3ª persona"},
+{g:14,lv:2,q:"Paykunaqa quchapim ____.",s:"Ellos están nadando en la piscina.",ans:"tuytuchkanku",opts:["tuytuchkanku","tuytuchkani","tuytuchkan","tuytuchkankichik"],note:"tuytu-chka-nku = están nadando · -nku = 3ª plural · qucha = piscina/lago"},
+{g:14,lv:2,q:"Ñuqaqa ____.",s:"Estoy descansando.",ans:"samachkanim",opts:["samachkanim","puñuchkanim","mikuchkanim","pukllachkanim"],note:"samachkanim = estoy descansando · -m al final = evidencia directa · sama = descansar"},
+{g:14,lv:2,q:"Maríaqa ____.",s:"María está comiendo.",ans:"mikuchkanmi",opts:["mikuchkanmi","mikuchkani","mikuchkanki","mikuchkanku"],note:"miku-chka-n-mi = está comiendo · -mi evidencia directa · mikuy = comer"},
+{g:14,lv:2,q:"Ñuqaqa ____.",s:"Estoy cosiendo.",ans:"sirachkani",opts:["sirachkani","samachkani","puñuchkani","tuytuchkani"],note:"siray = coser · sirachkani = estoy cosiendo · sirachkani ≠ samachkani (descansando)"},
+{g:14,lv:2,q:"Waynakunaqa chakrapim ____.",s:"Los jóvenes están trabajando en el campo.",ans:"llamkachkankum",opts:["llamkachkankum","llamkachkani","llamkachkan","llamkachkanki"],note:"llamka-chka-nku-m = están trabajando · puriy = caminar · wayna = joven · chakra = campo"},
+{g:14,lv:3,q:"¿Imatataq taytanchik ____?",s:"¿Qué está haciendo nuestro papá?",ans:"rurachkan",opts:["rurachkan","rurachkanki","rurachkani","rurachkanku"],note:"rurachkan = él/ella está haciendo · taytanchik = nuestro papá (-nchik = nuestro inclusivo)"},
+{g:14,lv:3,q:"Paykunaqa yanupim ____.",s:"Ellos están cocinando.",ans:"yanuchkanku",opts:["yanuchkanku","yanuchkani","yanuchkan","yanuchkanki"],note:"yanuy = cocinar · yanu-chka-nku = están cocinando · -ku = 3ª persona plural"},
+
+// ─── GRUPO 15 · R2 Lección 3 · Verbos transitivos y cocina ──────────
+{g:15,lv:3,q:"Robertoqa runtutam ____.",s:"Él está friendo huevos.",ans:"tiqtichkan",opts:["tiqtichkan","pasichkan","kanchachkan","kutachkan"],note:"tiqtiy = freír (en aceite) · runtu = huevo · -ta = sufijo de objeto directo · tiqtichkan = está friendo"},
+{g:15,lv:3,q:"Almaqa chuñutam ____.",s:"Ella está cociendo chuño.",ans:"pasichkan",opts:["pasichkan","tiqtichkan","kanchachkan","hamkachkan"],note:"pasiy = cocer en agua · chuño = papa deshidratada andina · pasichkan = está cociendo"},
+{g:15,lv:3,q:"Ladyqa quwitam ____.",s:"Lady está asando cuy.",ans:"kanchachkan",opts:["kanchachkan","tiqtichkan","pasichkan","kutachkan"],note:"kankay = asar (directo al fuego) · quwi = cuy · kanchachkan = está asando"},
+{g:15,lv:3,q:"Felipeqa maranpi saratam ____.",s:"Felipe está moliendo maíz en el batán.",ans:"kutachkan",opts:["kutachkan","tiqtichkan","pasichkan","kanchachkan"],note:"kutay = moler · maran = batán (piedra para moler) · sara = maíz · -pi locativo"},
+{g:15,lv:3,q:"Juanaqa yakutam ____.",s:"Juana está bebiendo agua.",ans:"upyachkan",opts:["upyachkan","mikuchkan","yanuchkan","pasichkan"],note:"upyay = beber · yaku = agua · upya-chka-n = está bebiendo"},
+{g:15,lv:3,q:"Ñuqaqa chuñutam ____.",s:"Estoy tostando chuño.",ans:"hamkachkani",opts:["hamkachkani","pasichkani","kutachkani","tiqtichkani"],note:"hamkay = tostar en seco · chuño hamkay = tostar chuño · -ni = 1ª persona singular"},
+{g:15,lv:3,q:"Payqa maranpi sarata____ kutachkan.",s:"Él está moliendo el maíz.",ans:"m",opts:["m","ta","pi","wan"],note:"-ta/-tam = objeto directo + evidencia · saratam kutachkan = está moliendo EL maíz"},
+{g:15,lv:3,q:"Payqa runtutam ____.",s:"Él está friendo huevos.",ans:"tiqtichkan",opts:["tiqtichkan","pasichkan","watyachkan","kanchachkan"],note:"tiqtiy = freír (aceite) · watyay = hornear (horno tierra) · kankay = asar (fuego directo)"},
+{g:15,lv:3,q:"Ñuqaqa tantata ____.",s:"Estoy horneando pan.",ans:"watyachkani",opts:["watyachkani","tiqtichkani","pasichkani","kutachkani"],note:"watyay = hornear · tanta = pan · watyachkani = estoy horneando"},
+{g:15,lv:3,q:"¿Imatataq ____?",s:"¿Qué está haciendo él?",ans:"rurachkan",opts:["rurachkan","rurachkani","rurachkanki","rurachkanku"],note:"rurachkan = él/ella está haciendo · -kan = 3ª persona + prog · ruraqy = hacer/elaborar"}
 ];
 
 // ─── AYMARA (simplificado, 3 grupos) ──────────────────────────────────
