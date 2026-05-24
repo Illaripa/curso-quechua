@@ -122,10 +122,31 @@ function renderCard() {
     '<div class="card-tap-hint">Toca para voltear</div>';
 
   if (simple) {
-    // Simple back: just word + translation + note (no conjugation grid)
+    // Simple back: word + translation + note + example sentences + audio
+    var tenseColors = {Pasado:'#6366f1', Presente:'var(--gold)', Futuro:'#22c55e'};
+    var exHtml = '';
+    if (verb.ex && verb.ex.length) {
+      exHtml = '<div class="card-examples">';
+      verb.ex.forEach(function(e) {
+        var col = tenseColors[e.t] || 'var(--muted)';
+        exHtml += '<div class="card-ex-row">' +
+          '<span class="card-ex-tag" style="color:' + col + '">' + e.t + '</span>' +
+          '<div class="card-ex-text">' +
+            '<span class="card-ex-q">' + escapeHtml(e.q) +
+              ' <button class="card-ex-speak" onclick="event.stopPropagation();speakTextLang(\'' + e.q.replace(/'/g,"\\'") + '\',\'' + cardLang + '\',this)" title="Escuchar">🔊</button>' +
+            '</span>' +
+            '<span class="card-ex-s">' + escapeHtml(e.s) + '</span>' +
+          '</div>' +
+        '</div>';
+      });
+      exHtml += '</div>';
+    }
+    var speakBtn = '<button class="card-speak-btn" onclick="event.stopPropagation();speakTextLang(\'' + verb.q.replace(/'/g,"\\'") + '\',\'' + cardLang + '\',this)">🔊 Escuchar</button>';
     var simpleBack = '<div class="card-back-verb">' + verb.q + '</div>' +
+      speakBtn +
       '<div class="card-back-meaning">' + verb.s + '</div>';
     if (verb.note) simpleBack += '<div class="card-note">' + escapeHtml(verb.note) + '</div>';
+    simpleBack += exHtml;
     document.getElementById('cardBack').innerHTML = simpleBack;
     window._buildCardBack = function() { return simpleBack; };
   } else {
