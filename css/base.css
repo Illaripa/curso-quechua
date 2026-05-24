@@ -98,3 +98,87 @@ button {
   border-bottom-color: var(--teal);
 }
 
+.lang-tab--en.active {
+  color: #3b82f6;
+  border-bottom-color: #3b82f6;
+}
+
+.lang-tab--fr.active {
+  color: #8b5cf6;
+  border-bottom-color: #8b5cf6;
+}
+
+/* Word order exercise */
+.wo-slot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px dashed var(--bdr);
+  background: none;
+  color: var(--muted);
+}
+.wo-slot.filled {
+  border: 2px solid var(--gold);
+  background: var(--card);
+  color: var(--txt);
+}
+.wo-word {
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--bdr);
+  background: var(--card);
+  color: var(--txt);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 40px;
+}
+.wo-feedback { font-size: 15px; font-weight: 700; min-height: 24px; }
+.wo-feedback.correct { color: #22c55e; }
+.wo-feedback.wrong { color: #ef4444; }
+
+/* Audio listen exercise */
+.al-play-btn {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  background: var(--card);
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.al-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 8px;
+}
+.al-option {
+  padding: 16px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--bdr);
+  background: var(--card);
+  color: var(--txt);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 52px;
+  text-align: center;
+}
+.al-option.correct { border-color: #22c55e; background: #22c55e22; color: #16a34a; }
+.al-option.wrong { border-color: #ef4444; background: #ef444422; color: #dc2626; }
+.al-feedback { font-size: 15px; font-weight: 700; margin-top: 12px; min-height: 24px; }
+.al-feedback.correct { color: #22c55e; }
+.al-feedback.wrong { color: #ef4444; }
+.al-note { font-size: 13px; color: var(--muted); background: var(--card); padding: 10px 14px; border-radius: 10px; border-left: 3px solid var(--gold); margin-top: 8px; line-height: 1.5; }
+

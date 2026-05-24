@@ -28,16 +28,19 @@ function compSaveGroupResult(g, correct, total) {
 function startCompletar(lang) {
   compLang = lang;
   compGroup = 0;
-  var titles = {q:'◈ Completar Quechua', r2:'✎ Completar Avanzado', a:'◈ Completar Aymara'};
+  var titles = {q:'◈ Completar Quechua', r2:'✎ Completar Avanzado', a:'◈ Completar Aymara', en:'◈ Completar English', fr:'◈ Completar Français'};
   document.getElementById('completarTitle').textContent = titles[lang] || '◈ Completar';
   loadCompletar();
   showScreen('completar');
 }
 
 function loadCompletar() {
-  var minG = compLang === 'q' ? 1 : compLang === 'r2' ? 11 : 9;
-  var maxG = compLang === 'q' ? 8 : compLang === 'r2' ? 15 : 10;
-  var source = COMPLETAR_Q.filter(function(x) {
+  var isEN = compLang === 'en';
+  var isFR = compLang === 'fr';
+  var minG = compLang === 'q' ? 1 : compLang === 'r2' ? 11 : (isEN || isFR) ? 1 : 9;
+  var maxG = compLang === 'q' ? 8 : compLang === 'r2' ? 15 : (isEN || isFR) ? 3 : 10;
+  var baseData = isEN ? COMPLETAR_EN : isFR ? COMPLETAR_FR : COMPLETAR_Q;
+  var source = baseData.filter(function(x) {
     if (compGroup === 0) return x.g >= minG && x.g <= maxG;
     return x.g === compGroup;
   });

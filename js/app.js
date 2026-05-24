@@ -269,8 +269,12 @@ function showScreen(id) {
 // ============================================================
 function setLang(lang) {
   currentLang = lang;
-  document.getElementById('langTabQ').className = 'lang-tab' + (lang === 'q' ? ' active' : '');
-  document.getElementById('langTabA').className = 'lang-tab lang-tab--aymara' + (lang === 'a' ? ' active' : '');
+  ['langTabQ','langTabA','langTabEN','langTabFR'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.remove('active');
+  });
+  var tabId = {q:'langTabQ', a:'langTabA', en:'langTabEN', fr:'langTabFR'}[lang];
+  if (tabId && document.getElementById(tabId)) document.getElementById(tabId).classList.add('active');
   renderHomeBody();
 }
 
@@ -278,38 +282,78 @@ function setLang(lang) {
 // HOME MENU
 // ============================================================
 function renderHomeBody() {
-  var isQ = currentLang === 'q';
-  var items = isQ ? [
-    {i:'◈', t:u('menu.q.morning'),      d:u('menu.q.morning.d'),      fn:"showScreen('m2')"},
-    {i:'◇', t:u('menu.q.oraciones'),    d:u('menu.q.oraciones.d'),    fn:"openReader('oraciones')"},
-    {i:'❋', t:u('menu.q.poesia'),       d:u('menu.q.poesia.d'),       fn:"openReader('poesia')"},
-    {i:'▤', t:u('menu.q.textos'),       d:u('menu.q.textos.d'),       fn:"openReader('ensayos')"},
-    {i:'⚡', t:u('menu.q.verbos'),       d:u('menu.q.verbos.d'),       fn:"openRef('verbos')"},
-    {i:'◎', t:u('menu.q.sufijos'),      d:u('menu.q.sufijos.d'),      fn:"openRef('sufijos')"},
-    {i:'▣', t:u('menu.q.fichas'),       d:u('menu.q.fichas.d'),       fn:"openCards('q')"},
-    {i:'◉', t:u('menu.q.quiz'),         d:u('menu.q.quiz.d'),         fn:"startQuiz('q')"},
-    {i:'✏', t:u('menu.q.completar'),    d:u('menu.q.completar.d'),    fn:"startCompletar('q')"},
-    {i:'✎', t:u('menu.q.completar2'),   d:u('menu.q.completar2.d'),   fn:"startCompletar('r2')"},
-    {i:'◈', t:u('menu.q.dialogos'),     d:u('menu.q.dialogos.d'),     fn:"startDialogos()"},
-    {i:'📖', t:u('menu.q.leyendas'),     d:u('menu.q.leyendas.d'),     fn:"openReader('leyendas')"},
-    {i:'♫', t:u('menu.q.songs'),        d:u('menu.q.songs.d'),        fn:"openSongs('q')"},
-    {i:'◆', t:u('menu.q.tutor'),        d:u('menu.q.tutor.d'),        fn:"openChat('q')"}
-  ] : [
-    {i:'≈', t:u('menu.a.oraciones'),    d:u('menu.a.oraciones.d'),    fn:"openReader('aymara_or')"},
-    {i:'❋', t:u('menu.a.poesia'),       d:u('menu.a.poesia.d'),       fn:"openReader('aymara_po')"},
-    {i:'⚡', t:u('menu.a.verbos'),       d:u('menu.a.verbos.d'),       fn:"openRef('aymara_verbos')"},
-    {i:'◎', t:u('menu.a.sufijos'),      d:u('menu.a.sufijos.d'),      fn:"openRef('aymara_sufijos')"},
-    {i:'▣', t:u('menu.a.fichas'),       d:u('menu.a.fichas.d'),       fn:"openCards('a')"},
-    {i:'▤', t:u('menu.a.vocab'),        d:u('menu.a.vocab.d'),        fn:"openCards('p')"},
-    {i:'◉', t:u('menu.a.quiz'),         d:u('menu.a.quiz.d'),         fn:"startQuiz('a')"},
-    {i:'📖', t:u('menu.a.leyendas'),     d:u('menu.a.leyendas.d'),     fn:"openReader('leyendas_a')"},
-    {i:'♫', t:u('menu.a.songs'),        d:u('menu.a.songs.d'),        fn:"openSongs('a')"},
-    {i:'◆', t:u('menu.a.tutor'),        d:u('menu.a.tutor.d'),        fn:"openChat('a')"}
-  ];
+  var lang = currentLang;
+  var items;
+  var sectionLabel;
+
+  if (lang === 'q') {
+    sectionLabel = u('menu.q.section');
+    items = [
+      {i:'◈', t:u('menu.q.morning'),    d:u('menu.q.morning.d'),    fn:"showScreen('m2')"},
+      {i:'◇', t:u('menu.q.oraciones'),  d:u('menu.q.oraciones.d'),  fn:"openReader('oraciones')"},
+      {i:'❋', t:u('menu.q.poesia'),     d:u('menu.q.poesia.d'),     fn:"openReader('poesia')"},
+      {i:'▤', t:u('menu.q.textos'),     d:u('menu.q.textos.d'),     fn:"openReader('ensayos')"},
+      {i:'⚡', t:u('menu.q.verbos'),     d:u('menu.q.verbos.d'),     fn:"openRef('verbos')"},
+      {i:'◎', t:u('menu.q.sufijos'),    d:u('menu.q.sufijos.d'),    fn:"openRef('sufijos')"},
+      {i:'▣', t:u('menu.q.fichas'),     d:u('menu.q.fichas.d'),     fn:"openCards('q')"},
+      {i:'◉', t:u('menu.q.quiz'),       d:u('menu.q.quiz.d'),       fn:"startQuiz('q')"},
+      {i:'✏', t:u('menu.q.completar'),  d:u('menu.q.completar.d'),  fn:"startCompletar('q')"},
+      {i:'✎', t:u('menu.q.completar2'), d:u('menu.q.completar2.d'), fn:"startCompletar('r2')"},
+      {i:'◈', t:u('menu.q.dialogos'),   d:u('menu.q.dialogos.d'),   fn:"startDialogos()"},
+      {i:'📖', t:u('menu.q.leyendas'),   d:u('menu.q.leyendas.d'),   fn:"openReader('leyendas')"},
+      {i:'♫', t:u('menu.q.songs'),      d:u('menu.q.songs.d'),      fn:"openSongs('q')"},
+      {i:'◉', t:'Ordenar palabras',     d:'Forma oraciones en el orden correcto', fn:"startWordOrder('q')"},
+      {i:'🔊', t:'Escuchar y elegir',   d:'Escucha la palabra y elige la traducción', fn:"startAudioListen('q')"},
+      {i:'◆', t:u('menu.q.tutor'),      d:u('menu.q.tutor.d'),      fn:"openChat('q')"}
+    ];
+  } else if (lang === 'a') {
+    sectionLabel = u('menu.a.section');
+    items = [
+      {i:'≈', t:u('menu.a.oraciones'),  d:u('menu.a.oraciones.d'),  fn:"openReader('aymara_or')"},
+      {i:'❋', t:u('menu.a.poesia'),     d:u('menu.a.poesia.d'),     fn:"openReader('aymara_po')"},
+      {i:'⚡', t:u('menu.a.verbos'),     d:u('menu.a.verbos.d'),     fn:"openRef('aymara_verbos')"},
+      {i:'◎', t:u('menu.a.sufijos'),    d:u('menu.a.sufijos.d'),    fn:"openRef('aymara_sufijos')"},
+      {i:'▣', t:u('menu.a.fichas'),     d:u('menu.a.fichas.d'),     fn:"openCards('a')"},
+      {i:'▤', t:u('menu.a.vocab'),      d:u('menu.a.vocab.d'),      fn:"openCards('p')"},
+      {i:'◉', t:u('menu.a.quiz'),       d:u('menu.a.quiz.d'),       fn:"startQuiz('a')"},
+      {i:'📖', t:u('menu.a.leyendas'),   d:u('menu.a.leyendas.d'),   fn:"openReader('leyendas_a')"},
+      {i:'♫', t:u('menu.a.songs'),      d:u('menu.a.songs.d'),      fn:"openSongs('a')"},
+      {i:'◉', t:'Ordenar palabras',     d:'Forma oraciones en el orden correcto', fn:"startWordOrder('a')"},
+      {i:'🔊', t:'Escuchar y elegir',   d:'Escucha la palabra y elige la traducción', fn:"startAudioListen('a')"},
+      {i:'◆', t:u('menu.a.tutor'),      d:u('menu.a.tutor.d'),      fn:"openChat('a')"}
+    ];
+  } else if (lang === 'en') {
+    sectionLabel = 'Inglés — English';
+    items = [
+      {i:'◇', t:'Frases en inglés',      d:'Familia, naturaleza, emociones, vida cotidiana', fn:"openReader('en_or')"},
+      {i:'❋', t:'Poesía en inglés',      d:'Poemas clásicos y canciones línea por línea',   fn:"openReader('en_po')"},
+      {i:'📖', t:'Cuentos en inglés',     d:'Fábulas y cuentos clásicos con traducción',      fn:"openReader('en_le')"},
+      {i:'▤', t:'Textos en inglés',      d:'Ensayos cortos sobre temas actuales',            fn:"openReader('en_es')"},
+      {i:'▣', t:'Fichas de vocabulario', d:'100 palabras esenciales — Voltear y aprender',   fn:"openCards('en')"},
+      {i:'◉', t:'Quiz de inglés',        d:'Traduce palabras y frases al español',            fn:"startQuiz('en')"},
+      {i:'✏', t:'Completar oraciones',   d:'Elige la palabra que falta en inglés',            fn:"startCompletar('en')"},
+      {i:'◉', t:'Ordenar palabras',      d:'Forma oraciones en inglés en el orden correcto', fn:"startWordOrder('en')"},
+      {i:'🔊', t:'Escuchar y elegir',    d:'Escucha la palabra en inglés y elige la traducción', fn:"startAudioListen('en')"},
+      {i:'◆', t:'Tutor IA — Inglés',    d:'Practica inglés con inteligencia artificial',    fn:"openChat('en')"}
+    ];
+  } else {
+    sectionLabel = 'Francés — Français';
+    items = [
+      {i:'◇', t:'Frases en francés',     d:'Familia, naturaleza, emociones, vida cotidiana', fn:"openReader('fr_or')"},
+      {i:'❋', t:'Poesía en francés',     d:'Poemas clásicos y canciones línea por línea',   fn:"openReader('fr_po')"},
+      {i:'📖', t:'Cuentos en francés',    d:'Fábulas y cuentos clásicos con traducción',      fn:"openReader('fr_le')"},
+      {i:'▤', t:'Textos en francés',     d:'Ensayos cortos sobre cultura y gastronomía',     fn:"openReader('fr_es')"},
+      {i:'▣', t:'Fichas de vocabulario', d:'100 palabras esenciales — Voltear y aprender',   fn:"openCards('fr')"},
+      {i:'◉', t:'Quiz de francés',       d:'Traduce palabras y frases al español',            fn:"startQuiz('fr')"},
+      {i:'✏', t:'Completar oraciones',   d:'Elige la palabra que falta en francés',           fn:"startCompletar('fr')"},
+      {i:'◉', t:'Ordenar palabras',      d:'Forma oraciones en francés en el orden correcto', fn:"startWordOrder('fr')"},
+      {i:'🔊', t:'Escuchar y elegir',    d:'Escucha la palabra en francés y elige la traducción', fn:"startAudioListen('fr')"},
+      {i:'◆', t:'Tutor IA — Francés',   d:'Practica francés con inteligencia artificial',   fn:"openChat('fr')"}
+    ];
+  }
 
   document.getElementById('homeBody').innerHTML =
-    '<p class="section-label" style="margin-top:4px">' +
-    (isQ ? u('menu.q.section') : u('menu.a.section')) + '</p>' +
+    '<p class="section-label" style="margin-top:4px">' + sectionLabel + '</p>' +
     items.map(function(x) {
       return '<button class="menu-card" onclick="' + x.fn + '">' +
         '<span class="menu-icon">' + x.i + '</span>' +

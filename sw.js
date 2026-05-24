@@ -1,4 +1,4 @@
-var CACHE_NAME = 'yachay-v10';
+var CACHE_NAME = 'yachay-v11';
 var urlsToCache = [
   './',
   './index.html',
@@ -25,6 +25,15 @@ var urlsToCache = [
   './data/vocabulary.js',
   './data/quiz-quechua.js',
   './data/quiz-aymara.js',
+  './data/quiz-english.js',
+  './data/quiz-french.js',
+  './data/content-english.js',
+  './data/content-french.js',
+  './data/palabras-english.js',
+  './data/palabras-french.js',
+  './data/completar-english.js',
+  './data/completar-french.js',
+  './data/wordorder.js',
   './data/oraciones-completar.js',
   './data/dialogos.js',
   './js/dialogos.js',
@@ -39,6 +48,8 @@ var urlsToCache = [
   './js/completar.js',
   './js/chat.js',
   './js/songs.js',
+  './js/wordorder.js',
+  './js/audiolisten.js',
   './js/app.js',
   './icons/icon-192.png',
   './icons/icon-512.png'
