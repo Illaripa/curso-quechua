@@ -1,4 +1,4 @@
-let currentLang = null; // null = dashboard, 'q'/'a'/'en'/'fr' = idioma activo
+let currentLang = localStorage.getItem('yachay_lang') || null;
 let uiLang = 'es';
 
 // ============================================================
@@ -269,6 +269,7 @@ function showScreen(id) {
 // ============================================================
 function setLang(lang) {
   currentLang = lang;
+  localStorage.setItem('yachay_lang', lang);
   renderHomeBody();
 }
 
