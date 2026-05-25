@@ -251,9 +251,14 @@ function goHome() {
     s.classList.remove('active');
   });
   document.getElementById('home').classList.add('active');
-  currentLang = null;
   renderHomeBody();
   window.scrollTo(0, 0);
+}
+
+function goDashboard() {
+  currentLang = null;
+  localStorage.removeItem('yachay_lang');
+  goHome();
 }
 
 function showScreen(id) {
