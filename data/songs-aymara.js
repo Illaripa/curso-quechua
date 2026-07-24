@@ -268,8 +268,8 @@ const CANCIONES_A = [
     title: "Ponchos Rojos",
     artist: "K'ala Marka (Kalamarka)",
     genre: "Música andina / Laquita",
-    youtube_id: "Lg99KO6eWHo",
-    pending: true,
+    youtube_id: "b3RgDG9TfOo",
+    verified: true,
     lines: [
       { a: "Laquita ritmo de la tierra",                     s: "Laquita, ritmo de la tierra" },
       { a: "Ritmo de dioses de Achacachi",                   s: "Ritmo de los dioses de Achacachi" },
@@ -292,8 +292,8 @@ const CANCIONES_A = [
     title: "Guerrero Aymara",
     artist: "Awatiñas",
     genre: "Folk aymara / Balada",
-    youtube_id: "YkXn9Hj5Q8c",
-    pending: true,
+    youtube_id: "PTjiasLen8Q",
+    verified: true,
     lines: [
       { a: "Hace más de cien mil años cuando el odio no existía", s: "Hace más de cien mil años cuando el odio no existía" },
       { a: "Un cóndor de piedra sacudió la noche andina",          s: "Un cóndor de piedra sacudió la noche andina" },
@@ -313,10 +313,10 @@ const CANCIONES_A = [
   },
   {
     title: "Jacha Uru",
-    artist: "Savia Andina",
+    artist: "Ruphay",
     genre: "Folk aymara / Música andina boliviana",
-    youtube_id: "Q1UTH5od9YA",
-    pending: true,
+    youtube_id: "w0dOJpDpIuo",
+    verified: true,
     lines: [
       { a: "Uka jacha uru jutaskiway",             s: "Ese gran día está llegando" },
       { a: "Amuya sipxañani jutaskiway",           s: "Recordémoslo, está llegando" },
@@ -337,8 +337,8 @@ const CANCIONES_A = [
     title: "Llorando Se Fue",
     artist: "Los Kjarkas",
     genre: "Saya / Caporales",
-    youtube_id: "k69DmYvUPD8",
-    pending: true,
+    youtube_id: "xKau76yc4HE",
+    verified: true,
     lines: [
       { a: "Llorando se fue y me dejó solo sin su amor",     s: "Llorando se fue y me dejó solo sin su amor" },
       { a: "Sola estará, recordando este amor",              s: "Sola estará, recordando este amor" },
@@ -356,8 +356,8 @@ const CANCIONES_A = [
     title: "Tunupan Samiripa",
     artist: "Luzmila Carpio",
     genre: "Folklore aymara boliviano",
-    youtube_id: "S0tGL3Qjilk",
-    pending: true,
+    youtube_id: "qqEtNIoDtR4",
+    verified: true,
     lines: [
       { a: "Sawt'ir, sawt'ir, sumax imilla",              s: "Tejedora, tejedora, joven buena" },
       { a: "Thaya luman, thaya pampana",                  s: "Con el frío de la loma y de la pampa" },
@@ -379,7 +379,7 @@ const CANCIONES_A = [
     artist: "Luzmila Carpio",
     genre: "Folklore aymara boliviano",
     youtube_id: "i6nefUit7m8",
-    pending: true,
+    verified: true,
     lines: [
       { a: "Bartolina Sisa warmi",         s: "Bartolina Sisa, mujer" },
       { a: "Q'allpa jallp'a jina kanqi",   s: "Eres como la tierra firme y fértil" },
@@ -401,8 +401,8 @@ const CANCIONES_A = [
     title: "Willka Kuty",
     artist: "K'ala Marka (Kalamarka)",
     genre: "Ritual aymara – Solsticio",
-    youtube_id: "wja_vI38wNs",
-    pending: true,
+    youtube_id: "JJ_xB4ba2PE",
+    verified: true,
     lines: [
       { a: "Munata Achachilanaca, Laq'a Achachilanaca",  s: "Adorados abuelos, abuelo y abuela de la tierra" },
       { a: "Q'ollana Qh'ap'acj, Apu Inti Wilka Tata",   s: "Espíritu capaz, Señor Sol en las alturas" },
@@ -425,7 +425,7 @@ const CANCIONES_A = [
     artist: "K'ala Marka (Kalamarka)",
     genre: "Música andina boliviana / Canción social",
     youtube_id: "F7ZMA_rG87w",
-    pending: true,
+    verified: true,
     lines: [
       { a: "Hombres venidos de otros lugares",         s: "Hombres venidos de otros lugares" },
       { a: "Has elegido en mi pueblo vivir",           s: "Has elegido en mi pueblo vivir" },
@@ -446,10 +446,10 @@ const CANCIONES_A = [
   },
   {
     title: "Achanqara Panqarita",
-    artist: "Tradicional aymara",
+    artist: "Taypi K'ala",
     genre: "Canción tradicional",
-    youtube_id: "Kf3eAwVmkbw",
-    pending: true,
+    youtube_id: "RPpwLE1aYK4",
+    verified: true,
     lines: [
       { a: "Achanqara panqarita",           s: "Florecita de achancara" },
       { a: "Suma wayra apiri",              s: "Que el viento hermoso lleva" },
@@ -471,8 +471,8 @@ const CANCIONES_A = [
     title: "Imillitay",
     artist: "Los Kjarkas",
     genre: "Huayño / Pop andino",
-    youtube_id: "MwAIR1wc3JI",
-    pending: true,
+    youtube_id: "WhE2_Yr512M",
+    verified: true,
     lines: [
       { a: "Dijiste que me querías, pero no es verdad",     s: "Dijiste que me querías, pero no es verdad" },
       { a: "Siempre jugaste conmigo y aún te supe amar",     s: "Siempre jugaste conmigo y aún te supe amar" },
@@ -494,8 +494,8 @@ const CANCIONES_A = [
     title: "Genesis Aymara",
     artist: "Los Kjarkas",
     genre: "Folk épico",
-    youtube_id: "",
-    pending: true,
+    youtube_id: "4rwcIUxAATc",
+    verified: true,
     lines: [
       { a: "Y todo fue y comenzó con el aurora del tiempo",      s: "Y todo fue y comenzó con el aurora del tiempo" },
       { a: "Y lo inerte cobró vida y nació, y fue la luz",      s: "Y lo inerte cobró vida y nació, y fue la luz" },

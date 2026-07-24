@@ -10,7 +10,7 @@ function openPhrasebook(key) {
   pbSearchTerm = '';
   document.getElementById('pbInput').value = '';
 
-  var data = key === 'aymara' ? (typeof PHRASEBOOK_EXT !== 'undefined' ? mergePhrasebookData() : PHRASEBOOK_DATA) : PHRASEBOOK_DATA;
+  var data = typeof PHRASEBOOK_EXT !== 'undefined' ? mergePhrasebookData() : PHRASEBOOK_DATA;
   var cats = Object.keys(data);
 
   document.getElementById('pbTitle').textContent = 'Phrasebook 1000+';
