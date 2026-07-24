@@ -67,7 +67,7 @@
 
 .morning-quechua {
   font-family: "Lora", serif;
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 700;
   line-height: 1.65;
   color: var(--q-color);
@@ -77,7 +77,7 @@
 }
 
 .morning-spanish {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--muted);
   line-height: 1.65;
   font-style: italic;
@@ -104,13 +104,13 @@
 
 .morning-word-quechua {
   font-family: "Lora", serif;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
   margin-bottom: 3px;
 }
 
 .morning-word-spanish {
-  font-size: 15px;
+  font-size: 16px;
   color: var(--muted);
   font-style: italic;
 }
@@ -150,12 +150,12 @@
 }
 
 .morning-element-quechua {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
 }
 
 .morning-element-spanish {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--muted);
 }
 
@@ -166,7 +166,7 @@
   border: none;
   background: linear-gradient(135deg, var(--gold), #d4922a);
   color: #fff;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
   cursor: pointer;
   animation: fadeUp 0.8s ease 0.9s both;

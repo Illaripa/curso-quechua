@@ -20,43 +20,43 @@
 @media (max-width: 480px) {
   .morning-content { padding: 40px 16px 22px; }
   .home-header { padding: 28px 16px 18px; }
-  .home-title { font-size: 24px; }
+  .home-title { font-size: 26px; }
   .morning-elements { flex-wrap: nowrap; overflow-x: auto; }
   .morning-element { min-width: 72px; flex: 0 0 72px; }
   .home-body { padding: 14px 12px 80px; }
   .menu-card { padding: 14px 12px; border-radius: 12px; margin-bottom: 9px; }
   .menu-icon { font-size: 26px; }
-  .menu-title { font-size: 16px; }
-  .menu-desc { font-size: 14px; }
+  .menu-title { font-size: 17px; }
+  .menu-desc { font-size: 15px; }
   .morning-btn { font-size: 16px; padding: 17px; }
-  .piece-title { font-size: 20px; }
-  .toggle-btn { font-size: 14px; padding: 10px 4px; }
+  .piece-title { font-size: 22px; }
+  .toggle-btn { font-size: 15px; padding: 10px 4px; }
   .content-body { padding: 14px 12px 80px; }
   .topbar { padding: 10px 12px; }
   .ref-tab { font-size: 14px; padding: 13px 6px; }
   .ref-search input { font-size: 16px; }
   .chat-input { font-size: 16px; }
   .send-btn { width: 44px; height: 44px; font-size: 18px; }
-  .quiz-sentence { font-size: 20px; }
-  .quiz-option { font-size: 16px; padding: 14px; }
-  .card-verb { font-size: 32px; }
-  .card-meaning { font-size: 18px; }
+  .quiz-sentence { font-size: 21px; }
+  .quiz-option { font-size: 17px; padding: 14px; }
+  .card-verb { font-size: 36px; }
+  .card-meaning { font-size: 20px; }
   .conj-grid { grid-template-columns: 1fr 1fr; gap: 4px; }
   .conj-cell { padding: 6px 7px; }
-  .conj-cell-word { font-size: 14px; }
+  .conj-cell-word { font-size: 15px; }
   .card-back { padding: 12px 10px; }
-  .card-back-verb { font-size: 20px; }
-  .card-back-meaning { font-size: 16px; }
+  .card-back-verb { font-size: 22px; }
+  .card-back-meaning { font-size: 18px; }
   .bubble { font-size: 15px; padding: 10px 14px; }
   .chip { font-size: 14px; padding: 7px 13px; }
 }
 
 /* Small phones */
 @media (max-width: 360px) {
-  .home-title { font-size: 21px; }
-  .menu-title { font-size: 15px; }
-  .card-verb { font-size: 28px; }
-  .card-meaning { font-size: 16px; }
+  .home-title { font-size: 23px; }
+  .menu-title { font-size: 16px; }
+  .card-verb { font-size: 30px; }
+  .card-meaning { font-size: 18px; }
   .conj-grid { grid-template-columns: 1fr 1fr; }
 }
 
@@ -70,11 +70,11 @@
 
 /* Very small phones (320px) */
 @media (max-width: 320px) {
-  .home-title { font-size: 19px; }
-  .menu-title { font-size: 14px; }
-  .menu-desc { font-size: 13px; }
-  .card-verb { font-size: 26px; }
-  .topbar-title { font-size: 13px; }
+  .home-title { font-size: 21px; }
+  .menu-title { font-size: 15px; }
+  .menu-desc { font-size: 14px; }
+  .card-verb { font-size: 28px; }
+  .topbar-title { font-size: 14px; }
 }
 
 /* Prevent iOS zoom on input focus */

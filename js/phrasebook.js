@@ -131,8 +131,8 @@ function renderPhrasebook() {
 
 function buildPhraseItemHTML(p) {
   return '<div class="ref-item" style="flex-direction:column;align-items:flex-start;gap:4px">' +
-    '<div class="ref-item-quechua">' + p.q + '</div>' +
-    '<div class="ref-item-spanish">' + p.s + '</div>' +
-    (p.a ? '<div style="font-size:12px;color:var(--gold);opacity:0.7">' + p.a + '</div>' : '') +
+    '<div class="ref-item-quechua" style="font-size:19px">' + p.q + '</div>' +
+    '<div class="ref-item-spanish" style="font-size:17px">' + p.s + '</div>' +
+    (p.a ? '<div style="font-size:14px;color:var(--gold);opacity:0.7">' + p.a + '</div>' : '') +
     '</div>';
 }

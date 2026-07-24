@@ -77,14 +77,14 @@
 
 .ref-item-quechua {
   font-family: "Lora", serif;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 700;
   color: var(--txt);
   margin-bottom: 3px;
 }
 
 .ref-item-spanish {
-  font-size: 15px;
+  font-size: 16px;
   color: var(--muted);
 }
 
@@ -136,13 +136,13 @@
 
 .detail-word {
   font-family: "Lora", serif;
-  font-size: 28px;
+  font-size: 30px;
   font-weight: 700;
   margin-bottom: 4px;
 }
 
 .detail-meaning {
-  font-size: 15px;
+  font-size: 16px;
   color: var(--muted);
   font-style: italic;
   margin-bottom: 6px;
@@ -173,12 +173,12 @@
 .conj-table td {
   padding: 9px 11px;
   border-bottom: 1px solid var(--bdr);
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .conj-table td:first-child {
   color: var(--muted);
-  font-size: 14px;
+  font-size: 15px;
   width: 45%;
 }
 
@@ -197,13 +197,13 @@
 
 .example-quechua {
   font-family: "Lora", serif;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   margin-bottom: 3px;
 }
 
 .example-spanish {
-  font-size: 15px;
+  font-size: 16px;
   color: var(--muted);
   font-style: italic;
 }
@@ -212,7 +212,7 @@
   background: var(--card2);
   border-radius: var(--radius-sm);
   padding: 11px 13px;
-  font-size: 15px;
+  font-size: 16px;
   color: var(--muted);
   line-height: 1.6;
 }

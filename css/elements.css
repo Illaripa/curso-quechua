@@ -5,8 +5,8 @@
 .prayer-symbol { font-size: 64px; margin-bottom: 20px; line-height: 1; }
 .prayer-name { font-family: "Lora", serif; font-size: 28px; font-weight: 700; color: var(--gold); margin-bottom: 4px; }
 .prayer-meaning { font-size: 14px; color: var(--muted); margin-bottom: 28px; }
-.prayer-text-q { font-family: "Lora", serif; font-size: 19px; font-weight: 700; line-height: 1.7; color: var(--q-color); margin-bottom: 14px; padding: 0 8px; }
-.prayer-text-s { font-size: 17px; color: var(--muted); font-style: italic; line-height: 1.7; margin-bottom: 32px; padding: 0 8px; }
+.prayer-text-q { font-family: "Lora", serif; font-size: 22px; font-weight: 700; line-height: 1.7; color: var(--q-color); margin-bottom: 14px; padding: 0 8px; }
+.prayer-text-s { font-size: 19px; color: var(--muted); font-style: italic; line-height: 1.7; margin-bottom: 32px; padding: 0 8px; }
 .prayer-note { font-size: 14px; color: var(--muted); opacity: 0.6; }
 .prayer-next-btn {
   margin-top: 20px; padding: 12px 32px; border-radius: var(--radius-md); border: 1px solid var(--bdr);
