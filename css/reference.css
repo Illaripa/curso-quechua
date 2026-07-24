@@ -217,3 +217,29 @@
   line-height: 1.6;
 }
 
+/* Phrasebook level bar */
+.pb-level-bar {
+  display: flex;
+  border-bottom: 1px solid var(--bdr);
+  background: var(--bg);
+}
+
+.pb-level-btn {
+  flex: 1;
+  padding: 10px 8px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  background: none;
+  color: var(--muted);
+  border-bottom: 2px solid transparent;
+  min-height: var(--touch-min);
+}
+
+.pb-level-btn.active {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+
