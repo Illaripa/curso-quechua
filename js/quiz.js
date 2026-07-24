@@ -3,17 +3,31 @@ var quizIndex = 0;
 var quizScore = 0;
 var quizAnswered = false;
 var quizLang = 'q';
+var quizWrongThisRound = {};
 
 function startQuiz(lang) {
   quizLang = lang;
   var qTitles = {q:'\u25C9 Quiz Quechua', a:'\u25C9 Quiz Aymara', en:'\u25C9 Quiz English', fr:'\u25C9 Quiz Fran\u00E7ais'};
   document.getElementById('quizTitle').textContent = qTitles[lang] || '\u25C9 Quiz';
   var source = lang === 'q' ? QUIZ_Q.concat(QUIZ_Q_EXT || []) : lang === 'a' ? QUIZ_A.concat(QUIZ_A_EXT || []) : lang === 'en' ? QUIZ_EN.slice() : QUIZ_FR.slice();
-  shuffleArray(source);
-  quizData = source;
+
+  // Adaptive: load wrong answers and duplicate them for more frequency
+  var wrongKey = 'yachay_quiz_wrong_' + lang;
+  var wrongMap = JSON.parse(localStorage.getItem(wrongKey) || '{}');
+  var augmented = source.slice();
+  source.forEach(function(q) {
+    if (wrongMap[q.q]) {
+      var weight = Math.min(wrongMap[q.q], 3);
+      for (var w = 0; w < weight; w++) augmented.push(Object.assign({}, q));
+    }
+  });
+  shuffleArray(augmented);
+
+  quizData = augmented;
   quizIndex = 0;
   quizScore = 0;
   quizAnswered = false;
+  quizWrongThisRound = {};
   document.getElementById('quizScore').textContent = '0';
   renderQuizQuestion();
   showScreen('quiz');
@@ -64,6 +78,17 @@ function answerQuiz(selected) {
   if (selected === q.a) {
     quizScore++;
     document.getElementById('quizScore').textContent = quizScore;
+    // Remove from wrong list if previously wrong
+    var wrongKeyR = 'yachay_quiz_wrong_' + quizLang;
+    var wrongR = JSON.parse(localStorage.getItem(wrongKeyR) || '{}');
+    if (wrongR[q.q]) { delete wrongR[q.q]; localStorage.setItem(wrongKeyR, JSON.stringify(wrongR)); }
+  } else {
+    // Track wrong answer
+    var wrongKey = 'yachay_quiz_wrong_' + quizLang;
+    var wrong = JSON.parse(localStorage.getItem(wrongKey) || '{}');
+    wrong[q.q] = (wrong[q.q] || 0) + 1;
+    localStorage.setItem(wrongKey, JSON.stringify(wrong));
+    quizWrongThisRound[q.q] = true;
   }
 
   document.getElementById('quizExplanation').innerHTML =
@@ -87,6 +112,11 @@ function showQuizResult() {
   prev.total++;
   if (pct > prev.best) prev.best = pct;
   localStorage.setItem(key, JSON.stringify(prev));
+
+  // If great score, clear wrong answers for this language
+  if (pct >= 80) {
+    localStorage.removeItem('yachay_quiz_wrong_' + quizLang);
+  }
 
   document.getElementById('resultEmoji').textContent = symbol;
   document.getElementById('resultMessage').textContent = message;

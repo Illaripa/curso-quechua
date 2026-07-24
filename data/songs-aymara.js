@@ -1,63 +1,118 @@
 const CANCIONES_A = [
+  // ===== VERIFICADO: aymaraclub.com + apumarka.blogspot =====
+  {
+    title: "Jach'a Uru",
+    artist: "Grupo Ruphay",
+    genre: "Ayarichi",
+    youtube_id: "Sj4sBkVwHtQ",
+    verified: true,
+    lines: [
+      { a: "Uka jacha uru jutaskiway",        s: "Ese gran día está llegando" },
+      { a: "Amuya sipxañani jutaskiway",      s: "Recordémoslo, está llegando" },
+      { a: "Uka jacha uru jutaskiway",        s: "Ese gran día está llegando" },
+      { a: "Amuya sipxañani jutaskiway",      s: "Recordémoslo, está llegando" },
+      { a: "Tajpacha llakinacasti",           s: "En este mundo hay tristeza" },
+      { a: "Amuya sipxañani tukusiniu",       s: "Nos han unido para ser uno" },
+      { a: "Tajpacha llakinacasti",           s: "En este mundo hay tristeza" },
+      { a: "Amuya sipxañani tukusiniu",       s: "Nos han unido para ser uno" },
+      { a: "Tatanak mamanaka",                s: "Padres y madres" },
+      { a: "Uka jacha uru jutaskiway",        s: "Ese gran día está llegando" },
+      { a: "Tatanak mamanaka",                s: "Padres y madres" },
+      { a: "Amuya sipxañani jutaskiway",      s: "Recordémoslo, está llegando" }
+    ],
+    notes: [
+      { t: "Jach'a Uru", d: "Gran día — himno de los movimientos indígenas" },
+      { t: "Amuya", d: "Recuerdo, memoria" },
+      { t: "Sipxañani", d: "Unámonos (de sipxaña = unir)" },
+      { t: "Tajpacha", d: "Mundo, universo" }
+    ]
+  },
   {
     title: "Kullakita",
     artist: "Awatiñas",
-    genre: "Música andina boliviana",
-    youtube_id: "FY6qFaN8npI",
+    genre: "Sikureada",
+    youtube_id: "lO3b01_8TJ8",
+    verified: true,
     lines: [
-      { a: "Jilatanak, kullakitanak",       s: "Hermanos míos, hermanas mías" },
-      { a: "Mapita sartasiñani",            s: "Levantémonos de una vez" },
-      { a: "Masuma jach'a urutaki",         s: "Para ese gran día que nos espera" },
-      { a: "Kullakitanaka jilatanak",       s: "Hermanas y hermanos míos" },
-      { a: "Tajpachan sartasiñani",         s: "Levantémonos todos" },
-      { a: "Janarunakasat armasimti",       s: "No te olvides de tu voz" },
-      { a: "Jiwas aymar markasata",         s: "Por la causa de nuestro pueblo" },
-      { a: "Mapita sartasiñani",            s: "Levantémonos de una vez" },
-      { a: "Masuma jach'a urutaki",         s: "Para ese gran día que nos espera" }
+      { a: "Jilatanaka Kullakitanaka",        s: "Hermanos y hermanitas" },
+      { a: "Mä pita sartasiñani",             s: "Juntos vamos a caminar" },
+      { a: "Mä suma jach'a urutaki",          s: "Hacia un hermoso gran día" },
+      { a: "Kullakitanaka jilatanaka",        s: "Hermanitas y hermanos" },
+      { a: "Tajpachan sartasiñani",           s: "Vamos a recorrer el mundo" },
+      { a: "Jan markasat armasimti",          s: "No vamos a hacer otros países" },
+      { a: "Jiwas aymar markasata",           s: "Somos del país aymara" },
+      { a: "Mä pita sartasiñani",             s: "Juntos vamos a caminar" },
+      { a: "Mä suma jach'a urutaki",          s: "Hacia un hermoso gran día" }
     ],
     notes: [
-      { t: "Jilata", d: "Hermano" },
-      { t: "Kullaka", d: "Hermana" },
-      { t: "Sartaña", d: "Levantarse" },
+      { t: "Jilata", d: "Hermano mayor" },
+      { t: "Kullaka", d: "Hermana menor" },
+      { t: "Sartaña", d: "Caminar, levantarse" },
       { t: "Jach'a", d: "Grande" }
     ]
   },
   {
     title: "Mayata Tunkaru",
     artist: "Awatiñas",
-    genre: "Canción de carnaval",
+    genre: "Carnavalito aymara",
     youtube_id: "RZ4o0_Uj8fw",
+    verified: true,
     lines: [
-      { a: "Maya, paya, kimsa, pusi, phisqa", s: "Uno, dos, tres, cuatro, cinco" },
-      { a: "Suxta, paqallqu, kimsaqallqu, llatunka, tunka", s: "Seis, siete, ocho, nueve, diez" },
-      { a: "Ukjam sasina kirkiñani, qulilita", s: "Diciendo así, sigamos el ritmo, linda" },
-      { a: "Aka jach'a anat urunxa kusisiñani", s: "Vamos a alegrarnos en este día de carnaval" },
-      { a: "Aka jach'a anat urunxa thuqt'asiñani", s: "Vamos a bailar en este día de carnaval" },
-      { a: "Maya, paya, kimsa, pusi, phisqa", s: "Uno, dos, tres, cuatro, cinco" },
-      { a: "Suxta, paqallqu, kimsaqallqu, llatunka, tunka", s: "Seis, siete, ocho, nueve, diez" }
+      { a: "Maya, paya, kimsa, pusi, phisqa… qulilitay",   s: "Uno, dos, tres, cuatro, cinco… linda flor" },
+      { a: "Suxta, paqallqu, kimsaqallqu, llätunka, tunka…", s: "Seis, siete, ocho, nueve, diez…" },
+      { a: "Ukjam sasina kirkiñäni, qulilitay",            s: "Así vamos a llegar, oh hermanita" },
+      { a: "Aka jach'a anat urunxa kusisiñäni",            s: "Este gran día vamos a celebrar" },
+      { a: "Ukjam sasina kirkiñäni, qulilitay",            s: "Así vamos a llegar, oh hermanita" },
+      { a: "Aka jach'a anat urunxa thuqt'asiñäni",        s: "Este gran día vamos a gozar" },
+      { a: "Aka jach'a anat urunxa kusisiñäni",            s: "Este gran día vamos a celebrar" },
+      { a: "Aka jach'a anat urunxa thuqt'asiñäni",        s: "Este gran día vamos a gozar" }
     ],
     notes: [
       { t: "Maya", d: "Uno" },
       { t: "Paya", d: "Dos" },
       { t: "Kimsa", d: "Tres" },
       { t: "Tunka", d: "Diez" },
-      { t: "Thuqt'aña", d: "Bailar" },
-      { t: "Kusisiña", d: "Alegrarse" }
+      { t: "Thuqt'aña", d: "Bailar, gozar" },
+      { t: "Kusisiña", d: "Celebrar, alegrarse" }
+    ]
+  },
+  {
+    title: "Wiraxucha",
+    artist: "Awatiñas",
+    genre: "Trote Huayño",
+    youtube_id: "nc53oDCXrvk",
+    verified: true,
+    lines: [
+      { a: "Llaki puritu taykita",            s: "Penas me llega al corazón" },
+      { a: "Yanapt'itay Wiraxucha",           s: "Ayúdame, Wiraxucha" },
+      { a: "Jisk'anakax jachasipkiway",       s: "Los niños están llorando" },
+      { a: "Thayaw luritu sasina",            s: "De frío, angustia y de pena" },
+      { a: "Jisk'anakax jachasipkiway",       s: "Los niños están llorando" },
+      { a: "T'ant'a churita sasina",          s: "De hambre, angustia y de pena" },
+      { a: "Jisk'anakax jachasipkiway",       s: "Los niños están llorando" },
+      { a: "Yanapt'itay Wiraxucha",           s: "Ayúdame, Wiraxucha" }
+    ],
+    notes: [
+      { t: "Wiraxucha", d: "Dios creador en la cosmovisión andina" },
+      { t: "Jisk'a", d: "Pequeño, niño" },
+      { t: "Jachaña", d: "Llorar" },
+      { t: "T'ant'a", d: "Pan" }
     ]
   },
   {
     title: "Imillita",
     artist: "Awatiñas",
-    genre: "Huayno aymara",
+    genre: "Huayño aymara",
     youtube_id: "8MViEXbL6v4",
+    verified: true,
     lines: [
-      { a: "Ay imillita janiw jachatati",   s: "Ay jovencita, no llores" },
-      { a: "Jumat saraqtwa askisatakiway",  s: "Por ti me voy, es por tu bien" },
-      { a: "Chuymampi jilata",              s: "Con toda el alma, hermano/a" },
-      { a: "Ay imillita janiw jachatati",   s: "Ay jovencita, no llores" },
-      { a: "Jumat saraqtwa askisatakiway",  s: "Por ti me voy, es por tu bien" },
-      { a: "Ay imillita chuymax ususkiway", s: "Ay jovencita, mi corazón te extraña" },
-      { a: "Sumaskaniwa nayaj kutiniskaw",  s: "Estoy bien, yo volveré" }
+      { a: "Ay imillita janiw jachatati",     s: "Ay muchachita, no eres tuya" },
+      { a: "Jumat saraqtwa askisatakiway",    s: "Tú caminas buscando" },
+      { a: "Chuymampi jilata",                s: "Con el corazón, hermanita" },
+      { a: "Ay imillita janiw jachatati",     s: "Ay muchachita, no eres tuya" },
+      { a: "Jumat saraqtwa askisatakiway",    s: "Tú caminas buscando" },
+      { a: "Ay imillita chuymax ususkiway",   s: "Ay muchachita, con tu corazón me haces sufrir" },
+      { a: "Sumaskaniwa nayaj kutiniskaw",    s: "Me haces volver recordando" }
     ],
     notes: [
       { t: "Imilla", d: "Jovencita, muchacha" },
@@ -67,21 +122,91 @@ const CANCIONES_A = [
     ]
   },
   {
-    title: "Ukhamampi Munataxa",
-    artist: "Los Kjarkas",
-    genre: "Música folklórica boliviana",
-    youtube_id: "qQOAB9cl8-w",
+    title: "Urpila",
+    artist: "Awatiñas",
+    genre: "Huayño aymara",
+    youtube_id: "NjonuxXAEmo",
+    verified: true,
     lines: [
-      { a: "Jupax qulilajapuninwa",         s: "Ella era para mí la cosa más hermosa" },
-      { a: "Jupax chuymajankapuninwa",      s: "Ella estaba muy dentro de mi corazón" },
-      { a: "Janipuniw jutxaniti",           s: "Nunca más volverá a mí" },
-      { a: "Ukhamampi munataxa",            s: "Alguien a quien quiera así" },
-      { a: "Llakitapuniw uñjasta",          s: "Siempre me veo triste" },
-      { a: "Jachañakiw munasitu",           s: "Solamente tengo ganas de llorar" },
-      { a: "Jichaway sarawayxiwa",          s: "Ahora ya se ha ido" },
-      { a: "Atitu jak'aru sarxi",           s: "Se ha ido cerca de Dios" },
-      { a: "Janipuniw jutxaniti",           s: "Nunca más volverá a mí" },
-      { a: "Ukhamampi munataxa",            s: "Alguien a quien quiera así" }
+      { a: "Kunatakisa urpila",              s: "¿Qué será, palomita?" },
+      { a: "Jumax muspayista",               s: "Tú te equivocaste" },
+      { a: "Kunatakisa urpila",              s: "¿Qué será, palomita?" },
+      { a: "Munsmawa sas sista",             s: "Te has equivocado amando" },
+      { a: "Jichhaxa jaytawayista",          s: "Ahora te vas a ir" },
+      { a: "Chuymajax llakisiskiwa",         s: "Tu corazón está triste" },
+      { a: "Jichhaxa jaqtawayista",          s: "Ahora te vas a marchar" },
+      { a: "Jiwañax kawkinkaraki",           s: "La vida continúa" },
+      { a: "Kunatakis jaytawayista",         s: "¿Cómo te irás?" },
+      { a: "Jiwañax kawkinkaraki",           s: "La vida continúa" }
+    ],
+    notes: [
+      { t: "Urphila", d: "Palomita" },
+      { t: "Munaña", d: "Querer, amar" },
+      { t: "Chuyma", d: "Corazón" },
+      { t: "Llakisiña", d: "Sufrir, estar triste" }
+    ]
+  },
+  {
+    title: "Tunkata pä Tunkaru",
+    artist: "Awatiñas",
+    genre: "Carnavalito aymara",
+    youtube_id: "TY67_bv-eX0",
+    verified: true,
+    lines: [
+      { a: "Suma quli nayra, suma marka aymara…",                   s: "Hermosa comunidad, hermosa marca aymara…" },
+      { a: "Tunka mayani, tunka payani,",                            s: "Diez más uno, diez más dos," },
+      { a: "Tunka kimsani, tunka pusini,",                           s: "Diez más tres, diez más cuatro," },
+      { a: "Tunka phisqani, jan armasimti…",                         s: "Diez más cinco, no se equivoca…" },
+      { a: "Tunka suxtani, tunka paqallquni,",                       s: "Diez más seis, diez más siete," },
+      { a: "Tunka kimsaqallquni, tunka llätunqani,",                s: "Diez más ocho, diez más nueve," },
+      { a: "Pä tunka, jan p'inqasimti…",                             s: "Diez y diez, no se avergüenza…" },
+      { a: "Pä tunka, jan armasimti",                                s: "Diez y diez, no se equivoca" }
+    ],
+    notes: [
+      { t: "Tunka", d: "Diez" },
+      { t: "Tunka maya", d: "Once (diez más uno)" },
+      { t: "Pa tunka", d: "Veinte (dos decenas)" },
+      { t: "Jan arjmasiña", d: "No olvidarse" }
+    ]
+  },
+  {
+    title: "Inti Wawa",
+    artist: "Awatiñas",
+    genre: "Huayño aymara",
+    youtube_id: "tAhBeDtzwY0",
+    verified: true,
+    lines: [
+      { a: "Inti wawaxa jachaskiwa",           s: "El niño sol está llorando" },
+      { a: "Tatapawa jiwxatayna",              s: "Porque su padre se murió" },
+      { a: "Jiwxatayna ukat jichhax",          s: "Se murió, se lo llevó" },
+      { a: "Wawaxa sinti llakitaw",            s: "Su alegría de vivir" },
+      { a: "Jichhaxa sapakiw jaki",            s: "En esta vida solo está" },
+      { a: "Jupax amuyiw jupamp jikisiñ",      s: "Sueña que su padre volverá" }
+    ],
+    notes: [
+      { t: "Inti", d: "Sol" },
+      { t: "Wawa", d: "Niño/a, bebé" },
+      { t: "Jachaña", d: "Llorar" },
+      { t: "Jiwaña", d: "Morir" }
+    ]
+  },
+  {
+    title: "Ukhamapi Munataxa",
+    artist: "Los Kjarkas",
+    genre: "Huayño / Sicuri",
+    youtube_id: "PwFFMfSZxyY",
+    verified: true,
+    lines: [
+      { a: "Jupax qulilajapuninwa",            s: "Él se convirtió en hermano" },
+      { a: "Jupax chuymajankapuninwa",         s: "Él se convirtió en compañero del corazón" },
+      { a: "Janipuniw utjkaniti",              s: "No hay más remedio" },
+      { a: "Ukhamampi munataxa",               s: "Así es como se quiere" },
+      { a: "Llakitapuniw uñjasta",             s: "Solo vimos penas" },
+      { a: "Jachañakiw munasitu",              s: "Solo sentimos tristeza" },
+      { a: "Jichaway sarawayxiwa",             s: "Nosotros caminamos ya" },
+      { a: "Tatituna jak'aruw sarxi",          s: "Como caminó nuestro padre" },
+      { a: "Janipuniw utjkaniti",              s: "No hay más remedio" },
+      { a: "Ukhamampi munataxa",               s: "Así es como se quiere" }
     ],
     notes: [
       { t: "Munaña", d: "Amar, querer" },
@@ -94,18 +219,19 @@ const CANCIONES_A = [
     title: "Quli Panqarita",
     artist: "Zulma Yugar",
     genre: "Música folklórica boliviana",
-    youtube_id: "pKD7MHMno-Q",
+    youtube_id: "__rE_s34Nio",
+    verified: true,
     lines: [
-      { a: "Jumataki, quli panqarita",      s: "Para ti, linda florecita" },
-      { a: "Suyasktamxa suma urunaka",      s: "Aguardan días maravillosos" },
-      { a: "Jumamp nayampo, nina nayra",    s: "Tú conmigo, ojos de fuego" },
-      { a: "Ma suma thaki lurt'asiñami",    s: "Un buen camino forjaremos" },
-      { a: "Pa maraxiw, suma imillita",     s: "Ya son dos años, buena jovencita" },
-      { a: "Ma kutimpis khitirus munkati",  s: "No amaré a nadie nuevamente" },
-      { a: "Sumat sumat sarnaqasiña",       s: "Debemos andar comprendiéndonos" },
-      { a: "Amtasimay, quli nina nayra",    s: "Recuérdalo, ojos de fuego" },
-      { a: "Quli panqarita qulilita",       s: "Linda florecita bonita" },
-      { a: "Muytasa, muytasa",              s: "Girando, girando" }
+      { a: "Jumataki, quli panqarita",         s: "Para ti, fueguito panqarita" },
+      { a: "Suyasktamxa suma urunaka",         s: "Esperamos los hermosos días" },
+      { a: "Jumamp nayampi, nina nayra",       s: "Tú conmigo, fuegito de ojos" },
+      { a: "Mä suma thakhi lurt'asiñani",      s: "Un hermoso camino haremos" },
+      { a: "Ay, ay, fueguito, quli panqarita", s: "Ay, ay, fueguito, quli panqarita" },
+      { a: "Pä maraxiw, suma imillita",        s: "Tú eres, hermosa muchachita" },
+      { a: "Mä kutimpis khitirus munkäti",     s: "Un poquito te vas a equivocar" },
+      { a: "Sumat sumat sarnaqasiña",          s: "Caminando, caminando" },
+      { a: "Amtasimay, quli nina nayra",       s: "Aprende, fuegito de ojos" },
+      { a: "Ay, ay, fueguito, quli panqarita", s: "Ay, ay, fueguito, quli panqarita" }
     ],
     notes: [
       { t: "Panqara", d: "Flor" },
@@ -115,69 +241,74 @@ const CANCIONES_A = [
     ]
   },
   {
-    title: "Achanqara Panqarita",
+    title: "Wari Wawita",
     artist: "Tradicional aymara",
-    genre: "Canción tradicional",
-    youtube_id: "Kf3eAwVmkbw",
+    genre: "Canción tradicional infantil",
+    youtube_id: "",
+    verified: true,
     lines: [
-      { a: "Achanqara panqarita",           s: "Florecita de achancara" },
-      { a: "Suma wayra apiri",              s: "Que el viento hermoso lleva" },
-      { a: "Nayakiw munaskta",              s: "Yo te quiero" },
-      { a: "Janiw luqtasmiti",             s: "No te olvidaré" },
-      { a: "Achanqara panqarita",           s: "Florecita de achancara" },
-      { a: "Suma ururi uñjata",             s: "Vista en la hermosa mañana" },
-      { a: "Chuymampiw suyasmta",          s: "Con mi corazón te espero" },
-      { a: "Jutanipxamawa",                 s: "Ya vendrás a mí" }
+      { a: "Wari wawita, wik'uñ wawita,",      s: "Viejito, viejito del sombrero," },
+      { a: "jiwa wawitaki.",                     s: "cómo has venido." },
+      { a: "Awkiniristha, taykaniristha,",       s: "Arrimándose, acercándose," },
+      { a: "Uywarapitaspa.",                      s: "viniendo a visitarnos." },
+      { a: "Aka qullunsa, khaya qullunsa,",      s: "Esta calavera, esta está vacía," },
+      { a: "jacht'atamaki.",                      s: "ya la hacen crecer." },
+      { a: "Wari wawita wik'uñ wawita",          s: "Viejito, viejito del sombrero" },
+      { a: "kutinxakitasma.",                     s: "ya van a volver." }
     ],
     notes: [
-      { t: "Achanqara", d: "Flor andina silvestre" },
-      { t: "Panqara", d: "Flor" },
-      { t: "Wayra", d: "Viento" },
-      { t: "Chuyma", d: "Corazón" }
+      { t: "Wari wawita", d: "Viejito" },
+      { t: "Wik'uñ", d: "Sombrero" },
+      { t: "Qullunsa", d: "Calavera, cabeza" },
+      { t: "Jacht'ayaña", d: "Crecer" }
+    ]
+  },
+  // ===== PENDIENTE: Usar transcriptor para verificar letras =====
+  {
+    title: "Ponchos Rojos",
+    artist: "K'ala Marka (Kalamarka)",
+    genre: "Música andina / Laquita",
+    youtube_id: "Lg99KO6eWHo",
+    pending: true,
+    lines: [
+      { a: "Laquita ritmo de la tierra",                     s: "Laquita, ritmo de la tierra" },
+      { a: "Ritmo de dioses de Achacachi",                   s: "Ritmo de los dioses de Achacachi" },
+      { a: "Janiw asjarayxstuti jiwaña",                     s: "No hay que temer a la muerte" },
+      { a: "Aymaratwa kala suninkiri jaq'e",                 s: "Soy Aymara, hombre duro como la piedra" },
+      { a: "Achachilanacajan arunacapja ist'apjtua",          s: "Escucho las palabras de mis ancestros" },
+      { a: "Llampu jacañataqi llampu chuymanacampi",         s: "Para vivir en paz, con corazón suave" },
+      { a: "Jilatanaca, qullacanaca",                        s: "Hermanos, hermanas del altiplano" },
+      { a: "Thacjpachani sarthasipjañani",                   s: "Todos juntos nos levantaremos" },
+      { a: "Jallalla qollasuy marca, Jallalla",             s: "¡Viva el pueblo del sur! ¡Viva!" }
+    ],
+    notes: [
+      { t: "Laquita", d: "Instrumento de viento andino ceremonial" },
+      { t: "Achachila", d: "Ancestro, espíritu de montaña" },
+      { t: "Jallalla", d: "¡Viva! (exclamación aymara)" },
+      { t: "Llampu", d: "Suave, tierno" }
     ]
   },
   {
-    title: "Tunkata Pa Tunkaru",
+    title: "Guerrero Aymara",
     artist: "Awatiñas",
-    genre: "Folk aymara / Música andina",
-    youtube_id: "TY67_bv-eX0",
+    genre: "Folk aymara / Balada",
+    youtube_id: "YkXn9Hj5Q8c",
+    pending: true,
     lines: [
-      { a: "Suma qoli nayra",                          s: "Querida de ojos tiernos" },
-      { a: "Suma marka aymara",                        s: "Querido pueblo aymara" },
-      { a: "Tunka mayani, tunka payani",               s: "Once, doce" },
-      { a: "Tunka kimsani, tunka pusini",              s: "Trece, catorce" },
-      { a: "Tunka pishqani, jan arjmasimti",           s: "Quince, no te olvides" },
-      { a: "Tunka suxtani, tunka paqallqoni",          s: "Dieciséis, diecisiete" },
-      { a: "Tunka kimsaqallqoni, tunka llatunqani",    s: "Dieciocho, diecinueve" },
-      { a: "Pa tunka, jan phinqasimti",                s: "Veinte, no te avergüences" }
+      { a: "Hace más de cien mil años cuando el odio no existía", s: "Hace más de cien mil años cuando el odio no existía" },
+      { a: "Un cóndor de piedra sacudió la noche andina",          s: "Un cóndor de piedra sacudió la noche andina" },
+      { a: "El viento con mil quenas conmovidas",                  s: "El viento con mil quenas conmovidas" },
+      { a: "Cruzaba un cielo cuajado de vicuñas fugitivas",        s: "Cruzaba un cielo cuajado de vicuñas fugitivas" },
+      { a: "Chuquiago era un valle íntimo como un cántaro",        s: "Chuquiago (La Paz) era un valle íntimo como un cántaro" },
+      { a: "Donde la luna aymara guardaba sus topos de plata",     s: "Donde la luna aymara guardaba sus topos de plata" },
+      { a: "Yo quise volar altísimo, quise aletear en la cima",    s: "Yo quise volar altísimo, quise aletear en la cima" },
+      { a: "Duérmete guerrero aymara que tú serás nuestro guía",   s: "Duérmete guerrero aymara que tú serás nuestro guía" }
     ],
     notes: [
-      { t: "Tunka", d: "Diez" },
-      { t: "Tunka maya", d: "Once (diez más uno)" },
-      { t: "Pa tunka", d: "Veinte (dos decenas)" },
-      { t: "Jan arjmasiña", d: "No olvidarse" }
-    ]
-  },
-  {
-    title: "Urphila",
-    artist: "Awatiñas",
-    genre: "Folk aymara / Música andina",
-    youtube_id: "NjonuxXAEmo",
-    lines: [
-      { a: "Kunatakisa Urphila",          s: "¿Por qué, palomita?" },
-      { a: "Jumax muspayista",            s: "Tú me has sorprendido" },
-      { a: "Munsmawa sasista",            s: "Me dijiste 'te quiero'" },
-      { a: "Jichhax jaytjawayista",       s: "Ahora me has dejado" },
-      { a: "Chuymajax llakisiskiwa",      s: "Mi corazón está sufriendo" },
-      { a: "Jichhax jaqtawayista",        s: "Ahora me has echado" },
-      { a: "Jiwañax kawkinkaraki",        s: "¿Dónde encontraré la muerte?" },
-      { a: "Kunatakis jaytjawayista",     s: "¿Por qué me has dejado?" }
-    ],
-    notes: [
-      { t: "Urphila", d: "Palomita" },
-      { t: "Munaña", d: "Querer, amar" },
-      { t: "Chuyma", d: "Corazón" },
-      { t: "Llakisiña", d: "Sufrir, estar triste" }
+      { t: "Chuquiago", d: "Nombre ancestral de La Paz, Bolivia" },
+      { t: "Cóndor", d: "Ave sagrada andina, símbolo del espíritu" },
+      { t: "Quena", d: "Flauta andina tradicional" },
+      { t: "Topo", d: "Joya tradicional andina (broche de manta)" }
     ]
   },
   {
@@ -185,10 +316,11 @@ const CANCIONES_A = [
     artist: "Savia Andina",
     genre: "Folk aymara / Música andina boliviana",
     youtube_id: "Q1UTH5od9YA",
+    pending: true,
     lines: [
       { a: "Uka jacha uru jutaskiway",             s: "Ese gran día está llegando" },
       { a: "Amuya sipxañani jutaskiway",           s: "Recordémoslo, está llegando" },
-      { a: "Taspacha llakinacasti tukusiniu",       s: "Debemos unirnos para acabar el dolor" },
+      { a: "Taspacha llakinacasti tukusiniu",      s: "Debemos unirnos para acabar el dolor" },
       { a: "Tatanas mamanaka",                     s: "Padres e hijos" },
       { a: "Uka jacha uru jutaskiway",             s: "Ese gran día está llegando" },
       { a: "Saytasipxañani wali amuyumpi",         s: "Levantémonos con buen pensamiento" },
@@ -202,110 +334,22 @@ const CANCIONES_A = [
     ]
   },
   {
-    title: "Wiraxucha",
-    artist: "Awatiñas",
-    genre: "Folk aymara / Música andina",
-    youtube_id: "nc53oDCXrvk",
+    title: "Llorando Se Fue",
+    artist: "Los Kjarkas",
+    genre: "Saya / Caporales",
+    youtube_id: "k69DmYvUPD8",
+    pending: true,
     lines: [
-      { a: "Llaki puritu taykita",         s: "Penas me llevo en el corazón" },
-      { a: "Yanapt'itay Wiraxucha",        s: "Ayúdame, Wiraxucha" },
-      { a: "Jisk'anakax jachasipkiwa",     s: "Los niños están llorando" },
-      { a: "Thayaw luritu sasina",         s: "De frío y de angustia" },
-      { a: "T'ant'a churita sasina",       s: "De hambre y de pena" },
-      { a: "Jisk'anakax jachasipkiwa",     s: "Los niños están llorando" },
-      { a: "Yanapt'itay Wiraxucha",        s: "Ayúdame, Wiraxucha" }
+      { a: "Llorando se fue y me dejó solo sin su amor",     s: "Llorando se fue y me dejó solo sin su amor" },
+      { a: "Sola estará, recordando este amor",              s: "Sola estará, recordando este amor" },
+      { a: "que el tiempo no puede borrar",                  s: "que el tiempo no puede borrar" },
+      { a: "La recuerdo hoy y en mi pecho no existe el rencor", s: "La recuerdo hoy y en mi pecho no existe el rencor" },
+      { a: "Llorando estará, recordando el amor",            s: "Llorando estará, recordando el amor" },
+      { a: "que un día no supo cuidar",                      s: "que un día no supo cuidar" }
     ],
     notes: [
-      { t: "Wiraxucha", d: "Dios creador en la cosmovisión andina" },
-      { t: "Jisk'a", d: "Pequeño, niño" },
-      { t: "Jachaña", d: "Llorar" },
-      { t: "T'ant'a", d: "Pan" }
-    ]
-  },
-  {
-    title: "Jichhapi Jichhanexa",
-    artist: "Awatiñas",
-    genre: "Folk aymara / Música andina",
-    youtube_id: "zFihy4W36E8",
-    lines: [
-      { a: "Tatanaka, mamanaka",                       s: "Padres y madres" },
-      { a: "Uka jach'a uru purinxiwa",                 s: "Ese gran día ha llegado" },
-      { a: "Jichhapi jichhanixa",                      s: "Ahora es cuando" },
-      { a: "Saytasipxañani wali amuyumpi",             s: "Levantémonos con buen pensamiento" },
-      { a: "Llakisiñ jachañas tukusxaniwa",            s: "El llanto y el dolor ya acabaron" },
-      { a: "Waynanak, tawaqunak",                      s: "Jóvenes y muchachas" },
-      { a: "Sartasipxañani wali amuyumpi",             s: "Levantémonos con buen pensamiento" },
-      { a: "Uka jach'a uru purinxiwa",                 s: "Ese gran día ha llegado" },
-      { a: "Saytasipxañani inti jalsuntasa",           s: "Firmes, mirando al horizonte donde sale el sol" },
-      { a: "Qullasuyu uraqi",                          s: "¡Tierra de Qullasuyu!" }
-    ],
-    notes: [
-      { t: "Jichhapi", d: "Ahora mismo" },
-      { t: "Waynak", d: "Jóvenes" },
-      { t: "Tawaque", d: "Muchacha joven" },
-      { t: "Qullasuyu", d: "Nombre ancestral de Bolivia" }
-    ]
-  },
-  {
-    title: "Ponchos Rojos",
-    artist: "K'ala Marka (Kalamarka)",
-    genre: "Música andina / Laquita",
-    youtube_id: "Lg99KO6eWHo",
-    lines: [
-      { a: "Laquita ritmo de la tierra",                    s: "Laquita, ritmo de la tierra" },
-      { a: "Ritmo de dioses de Achacachi",                  s: "Ritmo de los dioses de Achacachi" },
-      { a: "Janiw asjarayxstuti jiwaña",                    s: "No hay que temer a la muerte" },
-      { a: "Aymaratwa kala suninkiri jaq'e",                s: "Soy Aymara, hombre duro como la piedra" },
-      { a: "Achachilanacajan arunacapja ist'apjtua",         s: "Escucho las palabras de mis ancestros" },
-      { a: "Llampu jacañataqi llampu chuymanacampi",        s: "Para vivir en paz, con corazón suave" },
-      { a: "Jilatanaca, qullacanaca",                       s: "Hermanos, hermanas del altiplano" },
-      { a: "Thacjpachani sarthasipjañani",                  s: "Todos juntos nos levantaremos" },
-      { a: "Jallalla qollasuy marca, Jallalla",             s: "¡Viva el pueblo del sur! ¡Viva!" }
-    ],
-    notes: [
-      { t: "Laquita", d: "Instrumento de viento andino ceremonial" },
-      { t: "Achachila", d: "Ancestro, espíritu de montaña" },
-      { t: "Jallalla", d: "¡Viva! (exclamación aymara)" },
-      { t: "Llampu", d: "Suave, tierno" }
-    ]
-  },
-  {
-    title: "Cuando Florezca el Chuño",
-    artist: "K'ala Marka (Kalamarka)",
-    genre: "Música andina / Toba",
-    youtube_id: "GwbfilwurP0",
-    lines: [
-      { a: "Si tus padres ya me odian, es por mi mala culpa",   s: "Si tus padres ya me odian, es por mi culpa" },
-      { a: "Si las citoyas no silban, es por tu mala ausencia", s: "Si los pájaros no silban, es por tu ausencia" },
-      { a: "Jumanpi, nayampi",                                  s: "Contigo, conmigo" },
-      { a: "Cuando florezca el chuño",                          s: "Cuando florezca el chuño (lo imposible)" },
-      { a: "No digás que has olvidado la tierra donde naciste", s: "No digas que olvidaste la tierra donde naciste" },
-      { a: "Dicen que vuelves, como el río que se va al lago",  s: "Dicen que vuelves, como el río que va al lago" }
-    ],
-    notes: [
-      { t: "Chuño", d: "Papa deshidratada; 'cuando florezca' = nunca" },
-      { t: "Jumanpi", d: "Contigo (aymara)" },
-      { t: "Nayampi", d: "Conmigo (aymara)" }
-    ]
-  },
-  {
-    title: "Inti Wawa",
-    artist: "Awatiñas",
-    genre: "Huayno aymara",
-    youtube_id: "tAhBeDtzwY0",
-    lines: [
-      { a: "Inti wawaxa jachaskiwa",      s: "El niño sol está llorando" },
-      { a: "Tatapawa jiwxatayna",         s: "Porque su padre murió" },
-      { a: "Jiwxatayna ukat jichhax",     s: "Murió, y por eso ahora" },
-      { a: "Wawaxa sinti llakitaw",       s: "El niño está muy triste" },
-      { a: "Jichhaxa sapakiw jaki",       s: "Ahora está solo en el mundo" },
-      { a: "Jupax amuyiw jupamp jikisiñ", s: "Él espera reencontrarse con su padre" }
-    ],
-    notes: [
-      { t: "Inti", d: "Sol" },
-      { t: "Wawa", d: "Niño/a, bebé" },
-      { t: "Jachaña", d: "Llorar" },
-      { t: "Jiwaña", d: "Morir" }
+      { t: "Llorando Se Fue", d: "Base de la canción 'Lambada' (Kaoma, 1989)" },
+      { t: "Saya", d: "Ritmo afro-boliviano" }
     ]
   },
   {
@@ -313,6 +357,7 @@ const CANCIONES_A = [
     artist: "Luzmila Carpio",
     genre: "Folklore aymara boliviano",
     youtube_id: "S0tGL3Qjilk",
+    pending: true,
     lines: [
       { a: "Sawt'ir, sawt'ir, sumax imilla",              s: "Tejedora, tejedora, joven buena" },
       { a: "Thaya luman, thaya pampana",                  s: "Con el frío de la loma y de la pampa" },
@@ -334,6 +379,7 @@ const CANCIONES_A = [
     artist: "Luzmila Carpio",
     genre: "Folklore aymara boliviano",
     youtube_id: "i6nefUit7m8",
+    pending: true,
     lines: [
       { a: "Bartolina Sisa warmi",         s: "Bartolina Sisa, mujer" },
       { a: "Q'allpa jallp'a jina kanqi",   s: "Eres como la tierra firme y fértil" },
@@ -356,6 +402,7 @@ const CANCIONES_A = [
     artist: "K'ala Marka (Kalamarka)",
     genre: "Ritual aymara – Solsticio",
     youtube_id: "wja_vI38wNs",
+    pending: true,
     lines: [
       { a: "Munata Achachilanaca, Laq'a Achachilanaca",  s: "Adorados abuelos, abuelo y abuela de la tierra" },
       { a: "Q'ollana Qh'ap'acj, Apu Inti Wilka Tata",   s: "Espíritu capaz, Señor Sol en las alturas" },
@@ -378,6 +425,7 @@ const CANCIONES_A = [
     artist: "K'ala Marka (Kalamarka)",
     genre: "Música andina boliviana / Canción social",
     youtube_id: "F7ZMA_rG87w",
+    pending: true,
     lines: [
       { a: "Hombres venidos de otros lugares",         s: "Hombres venidos de otros lugares" },
       { a: "Has elegido en mi pueblo vivir",           s: "Has elegido en mi pueblo vivir" },
@@ -387,11 +435,7 @@ const CANCIONES_A = [
       { a: "Jan Apanimti leyemanaca",                  s: "No traigas tus leyes" },
       { a: "Janiw markajatakiti",                      s: "No son para este pueblo" },
       { a: "Ist'am markajan Arupa",                    s: "Escucha la voz del pueblo" },
-      { a: "Ucanquiw Orak'en c'hamapaj",              s: "En eso está la fuerza del país" },
-      { a: "Jallalla Bolivia jallalla Bolivia",        s: "¡Viva Bolivia! ¡Viva Bolivia!" },
-      { a: "Tu cultura es linda",                      s: "Tu cultura es linda" },
-      { a: "Orgulloso de ser indio",                   s: "Orgulloso de ser indio" },
-      { a: "Todos somos campesinos",                   s: "Todos somos campesinos" }
+      { a: "Jallalla Bolivia jallalla Bolivia",        s: "¡Viva Bolivia! ¡Viva Bolivia!" }
     ],
     notes: [
       { t: "Ama sua", d: "No robes (ley ancestral andina)" },
@@ -401,25 +445,68 @@ const CANCIONES_A = [
     ]
   },
   {
-    title: "Guerrero Aymara",
-    artist: "Awatiñas",
-    genre: "Música andina boliviana / Canción social",
-    youtube_id: "YkXn9Hj5Q8c",
+    title: "Achanqara Panqarita",
+    artist: "Tradicional aymara",
+    genre: "Canción tradicional",
+    youtube_id: "Kf3eAwVmkbw",
+    pending: true,
     lines: [
-      { a: "Hace más de cien mil años cuando el odio no existía", s: "Hace más de cien mil años cuando el odio no existía" },
-      { a: "Un cóndor de piedra sacudió la noche andina",        s: "Un cóndor de piedra sacudió la noche andina" },
-      { a: "El viento con mil quenas conmovidas",                s: "El viento con mil quenas conmovidas" },
-      { a: "Cruzaba un cielo cuajado de vicuñas fugitivas",      s: "Cruzaba un cielo cuajado de vicuñas fugitivas" },
-      { a: "Chuquiago era un valle íntimo como un cántaro",      s: "Chuquiago (La Paz) era un valle íntimo como un cántaro" },
-      { a: "Donde la luna aymara guardaba sus topos de plata",   s: "Donde la luna aymara guardaba sus topos de plata" },
-      { a: "Yo quise volar altísimo, quise aletear en la cima",  s: "Yo quise volar altísimo, quise aletear en la cima" },
-      { a: "Duérmete guerrero aymara que tú serás nuestro guía", s: "Duérmete guerrero aymara que tú serás nuestro guía" }
+      { a: "Achanqara panqarita",           s: "Florecita de achancara" },
+      { a: "Suma wayra apiri",              s: "Que el viento hermoso lleva" },
+      { a: "Nayakiw munaskta",              s: "Yo te quiero" },
+      { a: "Janiw luqtasmiti",             s: "No te olvidaré" },
+      { a: "Achanqara panqarita",           s: "Florecita de achancara" },
+      { a: "Suma ururi uñjata",             s: "Vista en la hermosa mañana" },
+      { a: "Chuymampiw suyasmta",          s: "Con mi corazón te espero" },
+      { a: "Jutanipxamawa",                 s: "Ya vendrás a mí" }
     ],
     notes: [
-      { t: "Chuquiago", d: "Nombre ancestral de La Paz, Bolivia" },
-      { t: "Cóndor", d: "Ave sagrada andina, símbolo del espíritu" },
-      { t: "Quena", d: "Flauta andina tradicional" },
-      { t: "Topo", d: "Joya tradicional andina (broche de manta)" }
+      { t: "Achanqara", d: "Flor andina silvestre" },
+      { t: "Panqara", d: "Flor" },
+      { t: "Wayra", d: "Viento" },
+      { t: "Chuyma", d: "Corazón" }
+    ]
+  },
+  {
+    title: "Imillitay",
+    artist: "Los Kjarkas",
+    genre: "Huayño / Pop andino",
+    youtube_id: "MwAIR1wc3JI",
+    pending: true,
+    lines: [
+      { a: "Dijiste que me querías, pero no es verdad",     s: "Dijiste que me querías, pero no es verdad" },
+      { a: "Siempre jugaste conmigo y aún te supe amar",     s: "Siempre jugaste conmigo y aún te supe amar" },
+      { a: "Vivo pensando olvidarte y no lo consigo",        s: "Vivo pensando olvidarte y no lo consigo" },
+      { a: "Tus recuerdos son espinas que hieren mi alma",   s: "Tus recuerdos son espinas que hieren mi alma" },
+      { a: "Muyuspa, muyuspa, imillitay,",                   s: "Marchitándose, marchitándose, muchachita," },
+      { a: "q'ory q'enti jina.",                             s: "como el color amarillo." },
+      { a: "Muyuspa, muyuspa, imillitay,",                   s: "Marchitándose, marchitándose, muchachita," },
+      { a: "saqer pari huanki.",                              s: "te fuiste marchitando." }
+    ],
+    notes: [
+      { t: "Imilla", d: "Muchachita" },
+      { t: "Muyuspa", d: "Marchitándose" },
+      { t: "Q'enti", d: "Color amarillo" },
+      { t: "Saqrpari", d: "Marchitarse" }
+    ]
+  },
+  {
+    title: "Genesis Aymara",
+    artist: "Los Kjarkas",
+    genre: "Folk épico",
+    youtube_id: "",
+    pending: true,
+    lines: [
+      { a: "Y todo fue y comenzó con el aurora del tiempo",      s: "Y todo fue y comenzó con el aurora del tiempo" },
+      { a: "Y lo inerte cobró vida y nació, y fue la luz",      s: "Y lo inerte cobró vida y nació, y fue la luz" },
+      { a: "y fue el hombre existió",                             s: "y fue el hombre existió" },
+      { a: "Guarda vivo saber la historia",                       s: "Guarda vivo saber la historia" },
+      { a: "desde que el hombre tiene memoria",                   s: "desde que el hombre tiene memoria" },
+      { a: "Así es, así será hasta el fin de nuestro mundo",      s: "Así es, así será hasta el fin de nuestro mundo" }
+    ],
+    notes: [
+      { t: "Génesis", d: "Origen, creación" },
+      { t: "Kolla", d: "Sur, Qollasuyu" }
     ]
   }
 ];

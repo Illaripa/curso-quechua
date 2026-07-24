@@ -448,6 +448,56 @@ function renderHomeBody() {
 renderHomeBody();
 
 // ============================================================
+// DARK MODE
+// ============================================================
+function toggleTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  var next = isDark ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next === 'dark' ? 'dark' : '');
+  localStorage.setItem('yachay_theme', next);
+  document.getElementById('themeToggle').textContent = next === 'dark' ? '☀️' : '🌙';
+  document.querySelector('meta[name="theme-color"]').content = next === 'dark' ? '#121212' : '#c47d1a';
+}
+
+(function initTheme() {
+  var saved = localStorage.getItem('yachay_theme');
+  var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  var useDark = saved === 'dark' || (saved === null && prefersDark);
+  if (useDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.querySelector('meta[name="theme-color"]').content = '#121212';
+  }
+  var btn = document.getElementById('themeToggle');
+  if (btn) btn.textContent = useDark ? '☀️' : '🌙';
+})();
+
+// ============================================================
+// PUSH NOTIFICATIONS
+// ============================================================
+function requestNotificationPermission() {
+  if (!('Notification' in window)) return;
+  if (Notification.permission === 'granted') return;
+  if (Notification.permission === 'denied') return;
+  Notification.requestPermission();
+}
+
+function scheduleDailyReminder() {
+  if (!('Notification' in window) || Notification.permission !== 'granted') return;
+  var lastNotif = parseInt(localStorage.getItem('yachay_last_notif') || '0');
+  var now = Date.now();
+  var oneDay = 86400000;
+  if (now - lastNotif < oneDay) return;
+  var hour = new Date().getHours();
+  if (hour < 8 || hour > 21) return;
+  var words = ['Yachay', 'Rimanakuy', 'Allin puncha', '¡Practica Quechua!', '¡Aprende Aymara!'];
+  var msg = words[Math.floor(Math.random() * words.length)];
+  try {
+    new Notification('Yachay — ' + msg, { body: 'Abre la app y practica un poco hoy', icon: 'icons/icon-192.png', badge: 'icons/icon-192.png' });
+    localStorage.setItem('yachay_last_notif', String(now));
+  } catch(e) {}
+}
+
+// ============================================================
 // INITIALIZATION
 // ============================================================
 setupMorning('morning');
@@ -458,6 +508,8 @@ window.addEventListener('load', function() {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js');
   }
+  requestNotificationPermission();
+  scheduleDailyReminder();
   // Siempre empieza en el dashboard, saltando la pantalla matutina
   currentLang = null;
   goHome();

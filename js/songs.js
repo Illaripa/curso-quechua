@@ -55,7 +55,7 @@ function renderSongList() {
       <div style="width:44px;height:44px;border-radius:50%;background:${color}22;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px;">&#9834;</div>
       <div style="flex:1;min-width:0">
         <div style="font-weight:700;font-size:16px;color:var(--txt);margin-bottom:2px">${song.title}</div>
-        <div style="font-size:15px;color:var(--muted)">${song.artist} &middot; ${song.genre}</div>
+        <div style="font-size:15px;color:var(--muted)">${song.artist} &middot; ${song.genre} &middot; ${(song.lines||[]).length} lín.</div>
       </div>
       <div style="color:var(--muted);font-size:18px;">&#8250;</div>
     </button>`).join('');
@@ -81,9 +81,13 @@ function openSongDetail(index) {
     : '';
 
   const lines = (song.lines || []).map(function(l, i) { return `
-    <div id="lyric-${i}" style="margin-bottom:10px;padding:6px 8px;border-radius:8px;border-left:3px solid transparent;transition:background 0.2s,border-color 0.2s">
-      <div style="font-family:Lora,serif;font-size:21px;color:var(--txt);font-style:italic;line-height:1.4">${l[langKey] || l.q || l.a || ''}</div>
-      <div style="font-size:17px;color:var(--muted);margin-top:2px;line-height:1.4">${l.s || ''}</div>
+    <div id="lyric-${i}" style="display:flex;align-items:flex-start;gap:8px;margin-bottom:10px;padding:8px 10px;border-radius:8px;border-left:3px solid transparent;transition:background 0.2s,border-color 0.2s">
+      <span style="font-size:12px;color:var(--muted);min-width:18px;padding-top:4px;font-weight:600">${i + 1}</span>
+      <div style="flex:1">
+        <div style="font-family:Lora,serif;font-size:21px;color:var(--txt);font-style:italic;line-height:1.4">${l[langKey] || l.q || l.a || ''}</div>
+        <div style="font-size:17px;color:var(--muted);margin-top:2px;line-height:1.4">${l.s || ''}</div>
+      </div>
+      <button onclick="speakTextLang(decodeURIComponent('${encodeURIComponent(l[langKey] || l.q || l.a || '')}'),'${songsLang}',this)" style="background:none;border:none;cursor:pointer;font-size:16px;opacity:0.4;padding:4px;flex-shrink:0" title="Escuchar">🔊</button>
     </div>`; }).join('');
 
   const notes = (song.notes && song.notes.length)
@@ -121,6 +125,20 @@ function openSongDetail(index) {
         playerVars: { rel: 0, modestbranding: 1, playsinline: 1 },
         events: {
           onReady: function() {
+            // Auto-generate timestamps if none exist
+            if (!hasTimestamps && song.lines && song.lines.length) {
+              try {
+                var dur = karaokePlayer.getDuration();
+                if (dur > 0) {
+                  var gap = dur / song.lines.length;
+                  song.lines.forEach(function(l, i) {
+                    l.start = i * gap;
+                    l.end = (i + 1) * gap;
+                  });
+                  hasTimestamps = true;
+                }
+              } catch(e) {}
+            }
             if (!hasTimestamps) return;
             karaokeInterval = setInterval(function() {
               if (!karaokePlayer || typeof karaokePlayer.getCurrentTime !== 'function') return;
@@ -196,10 +214,11 @@ function runTranscriptor() {
 }
 
 function copyTranscription() {
-  navigator.clipboard.writeText(document.getElementById('transcriptorText').value).then(() => {
-    const btn = event.target;
-    btn.textContent = '✓ Copiado!';
-    setTimeout(() => { btn.textContent = '✓ Copiar texto'; }, 2000);
+  var text = document.getElementById('transcriptorText').value;
+  navigator.clipboard.writeText(text).then(function() {
+    var btns = document.querySelectorAll('[onclick="copyTranscription()"]');
+    btns.forEach(function(b) { b.textContent = '✓ Copiado!'; });
+    setTimeout(function() { btns.forEach(function(b) { b.textContent = '✓ Copiar texto'; }); }, 2000);
   });
 }
 
