@@ -241,12 +241,14 @@
     <button class="topbar-back" onclick="goHome()">&#8592;</button>
     <span class="topbar-title" id="chatTitle" data-i18n="chat.title">◆ AI Tutor</span>
     <span class="tutor-mode-toggle">
+      <button class="restart-btn" onclick="restartChat()" title="Reiniciar chat">&#8634;</button>
       <button class="tutor-mode-btn active" id="modeBtnChat" onclick="setTutorMode('chat')" title="Chat libre">&#9671;</button>
       <button class="tutor-mode-btn" id="modeBtnLesson" onclick="setTutorMode('lecc')" title="Leccion">&#9636;</button>
       <button class="tutor-mode-btn" id="ttsToggleBtn" onclick="toggleTts()" title="Activar/silenciar voz">🔊</button>
       <button class="tutor-mode-btn" onclick="document.getElementById('apiBanner').classList.toggle('show')" title="Configurar API">&#9881;</button>
     </span>
   </div>
+  <div class="mobile-tutor-bar" id="mobileTutorBar"></div>
   <div class="tutor-body">
     <div class="tutor-main">
       <div class="api-banner" id="apiBanner">
