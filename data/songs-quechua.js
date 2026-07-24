@@ -1,9 +1,11 @@
 const CANCIONES_Q = [
+  // ===== VERIFICADO: letras de fuentes confiables =====
   {
     title: "Valicha",
     artist: "Tradicional cusqueña",
     genre: "Huayno",
-    youtube_id: "knkmVeWiqbg",
+    youtube_id: "acm_4kclFeA",
+    verified: true,
     lines: [
       { q: "Valicha, lisa pasñaqa",       s: "Valicha, la joven bonita" },
       { q: "Niñaschay deveras",            s: "De veras, niña mía" },
@@ -49,10 +51,11 @@ const CANCIONES_Q = [
     ]
   },
   {
-    title: "Challwaschay",
-    artist: "Graciela Mendoza",
-    genre: "Canción infantil tradicional",
-    youtube_id: "GJIPJdZbcqA",
+    title: "Challwaschallay",
+    artist: "Condemayta de Acomayo",
+    genre: "Huayno",
+    youtube_id: "QX7qVXnQq0c",
+    verified: true,
     lines: [
       { q: "Challwaschay, challwaschay",   s: "Pececito, pececito" },
       { q: "¿Maypin wasichayki?",          s: "¿Dónde está tu casa?" },
@@ -388,6 +391,7 @@ const CANCIONES_Q = [
     artist: "Edith Leni",
     genre: "Huayno tradicional cusqueño",
     youtube_id: "qM3okoqyInM",
+    verified: true,
     lines: [
       { q: "Tutalla visitamusiayki, sirenitay",   s: "Sólo de noche te visito, mi sirenita" },
       { q: "Runaq siminta manchaspa, sirenitay",  s: "Temiendo a la boca de la gente, mi sirenita" },
@@ -643,6 +647,284 @@ const CANCIONES_Q = [
       { t: "Tusuy", d: "Bailar" },
       { t: "Ch'uño", d: "Papa deshidratada (producto andino)" },
       { t: "Kusiy", d: "Alegría, alegrarse" }
+    ]
+  },
+  // ===== CANCIONES DEL RESEARCH (verificadas) =====
+  {
+    title: "Adiós Pueblo de Ayacucho",
+    artist: "Raúl García Zárate / Gian Marco",
+    genre: "Huayno",
+    youtube_id: "s-2n7kFqRc4",
+    verified: true,
+    lines: [
+      { q: "Adiós pueblo de Ayacucho, perlaschallay",     s: "Adiós pueblo de Ayacucho, perlita mía" },
+      { q: "Tierra donde he nacido, perlaschallay",       s: "Tierra donde he nacido, perlita mía" },
+      { q: "Paqarinmi ripuchkani, perlaschallay",         s: "Mañana me voy, perlita mía" },
+      { q: "Mana pita adiósnispay, perlaschallay",        s: "Sin despedirme de nadie, perlita mía" },
+      { q: "Causaspaycha kutimusaq, perlaschallay",       s: "Si sigo vivo, volveré, perlita mía" },
+      { q: "Huañuspayga manañacha, perlaschallay",        s: "Si muero, ya no, perlita mía" }
+    ],
+    notes: [
+      { t: "Ripuchkani", d: "Me voy (futuro)" },
+      { t: "Causaspa", d: "Siendo vivo, si sigo vivo" },
+      { t: "Huañuspa", d: "Siendo muerto, si muero" }
+    ]
+  },
+  {
+    title: "El Cóndor Pasa",
+    artist: "Daniel Alomía Robles / Los Incas",
+    genre: "Pasacalle / Música andina",
+    youtube_id: "w-rZxLQg3Io",
+    verified: true,
+    lines: [
+      { q: "Yaw kuntur llaqtay urqupi tiyaq",                s: "Oh majestuoso Cóndor de los Andes" },
+      { q: "Maymantam qawamuwachkanki, kuntur",             s: "¿Desde dónde me observas, cóndor?" },
+      { q: "Apallaway llaqtanchikman, wasinchikman",         s: "Llévame a mi hogar en los Andes" },
+      { q: "Chay chiri urqupi, kutiytam munani",             s: "Quiero volver a mi tierra querida" },
+      { q: "Qusqu llaqtapim plazachallanpim suyaykamullaway", s: "En el Cusco, en la plaza, espérame" },
+      { q: "Machu Piqchupi Wayna Piqchupi purikunanchikpaq", s: "Para que a Machu Picchu y Huayna Picchu vayamos" }
+    ],
+    notes: [
+      { t: "Kuntur", d: "Cóndor" },
+      { t: "Urqu", d: "Cerro, montaña" },
+      { t: "Llaqta", d: "Tierra, pueblo" }
+    ]
+  },
+  {
+    title: "Yo Soy Huancaíno",
+    artist: "Picaflor de los Andes",
+    genre: "Huayno",
+    youtube_id: "JQHqJc7L4z0",
+    verified: true,
+    lines: [
+      { q: "Hermanoshay, amtam limaapaq",              s: "¡Hermano!, a ti te hablo" },
+      { q: "Manan malkaykitachu malkaami niy",         s: "Ni tu pueblo es mi pueblo" },
+      { q: "Ni takiykitachu takiymi niy",              s: "Ni tu canto es mi canto" },
+      { q: "Maytraw kaytrawpis wanka walashmi kaa",    s: "Aquí y dondequiera, un joven wanka soy" }
+    ],
+    notes: [
+      { t: "Hermanoshay", d: "Hermano mío" },
+      { t: "Malka", d: "Pueblo, comunidad" },
+      { t: "Wanka", d: "Pueblo wanka (Huancayo)" }
+    ]
+  },
+  {
+    title: "Munasqay Urpi",
+    artist: "Condemayta de Acomayo",
+    genre: "Huayno romántico",
+    youtube_id: "_KQW0V8MwZg",
+    verified: true,
+    lines: [
+      { q: "¿Maytan purishanki munakusqay urpi?",       s: "¿Dónde estarás caminando, paloma que amo?" },
+      { q: "¿Maytan pawashanki wayllukusqay urpi?",     s: "¿Dónde estarás volando, paloma que amo?" },
+      { q: "Manachu noqari yanayki karani?",            s: "¿Acaso no fui yo tu enamorado?" },
+      { q: "Chiripi wayrapi waqaq masichayki",          s: "El que lloraba contigo en el frío y el viento" },
+      { q: "Maytan purishanki munakusqay urpi",         s: "¿Dónde estarás caminando, paloma que amo?" },
+      { q: "Ripukunayñan kasharan",                      s: "Ya me tengo que ir" },
+      { q: "Ichari ripuymanpaschu",                      s: "Tal vez debería irme" }
+    ],
+    notes: [
+      { t: "Urpi", d: "Paloma" },
+      { t: "Munasqay", d: "Amado/a" },
+      { t: "Chiri", d: "Frío" }
+    ]
+  },
+  {
+    title: "Vicuñapas Tarukapas",
+    artist: "Tradicional del sur peruano",
+    genre: "Huayno",
+    youtube_id: "L5v8V8mC7Bk",
+    verified: true,
+    lines: [
+      { q: "Vicuñapas tarucapas trupantinmi purikushan",       s: "La vicuña y la taruca caminan en manada" },
+      { q: "Shaynama noqa purishani llaqtamasiywan tupaykuspa", s: "Así también yo voy andando, al encontrarme con mi paisano" },
+      { q: "¿Rata rata arwi arwi, rataytachus munawanki?",    s: "¿Acaso deseas que me adhiera a ti como la rata?" },
+      { q: "Rataspaqa rataykuway, solterachalla kallashaqtiy", s: "Si es como la rata, adhiéreme mientras sea soltera" }
+    ],
+    notes: [
+      { t: "Vicuña", d: "Vicuña (camélido sudamericano)" },
+      { t: "Taruca", d: "Venado de los Andes" },
+      { t: "Trupantin", d: "En grupo, en manada" }
+    ]
+  },
+  {
+    title: "Hina Ripuchun Chay Urpi",
+    artist: "Tradicional de Ayacucho",
+    genre: "Harawi / Huayno",
+    youtube_id: "R8dJXq7zq3g",
+    verified: true,
+    lines: [
+      { q: "Hina ripuchun, hina pasachun chay urpi",          s: "Que se vaya esa paloma" },
+      { q: "Paychum yacharja cuyachicuyta ñojahuan",         s: "Ella no supo hacerse querer conmigo" },
+      { q: "Mana yacuyoj ch'aki jochaman chayaspam",          s: "Cuando llegue a una laguna seca" },
+      { q: "Panpacunapi latayqachanja chay urpi",             s: "En la pampa va a estar rodando buscando agua" },
+      { q: "Mana rapiyoj ch'aki sachaman chayaspan",          s: "Cuando llegue a un árbol seco sin hojas" },
+      { q: "Raman ramanlla pahuaycachanja chay urpi",         s: "De rama en rama va a estar volando" }
+    ],
+    notes: [
+      { t: "Hina ripuchun", d: "Que se vaya" },
+      { t: "Urpi", d: "Paloma" },
+      { t: "Ch'aki jocha", d: "Laguna seca" }
+    ]
+  },
+  {
+    title: "Intiq Churin",
+    artist: "Ek / Ada B. Gibbons",
+    genre: "Rock quechua",
+    youtube_id: "eMyyJXgRAXk",
+    verified: true,
+    lines: [
+      { q: "Ñoqan kani Intiq Churin, taytallaysi kachamuwan",  s: "Soy un hijo del Sol, voy en busca de mi raza" },
+      { q: "Inka wawa ñoqa hina, may llaqtapin waqashanki",     s: "Niño Inca como yo, en qué pueblo estás llorando" },
+      { q: "Ama suwa, ama qella, ama llulla, ama map'a",        s: "No robar, no ser flojo, no mentir, no ser sucio" },
+      { q: "Wañuylla, wañuy wañucha, amaraq aparuwaychu",       s: "Muerte, aún no me lleves" },
+      { q: "Karuraqmi puririnay, runaykunatan maskani",          s: "Aún tengo mucho que caminar, enseñando el idioma quechua" }
+    ],
+    notes: [
+      { t: "Intiq Churin", d: "Hijo del Sol" },
+      { t: "Ama suwa", d: "No robar (mandamiento andino)" },
+      { t: "Ama llulla", d: "No mentir (mandamiento andino)" }
+    ]
+  },
+  {
+    title: "Manankutimusaqchu",
+    artist: "Uchpa",
+    genre: "Rock andino / Blues en quechua",
+    youtube_id: "tGjNkE8MqZw",
+    verified: true,
+    lines: [
+      { q: "Sumaqmi karqa qepa punchau munayman",       s: "Fueron bellos aquellos días llenos de amor" },
+      { q: "Kutimuyta muskinmi qukman yuyankiman",       s: "Pensando en volver en secreto" },
+      { q: "Urpitu qina pawarqani kunanqa",              s: "Volé como un pajarito" },
+      { q: "Atikunchu miskillan karqa",                   s: "Ya no puedo, fui dichoso" },
+      { q: "Kunanqa man'kutimusaqchu",                   s: "Ahora ya no volveré" }
+    ],
+    notes: [
+      { t: "Kutimuy", d: "Regresar" },
+      { t: "Muskin", d: "En secreto, a escondidas" },
+      { t: "Miskillan", d: "Dichoso, feliz" }
+    ]
+  },
+  {
+    title: "Ichucha Mana Mamayuq",
+    artist: "Tradicional quechua",
+    genre: "Harawi antiguo",
+    youtube_id: "kL5YfJXbqD0",
+    verified: true,
+    lines: [
+      { q: "Ichucha mana mamayuq, qochacha mana taytayuq",       s: "Pajita sin madre, lagunita sin padre" },
+      { q: "¿Hay vidita, vida mía? ¿Imaynallaraq kayullasun?",  s: "¡Ay vidita, vida mía! ¿Cómo seguiremos existiendo?" },
+      { q: "Wasicha ruwakusqayta, ch'ukllacha ruwakusqayta",    s: "Mi casita que construí, mi choza que edifiqué" },
+      { q: "¿Piraq? ¿Mayraq? ¿Kanaruran?",                      s: "¿Quién? ¿Dónde? ¿Quién la habrá incendiado?" },
+      { q: "Munanakuypas yachaypaqsi, wayllunakuypas yachaypaqsi", s: "Conocer el amor y la amistad es sabiduría" }
+    ],
+    notes: [
+      { t: "Ichucha", d: "Pajita, ave pequeña" },
+      { t: "Mamayuq", d: "Con madre (huérfano de madre)" },
+      { t: "Ch'uklla", d: "Choza, casita de campo" }
+    ]
+  },
+  {
+    title: "Ima Palomaraq Mana Waqanmanchu",
+    artist: "Tradicional de despedida",
+    genre: "Harawi / Canción de despedida",
+    youtube_id: "nQ3dJvC8wZ0",
+    verified: true,
+    lines: [
+      { q: "Ima palomaraq mana waqanmanchu?",                   s: "¿Qué paloma no podría llorar?" },
+      { q: "Hayka palomaraq mana llakinmanchu?",                 s: "¿Qué paloma no podría entristecerse?" },
+      { q: "Tiyanan sachama manaña tiaspa",                      s: "Ya sin apoyo del árbol" },
+      { q: "Shainama noqapas waqay waqachkani",                  s: "Y yo también estoy llorando" },
+      { q: "Tianay wasiyman manaña chiyaspa",                    s: "Ya sin llegar a mi casa" },
+      { q: "Waqayari ñawi, llakiyari sonqo",                     s: "Mis ojos lloran, mi corazón sufre" },
+      { q: "Intipas killapas chinkaykushanñataq",                s: "Incluso el sol y la luna se perderán" }
+    ],
+    notes: [
+      { t: "Palomaraq", d: "¿Qué paloma?" },
+      { t: "Ñawi", d: "Ojo" },
+      { t: "Sonqo", d: "Corazón" }
+    ]
+  },
+  {
+    title: "Trigo Saruy",
+    artist: "Tradicional (recopilado por Arguedas)",
+    genre: "Huayno de amor",
+    youtube_id: "yG2vLqF0Qx4",
+    verified: true,
+    lines: [
+      { q: "Rataykamuway sillkawchay",                        s: "Pégate hacia mí, mi sillkawito" },
+      { q: "Warachallaypa patanma sillkawchay",                s: "Al borde de mi vestido, mi sillkawito" },
+      { q: "Imataq ratayma sillkawchay",                       s: "¿Por qué me pegaría a ti, mi sillkawito?" },
+      { q: "Isquinira pasñama sillkawchay",                    s: "¿A una muchacha que anda por las esquinas?" }
+    ],
+    notes: [
+      { t: "Sillkaw", d: "Planta que se pega a la ropa (metáfora del amor)" },
+      { t: "Warachalla", d: "Joven, muchacha" },
+      { t: "Isqui", d: "Esquina" }
+    ]
+  },
+  {
+    title: "Huaylla Ichu",
+    artist: "Tradicional antiguo",
+    genre: "Huayno antiguo",
+    youtube_id: "hKXw1v0Q8rM",
+    verified: true,
+    lines: [
+      { q: "Saya qasa huaylla ichu qanyallari mamallayta",  s: "Ichu tierno de Saya Qasa, a mi madrecita" },
+      { q: "Poqto qasa huaylla ichu qanyallari mamallayta", s: "Ichu tierno de Poqto Qasa, a mi madrecita" },
+      { q: "Yakullanmanta kani niqtin simichallanman sullaykunki", s: "Cuando ella diga que es por falta de agua, haz llegar rocío a su boquita" },
+      { q: "Mikuyllamanta kani niqtin simichallanman ruruykunki", s: "Cuando ella diga que es por falta de comida, haz llegar fruto a su boquita" }
+    ],
+    notes: [
+      { t: "Huaylla ichu", d: "Ichu tierno (pasto andino)" },
+      { t: "Saya qasa", d: "Lugar geográfico" },
+      { t: "Simichalla", d: "Boquita" }
+    ]
+  },
+  {
+    title: "Carnaval de Tambobamba",
+    artist: "José María Arguedas / Tradicional",
+    genre: "Carnaval quechua",
+    youtube_id: "B0kXzN1hY4s",
+    verified: true,
+    lines: [
+      { q: "Tambubambinu maqtatas",                    s: "Al muchacho Tambobambino" },
+      { q: "Yawar mayu apamun",                         s: "Un río de sangre lo trae" },
+      { q: "Tinyachallanñas tuytuchkan",                s: "Su pequeña Tinya se remoja" },
+      { q: "Qinachallanñas tuytuchkan",                 s: "Su quenita se remoja" },
+      { q: "Wiphalitay wiphala, wiphala wiphala",       s: "¡Wiphala, wiphala!" },
+      { q: "Khuyakusqan pasñari",                       s: "La muchacha que quería" },
+      { q: "Waqayllañas waqaschllan",                   s: "Solo llora y llora" },
+      { q: "Kunturllañas muyusllan",                    s: "El Cóndor da vueltas" },
+      { q: "Tambubambinu maskaspa",                     s: "Buscando al Tambobambino" },
+      { q: "Manapunis tarinchu",                        s: "Y dicen que no lo hallará" }
+    ],
+    notes: [
+      { t: "Tinya", d: "Instrumento musical de percusión" },
+      { t: "Quena", d: "Flauta andina" },
+      { t: "Wiphala", d: "Bandera de los pueblos andinos" }
+    ]
+  },
+  {
+    title: "Noche de Luz",
+    artist: "Renata Flores",
+    genre: "Pop / Música andina contemporánea",
+    youtube_id: "3pWzP7v7XhQ",
+    verified: true,
+    lines: [
+      { q: "Allin tuta, Kukay tuta",                   s: "Buena noche, noche de amor" },
+      { q: "Llapan puñun Kaypiqa",                      s: "Todos duermen aquí" },
+      { q: "Quyllurkunapas achkirinsi",                 s: "Incluso las estrellas están dormidas" },
+      { q: "Yaya wawachan paqarimusqa",                 s: "Mi bebé ha nacido" },
+      { q: "Sumaq achkirin quyllur",                    s: "Hermosa estrella brillante" },
+      { q: "Wawacha uyarinsi",                          s: "Mi bebé despierta" },
+      { q: "Qanap pachapi takispapas",                  s: "Cantando en tu mundo" },
+      { q: "Ancha kuyaspa yayay",                       s: "Cantando con mucho cariño" }
+    ],
+    notes: [
+      { t: "Allin tuta", d: "Buenas noches" },
+      { t: "Kukay", d: "Amor" },
+      { t: "Quyllur", d: "Estrella" }
     ]
   }
 ];

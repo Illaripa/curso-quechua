@@ -19,3 +19,14 @@
   --touch-min: 44px;
   --transition: 0.3s ease;
 }
+
+[data-theme="dark"] {
+  --bg: #121212;
+  --card: #1e1e1e;
+  --card2: #252525;
+  --bdr: #333333;
+  --txt: #e8e0d4;
+  --muted: #9a8e82;
+  --q-color: #d4a64a;
+  --ay-color: #4ad4a6;
+}

@@ -29,6 +29,7 @@ function openCards(lang) {
   deck = data.filter(function(x) { return !saved[x.q]; });
   cardIndex = 0;
   setupCardFilters(lang);
+  markSeen();
   renderCard();
   showScreen('cards');
 }
@@ -72,6 +73,22 @@ function getUniqueCategories(data) {
   return cats;
 }
 
+function markSeen() {
+  if (deck.length === 0 || cardIndex >= deck.length) return;
+  var key = 'yachay_seen_' + cardLang;
+  var seen = JSON.parse(localStorage.getItem(key) || '{}');
+  var verb = deck[cardIndex];
+  if (verb && !seen[verb.q]) {
+    seen[verb.q] = Date.now();
+    localStorage.setItem(key, JSON.stringify(seen));
+  }
+}
+
+function getSeenCount() {
+  var key = 'yachay_seen_' + cardLang;
+  return Object.keys(JSON.parse(localStorage.getItem(key) || '{}')).length;
+}
+
 function shuffleArray(arr) {
   for (var i = arr.length - 1; i > 0; i--) {
     var j = Math.floor(Math.random() * (i + 1));
@@ -84,7 +101,9 @@ function renderCard() {
   var data = getCardData(cardLang);
   var total = data.length;
   var learnedCount = Object.keys(JSON.parse(localStorage.getItem('yachay_v5_' + cardLang) || '{}')).length;
-  countEl.textContent = (cardIndex + 1) + ' / ' + deck.length + (learnedCount > 0 ? ' (' + learnedCount + ' aprendidas)' : '');
+  var seenCount = getSeenCount();
+  var remaining = deck.length - cardIndex;
+  countEl.textContent = (cardIndex + 1) + ' / ' + deck.length + (learnedCount > 0 ? ' (' + learnedCount + ' ap.)' : '') + (seenCount > learnedCount ? ' · ' + (seenCount - learnedCount) + ' vistas' : '');
   document.getElementById('cardsProgress').style.width = (total > 0 ? (learnedCount / total * 100) : 0) + '%';
 
   // Update nav arrows visibility
@@ -98,6 +117,7 @@ function renderCard() {
     return;
   }
 
+  markSeen();
   var verb = deck[cardIndex];
   var fc = document.getElementById('flashcard');
   fc.className = 'flashcard';
@@ -306,6 +326,7 @@ function skipCard() {
 
 function resetDeck() {
   localStorage.removeItem('yachay_v5_' + cardLang);
+  localStorage.removeItem('yachay_seen_' + cardLang);
   openCards(cardLang);
 }
 
