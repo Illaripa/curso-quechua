@@ -54,6 +54,52 @@ var CHAT_SUGGESTIONS = {
   a: ['Walikiwa', 'Hoy comi chuño', 'Cuentame de tu familia', 'Que hiciste ayer?', 'Quiero ir a la feria', 'Munamawa', 'Corrigeme: Naya sarawa markaru', 'Hablemos del lago Titicaca']
 };
 
+var OFFLINE_REPLIES = {
+  q: {
+    default: [
+      'Allinmi! Napaykullayki. Imatam mikhuranki kunan? = ¡Hola! ¿Qué comiste hoy?',
+      'Kusisqam kani rimanaypaq. ¿Qanri imayna kashanki? = Me alegra hablar. ¿Cómo estás?',
+      'Ñuqaqa Cuscomanta kani. Qanri maymantataq kanki? = Soy del Cusco. ¿De dónde eres?',
+      'Allin p\'unchay! ¿Imatataq ruranki kunan? = ¡Buen día! ¿Qué hiciste hoy?',
+      'Munani rimashun. ¿Imamantataq rimayta munanki? = Me gusta conversar. ¿De qué quieres hablar?'
+    ],
+    hola: ['¡Allinllam! ¿Imaynallan? = ¡Estoy bien! ¿Cómo estás?'],
+    comida: ['¿Imatam mikhuranki? = ¿Qué comiste? Munani papata. = Me gusta la papa.'],
+    familia: ['¿Imayna aylluyki? = ¿Cómo está tu familia? Munani. = Me alegra.'],
+    gracias: ['Ayllaway = De nada. ¡Allin puriy! = ¡Buen viaje!'],
+    adios: ['Tupananchikkama = Hasta vernos. ¡Allin tuta! = ¡Buenas noches!']
+  },
+  a: {
+    default: [
+      'Walikiwa! Kamisaraki? = ¡Hola! ¿Cómo estás?',
+      'Nayaxa kusisqawa. Jumasti, kunasa? = Estoy feliz. ¿Y tú?',
+      'Arumaki uru. ¿Imasataq luranki? = Buen día. ¿Qué estás haciendo?',
+      'Waliki! ¿Maypataq kanki? = ¡Hola! ¿De dónde eres?',
+      'Kunasa manq\'tata? = ¿Qué comiste? Nayaxa chuño = Yo comí chuño.'
+    ],
+    hola: ['Waliki! Kamisaki? = ¡Hola! ¿Cómo estás?'],
+    comida: ['¿Kunasa manq\'tata? = ¿Qué comiste? Nayaxa chuño = Yo comí chuño.'],
+    familia: ['¿Imayna thawayki? = ¿Cómo está tu familia? Waliki = Bien.'],
+    gracias: ['Yupay. Allin uru = Gracias. Buen día.'],
+    adios: ['Tupanankama = Hasta pronto. Kusispawa = Estoy feliz.']
+  }
+};
+
+function getOfflineReply(text) {
+  var lower = text.toLowerCase();
+  var pool = OFFLINE_REPLIES[chatLang] || OFFLINE_REPLIES.q;
+  var keywords = Object.keys(pool);
+  for (var i = 0; i < keywords.length; i++) {
+    var kw = keywords[i];
+    if (kw !== 'default' && lower.indexOf(kw) >= 0) {
+      var replies = pool[kw];
+      return replies[Math.floor(Math.random() * replies.length)];
+    }
+  }
+  var defaults = pool.default;
+  return defaults[Math.floor(Math.random() * defaults.length)];
+}
+
 function setTutorMode(mode) {
   document.getElementById('modeBtnChat').classList.toggle('active', mode === 'chat');
   document.getElementById('modeBtnLesson').classList.toggle('active', mode === 'lecc');
@@ -94,6 +140,7 @@ function updateTutorSidebar(reply, userMsg) {
       tutorCorrCount++;
     }
     fbDiv.innerHTML = html || '<div class="tutor-fb-item tutor-fb-tip">' + escapeHtml(fbText) + '</div>';
+    updateMobileBar(fbText);
   }
 
   if (lvlMatch) {
@@ -187,8 +234,163 @@ function addChatMessage(role, text) {
   container.scrollTop = container.scrollHeight;
 }
 
+// ===== HISTORIAL PERSISTENTE =====
+function saveChatState() {
+  try {
+    var state = {
+      lang: chatLang,
+      history: chatHistory,
+      level: tutorLevel,
+      goals: tutorGoals,
+      msgCount: tutorMsgCount,
+      corrCount: tutorCorrCount,
+      sessionLog: tutorSessionLog.slice(-20)
+    };
+    localStorage.setItem('yachay_chat_' + chatLang, JSON.stringify(state));
+  } catch(e) {}
+}
+
+function loadChatState(lang) {
+  try {
+    var raw = localStorage.getItem('yachay_chat_' + lang);
+    if (!raw) return null;
+    return JSON.parse(raw);
+  } catch(e) { return null; }
+}
+
+// ===== REINICIAR CHAT =====
+function restartChat() {
+  if (!confirm('¿Limpiar conversación? Se guardará un resumen antes.')) return;
+  saveChatState();
+  chatHistory = [];
+  tutorMsgCount = 0;
+  tutorCorrCount = 0;
+  tutorLevel = 'A1';
+  tutorGoals = [];
+  tutorSessionLog = [];
+
+  document.getElementById('chatMessages').innerHTML = '';
+  document.getElementById('chatSuggestions').innerHTML = '';
+  document.getElementById('tutorFeedback').innerHTML = '<div class="tutor-fb-empty">Escribe algo para recibir feedback...</div>';
+  document.getElementById('tutorLevel').textContent = 'A1 -- Principiante';
+  document.getElementById('tutorProgressBar').style.width = '5%';
+  document.getElementById('tutorStats').textContent = '0 mensajes -- 0 correcciones';
+  document.getElementById('tutorDiary').innerHTML = '<div class="tutor-diary-empty">La sesion no ha comenzado aun...</div>';
+  hideMobileBar();
+  renderGoals();
+
+  var hour = new Date().getHours();
+  var timeQ = hour < 12 ? "Allin p'unchay" : hour < 18 ? "Allin ch'isi" : "Allin tuta";
+  var timeA = hour < 12 ? "Aski urukipana" : hour < 18 ? "Aski jayp'ukipana" : "Aski arumakipana";
+  var greetingsQ = [
+    timeQ + '! Imaynallan? = Como estas? Ñuqaqa matecitata upyashani = Estoy tomando un matecito. Qanri, imayna p\'unchayki kashan? = Y tu, como estuvo tu dia?',
+    timeQ + '! Allinllachu? = Todo bien? Qayna wasiypi t\'antata rurashani = Ayer estuve haciendo pan en mi casa. Imatataq qan ruranki qayna? = Que hiciste tu ayer?',
+    timeQ + '! Haykumuy, tiyaykuy = Pasa, sientate. Kunan mate upyashaspa rimashun = Conversemos mientras tomamos mate. Imamantam rimayta munanki? = De que quieres hablar?',
+  ];
+  var greetingsA = [
+    timeA + '! Kamisaraki? = Como estas? Nayaxa apita umantasktwa = Estoy tomando api. Jumasti, kunjamasa uru saratäna? = Y tu, como te fue el dia?',
+    timeA + '! Walikicha? = Todo bien? Nayra uruxa t\'ant\'a luraskta = Ayer hice pan. Jumasti, kunasa lurasktasa nayra uruxa? = Y tu, que hiciste ayer?',
+  ];
+  var greeting = chatLang === 'q'
+    ? greetingsQ[Math.floor(Math.random() * greetingsQ.length)]
+    : greetingsA[Math.floor(Math.random() * greetingsA.length)];
+
+  addChatMessage('a', greeting);
+  chatHistory.push({role: 'assistant', content: greeting});
+  renderSuggestions();
+}
+
+// ===== SUGGESTIONS MEJORADAS =====
+function renderSuggestions(traduceChallenge) {
+  var sugDiv = document.getElementById('chatSuggestions');
+  sugDiv.innerHTML = '';
+  var items = [];
+
+  if (traduceChallenge && traduceChallenge.length > 2) {
+    items.push({text: traduceChallenge, primary: true});
+  }
+
+  var pool = CHAT_SUGGESTIONS[chatLang] || CHAT_SUGGESTIONS.q;
+  var shuffled = pool.slice().sort(function() { return Math.random() - 0.5; });
+  var count = traduceChallenge ? 2 : 3;
+  for (var i = 0; i < Math.min(count, shuffled.length); i++) {
+    items.push({text: shuffled[i], primary: false});
+  }
+
+  items.forEach(function(item) {
+    var btn = document.createElement('button');
+    btn.className = 'chip' + (item.primary ? ' chip--primary' : '');
+    btn.textContent = item.text;
+    btn.onclick = function() { sendChip(item.text); };
+    sugDiv.appendChild(btn);
+  });
+}
+
+// ===== MOBILE BAR (nivel + feedback compacto) =====
+function updateMobileBar(feedbackText) {
+  var bar = document.getElementById('mobileTutorBar');
+  if (!bar) return;
+  bar.style.display = 'flex';
+  var shortFb = feedbackText.length > 80 ? feedbackText.substring(0, 80) + '...' : feedbackText;
+  var isOk = feedbackText.indexOf('bien') >= 0 || feedbackText.indexOf('correcto') >= 0 || feedbackText.indexOf('Perfecto') >= 0;
+  bar.innerHTML = '<span class="mobile-level-badge">' + tutorLevel + '</span>' +
+    '<span class="mobile-feedback ' + (isOk ? 'fb-ok' : 'fb-warn') + '">' + escapeHtml(shortFb) + '</span>';
+}
+
+function hideMobileBar() {
+  var bar = document.getElementById('mobileTutorBar');
+  if (bar) { bar.style.display = 'none'; bar.innerHTML = ''; }
+}
+
 function openChat(lang) {
   chatLang = lang;
+
+  // Intentar cargar historial previo
+  var saved = loadChatState(lang);
+  if (saved && saved.history && saved.history.length > 1) {
+    chatHistory = saved.history;
+    tutorLevel = saved.level || 'A1';
+    tutorGoals = saved.goals || [];
+    tutorMsgCount = saved.msgCount || 0;
+    tutorCorrCount = saved.corrCount || 0;
+    tutorSessionLog = saved.sessionLog || [];
+
+    document.getElementById('chatTitle').textContent = lang === 'q' ? '\u25C6 Tutor IA -- Quechua' : '\u25C6 Tutor IA -- Aymara';
+    document.getElementById('chatMessages').innerHTML = '';
+    chatHistory.forEach(function(m) {
+      if (m.role === 'user') addChatMessage('u', m.content);
+      else {
+        var clean = m.content
+          .replace(/TRADUCE:[\s\S]*$/, '')
+          .replace(/PRACTICA:[\s\S]*$/, '')
+          .replace(/FEEDBACK:[\s\S]*$/, '')
+          .replace(/NIVEL:\s*[A-B][12][\s\S]*$/, '')
+          .replace(/OBJETIVO:[\s\S]*$/, '')
+          .trim();
+        addChatMessage('a', clean || m.content);
+      }
+    });
+
+    var lvlNames = {A1: 'A1 -- Principiante', A2: 'A2 -- Basico', B1: 'B1 -- Intermedio', B2: 'B2 -- Avanzado'};
+    document.getElementById('tutorLevel').textContent = lvlNames[tutorLevel] || tutorLevel;
+    var pctMap = {A1: 15, A2: 35, B1: 60, B2: 85};
+    document.getElementById('tutorProgressBar').style.width = (pctMap[tutorLevel] || 15) + '%';
+    document.getElementById('tutorStats').textContent = tutorMsgCount + ' mensajes -- ' + tutorCorrCount + ' correcciones';
+    if (tutorSessionLog.length > 0) {
+      document.getElementById('tutorDiary').innerHTML = '<div class="tutor-diary-entry"><b>Sesion: ' + tutorMsgCount + ' intercambios</b><br>Nivel actual: ' + tutorLevel + '<br>Objetivos: ' + tutorGoals.length + '</div>';
+    }
+    renderGoals();
+    renderSuggestions();
+
+    document.getElementById('modeBtnChat').classList.add('active');
+    document.getElementById('modeBtnLesson').classList.remove('active');
+    var banner = document.getElementById('apiBanner');
+    if (banner) banner.classList.remove('show');
+    showScreen('chat');
+    return;
+  }
+
+  // Conversación nueva
   chatHistory = [];
   tutorMsgCount = 0;
   tutorCorrCount = 0;
@@ -206,9 +408,9 @@ function openChat(lang) {
   document.getElementById('tutorDiary').innerHTML = '<div class="tutor-diary-empty">La sesion no ha comenzado aun...</div>';
   document.getElementById('modeBtnChat').classList.add('active');
   document.getElementById('modeBtnLesson').classList.remove('active');
+  hideMobileBar();
   renderGoals();
 
-  // API banner always hidden — server handles the key
   var banner = document.getElementById('apiBanner');
   if (banner) banner.classList.remove('show');
 
@@ -233,6 +435,7 @@ function openChat(lang) {
 
   addChatMessage('a', greeting);
   chatHistory.push({role: 'assistant', content: greeting});
+  renderSuggestions();
   showScreen('chat');
 }
 
@@ -259,7 +462,6 @@ async function sendMessage() {
   try {
     var fullReplyText = '';
 
-    // Always use server proxy
     try {
       var proxyRes = await fetch('/api/chat', {
         method: 'POST',
@@ -273,14 +475,24 @@ async function sendMessage() {
       if (proxyRes.ok && proxyData.content) {
         fullReplyText = proxyData.content;
       } else {
+        // Fallback offline
         removeTypingIndicator();
-        addChatMessage('a', 'Error del servidor: ' + (proxyData.error || 'intenta de nuevo'));
+        var offlineReply = getOfflineReply(text);
+        addChatMessage('a', offlineReply);
+        chatHistory.push({role: 'assistant', content: offlineReply});
+        saveChatState();
+        renderSuggestions();
         document.getElementById('sendBtn').disabled = false;
         return;
       }
     } catch (e) {
+      // Fallback offline
       removeTypingIndicator();
-      addChatMessage('a', 'Error de conexion. Intenta de nuevo.');
+      var offlineReply = getOfflineReply(text);
+      addChatMessage('a', offlineReply);
+      chatHistory.push({role: 'assistant', content: offlineReply});
+      saveChatState();
+      renderSuggestions();
       document.getElementById('sendBtn').disabled = false;
       return;
     }
@@ -290,7 +502,11 @@ async function sendMessage() {
     var fullReply = data.content[0].text || '';
     if (!fullReply) {
       removeTypingIndicator();
-      addChatMessage('a', 'Sin respuesta de la API.');
+      var offlineReply = getOfflineReply(text);
+      addChatMessage('a', offlineReply);
+      chatHistory.push({role: 'assistant', content: offlineReply});
+      saveChatState();
+      renderSuggestions();
       document.getElementById('sendBtn').disabled = false;
       return;
     }
@@ -308,28 +524,20 @@ async function sendMessage() {
     removeTypingIndicator();
     addChatMessage('a', cleanReply || fullReply);
     updateTutorSidebar(fullReply, text);
+    saveChatState();
 
-    // Extract TRADUCE challenge and show as chip
-    var sugDiv = document.getElementById('chatSuggestions');
+    // Extract TRADUCE challenge
     var traduceMatch = fullReply.match(/TRADUCE:\s*(.+?)(?=FEEDBACK:|NIVEL:|OBJETIVO:|PRACTICA:|$)/s);
-    if (traduceMatch) {
-      var challenge = traduceMatch[1].trim().split('\n')[0].trim();
-      if (challenge.length > 2) {
-        var safeChallenge = escapeHtml(challenge);
-        var btn = document.createElement('button');
-        btn.className = 'chip';
-        btn.textContent = challenge;
-        btn.onclick = function() { sendChip(challenge); };
-        sugDiv.innerHTML = '';
-        sugDiv.appendChild(btn);
-      }
-    } else {
-      sugDiv.innerHTML = '';
-    }
+    var challenge = traduceMatch ? traduceMatch[1].trim().split('\n')[0].trim() : '';
+    renderSuggestions(challenge.length > 2 ? challenge : null);
 
   } catch (error) {
     removeTypingIndicator();
-    addChatMessage('a', 'Error de red: ' + error.message + '. Verifica tu conexion e intenta de nuevo.');
+    var offlineReply = getOfflineReply(text);
+    addChatMessage('a', offlineReply);
+    chatHistory.push({role: 'assistant', content: offlineReply});
+    saveChatState();
+    renderSuggestions();
   } finally {
     document.getElementById('sendBtn').disabled = false;
   }
