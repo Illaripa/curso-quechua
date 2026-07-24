@@ -13,7 +13,7 @@
 .ref-tab {
   flex: 1;
   padding: 11px 8px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
   cursor: pointer;
   text-align: center;
@@ -52,7 +52,7 @@
 }
 
 .ref-category-header {
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 2.5px;
   text-transform: uppercase;
@@ -84,12 +84,12 @@
 }
 
 .ref-item-spanish {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--muted);
 }
 
 .ref-tag {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 1px;
   padding: 3px 8px;
@@ -157,7 +157,7 @@
 }
 
 .detail-section-title {
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -178,7 +178,7 @@
 
 .conj-table td:first-child {
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
   width: 45%;
 }
 
@@ -203,7 +203,7 @@
 }
 
 .example-spanish {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--muted);
   font-style: italic;
 }
@@ -212,7 +212,7 @@
   background: var(--card2);
   border-radius: var(--radius-sm);
   padding: 11px 13px;
-  font-size: 13px;
+  font-size: 15px;
   color: var(--muted);
   line-height: 1.6;
 }

@@ -7,7 +7,7 @@
   padding: 20px 15px 50px;
 }
 .dashboard-eyebrow {
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--muted);
@@ -49,9 +49,9 @@
   margin-bottom: 5px;
 }
 .lang-card-sub {
-  font-size: 11px;
+  font-size: 15px;
   color: var(--muted);
-  letter-spacing: 0.4px;
+  margin-bottom: 14px;
   line-height: 1.4;
 }
 .lang-card--q  { background: linear-gradient(145deg,#fffbf0,var(--card)); border-color: rgba(196,125,26,0.25); }
@@ -72,7 +72,7 @@
   border: 1px solid var(--bdr);
   border-radius: 20px;
   padding: 7px 14px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--muted);
   cursor: pointer;
@@ -107,7 +107,7 @@
 
 .home-subtitle {
   color: var(--muted);
-  font-size: 13px;
+  font-size: 15px;
   position: relative;
 }
 
@@ -117,7 +117,7 @@
   border: 1.5px solid var(--bdr);
   background: transparent;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 1px;
   cursor: pointer;
@@ -137,7 +137,7 @@
 }
 
 .section-label {
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--muted);
@@ -182,14 +182,14 @@
 }
 
 .menu-title {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
   margin-bottom: 2px;
   color: var(--txt);
 }
 
 .menu-desc {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--muted);
   line-height: 1.5;
 }
@@ -224,7 +224,7 @@
 }
 
 .topbar-title {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
 }
 

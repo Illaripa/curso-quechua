@@ -179,7 +179,7 @@
 .card-cat-pill {
   padding: 4px 12px;
   border-radius: 20px;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 1.5px;
   text-transform: uppercase;
@@ -252,7 +252,7 @@
 }
 
 .conj-cell-label {
-  font-size: 10px;
+  font-size: 12px;
   color: #c0d0b8;
   font-weight: 700;
   letter-spacing: 0.5px;
@@ -279,7 +279,7 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 7px;
   padding: 5px 4px;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   color: #b0c0a8;
   text-transform: uppercase;
@@ -295,7 +295,7 @@
 }
 
 .card-examples-label {
-  font-size: 9px;
+  font-size: 12px;
   color: var(--muted);
   font-weight: 700;
   letter-spacing: 1px;
@@ -326,7 +326,7 @@
 }
 
 .card-example-suffix {
-  font-size: 10px;
+  font-size: 12px;
   color: #c0d0b8;
   margin-top: 4px;
   padding-top: 4px;
@@ -339,7 +339,7 @@
   border: 1px solid rgba(129, 140, 248, 0.15);
   border-radius: 7px;
   padding: 7px 9px;
-  font-size: 11px;
+  font-size: 14px;
   color: var(--muted);
   line-height: 1.5;
 }
@@ -357,7 +357,7 @@
   align-items: flex-start;
 }
 .card-ex-tag {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.5px;
   text-transform: uppercase;
@@ -473,7 +473,7 @@
 }
 
 .action-skip span {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--rose);
 }
@@ -484,7 +484,7 @@
 }
 
 .action-learned span {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--green);
 }
@@ -506,7 +506,7 @@
 }
 
 .action-flip span {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 700;
   color: #fff;
 }

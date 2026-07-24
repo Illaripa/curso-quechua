@@ -20,7 +20,7 @@ function buildWoBodyHtml() {
 
 function startWordOrder(lang) {
   woLang = lang;
-  var src = lang === 'a' ? WORDORDER_A : lang === 'en' ? WORDORDER_EN : lang === 'fr' ? WORDORDER_FR : WORDORDER_Q;
+  var src = lang === 'a' ? (WORDORDER_A || []).concat(WORDORDER_A_EXT || []) : lang === 'en' ? WORDORDER_EN : lang === 'fr' ? WORDORDER_FR : (WORDORDER_Q || []).concat(WORDORDER_Q_EXT || []);
   woData = src.slice().sort(function(a, b) { return (a.level || 1) - (b.level || 1); });
   woIndex = 0;
   woScore = 0;

@@ -8,7 +8,7 @@ function startQuiz(lang) {
   quizLang = lang;
   var qTitles = {q:'\u25C9 Quiz Quechua', a:'\u25C9 Quiz Aymara', en:'\u25C9 Quiz English', fr:'\u25C9 Quiz Fran\u00E7ais'};
   document.getElementById('quizTitle').textContent = qTitles[lang] || '\u25C9 Quiz';
-  var source = lang === 'q' ? QUIZ_Q.slice() : lang === 'a' ? QUIZ_A.slice() : lang === 'en' ? QUIZ_EN.slice() : QUIZ_FR.slice();
+  var source = lang === 'q' ? QUIZ_Q.concat(QUIZ_Q_EXT || []) : lang === 'a' ? QUIZ_A.concat(QUIZ_A_EXT || []) : lang === 'en' ? QUIZ_EN.slice() : QUIZ_FR.slice();
   shuffleArray(source);
   quizData = source;
   quizIndex = 0;
@@ -81,6 +81,12 @@ function showQuizResult() {
   var symbol = pct >= 80 ? '\u2726' : pct >= 50 ? '\u25C9' : '\u25A4';
   var message = pct >= 80 ? 'Excelente!' : pct >= 50 ? 'Buen trabajo' : 'Sigue practicando';
   var sub = pct >= 80 ? 'Dominaste el quiz!' : pct >= 50 ? 'Vas por buen camino.' : 'La pr\u00E1ctica hace al maestro.';
+
+  var key = 'yachay_quiz_' + quizLang;
+  var prev = JSON.parse(localStorage.getItem(key) || '{"best":0,"total":0}');
+  prev.total++;
+  if (pct > prev.best) prev.best = pct;
+  localStorage.setItem(key, JSON.stringify(prev));
 
   document.getElementById('resultEmoji').textContent = symbol;
   document.getElementById('resultMessage').textContent = message;

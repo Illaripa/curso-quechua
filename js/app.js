@@ -285,6 +285,52 @@ function showLangDashboard() {
 }
 
 // ============================================================
+// STREAK & PROGRESS TRACKING
+// ============================================================
+function getStreak() {
+  var data = JSON.parse(localStorage.getItem('yachay_streak') || '{"days":0,"last":""}');
+  var today = new Date().toISOString().slice(0, 10);
+  var yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+  if (data.last === today) return data.days;
+  if (data.last === yesterday) return data.days;
+  return 0;
+}
+
+function trackVisit() {
+  var today = new Date().toISOString().slice(0, 10);
+  var data = JSON.parse(localStorage.getItem('yachay_streak') || '{"days":0,"last":""}');
+  if (data.last === today) return;
+  var yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+  data.days = (data.last === yesterday) ? data.days + 1 : 1;
+  data.last = today;
+  localStorage.setItem('yachay_streak', JSON.stringify(data));
+}
+
+function getWordsLearned(lang) {
+  var saved = JSON.parse(localStorage.getItem('yachay_v5_' + lang) || '{}');
+  return Object.keys(saved).length;
+}
+
+function getQuizScore(lang) {
+  var data = JSON.parse(localStorage.getItem('yachay_quiz_' + lang) || '{"best":0,"total":0}');
+  return data;
+}
+
+function getProgressSummary(lang) {
+  trackVisit();
+  var streak = getStreak();
+  var words = getWordsLearned(lang);
+  var quiz = getQuizScore(lang);
+  if (streak === 0 && words === 0 && quiz.total === 0) return '';
+  var streakText = streak > 0 ? '<span style="color:var(--gold)">🔥 ' + streak + ' día' + (streak > 1 ? 's' : '') + '</span>' : '';
+  var wordsText = words > 0 ? '<span style="color:var(--teal)">📚 ' + words + ' palabras</span>' : '';
+  var quizText = quiz.total > 0 ? '<span style="color:#8b5cf6">🎯 ' + quiz.best + '% mejor</span>' : '';
+  var parts = [streakText, wordsText, quizText].filter(Boolean);
+  if (parts.length === 0) return '';
+  return '<div style="display:flex;gap:12px;justify-content:center;padding:10px 0 14px;font-size:13px;font-weight:600;flex-wrap:wrap">' + parts.join('<span style="color:var(--bdr)">·</span>') + '</div>';
+}
+
+// ============================================================
 // HOME MENU
 // ============================================================
 function renderDashboard() {
@@ -323,6 +369,7 @@ function renderHomeBody() {
       {i:'▤', t:u('menu.q.textos'),     d:u('menu.q.textos.d'),     fn:"openReader('ensayos')"},
       {i:'⚡', t:u('menu.q.verbos'),     d:u('menu.q.verbos.d'),     fn:"openRef('verbos')"},
       {i:'◎', t:u('menu.q.sufijos'),    d:u('menu.q.sufijos.d'),    fn:"openRef('sufijos')"},
+      {i:'📚', t:'Diccionario',         d:'1000+ expresiones comunes Quechua-Aymara', fn:"openRef('vocabulario')"},
       {i:'▣', t:u('menu.q.fichas'),     d:u('menu.q.fichas.d'),     fn:"openCards('q')"},
       {i:'◉', t:u('menu.q.quiz'),       d:u('menu.q.quiz.d'),       fn:"startQuiz('q')"},
       {i:'✏', t:u('menu.q.completar'),  d:u('menu.q.completar.d'),  fn:"startCompletar('q')"},
@@ -341,6 +388,7 @@ function renderHomeBody() {
       {i:'❋', t:u('menu.a.poesia'),     d:u('menu.a.poesia.d'),     fn:"openReader('aymara_po')"},
       {i:'⚡', t:u('menu.a.verbos'),     d:u('menu.a.verbos.d'),     fn:"openRef('aymara_verbos')"},
       {i:'◎', t:u('menu.a.sufijos'),    d:u('menu.a.sufijos.d'),    fn:"openRef('aymara_sufijos')"},
+      {i:'📚', t:'Diccionario',         d:'1000+ expresiones comunes Quechua-Aymara', fn:"openRef('vocabulario')"},
       {i:'▣', t:u('menu.a.fichas'),     d:u('menu.a.fichas.d'),     fn:"openCards('a')"},
       {i:'▤', t:u('menu.a.vocab'),      d:u('menu.a.vocab.d'),      fn:"openCards('p')"},
       {i:'◉', t:u('menu.a.quiz'),       d:u('menu.a.quiz.d'),       fn:"startQuiz('a')"},
@@ -386,6 +434,7 @@ function renderHomeBody() {
 
   document.getElementById('homeBody').innerHTML =
     '<button class="back-to-dashboard" onclick="showLangDashboard()">&#8592; Idiomas</button>' +
+    getProgressSummary(lang) +
     '<p class="section-label" style="margin-top:4px;border-left:3px solid ' + langColor + ';padding-left:8px">' + sectionLabel + '</p>' +
     items.map(function(x) {
       return '<button class="menu-card" onclick="' + x.fn + '">' +
