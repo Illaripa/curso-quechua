@@ -10,7 +10,7 @@
 }
 
 .quiz-prompt {
-  font-size: 11px;
+  font-size: 14px;
   color: var(--muted);
   margin-bottom: 5px;
   font-weight: 600;
@@ -39,7 +39,7 @@
   border: 2px solid var(--bdr);
   background: var(--card2);
   cursor: pointer;
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1.45;
   font-weight: 500;
   text-align: left;
@@ -75,7 +75,7 @@
   background: rgba(52, 211, 153, 0.06);
   border: 1px solid rgba(52, 211, 153, 0.2);
   border-radius: var(--radius-sm);
-  font-size: 13px;
+  font-size: 15px;
   color: var(--green);
   line-height: 1.6;
   animation: fadeUp 0.3s ease;
@@ -90,7 +90,7 @@
   border-radius: 10px;
   border: 1px solid var(--bdr);
   margin-bottom: 15px;
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .btn-main {
@@ -98,7 +98,7 @@
   padding: 14px;
   border-radius: 11px;
   border: none;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
   cursor: pointer;
   min-height: var(--touch-min);
@@ -115,7 +115,7 @@
   border: 1px solid var(--bdr);
   background: transparent;
   color: var(--txt);
-  font-size: 13px;
+  font-size: 15px;
   cursor: pointer;
   min-height: var(--touch-min);
 }
@@ -159,7 +159,7 @@
 }
 
 .result-label {
-  font-size: 11px;
+  font-size: 14px;
   color: var(--muted);
   margin-top: 2px;
 }
@@ -184,7 +184,7 @@
   border-radius: 20px;
   border: 1.5px solid var(--bdr);
   background: var(--card2);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--text);
   cursor: pointer;
@@ -259,7 +259,7 @@
   color: var(--fg);
 }
 .dial-subtitle {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--muted);
   margin-top: 2px;
   letter-spacing: 0.3px;
@@ -306,7 +306,7 @@
   max-width: calc(100% - 48px);
 }
 .dial-speaker {
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 700;
   margin-bottom: 4px;
   letter-spacing: 0.8px;
@@ -332,14 +332,14 @@
 }
 .dial-quechua {
   display: block;
-  font-size: 15px;
+  font-size: 17px;
   color: var(--fg);
   font-weight: 500;
   line-height: 1.4;
 }
 .dial-trans {
   display: none;
-  font-size: 12px;
+  font-size: 14px;
   color: var(--muted);
   margin-top: 6px;
   padding-top: 6px;
@@ -353,7 +353,7 @@
   border-left: 3px solid var(--gold);
   padding: 10px 13px;
   border-radius: 0 8px 8px 0;
-  font-size: 12px;
+  font-size: 14px;
   color: var(--fg);
   line-height: 1.5;
 }
@@ -361,7 +361,7 @@
   display: inline-block;
   background: var(--gold);
   color: #fff;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.5px;
   padding: 1px 6px;
@@ -388,7 +388,7 @@
   border: none;
   border-radius: 20px;
   padding: 8px 15px;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;

@@ -27,28 +27,28 @@
   .menu-card { padding: 14px 12px; border-radius: 12px; margin-bottom: 9px; }
   .menu-icon { font-size: 26px; }
   .menu-title { font-size: 16px; }
-  .menu-desc { font-size: 13px; }
+  .menu-desc { font-size: 14px; }
   .morning-btn { font-size: 16px; padding: 17px; }
   .piece-title { font-size: 20px; }
-  .toggle-btn { font-size: 13px; padding: 10px 4px; }
+  .toggle-btn { font-size: 14px; padding: 10px 4px; }
   .content-body { padding: 14px 12px 80px; }
   .topbar { padding: 10px 12px; }
-  .ref-tab { font-size: 13px; padding: 13px 6px; }
+  .ref-tab { font-size: 14px; padding: 13px 6px; }
   .ref-search input { font-size: 16px; }
   .chat-input { font-size: 16px; }
   .send-btn { width: 44px; height: 44px; font-size: 18px; }
   .quiz-sentence { font-size: 20px; }
-  .quiz-option { font-size: 15px; padding: 14px; }
+  .quiz-option { font-size: 16px; padding: 14px; }
   .card-verb { font-size: 32px; }
   .card-meaning { font-size: 18px; }
   .conj-grid { grid-template-columns: 1fr 1fr; gap: 4px; }
   .conj-cell { padding: 6px 7px; }
-  .conj-cell-word { font-size: 13px; }
+  .conj-cell-word { font-size: 14px; }
   .card-back { padding: 12px 10px; }
-  .card-back-verb { font-size: 18px; }
-  .card-back-meaning { font-size: 15px; }
+  .card-back-verb { font-size: 20px; }
+  .card-back-meaning { font-size: 16px; }
   .bubble { font-size: 15px; padding: 10px 14px; }
-  .chip { font-size: 13px; padding: 7px 13px; }
+  .chip { font-size: 14px; padding: 7px 13px; }
 }
 
 /* Small phones */

@@ -82,8 +82,8 @@ function openSongDetail(index) {
 
   const lines = (song.lines || []).map(function(l, i) { return `
     <div id="lyric-${i}" style="margin-bottom:10px;padding:6px 8px;border-radius:8px;border-left:3px solid transparent;transition:background 0.2s,border-color 0.2s">
-      <div style="font-family:Lora,serif;font-size:15px;color:var(--txt);font-style:italic;line-height:1.4">${l[langKey] || l.q || l.a || ''}</div>
-      <div style="font-size:13px;color:var(--muted);margin-top:2px;line-height:1.4">${l.s || ''}</div>
+      <div style="font-family:Lora,serif;font-size:19px;color:var(--txt);font-style:italic;line-height:1.4">${l[langKey] || l.q || l.a || ''}</div>
+      <div style="font-size:16px;color:var(--muted);margin-top:2px;line-height:1.4">${l.s || ''}</div>
     </div>`; }).join('');
 
   const notes = (song.notes && song.notes.length)
@@ -91,21 +91,21 @@ function openSongDetail(index) {
         <div class="grammar-title">&#9670; Vocabulario</div>
         ${song.notes.map(function(n) { return `
           <div style="display:flex;gap:8px;margin-bottom:6px;align-items:baseline">
-            <div style="font-weight:700;color:${color};min-width:90px;font-size:13px">${n.t}</div>
-            <div style="font-size:13px;color:var(--muted)">${n.d}</div>
+            <div style="font-weight:700;color:${color};min-width:90px;font-size:15px">${n.t}</div>
+            <div style="font-size:15px;color:var(--muted)">${n.d}</div>
           </div>`; }).join('')}
        </div>`
     : '';
 
   document.getElementById('songsBody').innerHTML = `
     <div style="text-align:center;padding:16px 0 8px">
-      <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:${color};margin-bottom:6px">${song.genre}</div>
+      <div style="font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:${color};margin-bottom:6px">${song.genre}</div>
       <div style="font-family:Lora,serif;font-size:22px;font-weight:700;color:var(--txt);margin-bottom:4px">${song.title}</div>
-      <div style="font-size:13px;color:var(--muted)">${song.artist}</div>
+      <div style="font-size:15px;color:var(--muted)">${song.artist}</div>
     </div>
     ${ytSection}
     <div style="background:var(--card);border-radius:16px;padding:16px;margin-bottom:16px;border:1px solid rgba(0,0,0,0.07)">
-      <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:${color};margin-bottom:12px">&#9834; Letra</div>
+      <div style="font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:${color};margin-bottom:12px">&#9834; Letra</div>
       ${lines}
     </div>
     ${notes}`;

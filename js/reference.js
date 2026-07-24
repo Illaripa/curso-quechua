@@ -12,7 +12,8 @@ function openRef(key) {
     key === 'verbos' ? 'Verbos Quechua' :
     key === 'sufijos' ? 'Sufijos Quechua' :
     key === 'aymara_verbos' ? 'Verbos Aymara' :
-    key === 'palabras' ? 'Vocabulario' : 'Sufijos Aymara';
+    key === 'palabras' ? 'Vocabulario' :
+    key === 'vocabulario' ? 'Diccionario 1000+' : 'Sufijos Aymara';
 
   var data = getRefData();
   var cats = getUniqueCategories(data);
@@ -29,6 +30,7 @@ function getRefData() {
   if (refKey === 'sufijos') return SUFIJOS_Q;
   if (refKey === 'aymara_verbos') return VERBOS_A;
   if (refKey === 'palabras') return PALABRAS_Q;
+  if (refKey === 'vocabulario') return VOCABULARY_DATA;
   return SUFIJOS_A;
 }
 

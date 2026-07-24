@@ -169,7 +169,7 @@
 }
 
 .tutor-section-title {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.08em;
   color: var(--muted);
@@ -207,18 +207,18 @@
 }
 
 .tutor-stats {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--muted);
 }
 
 .tutor-fb-empty, .tutor-diary-empty {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--muted);
   font-style: italic;
 }
 
 .tutor-fb-item {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.5;
   padding: 5px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -239,7 +239,7 @@
 }
 
 .tutor-goal-item {
-  font-size: 12px;
+  font-size: 14px;
   display: flex;
   gap: 6px;
   align-items: flex-start;
@@ -252,7 +252,7 @@
 }
 
 .tutor-add-btn {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--gold);
   background: none;
   border: 1px dashed rgba(240, 165, 0, 0.4);
@@ -267,7 +267,7 @@
 }
 
 .tutor-diary-entry {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--muted);
   line-height: 1.6;
 }
@@ -313,7 +313,7 @@
 }
 
 .api-title {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--gold);
   margin-bottom: 8px;
@@ -321,7 +321,7 @@
 }
 
 .api-desc {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--muted);
   margin-bottom: 10px;
   line-height: 1.5;
@@ -363,7 +363,7 @@
 }
 
 .api-saved {
-  font-size: 11px;
+  font-size: 13px;
   color: #4caf50;
   margin-top: 6px;
   display: none;
