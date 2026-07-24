@@ -370,6 +370,7 @@ function renderHomeBody() {
       {i:'⚡', t:u('menu.q.verbos'),     d:u('menu.q.verbos.d'),     fn:"openRef('verbos')"},
       {i:'◎', t:u('menu.q.sufijos'),    d:u('menu.q.sufijos.d'),    fn:"openRef('sufijos')"},
       {i:'📚', t:'Diccionario',         d:'1000+ expresiones comunes Quechua-Aymara', fn:"openRef('vocabulario')"},
+      {i:'📖', t:'Phrasebook 1000+',    d:'Frases por situación — Saludos, comida, viajes y más', fn:"openPhrasebook()"},
       {i:'▣', t:u('menu.q.fichas'),     d:u('menu.q.fichas.d'),     fn:"openCards('q')"},
       {i:'◉', t:u('menu.q.quiz'),       d:u('menu.q.quiz.d'),       fn:"startQuiz('q')"},
       {i:'✏', t:u('menu.q.completar'),  d:u('menu.q.completar.d'),  fn:"startCompletar('q')"},

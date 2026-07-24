@@ -92,6 +92,20 @@
   <div id="refList" style="flex:1;overflow-y:auto"></div>
 </div>
 
+<!-- ============================================================
+     PHRASEBOOK SCREEN
+     ============================================================ -->
+<div id="phrasebook" class="screen">
+  <div class="topbar">
+    <button class="topbar-back" onclick="goHome()">&#8592;</button>
+    <span class="topbar-title" id="pbTitle">Phrasebook</span>
+    <span style="font-size:12px;color:var(--muted)" id="pbCount"></span>
+  </div>
+  <div class="ref-tabs" id="pbTabs"></div>
+  <div class="ref-search"><input id="pbInput" placeholder="Search…" oninput="filterPhrasebook()"/></div>
+  <div id="pbList" style="flex:1;overflow-y:auto"></div>
+</div>
+
 <!-- Detail panel (overlay) -->
 <div class="detail-panel" id="detailPanel">
   <button class="detail-close" onclick="closeDetail()" data-i18n="detail.close">← Back</button>
@@ -404,6 +418,8 @@
 <script src="data/suffixes-aymara.js?v=2"></script>
 <script src="data/vocabulary.js?v=2"></script>
 <script src="data/common-vocabulary.js?v=1"></script>
+<script src="data/phrasebook.js?v=1"></script>
+<script src="data/phrasebook-ext.js?v=1"></script>
   <script src="data/quiz-quechua.js?v=2"></script>
   <script src="data/quiz-extended.js?v=1"></script>
 <script src="data/quiz-aymara.js?v=2"></script>
@@ -423,6 +439,7 @@
 <script src="js/elements.js?v=2"></script>
 <script src="js/reader.js?v=2"></script>
 <script src="js/reference.js?v=2"></script>
+<script src="js/phrasebook.js?v=1"></script>
 <script src="js/flashcards.js?v=3"></script>
 <script src="js/quiz.js?v=2"></script>
 <script src="js/completar.js?v=2"></script>
