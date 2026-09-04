@@ -378,7 +378,9 @@ function setupSwipe() {
       if (dx < 0) nextCard();   // swipe left = next
       else prevCard();          // swipe right = previous
     } else if (moved < 20) {
-      // TAP: flip card
+      // TAP: flip card. preventDefault evita el click sintético que dispararía
+      // el onclick del div y volvería a voltear (doble flip = no se voltea).
+      e.preventDefault();
       flipCard();
     }
   });
