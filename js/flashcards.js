@@ -131,9 +131,11 @@ function renderCard() {
 
   // Front face
   var imgKeyword = verb.img || null;
-  var imgHtml = imgKeyword
-    ? '<div class="card-img-wrap"><img class="card-img" src="https://loremflickr.com/400/180/' + encodeURIComponent(imgKeyword) + '" alt="" loading="lazy" onerror="this.parentNode.style.display=\'none\'"></div>'
-    : '';
+  var imgHtml = '';
+  if (imgKeyword) {
+    var imgSlug = imgKeyword.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    imgHtml = '<div class="card-img-wrap"><img class="card-img" src="img/cards/' + imgSlug + '.png" alt="" loading="lazy" onerror="this.parentNode.style.display=\'none\'"></div>';
+  }
   document.getElementById('cardFront').innerHTML =
     imgHtml +
     '<div class="card-category-pos"><div class="card-cat-pill" style="background:' + verb.col + '22;color:' + verb.col + '">' + verb.cat + '</div></div>' +
