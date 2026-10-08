@@ -18,6 +18,10 @@ app.use(express.static(__dirname));
 const _rl = new Map();
 function rateLimit(ip, max, windowMs) {
   const now = Date.now();
+  // Purga entradas vencidas cuando el Map crece (evita fuga de memoria)
+  if (_rl.size > 1000) {
+    for (const [k, v] of _rl) if (now > v.reset) _rl.delete(k);
+  }
   const entry = _rl.get(ip) || { n: 0, reset: now + windowMs };
   if (now > entry.reset) { entry.n = 0; entry.reset = now + windowMs; }
   entry.n++;
@@ -25,10 +29,28 @@ function rateLimit(ip, max, windowMs) {
   return entry.n > max;
 }
 
+// Invoca un handler async capturando cualquier error (Express 4 no lo hace solo)
+async function callHandler(file, req, res) {
+  try {
+    const mod = await import(file);
+    await mod.default(req, res);
+  } catch (e) {
+    console.error('Handler error en', file, e);
+    if (!res.headersSent) res.status(500).json({ error: 'Error interno' });
+  }
+}
+
+// Comparación de contraseña en tiempo constante
+function safeEqual(a, b) {
+  const ba = Buffer.from(String(a)), bb = Buffer.from(String(b));
+  if (ba.length !== bb.length) return false;
+  return timingSafeEqual(ba, bb);
+}
+
 // Admin auth middleware
 function requireAdmin(req, res, next) {
   const pwd = req.headers['x-admin-password'] || '';
-  if (!process.env.ADMIN_PASSWORD || pwd !== process.env.ADMIN_PASSWORD)
+  if (!process.env.ADMIN_PASSWORD || !safeEqual(pwd, process.env.ADMIN_PASSWORD))
     return res.status(401).json({ error: 'Unauthorized' });
   next();
 }
@@ -46,32 +68,24 @@ app.post('/webhook', (req, res) => {
 });
 
 // Public API
-app.get('/api/songs', async (req, res) => {
-  const mod = await import('./api/songs.js');
-  return mod.default(req, res);
-});
+app.get('/api/songs', (req, res) => callHandler('./api/songs.js', req, res));
 
-app.post('/api/chat', async (req, res) => {
+app.post('/api/chat', (req, res) => {
   const ip = req.ip || req.socket.remoteAddress || 'unknown';
   if (rateLimit(ip, 30, 60_000)) return res.status(429).json({ error: 'Demasiadas peticiones. Espera un minuto.' });
-  const mod = await import('./api/chat.js');
-  return mod.default(req, res);
+  return callHandler('./api/chat.js', req, res);
 });
 
-app.post('/api/tts', async (req, res) => {
+app.post('/api/tts', (req, res) => {
   const ip = req.ip || req.socket.remoteAddress || 'unknown';
   if (rateLimit('tts:' + ip, 20, 60_000)) return res.status(429).json({ error: 'Límite de TTS alcanzado.' });
-  const mod = await import('./api/tts.js');
-  return mod.default(req, res);
+  return callHandler('./api/tts.js', req, res);
 });
 
 // Admin API — all routes require password
 const adminRoutes = ['auth', 'upload', 'process', 'presign', 'ytdl', 'save-song'];
 for (const route of adminRoutes) {
-  app.all(`/api/admin/${route}`, requireAdmin, async (req, res) => {
-    const mod = await import(`./api/admin/${route}.js`);
-    return mod.default(req, res);
-  });
+  app.all(`/api/admin/${route}`, requireAdmin, (req, res) => callHandler(`./api/admin/${route}.js`, req, res));
 }
 
 const PORT = process.env.PORT || 3000;

@@ -88,9 +88,8 @@ export default async function handler(req, res) {
   }
 
   var models = [
-    'google/gemma-3-27b-it:free',
-    'google/gemma-3n-e4b-it:free',
-    'qwen/qwen3-4b:free'
+    'openai/gpt-4o-mini',
+    'google/gemma-4-31b-it:free'
   ];
   var orMsgs = [
     { role: 'user', content: '[INSTRUCCIONES] ' + system + ' [/INSTRUCCIONES]' },
@@ -104,7 +103,7 @@ export default async function handler(req, res) {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + orKey,
-          'HTTP-Referer': 'https://yachay-tutor.vercel.app/',
+          'HTTP-Referer': 'https://quechua.crea12.ink/',
           'X-Title': 'Yachay Tutor'
         },
         body: JSON.stringify({ model: models[i], max_tokens: 150, messages: orMsgs })
