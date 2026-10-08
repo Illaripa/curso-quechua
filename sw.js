@@ -1,4 +1,4 @@
-var CACHE_NAME = 'yachay-v20';
+var CACHE_NAME = 'yachay-v21';
 var urlsToCache = [
   './',
   './index.html',
@@ -246,6 +246,8 @@ self.addEventListener('install', function(event) {
 self.addEventListener('fetch', function(event) {
   // Network first for JS/CSS, cache first for data/icons/imágenes
   var url = event.request.url;
+  // Nunca interceptar el API: siempre a la red, sin cache
+  if (url.includes('/api/')) return;
   if (url.includes('/js/') || url.includes('/css/') || url.endsWith('.html') || url.endsWith('sw.js')) {
     // Network first: try fresh, fallback to cache
     event.respondWith(
