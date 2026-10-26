@@ -163,5 +163,53 @@ const CANCIONES_Q = [
       { t: "Pukllay", d: "Jugar" },
       { t: "Chiri", d: "Frío" }
     ]
+  },
+  {
+    title: "Piquicha",
+    artist: "—",
+    genre: "Huayno",
+    youtube_id: "9vb5Bq8aU5A",
+    lines: [
+      { q: "Piquicha, piquicha, largo makicha",            s: "Pulguita, pulguita, de patitas largas" },
+      { q: "Piquicha, piquicha, largo makicha",            s: "Pulguita, pulguita, de patitas largas" },
+      { q: "warma yanachaywan puñuchakuchkaptiy",          s: "mientras dormía con mi joven amada" },
+      { q: "kunkachallanmanta cachuramuwanki,",            s: "me mordiste desde el cuellito" },
+      { q: "warma yanachawan puñuchakuchkaptiy",           s: "mientras dormía con mi joven amada" },
+      { q: "kunkachallanmanta cachuramuwanki.",            s: "me mordiste desde el cuellito" },
+      { q: "Ahora sí, eso sí",                             s: "Ahora sí, eso sí" },
+      { q: "qanra piquicha",                               s: "pulga sucia" },
+      { q: "Ahora sí, eso sí",                             s: "Ahora sí, eso sí" },
+      { q: "qanra piquicha",                               s: "pulga sucia" },
+      { q: "rumipa patanpi tusurachisayki",                s: "sobre la piedra te haré bailar" },
+      { q: "bandolinachaywan, tocatocaykuspa,",            s: "tocando con mi bandolina" },
+      { q: "rumipa patanpi tusurachisayki",                s: "sobre la piedra te haré bailar" },
+      { q: "charangochayta, tocatocaykuspa.",              s: "tocando mi charanguito" },
+      { q: "Qamchu yachanki, ñoqa yachasqayta",            s: "¿Acaso tú sabes lo que yo sé?" },
+      { q: "Qamchu yachanki, ñoqa yachasqayta",            s: "¿Acaso tú sabes lo que yo sé?" },
+      { q: "piquipa makinman sortiqa churayta",            s: "poner un anillo en la mano de la pulga" },
+      { q: "piquipa makinman cinta churayta",              s: "poner una cinta en la mano de la pulga" },
+      { q: "piquipa makinman sortiqa churayta",            s: "poner un anillo en la mano de la pulga" },
+      { q: "pikquipa makinman cinta churayta",             s: "poner una cinta en la mano de la pulga" },
+      { q: "Ahora sí, eso sí",                             s: "Ahora sí, eso sí" },
+      { q: "qanra piquicha",                               s: "pulga sucia" },
+      { q: "rumipa patanpi tusurachisayki",                s: "sobre la piedra te haré bailar" },
+      { q: "bandolinachaywan, tocatocaykuspa,",            s: "tocando con mi bandolina" },
+      { q: "rumipa patanpi tusurachisayki",                s: "sobre la piedra te haré bailar" },
+      { q: "guitarrachayta, tocatocaykuspa",               s: "tocando mi guitarrita" }
+    ],
+    notes: [
+      { t: "Piqui", d: "Pulga" },
+      { t: "Maki", d: "Mano" },
+      { t: "Warma", d: "Joven, muchacho(a)" },
+      { t: "Yana", d: "Pareja, amado(a)" },
+      { t: "Puñuy", d: "Dormir" },
+      { t: "Kunka", d: "Cuello" },
+      { t: "Kachuy", d: "Morder" },
+      { t: "Qanra", d: "Sucio, asqueroso" },
+      { t: "Rumi", d: "Piedra" },
+      { t: "Tusuy", d: "Bailar" },
+      { t: "Yachay", d: "Saber, conocer" },
+      { t: "Churay", d: "Poner, colocar" }
+    ]
   }
 ];
