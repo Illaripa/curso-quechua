@@ -3,7 +3,9 @@
 .hoy-toggle { display: flex; background: var(--card); border: 1px solid var(--bdr); border-radius: 999px; padding: 3px; margin-left: auto; }
 .hoy-toggle button { border: 0; background: none; color: var(--muted); min-height: var(--touch-min); padding: 0 16px; border-radius: 999px; font: inherit; font-size: 15px; cursor: pointer; }
 .hoy-toggle button.on { background: var(--gold); color: #2c1810; font-weight: 600; }
-.hoy-themes { display: flex; gap: 8px; margin: 0 0 12px; }
+.hoy-themes { display: flex; gap: 8px; margin: 0 0 12px; overflow-x: auto; scrollbar-width: none; }
+.hoy-chip { white-space: nowrap; flex-shrink: 0; }
+.hoy-chip small { opacity: .7; font-weight: 500; }
 .hoy-chip { min-height: var(--touch-min); padding: 0 16px; border-radius: 999px; border: 1px solid var(--bdr); background: var(--card); color: var(--txt); font: inherit; font-size: 14px; cursor: pointer; }
 .hoy-chip.on { border-color: var(--gold); background: var(--gold); color: #2c1810; font-weight: 600; }
 .hoy-meta { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); margin: 6px 0 14px; }

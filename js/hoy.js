@@ -8,15 +8,25 @@
 var HOY_SESSION = 10, HOY_GAP = 3, HOY_MAX_RETRY = 2;
 var hoyLang = 'q', hoyTheme = 'todo', hoySt, hoyQueue, hoyTotal, hoyDone, hoyRight, hoyFirst, hoyTries;
 
+// Temas: "todo" = curso progresivo; el resto sale de completar-extra.js / futuro.js
+var HOY_THEME_NAMES = { todo: 'Básico', dialogos: 'Diálogos', canciones: 'Canciones', futuro: 'Futuro' };
 function hoyBank(lang, theme) {
-  var base = lang === 'a' ? (typeof COMPLETAR_A !== 'undefined' ? COMPLETAR_A : [])
-                          : (typeof COMPLETAR_Q !== 'undefined' ? COMPLETAR_Q : []);
-  var fut = lang === 'a' ? (typeof FUTURO_A !== 'undefined' ? FUTURO_A : [])
-                         : (typeof FUTURO_Q !== 'undefined' ? FUTURO_Q : []);
-  var src = theme === 'futuro' ? fut.map(function (x) { return Object.assign({ t: 'f' }, x); }) : base;
-  return src.filter(function (x) { return x.q.indexOf('____') !== -1 && x.opts.indexOf(x.ans) !== -1; });
+  var src;
+  if (theme === 'todo') {
+    src = lang === 'a' ? (typeof COMPLETAR_A !== 'undefined' ? COMPLETAR_A : [])
+                       : (typeof COMPLETAR_Q !== 'undefined' ? COMPLETAR_Q : []);
+  } else if (theme === 'futuro') {
+    src = lang === 'a' ? (typeof FUTURO_A !== 'undefined' ? FUTURO_A : [])
+                       : (typeof FUTURO_Q !== 'undefined' ? FUTURO_Q : []);
+  } else {
+    src = (typeof COMPLETAR_EXTRA !== 'undefined' && COMPLETAR_EXTRA[lang] && COMPLETAR_EXTRA[lang][theme]) || [];
+  }
+  return src.map(function (x) { return theme === 'todo' ? x : Object.assign({ t: theme }, x); })
+    .filter(function (x) { return x.q.indexOf('____') !== -1 && x.opts.indexOf(x.ans) !== -1; });
 }
-function hoyHasFuturo(lang) { return hoyBank(lang, 'futuro').length > 0; }
+function hoyThemes(lang) {
+  return Object.keys(HOY_THEME_NAMES).filter(function (t) { return hoyBank(lang, t).length > 0; });
+}
 function hoyKey(x) { return (x.t || '') + x.q + '|' + x.ans; }
 function hoyShuffle(a) { return a.map(function (v) { return [Math.random(), v]; }).sort(function (x, y) { return x[0] - y[0]; }).map(function (v) { return v[1]; }); }
 function hoyEsc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
@@ -29,7 +39,7 @@ function hoySaveState() { try { localStorage.setItem(hoyStoreKey(), JSON.stringi
 
 function startHoy(lang) {
   hoyLang = lang === 'a' ? 'a' : 'q';
-  if (hoyTheme === 'futuro' && !hoyHasFuturo(hoyLang)) hoyTheme = 'todo';
+  if (hoyThemes(hoyLang).indexOf(hoyTheme) === -1) hoyTheme = 'todo';
   hoyRenderChrome();
   hoyBuild();
   showScreen('hoy');
@@ -45,11 +55,11 @@ function hoySetTheme(theme) { hoyTheme = theme; hoyRenderChrome(); hoyBuild(); }
 function hoyRenderChrome() {
   document.getElementById('hoyTq').classList.toggle('on', hoyLang === 'q');
   document.getElementById('hoyTa').classList.toggle('on', hoyLang === 'a');
-  var themes = document.getElementById('hoyThemes');
-  if (!hoyHasFuturo(hoyLang)) { themes.innerHTML = ''; return; }
-  themes.innerHTML = ['todo', 'futuro'].map(function (t) {
+  var themes = document.getElementById('hoyThemes'), list = hoyThemes(hoyLang);
+  if (list.length < 2) { themes.innerHTML = ''; return; }
+  themes.innerHTML = list.map(function (t) {
     return '<button class="hoy-chip' + (hoyTheme === t ? ' on' : '') + '" onclick="hoySetTheme(\'' + t + '\')">' +
-      (t === 'todo' ? 'Todo' : 'Futuro') + '</button>';
+      HOY_THEME_NAMES[t] + ' <small>' + hoyBank(hoyLang, t).length + '</small></button>';
   }).join('');
 }
 

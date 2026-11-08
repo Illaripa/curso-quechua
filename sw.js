@@ -1,4 +1,4 @@
-var CACHE_NAME = 'yachay-v24';
+var CACHE_NAME = 'yachay-v25';
 var urlsToCache = [
   './',
   './index.html',
@@ -32,6 +32,7 @@ var urlsToCache = [
   './data/wordorder.js',
   './data/wordorder-extended.js',
   './data/oraciones-completar.js',
+  './data/completar-extra.js',
   './data/dialogos.js',
   './js/dialogos.js',
   './data/songs-quechua.js',
