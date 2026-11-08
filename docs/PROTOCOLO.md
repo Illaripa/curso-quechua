@@ -28,3 +28,9 @@
 - Marrón #c47d1a eliminado (js, index, variables.css, manifest).
 **Datos NO corregidos (necesitan fuente fiable o hablante nativo):** verbs-aymara.js, wordorder A, COMPLETAR_A, common-vocabulary.js, content-aymara.js nivel 2+ (rasgos quechua), traducciones de canciones aymara "PENDIENTE". verbs-quechua.js: "Hampiy = Venir" (es curar) y notas de sufijos incoherentes.
 **Live:** sí (ver commit).
+
+## 2026-11-08 — Verbos quechua: Hampiy + categorías
+- Hampiy = "Curar / sanar" (antes "Venir"); quitados 2 ejemplos falsos ("Ellos vinieron ayer", "Vengo a tu casa"). Categoría Acción.
+- Categorías unificadas con tilde (Accion/Acción, Cognicion, Creacion, Emocion, Percepcion salían duplicadas en las pestañas).
+- verbs-quechua.js?v=3, sw yachay-v27. Live: sí (verificado con curl).
+- Pendiente: notas de sufijos de los ejemplos (incoherentes, p. ej. "-pu-" donde no aparece); fuente aymara; FUTURO-REVISION.md.
