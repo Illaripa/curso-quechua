@@ -48,3 +48,8 @@
 - Verbos Q: tablas regeneradas por regla (1pl excl. -rqayku / -saqku, 3pl fut. -nqaku; 6 verbos rotos arreglados; Ñiy→Niy); 26 verbos duplicados fusionados (167→141); 666→402 ejemplos (fuera: aymara, verbo mal formado, sin concordancia, "ama" sin imperativo, duplicados); -m tras consonante → -mi; notas de sufijos regeneradas desde la frase; tildes del español en futuros y palabras comunes. Script: scratchpad suf/fix.cjs.
 - Revisor: CAMBIOS REQUERIDOS → aplicados. Live: sí. sw yachay-v31.
 - Pendiente: Yanapay, Phiñakuy, Piñay, Unaychay sin ejemplos; traducciones al español no verificadas una a una; aymara oculto.
+
+## 2026-11-08 — Página de revisión para hablante nativo
+- https://claude.ai/artifact/18g3fDa66BYwAhMRFTfmnv ("Revisión Runasimi"): las 402 frases de verbos Q; el revisor marca Bien/Mal + corrección; se guarda en la colección db "revisiones" (doc id = "e"+hash djb2 de "Verbo|frase"; fuente: scratchpad revision/data.json).
+- Para que el revisor pueda marcar: compartir desde el menú Share invitándolo por email como Editor (sin enlace público).
+- Siguiente paso: leer "revisiones" con ArtifactData y aplicar las correcciones a data/verbs-quechua.js.
