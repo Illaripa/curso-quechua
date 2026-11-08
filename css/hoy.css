@@ -55,3 +55,31 @@
 .menu-more > summary::-webkit-details-marker { display: none; }
 .menu-more > summary::after { content: " ▾"; margin-left: 6px; }
 .menu-more[open] > summary::after { content: " ▴"; }
+
+/* ---------- interactividad: serie, sonido, auto-avance, confeti, repaso ---------- */
+.hoy-meta { align-items: center; }
+#hoyLevel { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
+.hoy-combo { color: #C2410C; font-weight: 800; font-size: 15px; animation: hoyPop .35s cubic-bezier(.2, 1.6, .4, 1); display: inline-block; }
+[data-theme="dark"] .hoy-combo { color: #FF9F43; }
+.hoy-snd { border: 0; background: none; font-size: 16px; min-width: var(--touch-min); min-height: var(--touch-min); cursor: pointer; padding: 0; }
+.hoy-gap.fill-ok { color: var(--green); font-weight: 800; animation: hoyPop .35s cubic-bezier(.2, 1.6, .4, 1); }
+.hoy-gap.fill-bad { color: var(--rose); font-weight: 800; }
+.hoy-next.auto { position: relative; overflow: hidden; }
+.hoy-next.auto::after { content: ""; position: absolute; left: 0; bottom: 0; height: 4px; width: 100%; background: rgba(255, 255, 255, .75); transform-origin: left; animation: hoyTimer 2.5s linear forwards; }
+@keyframes hoyTimer { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes hoyPop { 0% { transform: scale(.6); } 100% { transform: scale(1); } }
+.hoy-card { position: relative; }
+.hoy-confetti { position: absolute; inset: 0; pointer-events: none; overflow: hidden; border-radius: inherit; }
+.hoy-confetti i { position: absolute; top: -12px; width: 8px; height: 12px; border-radius: 3px; animation: hoyFall 2.2s cubic-bezier(.3, .6, .5, 1) forwards; }
+@keyframes hoyFall { to { transform: translate(var(--dx), 420px) rotate(var(--r)); opacity: 0; } }
+.hoy-review { text-align: left; margin-top: 18px; padding: 14px; border-radius: 16px; background: var(--card2); }
+.hoy-review-t { margin: 0 0 8px; font-weight: 800; color: var(--txt) !important; font-size: 14px; letter-spacing: .5px; text-transform: uppercase; }
+.hoy-review-i { margin: 0 0 10px; color: var(--txt) !important; font-size: 16px; line-height: 1.4; }
+.hoy-review-i b { color: var(--teal); }
+.hoy-review-i span { display: block; color: var(--muted); font-size: 14px; }
+@media (hover: hover) and (pointer: fine) {
+  .hoy-opts { counter-reset: opt; }
+  .hoy-opts button { position: relative; }
+  .hoy-opts button::before { counter-increment: opt; content: counter(opt); position: absolute; top: 6px; left: 9px; font-size: 11px; color: var(--muted); font-weight: 600; }
+}
+#hoyStage:focus { outline: none; }

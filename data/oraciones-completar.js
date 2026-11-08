@@ -6,7 +6,7 @@ const COMPLETAR_Q = [
 // ─── GRUPO 1 · 3-4 palabras · Pasado narrativo básico ─────────────────
 {g:1,lv:3,q:"Nuqa ____ mikhurqani.",s:"Ayer comí.",ans:"qayna",opts:["qayna","paqarin","kunan","sapa"],note:"qayna = ayer · mikhu-rqa-ni = comí (-rqa- = pasado narrativo, -ni = yo)"},
 {g:1,lv:3,q:"Pay wasimanta ____.",s:"Él/ella vino de casa.",ans:"hamurqan",opts:["hamurqan","rirqan","mikhurqan","takirqan"],note:"wasimanta = desde la casa · -manta = desde (ablativo) · hamu-rqa-n = él/ella vino"},
-{g:1,lv:3,q:"Nuqa sunquypi ____.",s:"Estás en mi corazón.",ans:"kanki",opts:["kanki","kani","kan","kanchik"],note:"sunquy-pi = en mi corazón (-y = mío, -pi = en) · ka-nki = tú estás"},
+{g:1,lv:3,q:"Qam sunquypi ____.",s:"Estás en mi corazón.",ans:"kanki",opts:["kanki","kani","kan","kanchik"],note:"qam = tú · sunquy-pi = en mi corazón (-y = mío, -pi = en) · ka-nki = tú estás"},
 {g:1,lv:3,q:"Chay urqu ancha ____.",s:"Esa montaña es muy grande.",ans:"hatunmi",opts:["hatunmi","uchuycha","sumaqmi","allinmi"],note:"ancha = muy · hatun = grande · -mi = evidencial directo (lo sé porque lo vi)"},
 {g:1,lv:3,q:"Qam paqarin ____.",s:"Tú vendrás mañana.",ans:"hamunki",opts:["hamunki","rinki","mikhunki","takinki"],note:"paqarin = mañana · hamu-nki = tú vendrás (con paqarin el verbo es futuro)"},
 {g:1,lv:3,q:"____ wasipi wayk'ushan.",s:"Mi madre cocina en casa.",ans:"Mamay",opts:["Mamay","Taytay","Ñañay","Warmiymi"],note:"mamay = mi madre (-y = posesivo 1sg) · wasi-pi = en casa · wayk'u-sha-n = ella cocina"},

@@ -7,6 +7,44 @@
 // ============================================================
 var HOY_SESSION = 10, HOY_GAP = 3, HOY_MAX_RETRY = 2;
 var hoyHinted = {};
+var hoyCombo = 0, hoyBestCombo = 0, hoyMissed = [], hoyAuto = null;
+
+// ---------- sonido + vibración (cortos, se pueden apagar) ----------
+var hoyAC = null;
+function hoySoundOn() { try { return localStorage.getItem('yachay_sonido') !== '0'; } catch (e) { return true; } }
+function hoyToggleSound() {
+  try { localStorage.setItem('yachay_sonido', hoySoundOn() ? '0' : '1'); } catch (e) {}
+  var b = document.querySelector('#hoyLevel .hoy-snd');
+  if (b) { b.textContent = hoySoundOn() ? '🔊' : '🔇'; b.setAttribute('aria-pressed', hoySoundOn() ? 'true' : 'false'); }
+}
+function hoyBeep(ok) {
+  if (navigator.vibrate) try { navigator.vibrate(ok ? 12 : [30, 40, 30]); } catch (e) {}
+  if (!hoySoundOn()) return;
+  try {
+    hoyAC = hoyAC || new (window.AudioContext || window.webkitAudioContext)();
+    var notes = ok ? [660, 880 + Math.min(hoyCombo, 6) * 40] : [220, 180], t = hoyAC.currentTime;
+    notes.forEach(function (f, i) {
+      var o = hoyAC.createOscillator(), g = hoyAC.createGain();
+      o.type = ok ? 'triangle' : 'sine'; o.frequency.value = f;
+      g.gain.setValueAtTime(0.0001, t + i * 0.09);
+      g.gain.exponentialRampToValueAtTime(0.18, t + i * 0.09 + 0.015);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + i * 0.09 + 0.16);
+      o.connect(g); g.connect(hoyAC.destination); o.start(t + i * 0.09); o.stop(t + i * 0.09 + 0.18);
+    });
+  } catch (e) {}
+}
+
+// teclado: 1-4 eligen, Enter/espacio = siguiente
+document.addEventListener('keydown', function (e) {
+  var scr = document.getElementById('hoy');
+  if (!scr || !scr.classList.contains('active') || e.metaKey || e.ctrlKey || e.altKey) return;
+  if (document.activeElement && document.activeElement.id === 'hoyInput') return;
+  var opts = document.querySelectorAll('#hoyStage .hoy-opts button:not(:disabled)');
+  var n = parseInt(e.key, 10);
+  if (n >= 1 && n <= opts.length) { e.preventDefault(); opts[n - 1].click(); return; }
+  var next = document.getElementById('hoyNext');
+  if ((e.key === 'Enter' || e.key === ' ') && next && next.classList.contains('show') && document.activeElement !== next) { e.preventDefault(); next.click(); }
+});
 var hoyLang = 'q', hoyTheme = 'todo', hoySt, hoyQueue, hoyTotal, hoyDone, hoyRight, hoyFirst, hoyTries;
 
 // Temas: "todo" = curso progresivo; el resto sale de completar-extra.js / futuro.js
@@ -75,7 +113,7 @@ function hoySetLang(lang) {
   try { localStorage.setItem('yachay_lang', lang); } catch (e) {}
   startHoy(lang);
 }
-function hoySetTheme(theme) { hoyTheme = theme; hoyRenderChrome(); hoyBuild(); }
+function hoySetTheme(theme) { clearTimeout(hoyAuto); hoyTheme = theme; hoyRenderChrome(); hoyBuild(); }
 
 function hoyRenderChrome() {
   document.getElementById('hoyTq').classList.toggle('on', hoyLang === 'q');
@@ -103,6 +141,7 @@ function hoyBuild() {
   hoyShuffle(all.filter(function (x) { return x.g === hoySt.group; })).forEach(function (x) { if (pick.length < HOY_SESSION && pick.indexOf(x) === -1) pick.push(x); });
   hoyQueue = hoyShuffle(pick);
   hoyTotal = hoyQueue.length; hoyDone = 0; hoyRight = 0; hoyFirst = {}; hoyTries = {}; hoyHinted = {};
+  hoyCombo = 0; hoyBestCombo = 0; hoyMissed = [];
   hoyShow();
 }
 
@@ -112,10 +151,24 @@ function hoyGapHtml(rest) {
   return '<span class="hoy-nw"><span class="hoy-gap" id="hoyGap">&nbsp;</span>' + hoyEsc(punct) + '</span>' + hoyEsc(rest.slice(punct.length));
 }
 
-function hoyShow() {
+function hoyMetaRender() {
   document.getElementById('hoyBar').style.width = (hoyDone / hoyTotal * 100) + '%';
   document.getElementById('hoyCount').textContent = Math.min(hoyDone + 1, hoyTotal) + ' / ' + hoyTotal;
-  document.getElementById('hoyLevel').textContent = (hoyStreakHtml() ? hoyStreakHtml() + ' · ' : '') + 'Grupo ' + hoySt.group;
+  document.getElementById('hoyLevel').innerHTML =
+    (hoyCombo >= 2 ? '<b class="hoy-combo">×' + hoyCombo + ' seguidas</b> · ' : '') +
+    hoyEsc((hoyStreakHtml() ? hoyStreakHtml() + ' · ' : '') + 'Grupo ' + hoySt.group) +
+    ' <button class="hoy-snd" onclick="hoyToggleSound()" aria-label="Sonido" aria-pressed="' + hoySoundOn() + '">' + (hoySoundOn() ? '🔊' : '🔇') + '</button>';
+}
+
+// tocar la tarjeta (leer la nota) para el auto-avance
+function hoyHold() {
+  clearTimeout(hoyAuto);
+  var n = document.getElementById('hoyNext'); if (n) n.classList.remove('auto');
+}
+
+function hoyShow() {
+  clearTimeout(hoyAuto);
+  hoyMetaRender();
   if (!hoyQueue.length) return hoyFinish();
   var x = hoyQueue[0];
   // escribir solo respuestas de una palabra, ya acertadas antes, y no en reintentos
@@ -152,6 +205,8 @@ function hoyRender(x, write) {
     try { inp.focus({ preventScroll: true }); } catch (e) {}
   } else {
     document.querySelectorAll('#hoyStage .hoy-opts button').forEach(function (b) { b.onclick = function () { hoyAnswer(b, x); }; });
+    var st = document.getElementById('hoyStage');
+    if (st.contains(document.activeElement) || document.activeElement === document.body) try { st.focus({ preventScroll: true }); } catch (e) {}
   }
 }
 
@@ -180,7 +235,13 @@ function hoyAnswer(btn, x) {
 
 function hoyResolve(ok, x) {
   var k = hoyKey(x);
-  document.getElementById('hoyGap').textContent = x.ans;
+  var gap = document.getElementById('hoyGap');
+  gap.textContent = x.ans; gap.classList.add(ok ? 'fill-ok' : 'fill-bad');
+  var clean = ok && !hoyTries[k] && !hoyHinted[k];
+  hoyCombo = clean ? hoyCombo + 1 : 0;
+  if (hoyCombo > hoyBestCombo) hoyBestCombo = hoyCombo;
+  if (!ok && !hoyMissed.some(function (m) { return hoyKey(m) === k; })) hoyMissed.push(x);
+  hoyBeep(ok);
   document.getElementById('hoyNote').classList.add('show');
   hoySt.seen[k] = 1;
   hoyQueue.shift();
@@ -197,11 +258,23 @@ function hoyResolve(ok, x) {
     else hoyDone++;
   }
   hoySaveState();
+  hoyMetaRender();
+  document.getElementById('hoyCount').textContent = Math.min(hoyDone + 1, hoyTotal) + ' / ' + hoyTotal;
   var n = document.getElementById('hoyNext');
-  n.classList.add('show'); n.focus(); n.onclick = hoyShow;
+  n.classList.add('show'); n.onclick = hoyShow;
+  try { n.focus({ preventScroll: true }); } catch (e) { n.focus(); }
+  // acierto → sigue solo (la barra del botón muestra el tiempo); fallo → esperas tú
+  var calm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (ok && !calm) {
+    n.classList.add('auto');
+    hoyAuto = setTimeout(function () {
+      if (document.getElementById('hoy').classList.contains('active')) hoyShow();
+    }, 2500);
+  }
 }
 
 function hoyFinish() {
+  hoyCombo = 0; hoyMetaRender();
   document.getElementById('hoyBar').style.width = '100%';
   var pct = Math.round(hoyRight / hoyTotal * 100);
   var next = hoyBank(hoyLang, hoyTheme).map(function (x) { return x.g; })
@@ -213,12 +286,37 @@ function hoyFinish() {
   document.getElementById('hoyStage').innerHTML =
     '<div class="hoy-end"><p class="hoy-big">' + hoyRight + '/' + hoyTotal + '</p>' +
     '<p>Acertadas a la primera · ' + msg + '</p>' +
-    '<p class="hoy-streak">🔥 ' + streak + (streak === 1 ? ' día seguido' : ' días seguidos') + '</p>' +
+    '<p class="hoy-streak">🔥 ' + streak + (streak === 1 ? ' día seguido' : ' días seguidos') +
+      (hoyBestCombo >= 3 ? ' · mejor serie ×' + hoyBestCombo : '') + '</p>' +
+    (hoyMissed.length ? '<div class="hoy-review"><p class="hoy-review-t">Para repasar</p>' + hoyMissed.map(function (m) {
+      var pp = m.q.split('____');
+      return '<p class="hoy-review-i">' + hoyEsc(pp[0]) + '<b>' + hoyEsc(m.ans) + '</b>' + hoyEsc(pp[1] || '') +
+        '<span>' + hoyEsc(m.s) + '</span></p>';
+    }).join('') + '</div>' : '') +
     '<div class="hoy-row"><button class="hoy-a" onclick="hoyBuild()">10 más</button>' +
     '<button class="hoy-b" onclick="hoyBye()">Listo por hoy</button></div></div>';
+  if (pct >= 80) hoyConfetti();
+}
+
+function hoyConfetti() {
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var box = document.createElement('div'), cols = ['#F97316', '#FFB627', '#34C08A', '#0F7A50', '#FF8A1F'];
+  box.className = 'hoy-confetti'; box.setAttribute('aria-hidden', 'true');
+  for (var i = 0; i < 40; i++) {
+    var c = document.createElement('i');
+    c.style.left = Math.random() * 100 + '%';
+    c.style.background = cols[i % cols.length];
+    c.style.animationDelay = Math.random() * 0.4 + 's';
+    c.style.setProperty('--dx', (Math.random() * 120 - 60) + 'px');
+    c.style.setProperty('--r', (Math.random() * 720 - 360) + 'deg');
+    box.appendChild(c);
+  }
+  document.getElementById('hoyStage').appendChild(box);
+  setTimeout(function () { box.remove(); }, 2600);
 }
 
 function hoyBye() {
+  clearTimeout(hoyAuto);
   document.getElementById('hoyStage').innerHTML =
     '<div class="hoy-end"><p class="hoy-big">' + (hoyLang === 'q' ? 'Sulpayki' : 'Yuspagara') + '</p><p>Hasta mañana.</p>' +
     '<div class="hoy-row"><button class="hoy-b" onclick="goHome()">Ver el menú</button></div></div>';

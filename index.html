@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="css/quiz.css">
 <link rel="stylesheet" href="css/chat.css">
 <link rel="stylesheet" href="css/elements.css">
-<link rel="stylesheet" href="css/hoy.css?v=2">
+<link rel="stylesheet" href="css/hoy.css?v=5">
 <link rel="stylesheet" href="css/responsive.css">
 <link rel="stylesheet" href="css/theme.css">
 </head>
@@ -204,7 +204,7 @@
   <div class="content-body">
     <div class="hoy-themes" id="hoyThemes"></div>
     <div class="hoy-meta"><span id="hoyCount">1 / 10</span><span id="hoyLevel">Grupo 1</span></div>
-    <section class="hoy-card" id="hoyStage"></section>
+    <section class="hoy-card" id="hoyStage" tabindex="-1" onpointerdown="if(!event.target.closest('#hoyNext'))hoyHold()"></section>
   </div>
 </div>
 
@@ -417,7 +417,7 @@
 <script src="data/morning.js?v=2"></script>
 <script src="data/content-quechua.js?v=4"></script>
 <script src="data/content-aymara.js?v=3"></script>
-<script src="data/verbs-quechua.js?v=3"></script>
+<script src="data/verbs-quechua.js?v=4"></script>
 <script src="data/verbs-aymara.js?v=3"></script>
 <script src="data/suffixes-quechua.js?v=2"></script>
 <script src="data/suffixes-aymara.js?v=2"></script>
@@ -428,7 +428,7 @@
 <script src="data/quiz-aymara.js?v=2"></script>
   <script src="data/wordorder.js?v=1"></script>
   <script src="data/wordorder-extended.js?v=1"></script>
-  <script src="data/oraciones-completar.js?v=3"></script>
+  <script src="data/oraciones-completar.js?v=4"></script>
   <script src="data/completar-extra.js?v=2"></script>
   <script src="data/dialogos.js?v=2"></script>
 <script src="data/songs-quechua.js?v=2"></script>
@@ -445,7 +445,7 @@
 <script src="js/songs.js?v=3"></script>
 <script src="js/wordorder.js?v=2"></script>
 <script src="js/audiolisten.js?v=2"></script>
-<script src="js/hoy.js?v=3"></script>
+<script src="js/hoy.js?v=6"></script>
 <script src="js/app.js?v=8"></script>
 </body>
 </html>

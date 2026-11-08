@@ -34,3 +34,11 @@
 - Categorías unificadas con tilde (Accion/Acción, Cognicion, Creacion, Emocion, Percepcion salían duplicadas en las pestañas).
 - verbs-quechua.js?v=3, sw yachay-v27. Live: sí (verificado con curl).
 - Pendiente: notas de sufijos de los ejemplos (incoherentes, p. ej. "-pu-" donde no aparece); fuente aymara; FUTURO-REVISION.md.
+
+## 2026-11-08 — Hoy más interactivo + sufijos
+- Hoy: auto-avance tras acierto (2,5 s, se para al tocar la tarjeta; desactivado con reduced-motion; no corre fuera de Hoy), serie ×N, sonido WebAudio + vibración (botón 🔊 con aria-pressed), teclas 1-4/Enter, confeti ≥80%, lista "Para repasar" al final, foco gestionado.
+- Verbos Q: quitadas 55 notas de sufijos ausentes en su frase (no se añadió nada).
+- "Nuqa sunquypi kanki" → "Qam sunquypi kanki" (permiso de Illaripa: "puedes cambiar todo").
+- Revisor: CAMBIOS REQUERIDOS (timer fuera de Hoy, timer no detenible, foco, contraste verde 4,18) → aplicados y probados.
+- sw yachay-v28. Live: sí.
+- Pendiente: sufijos presentes pero mal explicados (p. ej. -chi- en -sunchis) necesitan revisión gramatical; sin audio (no hay voz quechua en navegador); aymara oculto sin fuente.

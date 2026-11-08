@@ -1,4 +1,4 @@
-var CACHE_NAME = 'yachay-v27';
+var CACHE_NAME = 'yachay-v28';
 var urlsToCache = [
   './',
   './index.html',
