@@ -49,7 +49,7 @@
 
 .quiz-option.selected {
   border-color: var(--gold);
-  background: rgba(232, 160, 32, 0.07);
+  background: rgba(19, 133, 95, 0.07);
 }
 
 .quiz-option.correct {

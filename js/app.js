@@ -433,7 +433,7 @@ function toggleTheme() {
   document.documentElement.setAttribute('data-theme', next === 'dark' ? 'dark' : '');
   localStorage.setItem('yachay_theme', next);
   document.getElementById('themeToggle').textContent = next === 'dark' ? '☀️' : '🌙';
-  document.querySelector('meta[name="theme-color"]').content = next === 'dark' ? '#0D1A15' : '#F97316';
+  document.querySelector('meta[name="theme-color"]').content = next === 'dark' ? '#0D1A15' : '#FFFFFF';
 }
 
 (function initTheme() {

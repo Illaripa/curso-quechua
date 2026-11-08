@@ -4,14 +4,14 @@
 .morning-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(160deg, #f5edd8, #ede3cc 40%, #f0e8d8);
+  background: var(--card2);
 }
 
 .morning-bg::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 50% 20%, rgba(196, 125, 26, 0.12), transparent 60%);
+  background: radial-gradient(ellipse at 50% 20%, rgba(19, 133, 95, 0.12), transparent 60%);
 }
 
 .morning-content {
@@ -57,8 +57,8 @@
 }
 
 .morning-quote-box {
-  background: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(196, 125, 26, 0.15);
+  background: var(--card);
+  border: 1px solid var(--bdr);
   border-radius: var(--radius-lg);
   padding: 22px 20px;
   margin-bottom: 14px;
@@ -85,8 +85,8 @@
 }
 
 .morning-word {
-  background: rgba(232, 160, 32, 0.07);
-  border: 1px solid rgba(232, 160, 32, 0.2);
+  background: rgba(19, 133, 95, 0.07);
+  border: 1px solid rgba(19, 133, 95, 0.2);
   border-radius: 13px;
   padding: 14px 16px;
   margin-bottom: 16px;
@@ -134,7 +134,7 @@
 .morning-element {
   flex: 0 0 72px;
   min-width: 72px;
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--card);
   border: 1px solid var(--bdr);
   border-radius: 14px;
   padding: 12px 6px 10px;
@@ -164,7 +164,7 @@
   padding: 15px;
   border-radius: var(--radius-md);
   border: none;
-  background: linear-gradient(135deg, var(--gold), #d4922a);
+  background: var(--accent, #D9530B);
   color: #fff;
   font-size: 16px;
   font-weight: 700;

@@ -42,3 +42,9 @@
 - Revisor: CAMBIOS REQUERIDOS (timer fuera de Hoy, timer no detenible, foco, contraste verde 4,18) → aplicados y probados.
 - sw yachay-v28. Live: sí.
 - Pendiente: sufijos presentes pero mal explicados (p. ej. -chi- en -sunchis) necesitan revisión gramatical; sin audio (no hay voz quechua en navegador); aymara oculto sin fuente.
+
+## 2026-11-08 — Paleta profesional + verbos quechua limpios
+- Diseño: fuera degradados naranja→verde. Paleta: verde marca #13855F, naranja #D9530B solo en acciones, neutros verdosos; cabecera clara (el usuario dijo "muy oscuro" al verde profundo). Quitados restos crema/marrón/ámbar (flashcards, home, morning, chat, morning.js inline), sin cursiva en toda la app, pestañas de referencia sin scroll horizontal, botones desactivados neutros, theme-color #FFFFFF.
+- Verbos Q: tablas regeneradas por regla (1pl excl. -rqayku / -saqku, 3pl fut. -nqaku; 6 verbos rotos arreglados; Ñiy→Niy); 26 verbos duplicados fusionados (167→141); 666→402 ejemplos (fuera: aymara, verbo mal formado, sin concordancia, "ama" sin imperativo, duplicados); -m tras consonante → -mi; notas de sufijos regeneradas desde la frase; tildes del español en futuros y palabras comunes. Script: scratchpad suf/fix.cjs.
+- Revisor: CAMBIOS REQUERIDOS → aplicados. Live: sí. sw yachay-v31.
+- Pendiente: Yanapay, Phiñakuy, Piñay, Unaychay sin ejemplos; traducciones al español no verificadas una a una; aymara oculto.

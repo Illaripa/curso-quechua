@@ -31,8 +31,8 @@
   font-size: 12px;
   font-weight: 700;
   color: var(--gold);
-  background: rgba(232, 160, 32, 0.1);
-  border: 1px solid rgba(232, 160, 32, 0.25);
+  background: rgba(19, 133, 95, 0.1);
+  border: 1px solid rgba(19, 133, 95, 0.25);
   padding: 4px 11px;
   border-radius: 20px;
 }
@@ -101,7 +101,7 @@
 .ghost-card {
   position: absolute;
   border-radius: var(--radius-lg);
-  background: #3a2e20;
+  background: #13291F;
   pointer-events: none;
 }
 
@@ -157,8 +157,8 @@
 }
 
 .card-front {
-  background: linear-gradient(145deg, #3a2e20, #2a1f14);
-  border: 1px solid #4a3d2e;
+  background: #13291F;
+  border: 1px solid #24403A;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -608,7 +608,7 @@
 
 .filter-tag.active {
   border-color: var(--gold);
-  background: rgba(232, 160, 32, 0.1);
+  background: rgba(19, 133, 95, 0.1);
   color: var(--gold);
 }
 

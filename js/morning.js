@@ -27,7 +27,7 @@ function setupMorning(target) {
       '<div style="font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:4px">' + dateStr + '</div>' +
       '<div style="font-size:44px;margin:10px 0">' + msg.sun + '</div>' +
       '<div style="font-size:13px;color:var(--muted);font-style:italic">' + msg.g + '</div></div>' +
-      '<div style="background:rgba(255,255,255,.6);border:1px solid rgba(196,125,26,.15);border-radius:18px;padding:20px 18px;margin-bottom:13px">' +
+      '<div style="background:var(--card);border:1px solid var(--bdr);border-radius:18px;padding:20px 18px;margin-bottom:13px">' +
       '<div class="morning-quechua">' + msg.q + '</div><div class="morning-spanish">' + msg.s + '</div></div>' +
       '<div class="morning-word" style="animation:none">' +
       '<div class="morning-word-label">\u25C8 Palabra del d\u00EDa</div>' +

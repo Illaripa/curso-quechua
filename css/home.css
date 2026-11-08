@@ -54,8 +54,8 @@
   margin-bottom: 14px;
   line-height: 1.4;
 }
-.lang-card--q  { background: linear-gradient(145deg,#fffbf0,var(--card)); border-color: rgba(196,125,26,0.25); }
-.lang-card--q:active  { border-color: var(--gold); box-shadow: 0 4px 18px rgba(196,125,26,0.18); }
+.lang-card--q  { background: var(--card); border-color: var(--bdr); }
+.lang-card--q:active  { border-color: var(--gold); box-shadow: var(--shadow); }
 .lang-card--a  { background: linear-gradient(145deg,#f0fffe,var(--card)); border-color: rgba(26,138,122,0.25); }
 .lang-card--a:active  { border-color: var(--teal); box-shadow: 0 4px 18px rgba(26,138,122,0.18); }
 .lang-card--en { background: linear-gradient(145deg,#eff6ff,var(--card)); border-color: rgba(59,130,246,0.25); }
@@ -81,7 +81,7 @@
   min-height: 36px;
 }
 .home-header {
-  background: linear-gradient(170deg, #ede3cc, #f5edd8 65%);
+  background: var(--card2);
   padding: 44px 22px 22px;
   text-align: center;
   border-bottom: 1px solid var(--bdr);
@@ -93,7 +93,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 50% -20%, rgba(196, 125, 26, 0.08), transparent 65%);
+  background: radial-gradient(ellipse at 50% -20%, rgba(19, 133, 95, 0.08), transparent 65%);
 }
 
 .home-title {
@@ -167,8 +167,8 @@
 }
 
 .menu-card:hover {
-  border-color: rgba(196, 125, 26, 0.3);
-  box-shadow: 0 2px 8px rgba(196, 125, 26, 0.08);
+  border-color: rgba(19, 133, 95, 0.3);
+  box-shadow: 0 2px 8px rgba(19, 133, 95, 0.08);
 }
 
 .menu-icon {
