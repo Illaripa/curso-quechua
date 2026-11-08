@@ -25,8 +25,20 @@ function groupFor(words) {
   return n <= 4 ? 1 : n <= 6 ? 2 : n <= 9 ? 3 : 4;
 }
 
-function build(lines, stop) {
+// palabras españolas: todo lo que aparece en las traducciones
+const ES_STOP = new Set('el la los las de que y en mi tu con por para un una del se no me te es al lo su ya ay oh'.split(' '));
+function spanishLine(l) {
+  const t = l.text.toLowerCase().replace(/[^\p{L}\s']/gu, ' ').trim();
+  if (t === l.trans.toLowerCase().replace(/[^\p{L}\s']/gu, ' ').trim()) return true;
+  const w = t.split(/\s+/);
+  return w.filter(x => ES_STOP.has(x)).length >= 2 || w.filter(x => ES_STOP.has(x)).length / w.length > 0.3;
+}
+
+function build(allLines, stop) {
   // lines: [{text, trans, src}]
+  const lines = allLines.filter(l => l.text && l.trans && !spanishLine(l));
+  const esWords = new Set(allLines.flatMap(l => (l.trans || '').toLowerCase().split(/[^\p{L}']+/u)));
+  stop = new Set([...stop, ...esWords]);
   const pool = new Map();
   lines.forEach(l => l.text.split(/\s+/).forEach(w => {
     const c = clean(w);
@@ -70,7 +82,10 @@ const D = [...load('dialogos.js').DIALOGOS, ...load('dialogos-extended.js').DIAL
 const speakers = new Set(D.flatMap(d => Object.keys(d.speakers || {})).map(s => s.toLowerCase()));
 const dialogLines = D.flatMap(d => d.lines.map(l => ({ text: l.q, trans: l.t, src: 'diálogo «' + d.title + '»' })));
 const songsQ = load('songs-quechua.js').CANCIONES_Q.flatMap(s => s.lines.map(l => ({ text: l.q || '', trans: l.s, src: 'canción «' + s.title + '»' })));
-const songsA = load('songs-aymara.js').CANCIONES_A.flatMap(s => s.lines.map(l => ({ text: l.a || '', trans: l.s, src: 'canción «' + s.title + '»' })));
+// aymara: solo las canciones de la sección VERIFICADO (antes de "PENDIENTE")
+const srcA = fs.readFileSync(path.join(DATA, 'songs-aymara.js'), 'utf8');
+const nVerifA = (srcA.split('===== PENDIENTE')[0].match(/title:/g) || []).length;
+const songsA = load('songs-aymara.js').CANCIONES_A.slice(0, nVerifA).flatMap(s => s.lines.map(l => ({ text: l.a || '', trans: l.s, src: 'canción «' + s.title + '»' })));
 
 const EXTRA = {
   q: { dialogos: build(dialogLines, speakers), canciones: build(songsQ, new Set()) },

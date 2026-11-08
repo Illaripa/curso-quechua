@@ -15,3 +15,16 @@
   - Revisar `docs/FUTURO-REVISION.md` (26 Q + 22 A); al aprobar, cargar `data/futuro.js` en index.html + sw.js (aparece el chip "Futuro").
   - Confirmar "Nuqa sunquypi kanki" → "Qam sunquypi kanki".
   - Arreglar el webhook de deploy.
+
+## 2026-11-08 — Revisión de calidad + racha + modo escribir
+**Qué:**
+- Aymara: fuera del menú Verbos, Completar, Ordenar palabras, Fichas (VERBOS_A), Fichas vocab (eran palabras quechua), Escuchar (VERBOS_A). Motivo: verbos con significados falsos (Ikiña≠correr, Taquiña≠bailar…), ordenar palabras con "katjata" repetido, COMPLETAR_A mezcla quechua (-mi, tukuy sunqumpi, hatun raymi).
+- Hoy aymara: solo tema Canciones (145, de la sección VERIFICADO de songs-aymara.js). "Básico" (COMPLETAR_A) excluido en hoy.js.
+- Diccionario oculto en ambos idiomas (pares erróneos, p. ej. "Riti = Hola"; riti = nieve).
+- Generador: descarta líneas en español y palabras que aparecen en las traducciones. Banco: Q diálogos 483, Q canciones 534, A canciones 145.
+- Racha diaria (yachay_racha): +1 al terminar una sesión; se muestra en Hoy y en el menú (sustituye la racha de visitas).
+- Modo escribir: oración acertada a la primera → la próxima vez se escribe (solo respuestas de 1 palabra); tolera tildes/mayúsculas/apóstrofo y 1 letra en palabras ≥5; "Ver opciones" no cuenta como acierto limpio.
+- Menú: 4 módulos a la vista + "Más ejercicios" plegado.
+- Marrón #c47d1a eliminado (js, index, variables.css, manifest).
+**Datos NO corregidos (necesitan fuente fiable o hablante nativo):** verbs-aymara.js, wordorder A, COMPLETAR_A, common-vocabulary.js, content-aymara.js nivel 2+ (rasgos quechua), traducciones de canciones aymara "PENDIENTE". verbs-quechua.js: "Hampiy = Venir" (es curar) y notas de sufijos incoherentes.
+**Live:** sí (ver commit).

@@ -45,7 +45,7 @@ async function openSongs(lang) {
 }
 
 function renderSongList() {
-  const color = songsLang === 'q' ? '#c47d1a' : '#1a8a7a';
+  const color = songsLang === 'q' ? '#C2410C' : '#0F7A50';
   const html = songsData.map((song, i) => `
     <button onclick="openSongDetail(${i})" style="display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:var(--card);border:1px solid var(--bdr);border-radius:14px;padding:14px 16px;margin-bottom:10px;cursor:pointer;min-height:64px;-webkit-tap-highlight-color:rgba(0,0,0,0.06);transition:opacity 0.15s,transform 0.15s;"
       onmousedown="this.style.opacity='0.7';this.style.transform='scale(0.98)'"
@@ -70,7 +70,7 @@ function openSongDetail(index) {
   stopKaraoke();
   songsView = 'detail';
   const song = songsData[index];
-  const color = songsLang === 'q' ? '#c47d1a' : '#1a8a7a';
+  const color = songsLang === 'q' ? '#C2410C' : '#0F7A50';
   const langKey = songsLang;
   const hasTimestamps = (song.lines || []).some(function(l) { return l.start != null; });
 
@@ -167,7 +167,7 @@ function openTranscriptor() {
 
 function setTranscriptorLang(lang) {
   transcriptorLang = lang;
-  const gold = '#c47d1a', teal = '#1a8a7a';
+  const gold = '#C2410C', teal = '#0F7A50';
   const color = lang === 'q' ? gold : teal;
   document.getElementById('tLangQ').style.cssText = `flex:1;padding:12px;border-radius:10px;border:2px solid ${lang==='q'?gold:'var(--bdr)'};background:${lang==='q'?gold:'var(--card)'};color:${lang==='q'?'#fff':'var(--txt)'};font-weight:700;font-size:14px;cursor:pointer`;
   document.getElementById('tLangA').style.cssText = `flex:1;padding:12px;border-radius:10px;border:2px solid ${lang==='a'?teal:'var(--bdr)'};background:${lang==='a'?teal:'var(--card)'};color:${lang==='a'?'#fff':'var(--txt)'};font-weight:700;font-size:14px;cursor:pointer`;

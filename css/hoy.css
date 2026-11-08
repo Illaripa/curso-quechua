@@ -36,3 +36,22 @@
   #hoy .topbar-title { font-size: 15px; }
   .hoy-toggle button { padding: 0 11px; font-size: 14px; }
 }
+
+/* modo escribir */
+.hoy-write { display: flex; gap: 8px; }
+.hoy-write input { flex: 1; min-width: 0; min-height: 54px; padding: 0 16px; border-radius: 16px; border: 2px solid var(--bdr); background: var(--card); color: var(--txt); font: inherit; font-size: 18px; font-weight: 600; }
+.hoy-write input:focus { outline: none; border-color: #F97316; }
+.hoy-write input.ok { border-color: var(--green); background: color-mix(in srgb, var(--green) 12%, var(--card)); }
+.hoy-write input.bad { border-color: var(--rose); background: color-mix(in srgb, var(--rose) 10%, var(--card)); }
+.hoy-write button { min-height: 54px; padding: 0 18px; border: 0; border-radius: 16px; background: var(--cta, var(--gold)); color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
+.hoy-write button:disabled { opacity: .5; cursor: default; }
+.hoy-hint { display: block; margin: 10px auto 0; min-height: var(--touch-min); padding: 0 14px; border: 0; background: none; color: var(--teal); font: inherit; font-size: 15px; font-weight: 600; text-decoration: underline; cursor: pointer; }
+.hoy-streak { font-weight: 700; color: var(--gold) !important; font-size: 17px; }
+@media (max-width: 400px) { .hoy-write { flex-direction: column; } }
+
+/* menú: el resto plegado */
+.menu-more { margin-top: 6px; }
+.menu-more > summary { list-style: none; cursor: pointer; min-height: var(--touch-min); display: flex; align-items: center; justify-content: center; border-radius: 999px; border: 1px dashed var(--bdr); color: var(--muted); font-weight: 600; margin: 4px 0 12px; }
+.menu-more > summary::-webkit-details-marker { display: none; }
+.menu-more > summary::after { content: " ▾"; margin-left: 6px; }
+.menu-more[open] > summary::after { content: " ▴"; }

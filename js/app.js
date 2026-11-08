@@ -320,13 +320,14 @@ function getQuizScore(lang) {
 
 function getProgressSummary(lang) {
   trackVisit();
-  var streak = getStreak();
+  // una sola racha: la de Hoy (días con una sesión terminada), no las visitas
+  var streak = typeof hoyStreak === 'function' ? hoyStreak().n : getStreak();
   var words = getWordsLearned(lang);
   var quiz = getQuizScore(lang);
   if (streak === 0 && words === 0 && quiz.total === 0) return '';
   var streakText = streak > 0 ? '<span style="color:var(--gold)">🔥 ' + streak + ' día' + (streak > 1 ? 's' : '') + '</span>' : '';
   var wordsText = words > 0 ? '<span style="color:var(--teal)">📚 ' + words + ' palabras</span>' : '';
-  var quizText = quiz.total > 0 ? '<span style="color:#8b5cf6">🎯 ' + quiz.best + '% mejor</span>' : '';
+  var quizText = quiz.total > 0 ? '<span style="color:var(--muted)">🎯 ' + quiz.best + '% mejor</span>' : '';
   var parts = [streakText, wordsText, quizText].filter(Boolean);
   if (parts.length === 0) return '';
   return '<div style="display:flex;gap:12px;justify-content:center;padding:10px 0 14px;font-size:13px;font-weight:600;flex-wrap:wrap">' + parts.join('<span style="color:var(--bdr)">·</span>') + '</div>';
@@ -370,7 +371,6 @@ function renderHomeBody() {
       {i:'▤', t:u('menu.q.textos'),     d:u('menu.q.textos.d'),     fn:"openReader('ensayos')"},
       {i:'⚡', t:u('menu.q.verbos'),     d:u('menu.q.verbos.d'),     fn:"openRef('verbos')"},
       {i:'◎', t:u('menu.q.sufijos'),    d:u('menu.q.sufijos.d'),    fn:"openRef('sufijos')"},
-      {i:'📚', t:'Diccionario',         d:'1000+ expresiones comunes Quechua-Aymara', fn:"openRef('vocabulario')"},
       {i:'▣', t:u('menu.q.fichas'),     d:u('menu.q.fichas.d'),     fn:"openCards('q')"},
       {i:'◉', t:u('menu.q.quiz'),       d:u('menu.q.quiz.d'),       fn:"startQuiz('q')"},
       {i:'✏', t:u('menu.q.completar'),  d:u('menu.q.completar.d'),  fn:"startCompletar('q')"},
@@ -388,20 +388,19 @@ function renderHomeBody() {
       {i:'☀', t:'Hoy · 10 oraciones',  d:'Tu juego diario de completar', fn:"startHoy('a')"},
       {i:'≈', t:u('menu.a.oraciones'),  d:u('menu.a.oraciones.d'),  fn:"openReader('aymara_or')"},
       {i:'❋', t:u('menu.a.poesia'),     d:u('menu.a.poesia.d'),     fn:"openReader('aymara_po')"},
-      {i:'⚡', t:u('menu.a.verbos'),     d:u('menu.a.verbos.d'),     fn:"openRef('aymara_verbos')"},
       {i:'◎', t:u('menu.a.sufijos'),    d:u('menu.a.sufijos.d'),    fn:"openRef('aymara_sufijos')"},
-      {i:'📚', t:'Diccionario',         d:'1000+ expresiones comunes Quechua-Aymara', fn:"openRef('vocabulario')"},
-      {i:'▣', t:u('menu.a.fichas'),     d:u('menu.a.fichas.d'),     fn:"openCards('a')"},
-      {i:'▤', t:u('menu.a.vocab'),      d:u('menu.a.vocab.d'),      fn:"openCards('p')"},
       {i:'◉', t:u('menu.a.quiz'),       d:u('menu.a.quiz.d'),       fn:"startQuiz('a')"},
-      {i:'✏', t:'Completar oraciones', d:'Direcciones y frases — elige la palabra correcta', fn:"startCompletar('a')"},
       {i:'📖', t:u('menu.a.leyendas'),   d:u('menu.a.leyendas.d'),   fn:"openReader('leyendas_a')"},
       {i:'♫', t:u('menu.a.songs'),      d:u('menu.a.songs.d'),      fn:"openSongs('a')"},
-      {i:'◉', t:'Ordenar palabras',     d:'Forma oraciones en el orden correcto', fn:"startWordOrder('a')"},
-      {i:'🔊', t:'Escuchar y elegir',   d:'Escucha la palabra y elige la traducción', fn:"startAudioListen('a')"},
       {i:'◆', t:u('menu.a.tutor'),      d:u('menu.a.tutor.d'),      fn:"openChat('a')"}
     ];
   }
+
+  // los 4 primeros quedan a la vista: Hoy + lo más práctico
+  var top = lang === 'q' ? ["startHoy('q')", "openSongs('q')", "startDialogos()", "openCards('q')"]
+                         : ["startHoy('a')", "openSongs('a')", "startQuiz('a')", "openReader('aymara_or')"];
+  items = top.map(function(fn) { return items.filter(function(x) { return x.fn === fn; })[0]; })
+    .concat(items.filter(function(x) { return top.indexOf(x.fn) === -1; }));
 
   var langColors = {q:'var(--gold)', a:'var(--teal)', en:'#3b82f6', fr:'#8b5cf6'};
   var langColor = langColors[lang] || 'var(--gold)';
@@ -410,12 +409,17 @@ function renderHomeBody() {
     '<button class="back-to-dashboard" onclick="showLangDashboard()">&#8592; Idiomas</button>' +
     getProgressSummary(lang) +
     '<p class="section-label" style="margin-top:4px;border-left:3px solid ' + langColor + ';padding-left:8px">' + sectionLabel + '</p>' +
-    items.map(function(x) {
-      return '<button class="menu-card" onclick="' + x.fn + '">' +
-        '<span class="menu-icon">' + x.i + '</span>' +
-        '<div class="menu-text"><div class="menu-title">' + x.t + '</div>' +
-        '<div class="menu-desc">' + x.d + '</div></div></button>';
-    }).join('');
+    // TDAH: Hoy + 3 a la vista; el resto plegado
+    items.slice(0, 4).map(menuCardHtml).join('') +
+    '<details class="menu-more"><summary>Más ejercicios (' + (items.length - 4) + ')</summary>' +
+    items.slice(4).map(menuCardHtml).join('') + '</details>';
+}
+
+function menuCardHtml(x) {
+  return '<button class="menu-card" onclick="' + x.fn + '">' +
+    '<span class="menu-icon">' + x.i + '</span>' +
+    '<div class="menu-text"><div class="menu-title">' + x.t + '</div>' +
+    '<div class="menu-desc">' + x.d + '</div></div></button>';
 }
 
 renderHomeBody();
@@ -429,7 +433,7 @@ function toggleTheme() {
   document.documentElement.setAttribute('data-theme', next === 'dark' ? 'dark' : '');
   localStorage.setItem('yachay_theme', next);
   document.getElementById('themeToggle').textContent = next === 'dark' ? '☀️' : '🌙';
-  document.querySelector('meta[name="theme-color"]').content = next === 'dark' ? '#121212' : '#c47d1a';
+  document.querySelector('meta[name="theme-color"]').content = next === 'dark' ? '#0D1A15' : '#F97316';
 }
 
 (function initTheme() {
@@ -438,7 +442,7 @@ function toggleTheme() {
   var useDark = saved === 'dark' || (saved === null && prefersDark);
   if (useDark) {
     document.documentElement.setAttribute('data-theme', 'dark');
-    document.querySelector('meta[name="theme-color"]').content = '#121212';
+    document.querySelector('meta[name="theme-color"]').content = '#0D1A15';
   }
   var btn = document.getElementById('themeToggle');
   if (btn) btn.textContent = useDark ? '☀️' : '🌙';

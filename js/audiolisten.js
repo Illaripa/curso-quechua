@@ -23,7 +23,7 @@ function buildAlData(lang) {
 function buildAlBodyHtml() {
   return '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">' +
     '<span style="font-size:13px;color:var(--muted)">Puntos</span>' +
-    '<span id="alScore" style="font-size:18px;font-weight:700;color:#c47d1a">0</span></div>' +
+    '<span id="alScore" style="font-size:18px;font-weight:700;color:#C2410C">0</span></div>' +
     '<div id="alQuestion"></div>';
 }
 
@@ -85,7 +85,7 @@ function renderAlQuestion() {
   html += '</div>' +
     '<div id="alFeedback" class="al-feedback"></div>' +
     '<div id="alNote" class="al-note" style="display:none"></div>' +
-    '<button id="alNextBtn" style="display:none;width:100%;margin-top:16px;padding:15px;border-radius:12px;background:#c47d1a;color:#fff;border:none;font-size:15px;font-weight:700;cursor:pointer;min-height:52px" onclick="alNext()">Siguiente →</button>';
+    '<button id="alNextBtn" style="display:none;width:100%;margin-top:16px;padding:15px;border-radius:12px;background:#C2410C;color:#fff;border:none;font-size:15px;font-weight:700;cursor:pointer;min-height:52px" onclick="alNext()">Siguiente →</button>';
 
   document.getElementById('alQuestion').innerHTML = html;
   setTimeout(function() { speakAlWord(); }, 400);
@@ -154,7 +154,7 @@ function showAlResult() {
     '<div style="font-size:48px;margin-bottom:12px">' + (pct >= 70 ? '🎉' : '💪') + '</div>' +
     '<div style="font-size:28px;font-weight:700;margin-bottom:8px">' + alScore + '/' + total + '</div>' +
     '<div style="font-size:16px;color:var(--muted);margin-bottom:32px">' + pct + '% correcto</div>' +
-    '<button style="width:100%;padding:16px;border-radius:12px;background:#c47d1a;color:#fff;border:none;font-size:16px;font-weight:700;cursor:pointer;min-height:52px;margin-bottom:12px" onclick="startAudioListen(\'' + alLang + '\')">Repetir</button>' +
+    '<button style="width:100%;padding:16px;border-radius:12px;background:#C2410C;color:#fff;border:none;font-size:16px;font-weight:700;cursor:pointer;min-height:52px;margin-bottom:12px" onclick="startAudioListen(\'' + alLang + '\')">Repetir</button>' +
     '<button style="width:100%;padding:14px;border-radius:12px;border:1px solid var(--bdr);background:var(--card);font-size:15px;font-weight:700;cursor:pointer;min-height:52px" onclick="goHome()">Inicio</button>' +
     '</div>';
 }

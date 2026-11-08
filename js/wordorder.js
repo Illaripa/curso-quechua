@@ -9,13 +9,13 @@ var woBank = [];
 function buildWoBodyHtml() {
   return '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">' +
     '<span style="font-size:13px;color:var(--muted)">Puntos</span>' +
-    '<span id="woScore" style="font-size:18px;font-weight:700;color:#c47d1a">0</span></div>' +
+    '<span id="woScore" style="font-size:18px;font-weight:700;color:#C2410C">0</span></div>' +
     '<div id="woPrompt" style="font-size:18px;font-weight:700;margin-bottom:20px;line-height:1.4;min-height:52px"></div>' +
     '<div id="woSlots" style="display:flex;flex-wrap:wrap;gap:8px;min-height:48px;padding:12px;background:var(--card);border:1px solid var(--bdr);border-radius:12px;margin-bottom:16px;align-items:center"></div>' +
     '<div id="woBank" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px"></div>' +
     '<div id="woFeedback" class="wo-feedback"></div>' +
     '<div id="woNote" class="al-note" style="display:none;margin-bottom:12px"></div>' +
-    '<button id="woNextBtn" style="display:none;width:100%;padding:15px;border-radius:12px;background:#c47d1a;color:#fff;border:none;font-size:15px;font-weight:700;cursor:pointer;min-height:52px" onclick="woNext()">Siguiente →</button>';
+    '<button id="woNextBtn" style="display:none;width:100%;padding:15px;border-radius:12px;background:#C2410C;color:#fff;border:none;font-size:15px;font-weight:700;cursor:pointer;min-height:52px" onclick="woNext()">Siguiente →</button>';
 }
 
 function startWordOrder(lang) {
@@ -146,7 +146,7 @@ function showWoResult() {
     '<div style="font-size:48px;margin-bottom:12px">' + (pct >= 70 ? '🎉' : '💪') + '</div>' +
     '<div style="font-size:28px;font-weight:700;margin-bottom:8px">' + woScore + '/' + total + '</div>' +
     '<div style="font-size:16px;color:var(--muted);margin-bottom:32px">' + pct + '% correcto</div>' +
-    '<button style="width:100%;padding:16px;border-radius:12px;background:#c47d1a;color:#fff;border:none;font-size:16px;font-weight:700;cursor:pointer;min-height:52px;margin-bottom:12px" onclick="startWordOrder(\'' + woLang + '\')">Repetir</button>' +
+    '<button style="width:100%;padding:16px;border-radius:12px;background:#C2410C;color:#fff;border:none;font-size:16px;font-weight:700;cursor:pointer;min-height:52px;margin-bottom:12px" onclick="startWordOrder(\'' + woLang + '\')">Repetir</button>' +
     '<button style="width:100%;padding:14px;border-radius:12px;border:1px solid var(--bdr);background:var(--card);font-size:15px;font-weight:700;cursor:pointer;min-height:52px" onclick="goHome()">Inicio</button>' +
     '</div>';
 }
