@@ -1,4 +1,4 @@
-var CACHE_NAME = 'yachay-v23';
+var CACHE_NAME = 'yachay-v24';
 var urlsToCache = [
   './',
   './index.html',
@@ -15,6 +15,7 @@ var urlsToCache = [
   './css/elements.css',
   './css/hoy.css',
   './css/responsive.css',
+  './css/theme.css',
   './data/elements.js',
   './data/morning.js',
   './data/content-quechua.js',

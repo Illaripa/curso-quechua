@@ -66,7 +66,7 @@
 }
 
 .morning-quechua {
-  font-family: "Lora", serif;
+  font-family: var(--font-display);
   font-size: 20px;
   font-weight: 700;
   line-height: 1.65;
@@ -103,7 +103,7 @@
 }
 
 .morning-word-quechua {
-  font-family: "Lora", serif;
+  font-family: var(--font-display);
   font-size: 22px;
   font-weight: 700;
   margin-bottom: 3px;

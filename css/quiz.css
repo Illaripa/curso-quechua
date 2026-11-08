@@ -19,7 +19,7 @@
 }
 
 .quiz-sentence {
-  font-family: "Lora", serif;
+  font-family: var(--font-display);
   font-size: 21px;
   font-weight: 600;
   line-height: 1.5;
@@ -153,7 +153,7 @@
 }
 
 .result-number {
-  font-family: "Lora", serif;
+  font-family: var(--font-display);
   font-size: 30px;
   font-weight: 700;
 }
@@ -207,7 +207,7 @@
 }
 
 .comp-sentence {
-  font-family: "Lora", serif;
+  font-family: var(--font-display);
   font-size: 22px;
   font-weight: 600;
   line-height: 1.55;
@@ -228,7 +228,7 @@
 }
 
 .comp-translation {
-  font-family: "Lora", serif;
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 16px;
   color: var(--q-color);
@@ -253,7 +253,7 @@
   border-bottom: 1px solid var(--bdr);
 }
 .dial-title {
-  font-family: 'Lora', serif;
+  font-family: var(--font-display);
   font-size: 22px;
   font-weight: 700;
   color: var(--fg);

@@ -186,7 +186,7 @@
 }
 
 .card-verb {
-  font-family: "Lora", serif;
+  font-family: var(--font-display);
   font-size: 44px;
   font-weight: 700;
   line-height: 1.1;
@@ -198,7 +198,7 @@
   font-size: 26px;
   color: #ffffff;
   font-style: italic;
-  font-family: "Lora", serif;
+  font-family: var(--font-display);
   margin-bottom: 18px;
 }
 
@@ -221,7 +221,7 @@
 }
 
 .card-back-verb {
-  font-family: "Lora", serif;
+  font-family: var(--font-display);
   font-size: 24px;
   font-weight: 700;
   color: #f0c840;
@@ -261,7 +261,7 @@
 }
 
 .conj-cell-word {
-  font-family: "Lora", serif;
+  font-family: var(--font-display);
   font-size: 16px;
   font-weight: 700;
   color: #f0c840 !important;
@@ -312,7 +312,7 @@
 }
 
 .card-example-quechua {
-  font-family: "Lora", serif;
+  font-family: var(--font-display);
   font-size: 15px;
   font-weight: 600;
   color: #f0c840;
@@ -532,7 +532,7 @@
 }
 
 .card-empty-title {
-  font-family: "Lora", serif;
+  font-family: var(--font-display);
   font-size: 22px;
   font-weight: 700;
   margin-bottom: 7px;

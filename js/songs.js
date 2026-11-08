@@ -84,7 +84,7 @@ function openSongDetail(index) {
     <div id="lyric-${i}" style="display:flex;align-items:flex-start;gap:8px;margin-bottom:10px;padding:8px 10px;border-radius:8px;border-left:3px solid transparent;transition:background 0.2s,border-color 0.2s">
       <span style="font-size:12px;color:var(--muted);min-width:18px;padding-top:4px;font-weight:600">${i + 1}</span>
       <div style="flex:1">
-        <div style="font-family:Lora,serif;font-size:21px;color:var(--txt);font-style:italic;line-height:1.4">${l[langKey] || l.q || l.a || ''}</div>
+        <div style="font-family:var(--font-display);font-size:21px;color:var(--txt);font-style:italic;line-height:1.4">${l[langKey] || l.q || l.a || ''}</div>
         <div style="font-size:17px;color:var(--muted);margin-top:2px;line-height:1.4">${l.s || ''}</div>
       </div>
       <button onclick="speakTextLang(decodeURIComponent('${encodeURIComponent(l[langKey] || l.q || l.a || '')}'),'${songsLang}',this)" style="background:none;border:none;cursor:pointer;font-size:16px;opacity:0.4;padding:4px;flex-shrink:0" title="Escuchar">🔊</button>
@@ -104,7 +104,7 @@ function openSongDetail(index) {
   document.getElementById('songsBody').innerHTML = `
     <div style="text-align:center;padding:16px 0 8px">
       <div style="font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:${color};margin-bottom:6px">${song.genre}</div>
-      <div style="font-family:Lora,serif;font-size:24px;font-weight:700;color:var(--txt);margin-bottom:4px">${song.title}</div>
+      <div style="font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--txt);margin-bottom:4px">${song.title}</div>
       <div style="font-size:16px;color:var(--muted)">${song.artist}</div>
     </div>
     ${ytSection}

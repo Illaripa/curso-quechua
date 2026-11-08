@@ -42,7 +42,7 @@
   line-height: 1;
 }
 .lang-card-name {
-  font-family: 'Lora', serif;
+  font-family: var(--font-display);
   font-size: 16px;
   font-weight: 700;
   color: var(--txt);
@@ -97,7 +97,7 @@
 }
 
 .home-title {
-  font-family: "Lora", serif;
+  font-family: var(--font-display);
   font-size: 30px;
   font-weight: 700;
   color: var(--txt);
