@@ -1,4 +1,5 @@
-let currentLang = localStorage.getItem('yachay_lang') || null;
+// Solo Quechua y Aymara: un idioma guardado antiguo (en/fr) vuelve al dashboard
+let currentLang = ['q', 'a'].indexOf(localStorage.getItem('yachay_lang')) !== -1 ? localStorage.getItem('yachay_lang') : null;
 let uiLang = 'es';
 
 // ============================================================
@@ -337,9 +338,7 @@ function getProgressSummary(lang) {
 function renderDashboard() {
   var langs = [
     {code:'q',  flag:'🇵🇪', name:'Runasimi',   sub:'Quechua · Andes', cls:'lang-card--q'},
-    {code:'a',  flag:'🇧🇴', name:'Aymar aru',  sub:'Aymara · Altiplano', cls:'lang-card--a'},
-    {code:'en', flag:'🇬🇧', name:'English',    sub:'Inglés · Spiritual', cls:'lang-card--en'},
-    {code:'fr', flag:'🇫🇷', name:'Français',   sub:'Francés · Sagesse', cls:'lang-card--fr'}
+    {code:'a',  flag:'🇧🇴', name:'Aymar aru',  sub:'Aymara · Altiplano', cls:'lang-card--a'}
   ];
   var html = '<div class="lang-dashboard">' +
     '<p class="dashboard-eyebrow">Elige tu idioma</p>' +
@@ -401,34 +400,6 @@ function renderHomeBody() {
       {i:'◉', t:'Ordenar palabras',     d:'Forma oraciones en el orden correcto', fn:"startWordOrder('a')"},
       {i:'🔊', t:'Escuchar y elegir',   d:'Escucha la palabra y elige la traducción', fn:"startAudioListen('a')"},
       {i:'◆', t:u('menu.a.tutor'),      d:u('menu.a.tutor.d'),      fn:"openChat('a')"}
-    ];
-  } else if (lang === 'en') {
-    sectionLabel = 'Inglés — English';
-    items = [
-      {i:'◇', t:'Frases en inglés',      d:'Familia, naturaleza, emociones, vida cotidiana', fn:"openReader('en_or')"},
-      {i:'❋', t:'Poesía en inglés',      d:'Poemas clásicos y canciones línea por línea',   fn:"openReader('en_po')"},
-      {i:'📖', t:'Cuentos en inglés',     d:'Fábulas y cuentos clásicos con traducción',      fn:"openReader('en_le')"},
-      {i:'▤', t:'Textos en inglés',      d:'Ensayos cortos sobre temas actuales',            fn:"openReader('en_es')"},
-      {i:'▣', t:'Fichas de vocabulario', d:'100 palabras esenciales — Voltear y aprender',   fn:"openCards('en')"},
-      {i:'◉', t:'Quiz de inglés',        d:'Traduce palabras y frases al español',            fn:"startQuiz('en')"},
-      {i:'✏', t:'Completar oraciones',   d:'Elige la palabra que falta en inglés',            fn:"startCompletar('en')"},
-      {i:'◉', t:'Ordenar palabras',      d:'Forma oraciones en inglés en el orden correcto', fn:"startWordOrder('en')"},
-      {i:'🔊', t:'Escuchar y elegir',    d:'Escucha la palabra en inglés y elige la traducción', fn:"startAudioListen('en')"},
-      {i:'◆', t:'Tutor IA — Inglés',    d:'Practica inglés con inteligencia artificial',    fn:"openChat('en')"}
-    ];
-  } else {
-    sectionLabel = 'Francés — Français';
-    items = [
-      {i:'◇', t:'Frases en francés',     d:'Familia, naturaleza, emociones, vida cotidiana', fn:"openReader('fr_or')"},
-      {i:'❋', t:'Poesía en francés',     d:'Poemas clásicos y canciones línea por línea',   fn:"openReader('fr_po')"},
-      {i:'📖', t:'Cuentos en francés',    d:'Fábulas y cuentos clásicos con traducción',      fn:"openReader('fr_le')"},
-      {i:'▤', t:'Textos en francés',     d:'Ensayos cortos sobre cultura y gastronomía',     fn:"openReader('fr_es')"},
-      {i:'▣', t:'Fichas de vocabulario', d:'100 palabras esenciales — Voltear y aprender',   fn:"openCards('fr')"},
-      {i:'◉', t:'Quiz de francés',       d:'Traduce palabras y frases al español',            fn:"startQuiz('fr')"},
-      {i:'✏', t:'Completar oraciones',   d:'Elige la palabra que falta en francés',           fn:"startCompletar('fr')"},
-      {i:'◉', t:'Ordenar palabras',      d:'Forma oraciones en francés en el orden correcto', fn:"startWordOrder('fr')"},
-      {i:'🔊', t:'Escuchar y elegir',    d:'Escucha la palabra en francés y elige la traducción', fn:"startAudioListen('fr')"},
-      {i:'◆', t:'Tutor IA — Francés',   d:'Practica francés con inteligencia artificial',   fn:"openChat('fr')"}
     ];
   }
 
