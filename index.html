@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="css/quiz.css">
 <link rel="stylesheet" href="css/chat.css">
 <link rel="stylesheet" href="css/elements.css">
+<link rel="stylesheet" href="css/hoy.css">
 <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
@@ -186,6 +187,23 @@
       <span style="font-weight:700;color:var(--muted)" id="compCount">1/20</span>
     </div>
     <div id="compBody"></div>
+  </div>
+</div>
+
+<div id="hoy" class="screen">
+  <div class="topbar">
+    <button class="topbar-back" onclick="goHome()" aria-label="Menú">&#9776;</button>
+    <span class="topbar-title">Yachay · Hoy</span>
+    <div class="hoy-toggle" role="group" aria-label="Idioma">
+      <button id="hoyTq" onclick="hoySetLang('q')">Quechua</button>
+      <button id="hoyTa" onclick="hoySetLang('a')">Aymara</button>
+    </div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="hoyBar" style="background:var(--gold);width:0"></div></div>
+  <div class="content-body">
+    <div class="hoy-themes" id="hoyThemes"></div>
+    <div class="hoy-meta"><span id="hoyCount">1 / 10</span><span id="hoyLevel">Grupo 1</span></div>
+    <section class="hoy-card" id="hoyStage"></section>
   </div>
 </div>
 
@@ -417,7 +435,7 @@
 <script src="data/completar-french.js?v=2"></script>
   <script src="data/wordorder.js?v=1"></script>
   <script src="data/wordorder-extended.js?v=1"></script>
-  <script src="data/oraciones-completar.js?v=2"></script>
+  <script src="data/oraciones-completar.js?v=3"></script>
   <script src="data/dialogos.js?v=2"></script>
 <script src="data/songs-quechua.js?v=2"></script>
 <script src="data/songs-aymara.js?v=2"></script>
@@ -433,6 +451,7 @@
 <script src="js/songs.js?v=2"></script>
 <script src="js/wordorder.js?v=1"></script>
 <script src="js/audiolisten.js?v=1"></script>
-<script src="js/app.js?v=5"></script>
+<script src="js/hoy.js?v=1"></script>
+<script src="js/app.js?v=6"></script>
 </body>
 </html>

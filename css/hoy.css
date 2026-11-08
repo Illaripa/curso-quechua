@@ -1,0 +1,36 @@
+/* HOY — juego diario de completar */
+#hoy .content-body { width: 100%; max-width: 520px; margin: 0 auto; padding: 16px; box-sizing: border-box; }
+.hoy-toggle { display: flex; background: var(--card); border: 1px solid var(--bdr); border-radius: 999px; padding: 3px; margin-left: auto; }
+.hoy-toggle button { border: 0; background: none; color: var(--muted); min-height: var(--touch-min); padding: 0 16px; border-radius: 999px; font: inherit; font-size: 15px; cursor: pointer; }
+.hoy-toggle button.on { background: var(--gold); color: #2c1810; font-weight: 600; }
+.hoy-themes { display: flex; gap: 8px; margin: 0 0 12px; }
+.hoy-chip { min-height: var(--touch-min); padding: 0 16px; border-radius: 999px; border: 1px solid var(--bdr); background: var(--card); color: var(--txt); font: inherit; font-size: 14px; cursor: pointer; }
+.hoy-chip.on { border-color: var(--gold); background: var(--gold); color: #2c1810; font-weight: 600; }
+.hoy-meta { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); margin: 6px 0 14px; }
+.hoy-card { background: var(--card); border: 1px solid var(--bdr); border-radius: var(--radius-lg); padding: 22px; }
+.hoy-q { font-size: 23px; font-weight: 600; line-height: 1.4; margin: 0 0 6px; color: var(--txt); }
+.hoy-gap { display: inline-block; min-width: 80px; border-bottom: 3px solid var(--gold); color: var(--txt); }
+.hoy-nw { white-space: nowrap; }
+.hoy-s { color: var(--muted); margin: 0 0 20px; }
+.hoy-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.hoy-opts button { min-height: 54px; padding: 10px 8px; border-radius: var(--radius-md); border: 2px solid var(--bdr); background: var(--card2); color: var(--txt); font: inherit; font-weight: 600; font-size: 16px; cursor: pointer; overflow-wrap: anywhere; }
+.hoy-opts button:hover:not(:disabled) { border-color: var(--gold); }
+.hoy-opts button.ok { border-color: var(--green); background: color-mix(in srgb, var(--green) 15%, transparent); }
+.hoy-opts button.bad { border-color: var(--rose); background: color-mix(in srgb, var(--rose) 12%, transparent); }
+.hoy-note { display: none; margin-top: 18px; padding: 14px; border-radius: var(--radius-md); background: var(--card2); font-size: 15px; color: var(--txt); }
+.hoy-note.show { display: block; }
+.hoy-note b { color: var(--txt); border-bottom: 2px solid var(--gold); }
+.hoy-next { display: none; width: 100%; margin-top: 16px; min-height: 52px; border: 0; border-radius: 999px; background: var(--gold); color: #2c1810; font: inherit; font-weight: 700; cursor: pointer; }
+.hoy-next.show { display: block; }
+.hoy-end { text-align: center; }
+.hoy-end p { color: var(--muted); }
+.hoy-big { font-size: 42px; margin: 4px 0; color: var(--txt) !important; font-weight: 700; }
+.hoy-row { display: flex; gap: 10px; margin-top: 18px; }
+.hoy-row button { flex: 1; min-height: 52px; border-radius: 999px; font: inherit; font-weight: 700; cursor: pointer; border: 2px solid var(--gold); }
+.hoy-a { background: var(--gold); color: #2c1810; }
+.hoy-b { background: none; color: var(--txt); }
+#hoy button:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; }
+@media (max-width: 768px) {
+  #hoy .topbar-title { font-size: 15px; }
+  .hoy-toggle button { padding: 0 11px; font-size: 14px; }
+}

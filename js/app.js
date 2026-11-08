@@ -276,6 +276,7 @@ function showScreen(id) {
 function setLang(lang) {
   currentLang = lang;
   localStorage.setItem('yachay_lang', lang);
+  if (lang === 'q' || lang === 'a') { startHoy(lang); return; }
   renderHomeBody();
 }
 
@@ -363,6 +364,7 @@ function renderHomeBody() {
   if (lang === 'q') {
     sectionLabel = u('menu.q.section');
     items = [
+      {i:'☀', t:'Hoy · 10 oraciones',  d:'Tu juego diario de completar', fn:"startHoy('q')"},
       {i:'◈', t:u('menu.q.morning'),    d:u('menu.q.morning.d'),    fn:"showScreen('m2')"},
       {i:'◇', t:u('menu.q.oraciones'),  d:u('menu.q.oraciones.d'),  fn:"openReader('oraciones')"},
       {i:'❋', t:u('menu.q.poesia'),     d:u('menu.q.poesia.d'),     fn:"openReader('poesia')"},
@@ -384,6 +386,7 @@ function renderHomeBody() {
   } else if (lang === 'a') {
     sectionLabel = u('menu.a.section');
     items = [
+      {i:'☀', t:'Hoy · 10 oraciones',  d:'Tu juego diario de completar', fn:"startHoy('a')"},
       {i:'≈', t:u('menu.a.oraciones'),  d:u('menu.a.oraciones.d'),  fn:"openReader('aymara_or')"},
       {i:'❋', t:u('menu.a.poesia'),     d:u('menu.a.poesia.d'),     fn:"openReader('aymara_po')"},
       {i:'⚡', t:u('menu.a.verbos'),     d:u('menu.a.verbos.d'),     fn:"openRef('aymara_verbos')"},
@@ -509,7 +512,9 @@ window.addEventListener('load', function() {
   }
   requestNotificationPermission();
   scheduleDailyReminder();
-  // Siempre empieza en el dashboard, saltando la pantalla matutina
+  // Quechua/Aymara guardado → directo al juego de hoy; si no, el dashboard
+  var saved = localStorage.getItem('yachay_lang');
+  if (saved === 'q' || saved === 'a') { currentLang = saved; startHoy(saved); return; }
   currentLang = null;
   goHome();
 });

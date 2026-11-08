@@ -30,7 +30,7 @@ const COMPLETAR_Q = [
 // ─── GRUPO 3 · 5-6 palabras · Progresivo + posesivos ──────────────────
 {g:3,lv:3,q:"Nuqa taytayta ____ maskashani llaqtapi.",s:"Estoy buscando a mi padre en el pueblo.",ans:"munasqayta",opts:["munasqayta","qawasqayta","taytayta","wasiyta"],note:"taytayta = a mi padre (acusativo) · maska-sha-ni = estoy buscando · llaqta-pi = en el pueblo"},
 {g:3,lv:3,q:"Pay chakrampi ____ llank'ashansiwaran.",s:"Me trabajaba en su chacra (me ayudaba).",ans:"tarpuyta",opts:["tarpuyta","mikhuy","puñuy","rimayta"],note:"chakran-pi = en su chacra · tarpu- = sembrar · llank'a-sha-n-si-wara-n = me estaba trabajando (objeto 1sg + pasado)"},
-{g:3,lv:3,q:"Nuqa wayqeywan ____ llaqtaman purirqani.",s:"Fui al pueblo con mi hermano caminando.",ans:"chaki",opts:["chakiwan","caballowan","trocitowan","buswan"],note:"chaki-wan? No, this doesn't work well. Let me use 'purirqani' as the blank:"},
+{g:3,lv:3,q:"Nuqa wayqeywan llaqtaman ____.",s:"Fui caminando al pueblo con mi hermano.",ans:"purirqani",opts:["purirqani","purisaq","purinki","purirqan"],note:"puri- = caminar · -rqa- = pasado · -ni = yo · wayqey-wan = con mi hermano · llaqta-man = al pueblo"},
 
 // Rewrite group 3 sentence 3:
 {g:3,lv:3,q:"Nuqa wayqeywan llaqtaman ____ rirqani.",s:"Fui al pueblo con mi hermano a ver la fiesta.",ans:"raymi qawaq",opts:["raymi qawaq","mikhuq","puñuq","rimaq"],note:"wayqey-wan = con mi hermano · llaqta-man = al pueblo · raymi = fiesta · qawaq riy = ir a ver"},
@@ -138,7 +138,7 @@ const COMPLETAR_Q = [
 {g:11,lv:1,q:"Rogeliom ____ mamáy.",s:"Soy Rogelia, señora.",ans:"kachkani",opts:["kachkani","kani","kachkanki","kanki"],note:"kachkani = soy (con kachkay) · kani = soy (con kay) · ambas son válidas"},
 {g:11,lv:1,q:"Anam kani. ¿____?",s:"Soy Ana. ¿Y tú?",ans:"Qamrí",opts:["Qamrí","Pitaqrí","Mayurí","Sararí"],note:"¿Qamrí? = ¿Y tú? · -rí es sufijo de pregunta adicional: 'y ¿qué hay de ti?'"},
 {g:11,lv:1,q:"Mayum kani. — ¿____ kanki?",s:"Soy Mayu. — ¿Quién eres?",ans:"Pitaq",opts:["Pitaq","Ima","Maypitaq","Imatan"],note:"¿Pitaq kanki? = ¿Quién eres? · Pitaq = quién · Ima = qué · Maypitaq = dónde"},
-{g:11,lv:2,q:"¡Sumaqllach__ Carmen?",s:"¿Estás bien, Carmen? (afectuoso)",ans:"u",opts:["u","a","i","o"],note:"¿Sumaqllachu? = ¿Estás bien? (forma afectuosa) · Sumaqllam = Estoy bien · más cálido que Allinllachu"},
+{g:11,lv:2,q:"¿Sumaqlla____, Carmen?",s:"¿Estás bien, Carmen? (afectuoso)",ans:"chu",opts:["chu","mi","si","qa"],note:"¿Sumaqllachu? = ¿Estás bien? (forma afectuosa) · Sumaqllam = Estoy bien · más cálido que Allinllachu"},
 
 // ─── GRUPO 12 · R1 Lección 2 · Despedidas y actividades próximas ─────
 {g:12,lv:1,q:"Sara, ¿maytataq ____?",s:"Sara, ¿adónde vas?",ans:"richkanki",opts:["richkanki","richkani","richkan","richkanku"],note:"¿Maytataq richkanki? = ¿Adónde vas? · -nki = tú · richkani = voy · richkan = él/ella va"},
