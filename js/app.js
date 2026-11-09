@@ -386,11 +386,11 @@ function renderHomeBody() {
     sectionLabel = u('menu.a.section');
     items = [
       {i:'☀', t:'Hoy · 10 oraciones',  d:'Tu juego diario de completar', fn:"startHoy('a')"},
+      {i:'▣', t:u('menu.a.fichas'),     d:'44 verbos de la gramática de Layme', fn:"openCards('a')"},
+      {i:'⚡', t:u('menu.a.verbos'),     d:'Conjugación completa · Layme 2011', fn:"openRef('aymara_verbos')"},
       {i:'≈', t:u('menu.a.oraciones'),  d:u('menu.a.oraciones.d'),  fn:"openReader('aymara_or')"},
-      {i:'❋', t:u('menu.a.poesia'),     d:u('menu.a.poesia.d'),     fn:"openReader('aymara_po')"},
       {i:'◎', t:u('menu.a.sufijos'),    d:u('menu.a.sufijos.d'),    fn:"openRef('aymara_sufijos')"},
       {i:'◉', t:u('menu.a.quiz'),       d:u('menu.a.quiz.d'),       fn:"startQuiz('a')"},
-      {i:'📖', t:u('menu.a.leyendas'),   d:u('menu.a.leyendas.d'),   fn:"openReader('leyendas_a')"},
       {i:'♫', t:u('menu.a.songs'),      d:u('menu.a.songs.d'),      fn:"openSongs('a')"},
       {i:'◆', t:u('menu.a.tutor'),      d:u('menu.a.tutor.d'),      fn:"openChat('a')"}
     ];
@@ -398,7 +398,7 @@ function renderHomeBody() {
 
   // los 4 primeros quedan a la vista: Hoy + lo más práctico
   var top = lang === 'q' ? ["startHoy('q')", "openSongs('q')", "startDialogos()", "openCards('q')"]
-                         : ["startHoy('a')", "openSongs('a')", "startQuiz('a')", "openReader('aymara_or')"];
+                         : ["startHoy('a')", "openCards('a')", "openSongs('a')", "openReader('aymara_or')"];
   items = top.map(function(fn) { return items.filter(function(x) { return x.fn === fn; })[0]; })
     .concat(items.filter(function(x) { return top.indexOf(x.fn) === -1; }));
 

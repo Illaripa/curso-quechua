@@ -5,17 +5,16 @@ const CONT_A={
       {q:"Janiwa.",s:"No."},
       {q:"Waliki.",s:"Está bien."},
       {q:"Kunas sutimax?",s:"¿Cómo te llamas?"},
-      {q:"Sutimax Maria.",s:"Me llamo María."},
+      {q:"Sutijaxa Satukuwa.",s:"Me llamo Satuku."},
       {q:"Yuspagara.",s:"Gracias."},
-      {q:"Jakisiñkama.",s:"Hasta luego."}
+      {q:"Jikisiñkama.",s:"Hasta luego."}
     ],notes:[{t:"Jisa / Janiwa",d:"Sí / No — las palabras más básicas del Aymara."},{t:"Waliki",d:"Está bien, bien."},{t:"Yuspagara",d:"Gracias (del español 'Dios le pague')."}]},
     {level:1,type:"Saludos",title:"Saludar en Aymara",sub:"Primeras palabras esenciales",isAy:true,lines:[
       {q:"Kamisaraki?",s:"¿Cómo estás? (saludo principal)"},
-      {q:"Waliki, yuspagarapxita.",s:"Bien, gracias."},
+      {q:"Waliki, yuspagara.",s:"Bien, gracias."},
       {q:"Jumaxa kamisaraki?",s:"¿Y tú cómo estás?"},
-      {q:"Suma arumani.",s:"Buenas noches."},
-      {q:"Jakisiñkama.",s:"Hasta luego (hasta que nos veamos)."}
-    ],notes:[{t:"Kamisaraki",d:"Saludo universal Aymara. Literalmente: ¿cómo es que estás?"},{t:"Waliki",d:"Bien / está bien."},{t:"Jakisiñkama",d:"Despedida: jakañа=vivir, -kama=hasta."}]},
+      {q:"Jikisiñkama.",s:"Hasta luego (hasta que nos encontremos)."}
+    ],notes:[{t:"Kamisaraki",d:"Saludo universal Aymara. Literalmente: ¿cómo es que estás?"},{t:"Waliki",d:"Bien / está bien."},{t:"Jikisiñkama",d:"Despedida: jikisiña = encontrarse, -kama = hasta."}]},
     {level:2,type:"Familia",title:"La familia Aymara",sub:"Vínculos familiares",isAy:true,lines:[
       {q:"Nayax jilata muntha.",s:"Yo quiero a mi hermano mayor."},
       {q:"Mamax manq'a lurañataki utjitu.",s:"Mi madre está para hacer comida."},
@@ -140,3 +139,7 @@ const CONT_A={
     ],notes:[{t:"Chullpa",d:"Torre funeraria de piedra del período preinca"},{t:"Nayra jaqix",d:"La gente antigua, los antepasados"},{t:"Walt'awiri",d:"El que puede resistir / soportar"}]}
   ]}
 };
+
+// Revisión 2026-11-09: solo quedan las frases de nivel 1 (comprobadas con F. Layme, Gramática Aymara 2011).
+// Los niveles 2-3, la poesía y las leyendas mezclaban quechua (huk, mana, lluqsi-) y quedan fuera.
+CONT_A.aymara_or.pieces = CONT_A.aymara_or.pieces.filter(function (p) { return p.level === 1; });

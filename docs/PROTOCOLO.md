@@ -53,3 +53,14 @@
 - https://claude.ai/artifact/18g3fDa66BYwAhMRFTfmnv ("Revisión Runasimi"): las 402 frases de verbos Q; el revisor marca Bien/Mal + corrección; se guarda en la colección db "revisiones" (doc id = "e"+hash djb2 de "Verbo|frase"; fuente: scratchpad revision/data.json).
 - Para que el revisor pueda marcar: compartir desde el menú Share invitándolo por email como Editor (sin enlace público).
 - Siguiente paso: leer "revisiones" con ArtifactData y aplicar las correcciones a data/verbs-quechua.js.
+
+## 2026-11-09 — Aymara reconstruido con fuentes oficiales
+- Fuentes: F. Layme Pairumani, "Gramática Aymara" (La Paz, 2011) y "Vocabulario Pedagógico de la Lengua Aymara" (IPELC-ILCNA, 2020), PDFs públicos en aymaraclub.com. (Minedu Perú bloquea con anti-robots: no se usó.)
+- Verbos A: 44 verbos con significado de Layme pp. 101-102, 125, 156; conjugación por regla de pp. 110, 125, 127-128, 196 (presente -th/-ta/-i/-tan, futuro -ä/-äta/-ni/-ñäni, pasado testimonial -yäth/-yäta/-¨n/-yätan, plural -pxa-). Comprobadas contra formas del libro (sarapxayäthwa, munapxänwa, thuqhupxiwa, purthwa…). 3 ejemplos por verbo. Etiquetas Nayanaka/Jumanaka.
+- Hoy Aymara: tema "Verbos" (528 ejercicios: Presente → Futuro → Pasado) + Canciones.
+- Quiz A: 132 preguntas desde los verbos; QUIZ_A_EXT vaciado (palabras inventadas).
+- Sufijos A: rehecho, 30 sufijos con ejemplo y página de Layme.
+- Frases A: solo nivel 1, corregidas (Sutijaxa…, Jikisiñkama). Poesía y Leyendas A ocultas (mezclaban quechua: huk, mana, lluqsi-). Fichas y Verbos A vuelven al menú.
+- Reverso de fichas: verde sólido (quedaba oliva/marrón).
+- Live: sí. sw yachay-v33. Generador: scratchpad aymara/build.cjs.
+- Pendiente: diccionario/vocabulario A, Ordenar y Escuchar A siguen ocultos.

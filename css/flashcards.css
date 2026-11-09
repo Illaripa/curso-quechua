@@ -210,8 +210,8 @@
 }
 
 .card-back {
-  background: linear-gradient(145deg, #2a3328, #1e2820);
-  border: 1px solid #3a4a38;
+  background: #13291F;
+  border: 1px solid #24403A;
   color: #d8e8d0;
   transform: rotateY(180deg);
   padding: 14px 14px 12px;

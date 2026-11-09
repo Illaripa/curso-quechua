@@ -174,7 +174,7 @@ function renderCard() {
   } else {
     // Back face with tense tabs (Quechua / Aymara verbs)
     var pronounLabels = isAy
-      ? ['Naya', 'Juma', 'Jupa', 'Nanaka', 'Jiwasa', 'Jumana', 'Jupanaka']
+      ? ['Naya', 'Juma', 'Jupa', 'Nayanaka', 'Jiwasa', 'Jumanaka', 'Jupanaka']
       : ['Nuqam', 'Qam', 'Pay', 'Nuqanchik', 'Nuqayku', 'Qamkuna', 'Paykuna'];
     var pronounKeys = ['yo', 'tu', 'el', 'nos', 'nex', 'uds', 'ellos'];
     var tenses = [

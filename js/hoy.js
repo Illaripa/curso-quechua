@@ -52,8 +52,8 @@ var HOY_THEME_NAMES = { todo: 'Básico', dialogos: 'Diálogos', canciones: 'Canc
 function hoyBank(lang, theme) {
   var src;
   if (theme === 'todo') {
-    // COMPLETAR_A queda fuera: mezcla quechua y tiene traducciones erróneas (revisión 2026-11-08)
-    src = lang === 'a' ? [] : (typeof COMPLETAR_Q !== 'undefined' ? COMPLETAR_Q : []);
+    // aymara: verbos de F. Layme, Gramática Aymara (2011) — rehecho 2026-11-09
+    src = lang === 'a' ? (typeof COMPLETAR_A !== 'undefined' ? COMPLETAR_A : []) : (typeof COMPLETAR_Q !== 'undefined' ? COMPLETAR_Q : []);
   } else if (theme === 'futuro') {
     src = lang === 'a' ? (typeof FUTURO_A !== 'undefined' ? FUTURO_A : [])
                        : (typeof FUTURO_Q !== 'undefined' ? FUTURO_Q : []);
@@ -122,7 +122,7 @@ function hoyRenderChrome() {
   if (list.length < 2) { themes.innerHTML = ''; return; }
   themes.innerHTML = list.map(function (t) {
     return '<button class="hoy-chip' + (hoyTheme === t ? ' on' : '') + '" onclick="hoySetTheme(\'' + t + '\')">' +
-      HOY_THEME_NAMES[t] + ' <small>' + hoyBank(hoyLang, t).length + '</small></button>';
+      (hoyLang === 'a' && t === 'todo' ? 'Verbos' : HOY_THEME_NAMES[t]) + ' <small>' + hoyBank(hoyLang, t).length + '</small></button>';
   }).join('');
 }
 
@@ -151,12 +151,16 @@ function hoyGapHtml(rest) {
   return '<span class="hoy-nw"><span class="hoy-gap" id="hoyGap">&nbsp;</span>' + hoyEsc(punct) + '</span>' + hoyEsc(rest.slice(punct.length));
 }
 
+function hoyGroupName(g) {
+  if (hoyLang === 'a' && hoyTheme === 'todo') return ['', 'Presente', 'Futuro', 'Pasado'][g] || 'Grupo ' + g;
+  return 'Grupo ' + g;
+}
 function hoyMetaRender() {
   document.getElementById('hoyBar').style.width = (hoyDone / hoyTotal * 100) + '%';
   document.getElementById('hoyCount').textContent = Math.min(hoyDone + 1, hoyTotal) + ' / ' + hoyTotal;
   document.getElementById('hoyLevel').innerHTML =
     (hoyCombo >= 2 ? '<b class="hoy-combo">×' + hoyCombo + ' seguidas</b> · ' : '') +
-    hoyEsc((hoyStreakHtml() ? hoyStreakHtml() + ' · ' : '') + 'Grupo ' + hoySt.group) +
+    hoyEsc((hoyStreakHtml() ? hoyStreakHtml() + ' · ' : '') + hoyGroupName(hoySt.group)) +
     ' <button class="hoy-snd" onclick="hoyToggleSound()" aria-label="Sonido" aria-pressed="' + hoySoundOn() + '">' + (hoySoundOn() ? '🔊' : '🔇') + '</button>';
 }
 
@@ -281,7 +285,7 @@ function hoyFinish() {
     .filter(function (g) { return g > hoySt.group; }).sort(function (a, b) { return a - b; })[0];
   var streak = hoyStreakUp();
   var msg = 'Las falladas volverán pronto.';
-  if (pct >= 80 && next) { hoySt.group = next; msg = '¡Subes al grupo ' + next + '! Oraciones un poco más largas.'; }
+  if (pct >= 80 && next) { hoySt.group = next; msg = hoyLang === 'a' && hoyTheme === 'todo' ? '¡Pasas a: ' + hoyGroupName(next) + '!' : '¡Subes al grupo ' + next + '! Oraciones un poco más largas.'; }
   hoySaveState();
   document.getElementById('hoyStage').innerHTML =
     '<div class="hoy-end"><p class="hoy-big">' + hoyRight + '/' + hoyTotal + '</p>' +
