@@ -8,8 +8,8 @@ const DIALOGOS = [
     context:'Mayu conoce a Sara en la calle y la saluda.',
     speakers:{Mayu:'#2eadb5', Sara:'#c8a000'},
     lines:[
-      {s:'Mayu', q:'¿Allinllachu, mamáy?',      t:'¿Estás bien?'},
-      {s:'Sara', q:'¡Allinllam taytáy!',         t:'¡Estoy bien!'},
+      {s:'Mayu', q:'¿Allinllachu, mamáy?',      t:'¿Estás bien, señora?'},
+      {s:'Sara', q:'¡Allinllam taytáy!',         t:'¡Estoy bien, señor!'},
       {s:'Mayu', q:'¿Pitaq kanki?',              t:'¿Quién eres?'},
       {s:'Sara', q:'Saram kani. ¿Qamrí?',        t:'Soy Sara. ¿Y tú?'},
       {s:'Mayu', q:'Mayum kani.',                t:'Soy Mayu.'}
@@ -25,8 +25,8 @@ const DIALOGOS = [
     lines:[
       {s:'Mayu', q:'Sara, ¿maytataq richkanki?',  t:'Sara, ¿adónde vas?'},
       {s:'Sara', q:'Pukllaqmi richkani.',          t:'Voy a jugar.'},
-      {s:'Mayu', q:'Allinlláyá.',                 t:'Qué bien.'},
-      {s:'Sara', q:'Qampas allinlláyá.',           t:'Tú también, qué bien.'},
+      {s:'Mayu', q:'Allinlláyá.',                 t:'Que te vaya bien.'},
+      {s:'Sara', q:'Qampas allinlláyá.',           t:'A ti también, que te vaya bien.'},
       {s:'Mayu', q:'¡Paqarinkama Sara!',           t:'¡Hasta mañana Sara!'},
       {s:'Sara', q:'¡Paqarinkama Mayu!',           t:'¡Hasta mañana Mayu!'}
     ],
@@ -39,11 +39,11 @@ const DIALOGOS = [
     context:'Dos formas de presentarse: formal (con personas mayores) e informal (entre amigos).',
     speakers:{A:'#059669', B:'#c8a000'},
     lines:[
-      {s:'A', q:'¡Imaynallam mamáy!',            t:'¡Buenos días, señora!'},
+      {s:'A', q:'¡Imaynallam mamáy!',            t:'¿Cómo está, señora?'},
       {s:'B', q:'¡Allinllam taytáy!',             t:'¡Estoy bien, señor!'},
-      {s:'A', q:'¿Mayqintaq kachkanki?',          t:'¿Quién es usted? (formal)'},
-      {s:'B', q:'Rogeliom kachkani mamáy.',        t:'Soy Rogelia, señora.'},
-      {s:'A', q:'¡Allinllachu!',                  t:'¿Cómo estás? (informal)'},
+      {s:'A', q:'¿Mayqintaq kachkanki?',          t:'¿Quién es usted? (formal; lit. ¿cuál eres?)'},
+      {s:'B', q:'Rogeliom kachkani mamáy.',        t:'Soy Rogelio, señora.'},
+      {s:'A', q:'¡Allinllachu!',                  t:'¿Estás bien? (informal)'},
       {s:'B', q:'¡Allinllam!',                    t:'¡Estoy bien!'},
       {s:'A', q:'¿Pitaq kanki?',                  t:'¿Quién eres? (informal)'},
       {s:'B', q:'Anam kani. ¿Qamrí?',             t:'Soy Ana. ¿Y tú?'}
@@ -58,14 +58,14 @@ const DIALOGOS = [
     speakers:{Rogelia:'#e91e63', Túpac:'#2eadb5'},
     lines:[
       {s:'Rogelia', q:'Túpac, ¿maypitaq chillikuyki kachkan?',    t:'Túpac, ¿dónde está tu teléfono?'},
-      {s:'Túpac',  q:'Chuspaypim kachkan.',                       t:'Está en mi bolsillo.'},
-      {s:'Rogelia', q:'Ya, ¿maypitaq chuspayki kachkan?',         t:'Sí, ¿y dónde está tu bolsillo?'},
-      {s:'Túpac',  q:'Chay hamparapa sikinpim.',                   t:'Está debajo de esa silla.'},
-      {s:'Rogelia', q:'Manataq kaypiqakanchu.',                    t:'No está aquí.'},
-      {s:'Túpac',  q:'Chaynaqa televisorpa waqtanpim kachkan.',    t:'Entonces debe estar al lado del televisor.'},
+      {s:'Túpac',  q:'Chuspaypim kachkan.',                       t:'Está en mi chuspa (bolsita tejida).'},
+      {s:'Rogelia', q:'Ya, ¿maypitaq chuspayki kachkan?',         t:'Ya, ¿y dónde está tu chuspa?'},
+      {s:'Túpac',  q:'Chay hamparapa sikinpim.',                   t:'Debajo de esa mesa.'},
+      {s:'Rogelia', q:'Manataq kaypiqakanchu.',                    t:'Pero aquí no está.'},
+      {s:'Túpac',  q:'Chaynaqa televisorpa waqtanpim kachkan.',    t:'Entonces está al lado del televisor.'},
       {s:'Rogelia', q:'Manam kanchu.',                             t:'No está.'},
       {s:'Túpac',  q:'Ichapas punkupa qipanpi.',                   t:'Quizás está detrás de la puerta.'},
-      {s:'Rogelia', q:'An, chaypim kachkan. Rikurquni.',           t:'¡Sí, ahí está! Lo encontré.'}
+      {s:'Rogelia', q:'An, chaypim kachkan. Rikurquni.',           t:'¡Ah, ahí está! Ya lo vi.'}
     ],
     note:'-pi es el sufijo locativo: wasipi (en la casa). Posiciones: uku (dentro), hawa (fuera/sobre), ñawpa (delante), qipa (detrás), alliq (derecha), ichuq (izquierda), chawpi (centro), pata (encima), chimpa (al frente), waqta (al lado), siki (debajo).'
   },
@@ -83,9 +83,9 @@ const DIALOGOS = [
       {s:'William', q:'¿Imatataq taytanchik Ernesto rurachkan?',    t:'¿Qué está haciendo nuestro papá Ernesto?'},
       {s:'Rogelia', q:'Payqa puñuchkanmi.',                         t:'Él está durmiendo.'},
       {s:'William', q:'¿Imatataq wawaykikuna rurachkanku?',         t:'¿Qué están haciendo tus hijos?'},
-      {s:'Rogelia', q:'Paykunaqa quchapim tuytuchkanku.',            t:'Ellos están nadando en la piscina.'},
-      {s:'William', q:'Kusa, chayna minchakama panicháy.',           t:'Bien, hasta mañana hermanita.'},
-      {s:'Rogelia', q:'Minchakama, turicháy.',                       t:'Hasta mañana, hermanito.'}
+      {s:'Rogelia', q:'Paykunaqa quchapim tuytuchkanku.',            t:'Ellos están nadando en la laguna.'},
+      {s:'William', q:'Kusa, chayna minchakama panicháy.',           t:'Bueno, entonces hasta pasado mañana, hermanita.'},
+      {s:'Rogelia', q:'Minchakama, turicháy.',                       t:'Hasta pasado mañana, hermanito.'}
     ],
     note:'-chka indica aspecto progresivo (gerundio): samachkani (estoy descansando), puñuchkan (está durmiendo), tuytuchkanku (están nadando). Conjugación: -ni / -nki / -n / -nku.'
   },
@@ -96,12 +96,12 @@ const DIALOGOS = [
     context:'Sara visita el restaurante del chef Lu-Chu y pregunta qué están cocinando.',
     speakers:{Sara:'#c8a000', 'Lu-Chu':'#dc2626'},
     lines:[
-      {s:'Sara',   q:'Tayta Lu-Chu, ¿kaychu tullpa wasiyki?',      t:'Tayta Lu-Chu, ¿es este tu restaurante?'},
+      {s:'Sara',   q:'Tayta Lu-Chu, ¿kaychu tullpa wasiyki?',      t:'Tayta Lu-Chu, ¿esta es tu cocina?'},
       {s:'Lu-Chu', q:'Arí. Kaypim miski mikuykunata yanuniku.',     t:'Sí. Aquí cocinamos comida rica.'},
-      {s:'Sara',   q:'Ah... Kunan, ¿imatataq Roberto rurachkan?',   t:'Ahora, ¿qué está haciendo Roberto?'},
+      {s:'Sara',   q:'Ah... Kunan, ¿imatataq Roberto rurachkan?',   t:'Ah… y ahora, ¿qué está haciendo Roberto?'},
       {s:'Lu-Chu', q:'Payqa runtutam tiqtichkan.',                   t:'Él está friendo huevos.'},
       {s:'Sara',   q:'¿Almari, imatataq rurachkan?',                t:'¿Y Alma, qué está haciendo?'},
-      {s:'Lu-Chu', q:'Payqa chuñutam pasichkan.',                    t:'Ella está cociendo chuño.'},
+      {s:'Lu-Chu', q:'Payqa chuñutam pasichkan.',                    t:'Ella está cocinando chuño al vapor.'},
       {s:'Sara',   q:'¿Ladyrí?',                                   t:'¿Y Lady?'},
       {s:'Lu-Chu', q:'Payqa quwitam kanchachkan.',                   t:'Ella está asando cuy.'},
       {s:'Sara',   q:'¿Feliperi?',                                  t:'¿Y Felipe?'},
@@ -123,9 +123,9 @@ const DIALOGOS = [
       {s:'Mayu',  q:'¿Imatataq rurachkankichik?',                   t:'¿Qué están haciendo ustedes?'},
       {s:'Brian', q:'Ñuqaykuqa pachamankatam rurachkaniku.',        t:'Estamos haciendo una pachamanka.'},
       {s:'Mayu',  q:'¡Añallaw! ¿Imatataq upyachkankichik?',        t:'¡Qué rico! ¿Qué están bebiendo?'},
-      {s:'Brian', q:'Cervezatam, wakinqa vinotam waqtachkanku.',    t:'Cerveza, algunos están sirviendo vino.'},
+      {s:'Brian', q:'Cervezatam, wakinqa vinotam waqtachkanku.',    t:'Cerveza; algunos, vino.'},
       {s:'Mayu',  q:'¿Warmakunarí?',                               t:'¿Y los niños?'},
-      {s:'Brian', q:'Paykunaqa yakullatam utaq gaseosat am upyachkanku.',t:'Ellos beben solo agua o gaseosa.'}
+      {s:'Brian', q:'Paykunaqa yakullatam utaq gaseosatam upyachkanku.',t:'Ellos beben solo agua o gaseosa.'}
     ],
     note:'-kichik = 2ª persona plural: rurachkankichik (ustedes están haciendo). -iku = 1ª plural exclusiva: rurachkaniku (nosotros estamos haciendo). -wan = con: taytamaywan (con mis padres).'
   },
@@ -176,7 +176,7 @@ const DIALOGOS = [
       {s:'Ana',   q:'Yachachiqmi kani, iskuylapi.',         t:'Soy profesora, en la escuela.'},
       {s:'Pedro', q:'¿Imastataq yachachinki?',             t:'¿Qué enseñas?'},
       {s:'Ana',   q:'Runasimitam yachachini, wawaqunaman.', t:'Enseño quechua, a los niños.'},
-      {s:'Pedro', q:'¡Allinmi! ¿Qanrí, maypitaq llank\'anki?', t:'¡Qué bueno! ¿Y tú, dónde trabajas?'},
+      {s:'Ana',   q:'¡Allinmi! ¿Qanrí, maypitaq llank\'anki?', t:'¡Qué bueno! ¿Y tú, dónde trabajas?'},
       {s:'Pedro', q:'Chakrapi llank\'ani, tarpuqmi kani.',  t:'Trabajo en el campo, soy agricultor.'},
       {s:'Ana',   q:'¿Imatam tarpunki?',                   t:'¿Qué siembras?'},
       {s:'Pedro', q:'Papata, sarata, habastawan.',          t:'Papa, maíz y habas.'}
@@ -195,9 +195,9 @@ const DIALOGOS = [
       {s:'Amiga', q:'¿Manachu chiriqa?',                    t:'¿No hace frío?'},
       {s:'Julia', q:'Arí, chirim, ichaqa sumaqmi.',         t:'Sí, hace frío, pero es hermoso.'},
       {s:'Amiga', q:'¿Hinapiñataq?',                        t:'¿Y luego?'},
-      {s:'Julia', q:'Unu apay, cocina ruway, ayllu michiy.', t:'Traigo agua, cocino, cuido la familia.'},
+      {s:'Julia', q:'Unu apay, cocina ruway, ayllu michiy.', t:'Traer agua, cocinar, cuidar a la familia.'},
       {s:'Amiga', q:'¿Tutapiñataq?',                        t:'¿Y por la noche?'},
-      {s:'Julia', q:'Ninata rawrachispa, takiyku rímayku.',  t:'Encendemos fuego y cantamos, conversamos.'}
+      {s:'Julia', q:'Ninata rawrachispa, takiyku rímayku.',  t:'Encendiendo el fuego, cantamos y conversamos.'}
     ],
     note:'sapa = cada: sapa paqarin (cada mañana). -spa = gerundio: rawrachispa (encendiendo). -yku = 1ª plural exclusiva: takiyku (nosotros cantamos, sin incluir al oyente).'
   },
@@ -227,7 +227,7 @@ const DIALOGOS = [
     speakers:{Mariana:'#6366f1', Tía:'#e11d48'},
     lines:[
       {s:'Mariana', q:'¿Ima pacha chaypiqa?',               t:'¿Qué tiempo hace allá?'},
-      {s:'Tía',     q:'Paranmi, parayachkanmi.',             t:'Está lloviendo, está lloviendo mucho.'},
+      {s:'Tía',     q:'Paranmi, parayachkanmi.',             t:'Llueve, está lloviendo.'},
       {s:'Mariana', q:'¿Chirichu?',                         t:'¿Hace frío?'},
       {s:'Tía',     q:'Arí, chakriyuqkunaqa llakishanaqllanmi.', t:'Sí, los que tienen chacra están muy preocupados.'},
       {s:'Mariana', q:'¿Inti lloqsinanpiñachu?',            t:'¿Ya va a salir el sol?'},
@@ -245,13 +245,13 @@ const DIALOGOS = [
     speakers:{Marco:'#0f766e', Vera:'#9333ea'},
     lines:[
       {s:'Marco', q:'¿Qhipa p\'unchawqa imatataq ruranki?',  t:'¿Qué vas a hacer el fin de semana?'},
-      {s:'Vera',  q:'Mamayta watukuyman, Pisacpi kawsan.',   t:'Voy a visitar a mi mamá, vive en Pisac.'},
+      {s:'Vera',  q:'Mamayta watukuyman, Pisacpi kawsan.',   t:'Quisiera visitar a mi mamá, vive en Pisac.'},
       {s:'Marco', q:'¿Imaynatataq rinki, buspim?',          t:'¿Cómo vas a ir, en bus?'},
-      {s:'Vera',  q:'Arí, inti lloqsimuytawan rinqaykum.',  t:'Sí, me iré al amanecer.'},
-      {s:'Marco', q:'¿Ñuqawanmi rinki?',                    t:'¿Vas conmigo?'},
-      {s:'Vera',  q:'Arí ripuñanchik, allintam.',           t:'Sí, podemos irnos juntos, está bien.'},
+      {s:'Vera',  q:'Arí, inti lloqsimuytawan rinqaykum.',  t:'Sí, iremos al amanecer.'},
+      {s:'Marco', q:'¿Ñuqawanmi rinki?',                    t:'¿Vas a ir conmigo?'},
+      {s:'Vera',  q:'Arí ripuñanchik, allintam.',           t:'Sí, vámonos juntos, está bien.'},
       {s:'Marco', q:'¿Hayk\'aqtaq kutimunki?',              t:'¿Cuándo vas a volver?'},
-      {s:'Vera',  q:'P\'unchaw tiqramuytawan kutimunqaykum.', t:'Vuelvo al anochecer.'}
+      {s:'Vera',  q:'P\'unchaw tiqramuytawan kutimunqaykum.', t:'Volveremos al atardecer.'}
     ],
     note:'-man = condicional/deseo: watukuyman (voy a visitar, quisiera visitar). -nqayki = futuro 1ª pers.: rinqaykum (me iré). haykaq = cuándo. tiqramuy = anochecer.'
   },

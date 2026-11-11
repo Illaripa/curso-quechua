@@ -71,3 +71,10 @@
 - Aymara: 6 (2 por nivel), solo formas verbales de la tabla Layme (verbs-aymara.js); "-sti" (¿y…?) no está en Layme dentro de la app.
 - js/dialogos.js: lista activa dialSrc (libro o conversaciones). sw yachay-v34, app.js?v=12, dialogos.js?v=2. Live: sí.
 - Pendiente: revisión nativa de las conversaciones; los 17 diálogos "Vocab" (de1-de17) tienen palabras inventadas → ocultar o rehacer.
+
+## 2026-11-11 — Traducciones de diálogos + frases más largas
+- Libro (d1-d14): corregidas ~30 traducciones (Imaynallam = ¿Cómo está?, minchakama = hasta pasado mañana, hampara = mesa, chuspa, quchapi = laguna, tullpa wasi = cocina, futuros/plurales de d14, Rogelio). d10: línea "¿Qanrí, maypitaq…?" pasa a Ana. Typo "gaseosat am".
+- Conversaciones: niveles 2 y 3 con frases más largas (ichaqa, -paq, -spa, -pti-, saqispa…); nivel 1 se deja corto a propósito.
+- sw yachay-v35. Live: sí.
+- Pendiente: d9, d11, d12 tienen frases quechua mal formadas (no solo traducción); diálogos "Vocab" de1-de17 inventados.
+- Prueba vídeo: yt-dlp + whisper small transcribe quechua boliviano con fallos (lo detecta como español); sirve con corrección a mano.

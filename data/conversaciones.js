@@ -93,11 +93,11 @@ q: [
    context:'Sara ya le está contando a Mayu su fin de semana.',
    speakers:{Sara:'#13855F', Mayu:'#D9530B'},
    lines:[
-    {s:'Sara', q:'…hinaspa mamaywan qatuman rirqani.', t:'…y luego fui al mercado con mi mamá.'},
-    {s:'Mayu', q:'¿Imatataq rantirqankichik?', t:'¿Qué compraron?'},
-    {s:'Sara', q:'Sarata, kinuatawan rantirqaniku.', t:'Compramos maíz y quinua.'},
+    {s:'Sara', q:'…hinaspa mamaywan qatuman rirqani, ichaqa manam papa karqachu.', t:'…y luego fui al mercado con mi mamá, pero no había papa.'},
+    {s:'Mayu', q:'Chaynaqa, ¿imatataq rantirqankichik?', t:'Entonces, ¿qué compraron?'},
+    {s:'Sara', q:'Sarata, kinuatawan rantirqaniku, wasipi lawata yanunaykupaq.', t:'Compramos maíz y quinua, para cocinar sopa en casa.'},
     {s:'Mayu', q:'¿Hinaspari?', t:'¿Y después?'},
-    {s:'Sara', q:'Wasipim mikurqaniku.', t:'Comimos en casa.'}
+    {s:'Sara', q:'Tutaqa llapallayku wasipim mikurqaniku.', t:'Por la noche comimos todos juntos en casa.'}
    ],
    note:'-rqa- = pasado: ri-rqa-ni (fui), ranti-rqa-niku (compramos). -niku = nosotros (sin ti). -chik = ustedes.'},
   {lv:2, tema:'Verbos', foco:'futuro -saq · -nki · -nqa', title:'Sabadopi ripunki',
@@ -105,8 +105,8 @@ q: [
    speakers:{William:'#13855F', Rogelia:'#D9530B'},
    lines:[
     {s:'William', q:'Hinaptinqa, ¿sabadopi ripunki?', t:'Entonces, ¿te vas el sábado?'},
-    {s:'Rogelia', q:'Arí, tutallamantam ripusaq.', t:'Sí, me iré muy temprano.'},
-    {s:'William', q:'¿Pitaq wasiykita qawanqa?', t:'¿Quién cuidará tu casa?'},
+    {s:'Rogelia', q:'Arí, tutallamantam ripusaq, punchawpi chayanaypaq.', t:'Sí, me iré muy temprano, para llegar de día.'},
+    {s:'William', q:'¿Pitaq wasiykita qawanqa, qam mana kaptiyki?', t:'¿Quién cuidará tu casa cuando no estés?'},
     {s:'Rogelia', q:'Ñañaymi qawanqa.', t:'Mi hermana la cuidará.'},
     {s:'William', q:'¡Allinlla puriy!', t:'¡Buen viaje!'}
    ],
@@ -116,11 +116,11 @@ q: [
    speakers:{Inti:'#13855F', Waman:'#D9530B'},
    lines:[
     {s:'Inti', q:'¿Karuraqchu?', t:'¿Todavía está lejos?'},
-    {s:'Waman', q:'Manam, chay urqukamallam.', t:'No, solo hasta ese cerro.'},
+    {s:'Waman', q:'Manam, chay urqukamallam, chaymantañataq uraykusunchik.', t:'No, solo hasta ese cerro, y después ya bajaremos.'},
     {s:'Inti', q:'Pisipasqañam kachkani.', t:'Ya estoy cansado.'},
-    {s:'Waman', q:'Chaymantaqa samasunchik.', t:'Después de eso descansaremos.'}
+    {s:'Waman', q:'Urquman chayaspanchikmi samasunchik.', t:'Cuando lleguemos al cerro, descansaremos.'}
    ],
-   note:'-raq = todavía. -kama = hasta. -lla = solo. -ña = ya. sama-sunchik = descansaremos (tú y yo).'},
+   note:'-raq = todavía. -kama = hasta. -lla = solo. -ña = ya. chaya-spa-nchik = cuando lleguemos. sama-sunchik = descansaremos (tú y yo).'},
   {lv:2, tema:'Sufijos', foco:'-ña · -raq · -chu', title:'¿Tukurqankiñachu?',
    context:'La mamá ya está preguntando a su hijo por la tarea.',
    speakers:{Mama:'#13855F', Wawa:'#D9530B'},
@@ -137,10 +137,10 @@ q: [
    speakers:{Killa:'#13855F', Qawa:'#D9530B'},
    lines:[
     {s:'Killa', q:'¿Imanaptintaq llakisqa kachkanki?', t:'¿Por qué estás triste?'},
-    {s:'Qawa', q:'Allquymi chinkarqun.', t:'Mi perro se perdió.'},
+    {s:'Qawa', q:'Allquymi chinkarqun, manataqmi tarinichu.', t:'Mi perro se perdió y no lo encuentro.'},
     {s:'Killa', q:'¿Haykaqtaq?', t:'¿Cuándo?'},
     {s:'Qawa', q:'Qayna tutam.', t:'Anoche.'},
-    {s:'Killa', q:'Ama llakikuychu, maskasunchikmi.', t:'No te preocupes, lo buscaremos.'}
+    {s:'Killa', q:'Ama llakikuychu, kunanpunim maskasunchik.', t:'No te preocupes, ahora mismo lo buscaremos.'}
    ],
    note:'imanaptin = por qué. ama … -chu = no (para pedir: "no te preocupes"). maska-sunchik = buscaremos (tú y yo).'},
   {lv:2, tema:'Preguntas', foco:'mayqin · hayka', title:'¿Mayqintaq?',
@@ -148,7 +148,7 @@ q: [
    speakers:{Ana:'#13855F', Rufina:'#D9530B'},
    lines:[
     {s:'Ana', q:'¿Mayqintaq aswan allin?', t:'¿Cuál es mejor?'},
-    {s:'Rufina', q:'Kay pukam, millwamanta.', t:'Esta roja, es de lana.'},
+    {s:'Rufina', q:'Kay pukam, millwamanta, mamaymi awarqa.', t:'Esta roja, es de lana, la tejió mi mamá.'},
     {s:'Ana', q:'¿Haykataq?', t:'¿Cuánto cuesta?'},
     {s:'Rufina', q:'Pachak solesmi.', t:'Cien soles.'}
    ],
@@ -159,16 +159,16 @@ q: [
    lines:[
     {s:'Lidia', q:'…chaymi hampiqman pusarqaniku.', t:'…por eso lo llevamos al médico.'},
     {s:'Carlos', q:'¿Imatataq nirqa?', t:'¿Qué dijo?'},
-    {s:'Lidia', q:'Samananmi nin.', t:'Dice que tiene que descansar.'},
+    {s:'Lidia', q:'Samananmi nin, manataq llamkananchu.', t:'Dice que tiene que descansar y que no debe trabajar.'},
     {s:'Carlos', q:'Allinmi. Prontolla allinyachun.', t:'Bien. Que se mejore pronto.'}
    ],
-   note:'chaymi = por eso. sama-na-n = tiene que descansar. allin-ya-chun = que se mejore (-chun = que…).'},
+   note:'chaymi = por eso. sama-na-n = tiene que descansar; mana llamka-na-n-chu = no debe trabajar. allin-ya-chun = que se mejore (-chun = que…).'},
   {lv:2, tema:'Vida diaria', foco:'el tiempo', title:'Paramunqañam',
    context:'Pedro y Juana ya están mirando el cielo desde la chacra.',
    speakers:{Pedro:'#13855F', Juana:'#D9530B'},
    lines:[
     {s:'Pedro', q:'Paramunqañam.', t:'Ya va a llover.'},
-    {s:'Juana', q:'Arí, yana puyukuna hamuchkanku.', t:'Sí, vienen nubes negras.'},
+    {s:'Juana', q:'Arí, yana puyukuna hamuchkanku, chiripas kachkanñam.', t:'Sí, vienen nubes negras y ya hace frío.'},
     {s:'Pedro', q:'Chaynaqa wasiman haykusunchik.', t:'Entonces entremos a la casa.'},
     {s:'Juana', q:'Arí, utqaylla.', t:'Sí, rápido.'}
    ],
@@ -179,7 +179,7 @@ q: [
    context:'Rosa ya le está contando a Lucía una noticia del pueblo.',
    speakers:{Rosa:'#13855F', Lucía:'#D9530B'},
    lines:[
-    {s:'Rosa', q:'…Pedroqa Limaman ripusqa.', t:'…resulta que Pedro se fue a Lima.'},
+    {s:'Rosa', q:'…Pedroqa Limaman ripusqa, warmintapas wawankunatapas saqispa.', t:'…resulta que Pedro se fue a Lima, dejando a su esposa y a sus hijos.'},
     {s:'Lucía', q:'¿Chiqaptachu? ¿Pitaq willasunki?', t:'¿De verdad? ¿Quién te contó?'},
     {s:'Rosa', q:'Mamanmi willawarqa.', t:'Su mamá me contó.'},
     {s:'Lucía', q:'Llamkaqsi ripusqa.', t:'Dicen que se fue a trabajar.'}
@@ -199,7 +199,7 @@ q: [
    context:'La mamá y Lucho ya están preparando la fiesta.',
    speakers:{Mama:'#13855F', Lucho:'#D9530B'},
    lines:[
-    {s:'Mama', q:'Kay qipita apapuway.', t:'Llévame este bulto (hazme el favor).'},
+    {s:'Mama', q:'Kay qipita apapuway, ñuqaqa manam atinichu.', t:'Llévame este bulto, que yo no puedo.'},
     {s:'Lucho', q:'Arí. ¿Tantatapas rantimusaqchu?', t:'Sí. ¿Voy también a comprar pan?'},
     {s:'Mama', q:'Arí, rantimuy. Utqaylla kutimuy.', t:'Sí, ve a comprarlo. Vuelve rápido.'},
     {s:'Lucho', q:'Ama llakikuychu, mamáy.', t:'No te preocupes, mamá.'}
@@ -212,7 +212,7 @@ q: [
     {s:'Mariano', q:'Wayna kaspa, sapa punchawmi chakrapi llamkaq karqani.', t:'De joven, trabajaba cada día en la chacra.'},
     {s:'Wayra', q:'¿Iskuylaman rirqankichu?', t:'¿Fuiste a la escuela?'},
     {s:'Mariano', q:'Manam. Taytay wañuqtinmi llamkanay karqa.', t:'No. Cuando murió mi papá, tuve que trabajar.'},
-    {s:'Wayra', q:'Sinchi sasa kasqa.', t:'Debió ser muy difícil.'}
+    {s:'Wayra', q:'Sinchi sasa kasqa.', t:'¡Qué difícil había sido!'}
    ],
    note:'ka-spa = siendo (la misma persona). wañu-qtin = cuando murió (otra persona). llamka-q karqani = solía trabajar.'},
   {lv:3, tema:'Preguntas', foco:'-raq · -chá', title:'¿Maypiraq?',
@@ -232,7 +232,7 @@ q: [
     {s:'Ana', q:'¿Imaynatataq aswata ruranki?', t:'¿Cómo haces la chicha?'},
     {s:'Awicha', q:'Wiñaputa kutaspa, yakupi timpuchini.', t:'Muelo la jora y la hago hervir en agua.'},
     {s:'Ana', q:'¿Hayka punchawtaq?', t:'¿Cuántos días?'},
-    {s:'Awicha', q:'Kimsa punchawmantaqa upyakunñam.', t:'Después de tres días ya se toma.'}
+    {s:'Awicha', q:'Kimsa punchawmantaqa upyakunñam.', t:'A los tres días ya se puede tomar.'}
    ],
    note:'imayna-ta = cómo. kuta-spa = moliendo. timpu-chi-ni = hago hervir (-chi- = hacer que pase algo).'},
   {lv:3, tema:'Vida diaria', foco:'por teléfono · -wa- · -yki', title:'¿Uyariwankichu?',
