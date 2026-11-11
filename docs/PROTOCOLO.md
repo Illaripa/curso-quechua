@@ -64,3 +64,10 @@
 - Reverso de fichas: verde sólido (quedaba oliva/marrón).
 - Live: sí. sw yachay-v33. Generador: scratchpad aymara/build.cjs.
 - Pendiente: diccionario/vocabulario A, Ordenar y Escuchar A siguen ocultos.
+
+## 2026-11-11 — Conversaciones cortas ya empezadas (Q + A)
+- Nuevo data/conversaciones.js + menú "Conversaciones cortas" (Q y A, en "Más ejercicios"). Diálogos de 3-5 frases que empiezan en medio de la charla (sin saludo), con pestañas Nivel 1/2/3 y subtítulo "Nivel · Tema · Foco".
+- Quechua: 24 (3 niveles × Verbos, Sufijos, Preguntas, Vida diaria × 2), estilo Ayacucho-Chanka como Rimanakusun.
+- Aymara: 6 (2 por nivel), solo formas verbales de la tabla Layme (verbs-aymara.js); "-sti" (¿y…?) no está en Layme dentro de la app.
+- js/dialogos.js: lista activa dialSrc (libro o conversaciones). sw yachay-v34, app.js?v=12, dialogos.js?v=2. Live: sí.
+- Pendiente: revisión nativa de las conversaciones; los 17 diálogos "Vocab" (de1-de17) tienen palabras inventadas → ocultar o rehacer.

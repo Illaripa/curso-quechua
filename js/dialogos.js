@@ -3,8 +3,26 @@
 // ============================================================
 var dialIdx = 0;
 var dialShowAll = false;
+var dialSrc = null;   // lista activa: DIALOGOS (libro) o CONVERSACIONES[lang]
+var dialConv = false; // true = conversaciones cortas por nivel
 
 function startDialogos() {
+  dialSrc = DIALOGOS;
+  dialConv = false;
+  dialIdx = 0;
+  dialShowAll = false;
+  showScreen('dialogos');
+  renderDialogoList();
+  renderDialogo();
+}
+
+function startConversaciones(lang) {
+  dialSrc = CONVERSACIONES[lang].map(function(d) {
+    d.color = d.color || '#13855F';
+    d.subtitle = d.subtitle || ('Nivel ' + d.lv + ' · ' + d.tema + ' · Foco: ' + d.foco);
+    return d;
+  });
+  dialConv = true;
   dialIdx = 0;
   dialShowAll = false;
   showScreen('dialogos');
@@ -23,7 +41,20 @@ function selectDialogo(i) {
 
 function renderDialogoList() {
   var html = '';
-  DIALOGOS.forEach(function(d, i) {
+  if (dialConv) {
+    var curLv = dialSrc[dialIdx].lv;
+    [1, 2, 3].forEach(function(lv) {
+      var first = -1;
+      dialSrc.forEach(function(d, i) { if (first < 0 && d.lv === lv) first = i; });
+      if (first < 0) return;
+      var on = lv === curLv;
+      html += '<button class="comp-pill' + (on ? ' comp-pill--active' : '') + '"' +
+              ' aria-pressed="' + on + '" onclick="selectDialogo(' + first + ')">Nivel ' + lv + '</button>';
+    });
+    document.getElementById('dialList').innerHTML = html;
+    return;
+  }
+  dialSrc.forEach(function(d, i) {
     var active = i === dialIdx;
     html += '<button class="comp-pill' + (active ? ' comp-pill--active' : '') + '"' +
             (active ? ' style="background:' + d.color + ';border-color:' + d.color + ';color:#fff"' : '') +
@@ -33,8 +64,8 @@ function renderDialogoList() {
 }
 
 function renderDialogo() {
-  var d = DIALOGOS[dialIdx];
-  var total = DIALOGOS.length;
+  var d = dialSrc[dialIdx];
+  var total = dialSrc.length;
   document.getElementById('dialProgress').style.width = ((dialIdx + 1) / total * 100) + '%';
   document.getElementById('dialCount').textContent = (dialIdx + 1) + '/' + total;
 
@@ -86,7 +117,7 @@ function toggleDialTrans(i) {
 
 function toggleDialShowAll() {
   dialShowAll = !dialShowAll;
-  var d = DIALOGOS[dialIdx];
+  var d = dialSrc[dialIdx];
   d.lines.forEach(function(_, i) {
     var el = document.getElementById('dialTrans' + i);
     if (el) el.style.display = dialShowAll ? 'block' : 'none';
@@ -99,5 +130,5 @@ function prevDialogo() {
 }
 
 function nextDialogo() {
-  if (dialIdx < DIALOGOS.length - 1) selectDialogo(dialIdx + 1);
+  if (dialIdx < dialSrc.length - 1) selectDialogo(dialIdx + 1);
 }
