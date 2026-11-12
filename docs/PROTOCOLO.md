@@ -88,3 +88,7 @@
 - Nuevo campo `aviso` en canciones; se muestra bajo el artista.
 - REGLA: las letras que pegue Illaripa se meten completas y nunca se recortan; contar líneas al final.
 - Pendiente: que Illaripa vuelva a pegar las letras que se perdieron el 26-10 (el reset borró ~900 líneas).
+
+## 2026-11-12 — Seguridad dependencias
+- `npm audit fix`: undici, form-data y fast-xml-parser actualizados (31 avisos de Dependabot). Servidor: 0 vulnerabilidades, pm2 online, live sí.
+- Pendiente: el remoto git apunta a `illaripa` (minúscula); GitHub redirige a `Illaripa`. Funciona igual.
