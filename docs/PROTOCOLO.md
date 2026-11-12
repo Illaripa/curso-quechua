@@ -78,3 +78,13 @@
 - sw yachay-v35. Live: sí.
 - Pendiente: d9, d11, d12 tienen frases quechua mal formadas (no solo traducción); diálogos "Vocab" de1-de17 inventados.
 - Prueba vídeo: yt-dlp + whisper small transcribe quechua boliviano con fallos (lo detecta como español); sirve con corrección a mano.
+
+## 2026-11-12 — Canciones: revisión de tradicionales
+- Plegaria a la Pachamama: la letra está completa (se contrastó con la descripción del video original, Ñuqui, Potosí). Se corrigieron traducciones (siwar, sampitay) y la autoría.
+- Qollanan María: ortografía corregida (chinkachispa, qhawapayallawayku, Qanmi Mamay kanki, Diosniy, waqyay).
+- Atawallpaj Jayllin: autoría corregida (Luzmila Carpio y Enrique Males). Letra sin verificar, con aviso.
+- Wari Wawita (aymara): "wari" es vicuña, no "viejito". Resto con aviso de letra dudosa.
+- Quitado `verified:true` de las 22 canciones aymara (no estaban verificadas).
+- Nuevo campo `aviso` en canciones; se muestra bajo el artista.
+- REGLA: las letras que pegue Illaripa se meten completas y nunca se recortan; contar líneas al final.
+- Pendiente: que Illaripa vuelva a pegar las letras que se perdieron el 26-10 (el reset borró ~900 líneas).

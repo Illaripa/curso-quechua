@@ -106,6 +106,7 @@ function openSongDetail(index) {
       <div style="font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:${color};margin-bottom:6px">${song.genre}</div>
       <div style="font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--txt);margin-bottom:4px">${song.title}</div>
       <div style="font-size:16px;color:var(--muted)">${song.artist}</div>
+      ${song.aviso ? `<div style="font-size:14px;color:var(--muted);margin-top:8px;padding:6px 10px;border-radius:8px;background:var(--card);display:inline-block">${song.aviso}</div>` : ''}
     </div>
     ${ytSection}
     <div style="background:var(--card);border-radius:16px;padding:16px;margin-bottom:16px;border:1px solid rgba(0,0,0,0.07)">

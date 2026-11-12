@@ -5,7 +5,6 @@ const CANCIONES_A = [
     artist: "Grupo Ruphay",
     genre: "Ayarichi",
     youtube_id: "Sj4sBkVwHtQ",
-    verified: true,
     lines: [
       { a: "Uka jacha uru jutaskiway",        s: "Ese gran día está llegando" },
       { a: "Amuya sipxañani jutaskiway",      s: "Recordémoslo, está llegando" },
@@ -32,7 +31,6 @@ const CANCIONES_A = [
     artist: "Awatiñas",
     genre: "Sikureada",
     youtube_id: "lO3b01_8TJ8",
-    verified: true,
     lines: [
       { a: "Jilatanaka Kullakitanaka",        s: "Hermanos y hermanitas" },
       { a: "Mä pita sartasiñani",             s: "Juntos vamos a caminar" },
@@ -56,7 +54,6 @@ const CANCIONES_A = [
     artist: "Awatiñas",
     genre: "Carnavalito aymara",
     youtube_id: "RZ4o0_Uj8fw",
-    verified: true,
     lines: [
       { a: "Maya, paya, kimsa, pusi, phisqa… qulilitay",   s: "Uno, dos, tres, cuatro, cinco… linda flor" },
       { a: "Suxta, paqallqu, kimsaqallqu, llätunka, tunka…", s: "Seis, siete, ocho, nueve, diez…" },
@@ -81,7 +78,6 @@ const CANCIONES_A = [
     artist: "Awatiñas",
     genre: "Trote Huayño",
     youtube_id: "nc53oDCXrvk",
-    verified: true,
     lines: [
       { a: "Llaki puritu taykita",            s: "Penas me llega al corazón" },
       { a: "Yanapt'itay Wiraxucha",           s: "Ayúdame, Wiraxucha" },
@@ -104,7 +100,6 @@ const CANCIONES_A = [
     artist: "Awatiñas",
     genre: "Huayño aymara",
     youtube_id: "8MViEXbL6v4",
-    verified: true,
     lines: [
       { a: "Ay imillita janiw jachatati",     s: "Ay muchachita, no eres tuya" },
       { a: "Jumat saraqtwa askisatakiway",    s: "Tú caminas buscando" },
@@ -126,7 +121,6 @@ const CANCIONES_A = [
     artist: "Awatiñas",
     genre: "Huayño aymara",
     youtube_id: "NjonuxXAEmo",
-    verified: true,
     lines: [
       { a: "Kunatakisa urpila",              s: "¿Qué será, palomita?" },
       { a: "Jumax muspayista",               s: "Tú te equivocaste" },
@@ -151,7 +145,6 @@ const CANCIONES_A = [
     artist: "Awatiñas",
     genre: "Carnavalito aymara",
     youtube_id: "TY67_bv-eX0",
-    verified: true,
     lines: [
       { a: "Suma quli nayra, suma marka aymara…",                   s: "Hermosa comunidad, hermosa marca aymara…" },
       { a: "Tunka mayani, tunka payani,",                            s: "Diez más uno, diez más dos," },
@@ -174,7 +167,6 @@ const CANCIONES_A = [
     artist: "Awatiñas",
     genre: "Huayño aymara",
     youtube_id: "tAhBeDtzwY0",
-    verified: true,
     lines: [
       { a: "Inti wawaxa jachaskiwa",           s: "El niño sol está llorando" },
       { a: "Tatapawa jiwxatayna",              s: "Porque su padre se murió" },
@@ -195,7 +187,6 @@ const CANCIONES_A = [
     artist: "Los Kjarkas",
     genre: "Huayño / Sicuri",
     youtube_id: "PwFFMfSZxyY",
-    verified: true,
     lines: [
       { a: "Jupax qulilajapuninwa",            s: "Él se convirtió en hermano" },
       { a: "Jupax chuymajankapuninwa",         s: "Él se convirtió en compañero del corazón" },
@@ -220,7 +211,6 @@ const CANCIONES_A = [
     artist: "Zulma Yugar",
     genre: "Música folklórica boliviana",
     youtube_id: "__rE_s34Nio",
-    verified: true,
     lines: [
       { a: "Jumataki, quli panqarita",         s: "Para ti, fueguito panqarita" },
       { a: "Suyasktamxa suma urunaka",         s: "Esperamos los hermosos días" },
@@ -245,20 +235,20 @@ const CANCIONES_A = [
     artist: "Tradicional aymara",
     genre: "Canción tradicional infantil",
     youtube_id: "",
-    verified: true,
+    aviso: "Letra dudosa y sin fuente: pendiente de revisar con un hablante.",
     lines: [
-      { a: "Wari wawita, wik'uñ wawita,",      s: "Viejito, viejito del sombrero," },
+      { a: "Wari wawita, wik'uñ wawita,",      s: "Vicuñita, crías de vicuña," },
       { a: "jiwa wawitaki.",                     s: "cómo has venido." },
       { a: "Awkiniristha, taykaniristha,",       s: "Arrimándose, acercándose," },
       { a: "Uywarapitaspa.",                      s: "viniendo a visitarnos." },
       { a: "Aka qullunsa, khaya qullunsa,",      s: "Esta calavera, esta está vacía," },
       { a: "jacht'atamaki.",                      s: "ya la hacen crecer." },
-      { a: "Wari wawita wik'uñ wawita",          s: "Viejito, viejito del sombrero" },
+      { a: "Wari wawita wik'uñ wawita",          s: "Vicuñita, crías de vicuña" },
       { a: "kutinxakitasma.",                     s: "ya van a volver." }
     ],
     notes: [
-      { t: "Wari wawita", d: "Viejito" },
-      { t: "Wik'uñ", d: "Sombrero" },
+      { t: "Wari", d: "Vicuña" },
+      { t: "Wawa / wawita", d: "Cría, bebé (-ita: diminutivo)" },
       { t: "Qullunsa", d: "Calavera, cabeza" },
       { t: "Jacht'ayaña", d: "Crecer" }
     ]
@@ -269,7 +259,6 @@ const CANCIONES_A = [
     artist: "K'ala Marka (Kalamarka)",
     genre: "Música andina / Laquita",
     youtube_id: "b3RgDG9TfOo",
-    verified: true,
     lines: [
       { a: "Laquita ritmo de la tierra",                     s: "Laquita, ritmo de la tierra" },
       { a: "Ritmo de dioses de Achacachi",                   s: "Ritmo de los dioses de Achacachi" },
@@ -293,7 +282,6 @@ const CANCIONES_A = [
     artist: "Awatiñas",
     genre: "Folk aymara / Balada",
     youtube_id: "PTjiasLen8Q",
-    verified: true,
     lines: [
       { a: "Hace más de cien mil años cuando el odio no existía", s: "Hace más de cien mil años cuando el odio no existía" },
       { a: "Un cóndor de piedra sacudió la noche andina",          s: "Un cóndor de piedra sacudió la noche andina" },
@@ -316,7 +304,6 @@ const CANCIONES_A = [
     artist: "Ruphay",
     genre: "Folk aymara / Música andina boliviana",
     youtube_id: "w0dOJpDpIuo",
-    verified: true,
     lines: [
       { a: "Uka jacha uru jutaskiway",             s: "Ese gran día está llegando" },
       { a: "Amuya sipxañani jutaskiway",           s: "Recordémoslo, está llegando" },
@@ -338,7 +325,6 @@ const CANCIONES_A = [
     artist: "Los Kjarkas",
     genre: "Saya / Caporales",
     youtube_id: "xKau76yc4HE",
-    verified: true,
     lines: [
       { a: "Llorando se fue y me dejó solo sin su amor",     s: "Llorando se fue y me dejó solo sin su amor" },
       { a: "Sola estará, recordando este amor",              s: "Sola estará, recordando este amor" },
@@ -357,7 +343,6 @@ const CANCIONES_A = [
     artist: "Luzmila Carpio",
     genre: "Folklore aymara boliviano",
     youtube_id: "qqEtNIoDtR4",
-    verified: true,
     lines: [
       { a: "Sawt'ir, sawt'ir, sumax imilla",              s: "Tejedora, tejedora, joven buena" },
       { a: "Thaya luman, thaya pampana",                  s: "Con el frío de la loma y de la pampa" },
@@ -379,7 +364,6 @@ const CANCIONES_A = [
     artist: "Luzmila Carpio",
     genre: "Folklore aymara boliviano",
     youtube_id: "i6nefUit7m8",
-    verified: true,
     lines: [
       { a: "Bartolina Sisa warmi",         s: "Bartolina Sisa, mujer" },
       { a: "Q'allpa jallp'a jina kanqi",   s: "Eres como la tierra firme y fértil" },
@@ -402,7 +386,6 @@ const CANCIONES_A = [
     artist: "K'ala Marka (Kalamarka)",
     genre: "Ritual aymara – Solsticio",
     youtube_id: "JJ_xB4ba2PE",
-    verified: true,
     lines: [
       { a: "Munata Achachilanaca, Laq'a Achachilanaca",  s: "Adorados abuelos, abuelo y abuela de la tierra" },
       { a: "Q'ollana Qh'ap'acj, Apu Inti Wilka Tata",   s: "Espíritu capaz, Señor Sol en las alturas" },
@@ -425,7 +408,6 @@ const CANCIONES_A = [
     artist: "K'ala Marka (Kalamarka)",
     genre: "Música andina boliviana / Canción social",
     youtube_id: "F7ZMA_rG87w",
-    verified: true,
     lines: [
       { a: "Hombres venidos de otros lugares",         s: "Hombres venidos de otros lugares" },
       { a: "Has elegido en mi pueblo vivir",           s: "Has elegido en mi pueblo vivir" },
@@ -449,7 +431,6 @@ const CANCIONES_A = [
     artist: "Taypi K'ala",
     genre: "Canción tradicional",
     youtube_id: "RPpwLE1aYK4",
-    verified: true,
     lines: [
       { a: "Achanqara panqarita",           s: "Florecita de achancara" },
       { a: "Suma wayra apiri",              s: "Que el viento hermoso lleva" },
@@ -472,7 +453,6 @@ const CANCIONES_A = [
     artist: "Los Kjarkas",
     genre: "Huayño / Pop andino",
     youtube_id: "WhE2_Yr512M",
-    verified: true,
     lines: [
       { a: "Dijiste que me querías, pero no es verdad",     s: "Dijiste que me querías, pero no es verdad" },
       { a: "Siempre jugaste conmigo y aún te supe amar",     s: "Siempre jugaste conmigo y aún te supe amar" },
@@ -495,7 +475,6 @@ const CANCIONES_A = [
     artist: "Los Kjarkas",
     genre: "Folk épico",
     youtube_id: "4rwcIUxAATc",
-    verified: true,
     lines: [
       { a: "Y todo fue y comenzó con el aurora del tiempo",      s: "Y todo fue y comenzó con el aurora del tiempo" },
       { a: "Y lo inerte cobró vida y nació, y fue la luz",      s: "Y lo inerte cobró vida y nació, y fue la luz" },
