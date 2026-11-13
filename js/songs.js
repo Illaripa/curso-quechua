@@ -33,7 +33,7 @@ async function openSongs(lang) {
   document.getElementById('songsBody').innerHTML = '<p style="color:var(--muted);text-align:center;padding:20px">Cargando...</p>';
   showScreen('songs');
 
-  const staticSongs = lang === 'q' ? CANCIONES_Q : CANCIONES_A;
+  const staticSongs = (lang === 'q' ? CANCIONES_Q : CANCIONES_A).filter(function(s) { return !s.oculta; });
   try {
     const r = await fetch('/api/songs?lang=' + lang);
     const uploaded = r.ok ? await r.json() : [];

@@ -4,7 +4,8 @@ const CANCIONES_A = [
     title: "Jach'a Uru",
     artist: "Grupo Ruphay",
     genre: "Ayarichi",
-    youtube_id: "Sj4sBkVwHtQ",
+    youtube_id: "qI8qtz6O9rs",
+    aviso: "Letra aymara sin verificar: compárala con los subtítulos del vídeo.",
     lines: [
       { a: "Uka jacha uru jutaskiway",        s: "Ese gran día está llegando" },
       { a: "Amuya sipxañani jutaskiway",      s: "Recordémoslo, está llegando" },
@@ -30,7 +31,8 @@ const CANCIONES_A = [
     title: "Kullakita",
     artist: "Awatiñas",
     genre: "Sikureada",
-    youtube_id: "lO3b01_8TJ8",
+    youtube_id: "F4GgvB7Iyfc",
+    aviso: "Letra aymara sin verificar: compárala con los subtítulos del vídeo.",
     lines: [
       { a: "Jilatanaka Kullakitanaka",        s: "Hermanos y hermanitas" },
       { a: "Mä pita sartasiñani",             s: "Juntos vamos a caminar" },
@@ -54,6 +56,7 @@ const CANCIONES_A = [
     artist: "Awatiñas",
     genre: "Carnavalito aymara",
     youtube_id: "RZ4o0_Uj8fw",
+    aviso: "Letra aymara sin verificar: compárala con los subtítulos del vídeo.",
     lines: [
       { a: "Maya, paya, kimsa, pusi, phisqa… qulilitay",   s: "Uno, dos, tres, cuatro, cinco… linda flor" },
       { a: "Suxta, paqallqu, kimsaqallqu, llätunka, tunka…", s: "Seis, siete, ocho, nueve, diez…" },
@@ -78,6 +81,7 @@ const CANCIONES_A = [
     artist: "Awatiñas",
     genre: "Trote Huayño",
     youtube_id: "nc53oDCXrvk",
+    aviso: "Letra aymara sin verificar: compárala con los subtítulos del vídeo.",
     lines: [
       { a: "Llaki puritu taykita",            s: "Penas me llega al corazón" },
       { a: "Yanapt'itay Wiraxucha",           s: "Ayúdame, Wiraxucha" },
@@ -100,6 +104,7 @@ const CANCIONES_A = [
     artist: "Awatiñas",
     genre: "Huayño aymara",
     youtube_id: "8MViEXbL6v4",
+    aviso: "Letra aymara sin verificar: compárala con los subtítulos del vídeo.",
     lines: [
       { a: "Ay imillita janiw jachatati",     s: "Ay muchachita, no eres tuya" },
       { a: "Jumat saraqtwa askisatakiway",    s: "Tú caminas buscando" },
@@ -121,6 +126,7 @@ const CANCIONES_A = [
     artist: "Awatiñas",
     genre: "Huayño aymara",
     youtube_id: "NjonuxXAEmo",
+    aviso: "Letra aymara sin verificar: compárala con los subtítulos del vídeo.",
     lines: [
       { a: "Kunatakisa urpila",              s: "¿Qué será, palomita?" },
       { a: "Jumax muspayista",               s: "Tú te equivocaste" },
@@ -145,6 +151,7 @@ const CANCIONES_A = [
     artist: "Awatiñas",
     genre: "Carnavalito aymara",
     youtube_id: "TY67_bv-eX0",
+    aviso: "Letra aymara sin verificar: compárala con los subtítulos del vídeo.",
     lines: [
       { a: "Suma quli nayra, suma marka aymara…",                   s: "Hermosa comunidad, hermosa marca aymara…" },
       { a: "Tunka mayani, tunka payani,",                            s: "Diez más uno, diez más dos," },
@@ -167,6 +174,7 @@ const CANCIONES_A = [
     artist: "Awatiñas",
     genre: "Huayño aymara",
     youtube_id: "tAhBeDtzwY0",
+    aviso: "Letra aymara sin verificar: compárala con los subtítulos del vídeo.",
     lines: [
       { a: "Inti wawaxa jachaskiwa",           s: "El niño sol está llorando" },
       { a: "Tatapawa jiwxatayna",              s: "Porque su padre se murió" },
@@ -186,7 +194,8 @@ const CANCIONES_A = [
     title: "Ukhamapi Munataxa",
     artist: "Los Kjarkas",
     genre: "Huayño / Sicuri",
-    youtube_id: "PwFFMfSZxyY",
+    youtube_id: "XKgjlWHLbl8",
+    aviso: "Letra aymara sin verificar: compárala con los subtítulos del vídeo.",
     lines: [
       { a: "Jupax qulilajapuninwa",            s: "Él se convirtió en hermano" },
       { a: "Jupax chuymajankapuninwa",         s: "Él se convirtió en compañero del corazón" },
@@ -210,7 +219,8 @@ const CANCIONES_A = [
     title: "Quli Panqarita",
     artist: "Zulma Yugar",
     genre: "Música folklórica boliviana",
-    youtube_id: "__rE_s34Nio",
+    youtube_id: "bWbD-LVRupU",
+    aviso: "Letra aymara sin verificar: compárala con los subtítulos del vídeo.",
     lines: [
       { a: "Jumataki, quli panqarita",         s: "Para ti, fueguito panqarita" },
       { a: "Suyasktamxa suma urunaka",         s: "Esperamos los hermosos días" },
@@ -231,6 +241,7 @@ const CANCIONES_A = [
     ]
   },
   {
+    oculta: true, // Letra sin fuente.
     title: "Wari Wawita",
     artist: "Tradicional aymara",
     genre: "Canción tradicional infantil",
@@ -259,6 +270,7 @@ const CANCIONES_A = [
     artist: "K'ala Marka (Kalamarka)",
     genre: "Música andina / Laquita",
     youtube_id: "b3RgDG9TfOo",
+    aviso: "Letra aymara sin verificar: compárala con los subtítulos del vídeo.",
     lines: [
       { a: "Laquita ritmo de la tierra",                     s: "Laquita, ritmo de la tierra" },
       { a: "Ritmo de dioses de Achacachi",                   s: "Ritmo de los dioses de Achacachi" },
@@ -282,6 +294,7 @@ const CANCIONES_A = [
     artist: "Awatiñas",
     genre: "Folk aymara / Balada",
     youtube_id: "PTjiasLen8Q",
+    aviso: "Letra aymara sin verificar: compárala con los subtítulos del vídeo.",
     lines: [
       { a: "Hace más de cien mil años cuando el odio no existía", s: "Hace más de cien mil años cuando el odio no existía" },
       { a: "Un cóndor de piedra sacudió la noche andina",          s: "Un cóndor de piedra sacudió la noche andina" },
@@ -304,6 +317,7 @@ const CANCIONES_A = [
     artist: "Ruphay",
     genre: "Folk aymara / Música andina boliviana",
     youtube_id: "w0dOJpDpIuo",
+    aviso: "Letra aymara sin verificar: compárala con los subtítulos del vídeo.",
     lines: [
       { a: "Uka jacha uru jutaskiway",             s: "Ese gran día está llegando" },
       { a: "Amuya sipxañani jutaskiway",           s: "Recordémoslo, está llegando" },
@@ -321,6 +335,7 @@ const CANCIONES_A = [
     ]
   },
   {
+    oculta: true, // Canción en español: el aymara no tenía fuente.
     title: "Llorando Se Fue",
     artist: "Los Kjarkas",
     genre: "Saya / Caporales",
@@ -343,6 +358,7 @@ const CANCIONES_A = [
     artist: "Luzmila Carpio",
     genre: "Folklore aymara boliviano",
     youtube_id: "qqEtNIoDtR4",
+    aviso: "Letra aymara sin verificar: compárala con los subtítulos del vídeo.",
     lines: [
       { a: "Sawt'ir, sawt'ir, sumax imilla",              s: "Tejedora, tejedora, joven buena" },
       { a: "Thaya luman, thaya pampana",                  s: "Con el frío de la loma y de la pampa" },
@@ -364,6 +380,7 @@ const CANCIONES_A = [
     artist: "Luzmila Carpio",
     genre: "Folklore aymara boliviano",
     youtube_id: "i6nefUit7m8",
+    aviso: "Letra aymara sin verificar: compárala con los subtítulos del vídeo.",
     lines: [
       { a: "Bartolina Sisa warmi",         s: "Bartolina Sisa, mujer" },
       { a: "Q'allpa jallp'a jina kanqi",   s: "Eres como la tierra firme y fértil" },
@@ -382,6 +399,7 @@ const CANCIONES_A = [
     ]
   },
   {
+    oculta: true, // Pieza instrumental: la letra no tenía fuente.
     title: "Willka Kuty",
     artist: "K'ala Marka (Kalamarka)",
     genre: "Ritual aymara – Solsticio",
@@ -404,6 +422,7 @@ const CANCIONES_A = [
     ]
   },
   {
+    oculta: true, // Canción en español: el aymara no tenía fuente.
     title: "Ama Sua Ama Llulla Ama Quella",
     artist: "K'ala Marka (Kalamarka)",
     genre: "Música andina boliviana / Canción social",
@@ -431,6 +450,7 @@ const CANCIONES_A = [
     artist: "Taypi K'ala",
     genre: "Canción tradicional",
     youtube_id: "RPpwLE1aYK4",
+    aviso: "Letra aymara sin verificar: compárala con los subtítulos del vídeo.",
     lines: [
       { a: "Achanqara panqarita",           s: "Florecita de achancara" },
       { a: "Suma wayra apiri",              s: "Que el viento hermoso lleva" },
@@ -449,6 +469,7 @@ const CANCIONES_A = [
     ]
   },
   {
+    oculta: true, // Canción en español: el aymara no tenía fuente.
     title: "Imillitay",
     artist: "Los Kjarkas",
     genre: "Huayño / Pop andino",
@@ -471,6 +492,7 @@ const CANCIONES_A = [
     ]
   },
   {
+    oculta: true, // Pieza instrumental: la letra no tenía fuente.
     title: "Genesis Aymara",
     artist: "Los Kjarkas",
     genre: "Folk épico",

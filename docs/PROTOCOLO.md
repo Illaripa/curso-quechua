@@ -92,3 +92,13 @@
 ## 2026-11-12 — Seguridad dependencias
 - `npm audit fix`: undici, form-data y fast-xml-parser actualizados (31 avisos de Dependabot). Servidor: 0 vulnerabilidades, pm2 online, live sí.
 - Pendiente: el remoto git apunta a `illaripa` (minúscula); GitHub redirige a `Illaripa`. Funciona igual.
+
+## 2026-11-13 — Canciones: letras pegadas, vídeos y ocultas
+- Letras completas pegadas por Illaripa: Granaditay (23 líneas), Tusuykusun (64), Yuyariway (16). Atawallpaj Jayllin y Paqcha Sirena coinciden con la fuente.
+- LyricsTranslate corta el texto al copiar: no sirve como fuente para pegar. Las letras de la app ya venían de ahí y estaban completas.
+- Vídeos rotos o equivocados cambiados: Granaditay, Jach'a Uru, Ukhamapi Munataxa, Quli Panqarita, Kullakita.
+- Ocultas (`oculta: true`, filtradas en js/songs.js): Para Phuyu, Llorando Se Fue, Ama Sua…, Imillitay, Genesis Aymara, Willka Kuty, Wari Wawita. Visibles: 20 quechua y 16 aymara.
+- Aymara visibles: aviso "letra sin verificar". Imilla: aviso.
+- Traducciones corregidas: Mirando la Misma Luna, Wawa Pampay, Maripusachay, Yachanaykipaq, Wasimsillay.
+- No hecho: comparar el texto con el audio de los vídeos. YouTube bloquea la descarga (403) y el sistema no permite saltarse ese bloqueo.
+- Página de enlaces: https://claude.ai/artifact/2tYWgixCyb6WkQa8APMDUp
